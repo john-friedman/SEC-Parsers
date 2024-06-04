@@ -207,3 +207,9 @@ def check_if_ancestor_has_class(element):
         element_parent = element_parent.parent
     
     return False
+
+
+# simplify 10k
+def add_element(element,soup):
+    soup.append(element)
+    soup.append(soup.new_tag('br'))

@@ -8,10 +8,18 @@ to machine read the filings.
 
 The project has mixed success. Most SEC 10-k filings can be parsed well, with minor issues such as missing some text here or there.
 
-I'll attempt to parse SEC 10-Ks again in the future. I'm considering some traditional NLP methods, as well as simpler options such as: 
-use adobe pdf to attempt to standardize, then read into python.
+I'll attempt to parse SEC 10-Ks again in the future.
+
 
 
 ![Screenshot 1](Screenshots/header.png)
 ![Screenshot 1](Screenshots/2.png)
 ![Screenshot 1](Screenshots/3.png)
+
+
+Notes on BeautifulSoup:
+* duplication of functions. Looking up resources online to mixed results, better to just read original code.
+```
+    findNextSiblings = find_next_siblings   # BS3
+    fetchNextSiblings = find_next_siblings  # BS2
+```
