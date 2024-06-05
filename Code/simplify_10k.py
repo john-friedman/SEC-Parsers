@@ -14,7 +14,7 @@ for file in os.listdir(dir_10k):
     files.append(f"{dir_10k}/{file}")
 
 
-path = files[0]
+path = files[3]
 
 # may want to adjust encuding to utf-8-sig
 with open(path) as f:
@@ -49,16 +49,18 @@ for element in body.select('[style*="display:none"]'):
 simplified_soup = BeautifulSoup("", 'html.parser')
 
 
-# mutability is something to keep in mind
-# changing approach to mark in attributes
 def recursive_simplification(element):
+    """Will likely change name. Iterates through tree recursively and parses elements."""
     
-    # may remove
+    # check if element is a tag
     if isinstance(element, Tag):
-        # if find specific tags, stop else
+        # Parse specific tags
+
+        # parses p
         if element.name == 'p':
+            # check is p is empty
             if element.text.strip() == "":
-                element['element-type'] = 'empty'
+                element['element-type'] = 'p:empty'
                 return
             else:
                 element['element-type'] = 'p:'
@@ -71,7 +73,7 @@ def recursive_simplification(element):
                 return
         elif element.name == 'span':
             if element.text.strip() == "":
-                element['element-type'] = 'empty'
+                element['element-type'] = 'span:empty'
                 return
             else:
                 element['element-type'] = 'span:'
@@ -89,12 +91,23 @@ def recursive_simplification(element):
         # remove table of contents
         elif element.name == 'a':
             if element.text.strip().lower() == 'table of contents':
-                element['element-type'] = 'toc-link'
+                element['element-type'] = 'a:toc-link'
                 return
         # ignore tables for now
         elif element.name in ['table']:
                 element['element-type'] = 'table'
                 return
+        # parses div. THIS IS HARD
+        elif element.name == 'div':
+            children = [child for child in element.findChildren(recursive=False) if isinstance(child, Tag)]
+            if len(children) > 0:
+                if all(child.tag in ['b','i'] for child in children):
+                    element['element-type'] = 'div:'
+                    if detect_bolded_text(element):
+                        element['element-type'] += 'bold;'
+
+                    if detect_italicized_text(element):
+                        element['element-type'] += 'italic;'
         else:
             # i think we can safely ignore navigable strings
             children = [child for child in element.findChildren(recursive=False) if isinstance(child, Tag)]
@@ -106,6 +119,20 @@ def recursive_simplification(element):
     
 # color
 def color_parsing(soup):
+    # https://www.htmlcodes.ws/color/html-color-code-generator.cfm?colorName=PowderBlue
+    
+    # browns
+    # empty colors
+
+    # reds
+    # skipping colors
+
+    # use oranges
+    # header colors
+
+    # use lavenders
+    # text colors
+
     # change to a list of colors
     color_list = ['Cornsilk','BlanchedAlmond','Bisque','NavajoWhite','Wheat','BurlyWood','Tan','RosyBrown','SandyBrown','Goldenrod','DarkGoldenrod','Peru','Chocolate','SaddleBrown','Sienna','Brown','Maroon']
     # hard code colors
