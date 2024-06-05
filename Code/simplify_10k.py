@@ -14,7 +14,7 @@ for file in os.listdir(dir_10k):
     files.append(f"{dir_10k}/{file}")
 
 
-path = files[3]
+path = files[0]
 
 # may want to adjust encuding to utf-8-sig
 with open(path) as f:
@@ -100,14 +100,27 @@ def recursive_simplification(element):
         # parses div. THIS IS HARD
         elif element.name == 'div':
             children = [child for child in element.findChildren(recursive=False) if isinstance(child, Tag)]
-            if len(children) > 0:
-                if all(child.tag in ['b','i'] for child in children):
+            if len(children) == 0:
+                element['element-type'] = 'div:'
+                if detect_bolded_text(element):
+                    element['element-type'] += 'bold;'
+
+                if detect_italicized_text(element):
+                    element['element-type'] += 'italic;'
+            else:
+                if all([child.name in ['p','span','b','i'] for child in children]):
                     element['element-type'] = 'div:'
                     if detect_bolded_text(element):
                         element['element-type'] += 'bold;'
 
                     if detect_italicized_text(element):
                         element['element-type'] += 'italic;'
+                else:
+                    for child in children:
+                        recursive_simplification(child)
+
+
+
         else:
             # i think we can safely ignore navigable strings
             children = [child for child in element.findChildren(recursive=False) if isinstance(child, Tag)]
