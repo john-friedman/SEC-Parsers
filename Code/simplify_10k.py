@@ -1,12 +1,20 @@
 from bs4 import BeautifulSoup, Tag, NavigableString, Comment
 import re
-from helper import open_soup, add_style, add_element
+import os
+
+from helper import open_soup, add_style, add_element, detect_bolded_text, detect_italicized_text
 
 # convert the 10-k to a simplier html
 # build the tree
 
-#path = "../Data/10K/1961_0001264931-24-000014.html"
-path = "../Data/10K/6845_0000006845-24-000088.html"
+# load all 10-k files
+dir_10k = "../Data/10K"
+files = []
+for file in os.listdir(dir_10k):
+    files.append(f"{dir_10k}/{file}")
+
+
+path = files[0]
 
 # may want to adjust encuding to utf-8-sig
 with open(path) as f:
@@ -44,16 +52,39 @@ def recursive_simplification(element):
                 new_tag = simplified_soup.new_tag('p')
                 new_tag.string = element.text
                 # stores if element was parsed
-                new_tag['element-parsed'] = 'true'
-                # children
-                descendant_tags = [tag for tag in element.findChildren(recursive=True) if isinstance(tag, Tag)]
-                if 'b' in [tag.name for tag in descendant_tags]:
+                new_tag['element-type'] = 'parsed'
+
+                if detect_bolded_text(element):
                     add_style(new_tag, 'font-weight: bold;')
-                
-                if 'i' in [tag.name for tag in descendant_tags]:
+
+                if detect_italicized_text(element):
                     add_style(new_tag,'font-style: italic;')
 
                 simplified_soup.append(new_tag)
+                element.decompose()
+        elif element.name == 'span':
+            if element.text.strip() == "":
+                element.decompose()
+            else:
+                new_tag = simplified_soup.new_tag('p')
+                new_tag.string = element.text
+                # stores if element was parsed
+                new_tag['element-type'] = 'parsed'
+                # test if self is bolded or italicized
+                if detect_bolded_text(element):
+                    add_style(new_tag, 'font-weight: bold;')
+
+                if detect_italicized_text(element):
+                    add_style(new_tag,'font-style: italic;')
+
+                simplified_soup.append(new_tag)
+                element.decompose()
+        # remove breaks
+        elif element.name == 'br':
+            element.decompose()
+        # remove table of contents
+        elif element.name == 'a':
+            if element.text.strip().lower() == 'table of contents':
                 element.decompose()
         # ignore tables for now
         elif element.name in ['table']:
@@ -67,35 +98,10 @@ def recursive_simplification(element):
             else:
                 add_element(element,simplified_soup)
     
-    
-# worked ok
-# for child in children:
-#     if isinstance(child, Tag):
-#         # due to mutability, this looks like it delets from soup
-#         if child.name in ['p']:
-#             if child.text.strip() == "":
-#                 child.decompose()
-#             else:
-#                 new_tag = simplified_soup.new_tag('p')
-#                 new_tag.string = child.text
-#                 # children
-#                 descendant_tags = [tag for tag in child.findChildren(recursive=True) if isinstance(tag, Tag)]
-#                 if 'b' in [tag.name for tag in descendant_tags]:
-#                     add_style(new_tag, 'font-weight: bold;')
-                
-#                 if 'i' in [tag.name for tag in descendant_tags]:
-#                     add_style(new_tag,'font-style: italic;')
 
-#                 simplified_soup.append(new_tag)
-#                 child.decompose()
-#         # ignore tables for now
-#         elif child.name in ['table']:
-#             child.decompose()
-#         else:
-#             simplified_soup.append(child)
     
 
 recursive_simplification(body)
 open_soup(simplified_soup)
-soup = BeautifulSoup(html, 'html.parser')
-open_soup(soup)
+#soup = BeautifulSoup(html, 'html.parser')
+#open_soup(soup)

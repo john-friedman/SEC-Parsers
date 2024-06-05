@@ -209,7 +209,43 @@ def check_if_ancestor_has_class(element):
     return False
 
 
+
+# rewrite as of june 4
+def detect_bolded_text(element):
+    if 'font-weight:' in element.get('style'):
+        font_weight = element.get('style').split('font-weight:')[1].split(';')[0].strip()
+        if font_weight == 'bold':
+            return True
+        
+        # detect if font weight is integer
+        elif font_weight.isdigit():
+            if int(font_weight) > 500:
+                return True
+
+    descendant_tags = [tag for tag in element.findChildren(recursive=True) if isinstance(tag, Tag)]
+    if 'b' in [tag.name for tag in descendant_tags]:
+        return True
+    
+    return False
+
+def detect_italicized_text(element):
+    if 'font-style:' in element.get('style'):
+        font_style = element.get('style').split('font-style:')[1].split(';')[0]
+        if font_style == 'italic':
+            return True
+
+    descendant_tags = [tag for tag in element.findChildren(recursive=True) if isinstance(tag, Tag)]
+    if 'i' in [tag.name for tag in descendant_tags]:
+        return True
+    
+    return False
+
 # simplify 10k
 def add_element(element,soup):
     soup.append(element)
-    soup.append(soup.new_tag('br'))
+
+    # add line breaks twice
+    for _ in range(2):
+        line_break = soup.new_tag('br')
+        line_break['element-type'] = 'line-break'
+        soup.append(line_break)
