@@ -243,6 +243,20 @@ def detect_italicized_text(element):
     
     return False
 
+def detect_underlined_text(element):
+    style = element.get('style')
+    if style:
+        if 'text-decoration:' in element.get('style'):
+            text_decoration = element.get('style').split('text-decoration:')[1].split(';')[0]
+            if text_decoration == 'underline':
+                return True
+
+    descendant_tags = [tag for tag in element.findChildren(recursive=True) if isinstance(tag, Tag)]
+    if 'u' in [tag.name for tag in descendant_tags]:
+        return True
+    
+    return False
+
 # simplify 10k
 def add_element(element,soup):
     soup.append(element)
