@@ -8,24 +8,33 @@ from helper import open_soup, add_style, detect_bolded_text, detect_italicized_t
 # further parsing, e.g. table, for real tables
 # building the tree
 
+# todo
+# unique text in middle of paragraph - perhaps target with first element trick
+# headers that are tables
+# continued - maybe mark as special option
 
 def clean_html(soup):
     # reminder to look for element-type, as we will be using that attribute
-    for element in body.find_all():
+    for element in soup.find_all():
         if element.has_attr("element-type"):
             del element['element-type']  
 
+    # reminder to look for parsed, as we will be using that attribute
+    for element in soup.find_all():
+        if element.has_attr("parsed"):
+            del element['parsed']  
+
     # remove existing background colors from all elements
     # Note: coded this quickly using copilot, did not check
-    for element in body.find_all():
+    for element in soup.find_all():
         if element.has_attr("style"):
-            element['style'] = re.sub(r'background-color:[^;]{1,}','',element['style'])
+            element['style'] = re.sub(r'background(-color)*:[^;]{1,}','',element['style'])
 
     # remove hidden elements
     # may need to tweak
-    for element in body.select('[style*="display: none"]'):
+    for element in soup.select('[style*="display: none"]'):
         element.decompose()
-    for element in body.select('[style*="display:none"]'):
+    for element in soup.select('[style*="display:none"]'):
         element.decompose()
 
 
@@ -38,13 +47,31 @@ def recursive_parser(element):
 
         # parses p
         if element.name == 'p':
-            # check is p is empty
-            if element.text.strip() == "":
-                element['element-type'] = 'p:empty'
-                return
-            else:
-                element['element-type'] = 'p:'
+            element['parsed'] = True
+            children = [child for child in element.findChildren(recursive=False) if isinstance(child, Tag)]
+            # if children are empty, terminate recursion
+            if len(children) == 0:
+                if element.text.strip() == "":
+                    element['element-type'] = 'p:empty'
+                    return
+                else:
+                    element['element-type'] = 'p:'
+                    if detect_bolded_text(element):
+                        element['element-type'] += 'bold;'
 
+                    if detect_italicized_text(element):
+                        element['element-type'] += 'italic;'
+
+                    if detect_underlined_text(element):
+                        element['element-type'] += 'underline;'
+                    return
+                
+            # if children not empty
+            # interesting situation here,in file 21 where we have spans then the pargraph text, where p is the original container
+            # quick fix for now, but uhh. we need to address this
+            element_text = ''.join(element.findAll(string=True, recursive=False)).strip()
+            if len(element_text) > 0:
+                element['element-type'] = 'p:text-and-children:'
                 if detect_bolded_text(element):
                     element['element-type'] += 'bold;'
 
@@ -54,9 +81,20 @@ def recursive_parser(element):
                 if detect_underlined_text(element):
                     element['element-type'] += 'underline;'
                 
+
+            for child in children:
+                recursive_parser(child)
                 return
+            
+            return
         elif element.name == 'span':
-            if element.text.strip() == "":
+            element['parsed'] = True
+            children = [child for child in element.findChildren(recursive=False) if isinstance(child, Tag)]
+            element_text = ''.join(element.findAll(string=True, recursive=False)).strip()
+            if len(element_text) == 0:
+                for child in children:
+                    recursive_parser(child)
+            elif element.text.strip() == "":
                 element['element-type'] = 'span:empty'
                 return
             else:
@@ -74,20 +112,24 @@ def recursive_parser(element):
                 return
         # remove breaks
         elif element.name == 'br':
+            element['parsed'] = True
             element['element-type'] = 'line-break:empty'
             return
         # remove table of contents
         elif element.name == 'a':
+            element['parsed'] = True
             if element.text.strip().lower() == 'table of contents':
                 element['element-type'] = 'a:toc-link'
                 return
         # ignore tables for now
         elif element.name in ['table']:
-                element['element-type'] = 'table:skipping'
-                return
+            element['parsed'] = True
+            element['element-type'] = 'table:skipping'
+            return
         # parses div. THIS IS HARD
         # fix container parsing for bold etc
         elif element.name == 'div':
+            element['parsed'] = True
             children = [child for child in element.findChildren(recursive=False) if isinstance(child, Tag)]
             # first check if div has text, if not then search children, recursive = false prevents child text
             element_text = ''.join(element.findAll(string=True, recursive=False)).strip()
@@ -130,8 +172,6 @@ def recursive_parser(element):
                     for child in children:
                         recursive_parser(child)
 
-
-
         else:
             # i think we can safely ignore navigable strings
             children = [child for child in element.findChildren(recursive=False) if isinstance(child, Tag)]
@@ -173,7 +213,7 @@ for file in os.listdir(dir_10k):
     files.append(f"{dir_10k}/{file}")
 
 
-for file in files[0:1]:
+for file in files[21:22]:
     # may want to adjust encoding to utf-8-sig
     with open(file) as f:
         html = f.read()

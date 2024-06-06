@@ -3,130 +3,6 @@ import tempfile
 import webbrowser
 from bs4 import BeautifulSoup, NavigableString, Tag
 
-# anchors
-def extract_text_before_anchor(elem_list,current_index,anchor_text):
-    text_before_anchor = ""
-    for idx,item in enumerate(elem_list[current_index:]):
-            item_text = item.text
-            text = item_text
-
-        
-            if text !="":
-                text_before_anchor += text + ";"
-            if anchor_text.lower() in text.lower():
-                break
-
-    text_before_anchor = re.sub(r"\s+", " ", text_before_anchor)
-    current_index+= idx+1
-
-    return current_index,text_before_anchor
-
-def find_anchor(elem_list,current_index,anchor_text):
-    idx, element = next(item for item in enumerate(elem_list[current_index:]) if anchor_text.lower() in item[1].text.lower())
-    return current_index+idx, element
-
-# text
-# this will likely need work
-def is_paragraph(element):
-  
-    text = element.text.strip()
-
-    msg = ""
-    # check if element is not blank
-    if text == "":
-        return False
-    
-    msg += "no blank text;"
-    
-    # check is not some massive div
-    if len(element.findChildren()) > 10:
-        return False
-    
-    msg += "not too many children;"
-
-    # check if element is only numbers
-    if re.search(r'^\d{1,}$', text):
-        msg = "only numbers"
-        return False
-    
-    msg += "not just numbers;"
-
-    words = text.split()
-    # check first letter of first word is uppercase
-    if words[0][0].isupper():
-        msg += "first letter is uppercase;"
-        # check has a period
-        search = re.search(r'\.',text)
-        if search:
-            msg += "has period;"
-            if len(text) > 70:
-                return True
-            # check is above minimum length
-            
-    return False#, msg
-
-
-# new approach, unique text becomes headers. one lower than each other
-# maybe we build bottom up 
-# detect low level text, check if special, then build up
-
-# need a way to test if in paragraph, but not header within paragraph
-def detect_unique_text(element):
-    element_text = element.text.strip()
-
-    # check if element is only special characters
-    if re.match(r'^([\W_]|[0-9])+$', element_text):
-        return False
-
-    toReturn = False
-    if element.name in ["strong","b","em","i","u"]:
-        toReturn = True
-    elif (element.get("style") is not None):
-        if "bold" in element.get("style"):
-            toReturn = True
-        if "italic" in element.get("style"):
-            toReturn = True
-        if "underline" in element.get("style"):
-            toReturn = True
-
-    return toReturn
-
-def detect_unique_text_deprecated(element):
-    element_text = element.text.strip()
-
-    # check if element is only special characters
-    if re.match(r'^([\W_]|[0-9])+$', element_text):
-        return False
-    
-    # check if all uppercase
-    # haven't debugged yet
-    if element_text.isupper():
-        return True
-
-    toReturn = False
-    if (element.parent.name in ["strong","b","em","i","u"]):
-        toReturn = True
-    elif (element.name in ["strong","b","em","i","u"]):
-        if element.parent.text.strip() == element_text:
-            toReturn = True
-    elif (element.get("style") is not None):
-        if "bold" in element.get("style"):
-            toReturn = True
-        if "italic" in element.get("style"):
-            toReturn = True
-        if "underline" in element.get("style"):
-            toReturn = True
-        if 'text-align: center' in element.get("style"):
-            toReturn = True
-    
-    # check if url
-    # if is_valid_url(element_text):
-    #     toReturn = False
-
-    
-    return toReturn
-
-#beautiful soup
 
 def open_soup(soup):
     html = str(soup)
@@ -235,7 +111,7 @@ def detect_italicized_text(element, recursive=True):
     style = element.get('style')
     if style:
         if 'font-style:' in element.get('style'):
-            font_style = element.get('style').split('font-style:')[1].split(';')[0]
+            font_style = element.get('style').split('font-style:')[1].split(';')[0].strip() 
             if font_style == 'italic':
                 return True
 
