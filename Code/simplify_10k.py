@@ -89,7 +89,12 @@ def recursive_parser(element):
         # fix container parsing for bold etc
         elif element.name == 'div':
             children = [child for child in element.findChildren(recursive=False) if isinstance(child, Tag)]
-            if len(children) == 0:
+            # first check if div has text, if not then search children, recursive = false prevents child text
+            element_text = ''.join(element.findAll(string=True, recursive=False)).strip()
+            if len(element_text) == 0:
+                for child in children:
+                    recursive_parser(child)
+            elif len(children) == 0:
                 element['element-type'] = 'div:'
                 if detect_bolded_text(element):
                     element['element-type'] += 'bold;'
@@ -100,7 +105,7 @@ def recursive_parser(element):
                 if detect_underlined_text(element):
                     element['element-type'] += 'underline;'
             else:
-                if all([child.name in ['p','span','b','i','ix:nonnumeric','ix:nonfraction','br','a'] for child in children]):
+                if all([child.name in ['b','i','br'] for child in children]):
                     element['element-type'] = 'div:'
                     if detect_bolded_text(element):
                         element['element-type'] += 'bold;'
@@ -109,6 +114,17 @@ def recursive_parser(element):
                         element['element-type'] += 'italic;'
 
                     if detect_underlined_text(element):
+                        element['element-type'] += 'underline;'
+                # recursive is false here as we don't want one bolded text to make the whole div bolded
+                elif all([child.name in ['p','span','b','i','ix:nonnumeric','ix:nonfraction','br','a','sup'] for child in children]):
+                    element['element-type'] = 'div:'
+                    if detect_bolded_text(element,recursive=False):
+                        element['element-type'] += 'bold;'
+
+                    if detect_italicized_text(element,recursive=False):
+                        element['element-type'] += 'italic;'
+
+                    if detect_underlined_text(element, recursive=False):
                         element['element-type'] += 'underline;'
                 else:
                     for child in children:

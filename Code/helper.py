@@ -211,7 +211,7 @@ def check_if_ancestor_has_class(element):
 
 
 # rewrite as of june 4
-def detect_bolded_text(element):
+def detect_bolded_text(element,recursive=True):
     style = element.get('style')
     if style:
         if 'font-weight:' in style:
@@ -224,12 +224,14 @@ def detect_bolded_text(element):
                 if int(font_weight) > 500:
                     return True
 
-    descendant_tags = [tag for tag in element.findChildren(recursive=True) if isinstance(tag, Tag)]
-    if 'b' in [tag.name for tag in descendant_tags]:
-        return True
+    # check children
+    if recursive:
+        descendant_tags = [tag for tag in element.findChildren(recursive=True) if isinstance(tag, Tag)]
+        if 'b' in [tag.name for tag in descendant_tags]:
+            return True
     
     return False
-def detect_italicized_text(element):
+def detect_italicized_text(element, recursive=True):
     style = element.get('style')
     if style:
         if 'font-style:' in element.get('style'):
@@ -237,23 +239,27 @@ def detect_italicized_text(element):
             if font_style == 'italic':
                 return True
 
-    descendant_tags = [tag for tag in element.findChildren(recursive=True) if isinstance(tag, Tag)]
-    if 'i' in [tag.name for tag in descendant_tags]:
-        return True
+    # check children
+    if recursive:
+        descendant_tags = [tag for tag in element.findChildren(recursive=True) if isinstance(tag, Tag)]
+        if 'b' in [tag.name for tag in descendant_tags]:
+            return True
     
     return False
 
-def detect_underlined_text(element):
+def detect_underlined_text(element, recursive=True):
     style = element.get('style')
     if style:
         if 'text-decoration:' in element.get('style'):
-            text_decoration = element.get('style').split('text-decoration:')[1].split(';')[0]
+            text_decoration = element.get('style').split('text-decoration:')[1].split(';')[0].strip()
             if text_decoration == 'underline':
                 return True
 
-    descendant_tags = [tag for tag in element.findChildren(recursive=True) if isinstance(tag, Tag)]
-    if 'u' in [tag.name for tag in descendant_tags]:
-        return True
+    # check children
+    if recursive:
+        descendant_tags = [tag for tag in element.findChildren(recursive=True) if isinstance(tag, Tag)]
+        if 'b' in [tag.name for tag in descendant_tags]:
+            return True
     
     return False
 

@@ -23,3 +23,8 @@ Notes on BeautifulSoup:
     findNextSiblings = find_next_siblings   # BS3
     fetchNextSiblings = find_next_siblings  # BS2
 ```
+
+Differences between this parser and others:
+1. Most parsers use regex to identify specific sections. This works well, except it does not allow accessing the rich unstandardized subsection data
+
+Note: I can use section lists to verify parsing etc
