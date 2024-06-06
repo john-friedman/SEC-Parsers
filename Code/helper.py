@@ -3,7 +3,8 @@ import tempfile
 import webbrowser
 from bs4 import BeautifulSoup, NavigableString, Tag
 
-
+## HTML PARSER HELPER FUNCTIONS ##
+# Open a BeautifulSoup object in a new tab
 def open_soup(soup):
     html = str(soup)
     with tempfile.NamedTemporaryFile('w', delete=False, suffix='.html', encoding="utf-8-sig") as f:
@@ -11,49 +12,7 @@ def open_soup(soup):
         f.write(html)
     webbrowser.open(url)
 
-
-# go through children recustively, if no text, decompose item
-def clean_element(element):
-    # check if element exists
-    if element.name is None:
-        return
-    # handle table of contents
-    elif element.name == "a":
-        if element.text.strip().lower() == 'table of contents':
-            element.decompose()
-    # handle empty elements
-    elif element.text.strip() == "":
-        element.decompose()
-    # if has children apply recursively
-    elif len(element.findChildren())>0:
-        for child in element.children:
-                        clean_element(child)
-    # if no children remove line breaks
-    else:
-        pass
-
-# quick fix
-def combine_elements(element):
-    if element.name is None:
-        return
-    # arbitary, this will break?
-    # need to add something here that takes into account weird normal c bold ompetition. I think the best way is to weight style.
-    if ((len(element.contents) < 100) & (len(element.contents) > 1)):
-        element.string = re.sub(r'[(\n)(\s+)]{1,}',' ',element.text.strip())
-    for child in element.children:
-        combine_elements(child)
-        
-
-
-def mark_unique_text(element):
-    if element.name is None:
-        return
-    if detect_unique_text(element):
-        add_style(element, "background-color:SandyBrown;")
-    for child in element.children:
-        mark_unique_text(child)
-
-# change to account for ';'
+# add style to element
 def add_style(element, css_style,replace = False):
     if replace:
         element['style'] = css_style
@@ -65,28 +24,8 @@ def add_style(element, css_style,replace = False):
 
 
 
-def add_text(element, text):
-    if element.get('text') is None:
-        element.append(text)
 
-def add_class(element, class_string):
-    if element.get('class') is None:
-        element['class'] = class_string
-    else:
-        pass
-
-def check_if_ancestor_has_class(element):
-    element_parent = element.parent
-    while element_parent.name != "html":
-        if element_parent.has_attr("class"):
-            return True
-        element_parent = element_parent.parent
-    
-    return False
-
-
-
-# rewrite as of june 4
+# detects if text is bolded
 def detect_bolded_text(element,recursive=True):
     style = element.get('style')
     if style:
@@ -95,7 +34,7 @@ def detect_bolded_text(element,recursive=True):
             if font_weight == 'bold':
                 return True
         
-            # detect if font weight is integer
+            # detect if font weight is integer above bold threshold
             elif font_weight.isdigit():
                 if int(font_weight) > 500:
                     return True
@@ -110,6 +49,8 @@ def detect_bolded_text(element,recursive=True):
             return True
     
     return False
+
+# detects if text is italicized
 def detect_italicized_text(element, recursive=True):
     style = element.get('style')
     if style:
@@ -129,6 +70,7 @@ def detect_italicized_text(element, recursive=True):
     
     return False
 
+# detects if text is underlined
 def detect_underlined_text(element, recursive=True):
     style = element.get('style')
     if style:
@@ -148,38 +90,31 @@ def detect_underlined_text(element, recursive=True):
     
     return False
 
-# simplify 10k
-def add_element(element,soup):
-    soup.append(element)
-
-    # add line breaks twice
-    for _ in range(2):
-        line_break = soup.new_tag('br')
-        line_break['element-type'] = 'line-break'
-        soup.append(line_break)
 
 
 # clean html for parser
 def clean_html(soup):
-    # reminder to look for element-type, as we will be using that attribute
+    # remove element-type attribute
     for element in soup.find_all(recursive=True):
         if element.has_attr("element-type"):
             del element['element-type']  
 
-    # reminder to look for parsed, as we will be using that attribute
+    # remove parsed attribute
     for element in soup.find_all(recursive=True):
         if element.has_attr("parsed"):
             del element['parsed']  
 
-    # remove existing background colors from all elements
-    # Note: coded this quickly using copilot, did not check
+    # remove existing background colors
     for element in soup.find_all(recursive=True):
         if element.has_attr("style"):
             element['style'] = re.sub(r'background(-color)*:[^;]{1,}','',element['style'])
 
     # remove hidden elements
-    # may need to tweak
     for element in soup.select('[style*="display: none"]',recursive=True):
         element.decompose()
     for element in soup.select('[style*="display:none"]',recursive=True):
         element.decompose()
+
+
+
+## XML PARSER HELPER FUNCTIONS ##

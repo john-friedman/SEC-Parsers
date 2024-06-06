@@ -12,7 +12,7 @@ Currently the project has multiple iterations of parsers
 
 Each iteration of the parsers reflects my better understanding of how to use beautiful soup.
 
-![Screenshot 1](Screenshots/header.png)
+![Screenshot 1](Screenshots/1.png)
 ![Screenshot 1](Screenshots/2.png)
 ![Screenshot 1](Screenshots/3.png)
 
