@@ -8,10 +8,17 @@ from helper import open_soup, add_style, detect_bolded_text, detect_italicized_t
 # we need table parsing
 # we need context detection, e.g. first content item is bold. - I can probably do this in tree extraction
 
-def parse_element(element):
+# need to adjust. if element has no text of its own, it should be ignored
+def parse_element(element,recursive=False):
+
+    contents = element.contents
+    navigable_strings = [child for child in contents if isinstance(child, NavigableString)]
+    if len(navigable_strings) == 0:
+        element['class'] = 'container-no-text'
+        return
     
     # if no text, mark as empty
-    if element.text.strip() == "":
+    elif element.text.strip() == "":
         element['parsed'] = True
         element['element-type'] = f'{element.name}:empty'
         element['class'] = 'empty'
@@ -20,20 +27,36 @@ def parse_element(element):
         element['parsed'] = True
         element['element-type'] = f'{element.name}:text'
         element['class'] = 'section_text'
-        if detect_bolded_text(element, recursive=False):
+        if detect_bolded_text(element, recursive):
             element['element-type'] = 'bold;'
             element['class'] = 'header'
 
-        if detect_italicized_text(element, recursive=False):
+        if detect_italicized_text(element, recursive):
             element['element-type'] = 'italic;'
             element['class'] = 'header'
         
-        if detect_underlined_text(element, recursive=False):
+        if detect_underlined_text(element, recursive):
             element['element-type'] = 'underline;'
             element['class'] = 'header'
 
         return
+    
 
+def parse_table(element):
+    # detect if table
+    # go to tbody
+    # check each tr
+    
+    tr_list = element.find_all('tr')
+    if any([re.search(r'\d+', tr.text) for tr in tr_list]):
+        element['parsed'] = True
+        element['element-type'] = 'table:numeric'
+        element['class'] = 'skipping'
+        return
+    else:
+        for tr in tr_list:
+            parse_element(tr,recursive=True)
+     
 
 def recursive_parser(element):
     """Will likely change name. Iterates through tree recursively and parses elements."""
@@ -62,6 +85,7 @@ def recursive_parser(element):
         elif element.name == 'br':
             element['parsed'] = True
             element['element-type'] = 'line-break:empty'
+            element['class'] = 'empty'
             return
         
         # remove table of contents
@@ -69,12 +93,14 @@ def recursive_parser(element):
             element['parsed'] = True
             if element.text.strip().lower() == 'table of contents':
                 element['element-type'] = 'a:toc-link'
+                element['class'] = 'skipping'
                 return
             
         # ignore tables for now
         elif element.name in ['table']:
             element['parsed'] = True
-            element['element-type'] = 'table:skipping'
+            element['element-type'] = 'table'
+            element['class'] = 'skipping'
             return
         
         else:
@@ -95,19 +121,19 @@ def color_parsing(soup):
 
 
     # we'll add gradient colors later in the distinguishing headers update
-    color_dict = {'header':'BurlyWood','section_text':'Wheat','empty':'LightYellow','skipping':'LemonChiffon'}
+    color_dict = {'header':'BurlyWood','section_text':'Wheat','empty':'LightYellow','skipping':'Pink'}
 
-    for element in soup.find_all(attrs={'element-type': True}):
-        element_type = element['element-type']
+    for element in soup.find_all(attrs={'class': True}):
+        element_class = element['class']
 
         # there will be weird visualization errors here. This is sloppy
-        if 'empty' in element_type:
+        if element_class == 'empty':
             add_style(element, f"background-color:{color_dict['empty']};")
-        elif (('bold' in element_type) | ('italic' in element_type) | ('underline' in element_type)):
+        elif element_class == 'header':
             add_style(element, f"background-color:{color_dict['header']};")
-        elif 'skipping' in element_type:
+        elif element_class == 'skipping':
             add_style(element, f"background-color:{color_dict['skipping']};")
-        else:
+        elif element_class == 'section_text':
             add_style(element, f"background-color:{color_dict['section_text']};")
     
 # code to test:
@@ -118,7 +144,7 @@ for file in os.listdir(dir_10k):
     files.append(f"{dir_10k}/{file}")
 
 
-for file in files[0:5]:
+for file in files[0:1]:
     # may want to adjust encoding to utf-8-sig
     with open(file) as f:
         html = f.read()
