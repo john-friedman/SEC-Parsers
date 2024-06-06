@@ -2,176 +2,68 @@ from bs4 import BeautifulSoup, Tag, NavigableString, Comment
 import re
 import os
 
-from helper import open_soup, add_style, detect_bolded_text, detect_italicized_text, detect_underlined_text
+from helper import open_soup, add_style, detect_bolded_text, detect_italicized_text, detect_underlined_text,clean_html
 
 # TODO
-# further parsing, e.g. table, for real tables
-# building the tree
+# we need table parsing
+# we need context detection, e.g. first content item is bold. - I can probably do this in tree extraction
 
-# todo
-# unique text in middle of paragraph - perhaps target with first element trick
-# headers that are tables
-# continued - maybe mark as special option
+def parse_navigable_string_of_element(element):
+    element['parsed'] = True
+    element['element-type'] = f'{element.name}:text'
+    if detect_bolded_text(element, recursive=False):
+        element['element-type'] = 'bold;'
 
-def clean_html(soup):
-    # reminder to look for element-type, as we will be using that attribute
-    for element in soup.find_all():
-        if element.has_attr("element-type"):
-            del element['element-type']  
+    if detect_italicized_text(element, recursive=False):
+        element['element-type'] = 'italic;'
+    
+    if detect_underlined_text(element, recursive=False):
+        element['element-type'] = 'underline;'
 
-    # reminder to look for parsed, as we will be using that attribute
-    for element in soup.find_all():
-        if element.has_attr("parsed"):
-            del element['parsed']  
-
-    # remove existing background colors from all elements
-    # Note: coded this quickly using copilot, did not check
-    for element in soup.find_all():
-        if element.has_attr("style"):
-            element['style'] = re.sub(r'background(-color)*:[^;]{1,}','',element['style'])
-
-    # remove hidden elements
-    # may need to tweak
-    for element in soup.select('[style*="display: none"]'):
-        element.decompose()
-    for element in soup.select('[style*="display:none"]'):
-        element.decompose()
+    return
 
 
 def recursive_parser(element):
     """Will likely change name. Iterates through tree recursively and parses elements."""
     
     # check if element is a tag
+    # this should be unnecessary
     if isinstance(element, Tag):
-        # Parse specific tags
 
-        # parses p
-        if element.name == 'p':
+        # I need to add something for empty text
+        if element.name in ['p','span','div','b','i']:
             element['parsed'] = True
-            children = [child for child in element.findChildren(recursive=False) if isinstance(child, Tag)]
-            # if children are empty, terminate recursion
-            if len(children) == 0:
-                if element.text.strip() == "":
-                    element['element-type'] = 'p:empty'
-                    return
-                else:
-                    element['element-type'] = 'p:'
-                    if detect_bolded_text(element):
-                        element['element-type'] += 'bold;'
+            children = element.contents
+            children_tags = [child for child in children if isinstance(child, Tag)]
+            children_strings = [child for child in children if isinstance(child, NavigableString)]
 
-                    if detect_italicized_text(element):
-                        element['element-type'] += 'italic;'
-
-                    if detect_underlined_text(element):
-                        element['element-type'] += 'underline;'
-                    return
-                
-            # if children not empty
-            # interesting situation here,in file 21 where we have spans then the pargraph text, where p is the original container
-            # quick fix for now, but uhh. we need to address this
-            element_text = ''.join(element.findAll(string=True, recursive=False)).strip()
-            if len(element_text) > 0:
-                element['element-type'] = 'p:text-and-children:'
-                if detect_bolded_text(element):
-                    element['element-type'] += 'bold;'
-
-                if detect_italicized_text(element):
-                    element['element-type'] += 'italic;'
-
-                if detect_underlined_text(element):
-                    element['element-type'] += 'underline;'
-                
-
-            for child in children:
-                recursive_parser(child)
-                return
+            if len(children_strings) > 0:
+                parse_navigable_string_of_element(element)
             
+            for child in children_tags:
+                recursive_parser(child)
+
             return
-        elif element.name == 'span':
-            element['parsed'] = True
-            children = [child for child in element.findChildren(recursive=False) if isinstance(child, Tag)]
-            element_text = ''.join(element.findAll(string=True, recursive=False)).strip()
-            if len(element_text) == 0:
-                for child in children:
-                    recursive_parser(child)
-            elif element.text.strip() == "":
-                element['element-type'] = 'span:empty'
-                return
-            else:
-                element['element-type'] = 'span:'
 
-                if detect_bolded_text(element):
-                    element['element-type'] += 'bold;'
-
-                if detect_italicized_text(element):
-                    element['element-type'] += 'italic;'
-
-                if detect_underlined_text(element):
-                    element['element-type'] += 'underline;'
-
-                return
         # remove breaks
         elif element.name == 'br':
             element['parsed'] = True
             element['element-type'] = 'line-break:empty'
             return
+        
         # remove table of contents
         elif element.name == 'a':
             element['parsed'] = True
             if element.text.strip().lower() == 'table of contents':
                 element['element-type'] = 'a:toc-link'
                 return
+            
         # ignore tables for now
         elif element.name in ['table']:
             element['parsed'] = True
             element['element-type'] = 'table:skipping'
             return
-        # parses div. THIS IS HARD
-        # fix container parsing for bold etc
-        elif element.name == 'div':
-            element['parsed'] = True
-            children = [child for child in element.findChildren(recursive=False) if isinstance(child, Tag)]
-            # first check if div has text, if not then search children, recursive = false prevents child text
-            element_text = ''.join(element.findAll(string=True, recursive=False)).strip()
-            if len(element_text) == 0:
-                for child in children:
-                    recursive_parser(child)
-            elif len(children) == 0:
-                element['element-type'] = 'div:'
-                if detect_bolded_text(element):
-                    element['element-type'] += 'bold;'
-
-                if detect_italicized_text(element):
-                    element['element-type'] += 'italic;'
-
-                if detect_underlined_text(element):
-                    element['element-type'] += 'underline;'
-            else:
-                if all([child.name in ['b','i','br'] for child in children]):
-                    element['element-type'] = 'div:'
-                    if detect_bolded_text(element):
-                        element['element-type'] += 'bold;'
-
-                    if detect_italicized_text(element):
-                        element['element-type'] += 'italic;'
-
-                    if detect_underlined_text(element):
-                        element['element-type'] += 'underline;'
-                # recursive is false here as we don't want one bolded text to make the whole div bolded
-                elif all([child.name in ['p','span','b','i','ix:nonnumeric','ix:nonfraction','br','a','sup'] for child in children]):
-                    element['element-type'] = 'div:'
-                    if detect_bolded_text(element,recursive=False):
-                        element['element-type'] += 'bold;'
-
-                    if detect_italicized_text(element,recursive=False):
-                        element['element-type'] += 'italic;'
-
-                    if detect_underlined_text(element, recursive=False):
-                        element['element-type'] += 'underline;'
-                else:
-                    for child in children:
-                        recursive_parser(child)
-
+        
         else:
             # i think we can safely ignore navigable strings
             children = [child for child in element.findChildren(recursive=False) if isinstance(child, Tag)]
@@ -213,7 +105,7 @@ for file in os.listdir(dir_10k):
     files.append(f"{dir_10k}/{file}")
 
 
-for file in files[21:22]:
+for file in files[0:10]:
     # may want to adjust encoding to utf-8-sig
     with open(file) as f:
         html = f.read()

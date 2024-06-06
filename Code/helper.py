@@ -148,3 +148,29 @@ def add_element(element,soup):
         line_break = soup.new_tag('br')
         line_break['element-type'] = 'line-break'
         soup.append(line_break)
+
+
+# clean html for parser
+def clean_html(soup):
+    # reminder to look for element-type, as we will be using that attribute
+    for element in soup.find_all():
+        if element.has_attr("element-type"):
+            del element['element-type']  
+
+    # reminder to look for parsed, as we will be using that attribute
+    for element in soup.find_all():
+        if element.has_attr("parsed"):
+            del element['parsed']  
+
+    # remove existing background colors from all elements
+    # Note: coded this quickly using copilot, did not check
+    for element in soup.find_all():
+        if element.has_attr("style"):
+            element['style'] = re.sub(r'background(-color)*:[^;]{1,}','',element['style'])
+
+    # remove hidden elements
+    # may need to tweak
+    for element in soup.select('[style*="display: none"]'):
+        element.decompose()
+    for element in soup.select('[style*="display:none"]'):
+        element.decompose()
