@@ -5,8 +5,8 @@ import os
 from helper import open_soup, add_style, detect_bolded_text, detect_italicized_text, detect_underlined_text,clean_html
 
 # TODO
-# we need table parsing
-# we need context detection, e.g. first content item is bold. - I can probably do this in tree extraction
+# I think it's pretty good, we just need to work on tree creation, the context dependent stuff there
+# will help us fix visuals
 
 # need to adjust. if element has no text of its own, it should be ignored
 def parse_element(element,recursive=False):
@@ -42,20 +42,32 @@ def parse_element(element,recursive=False):
         return
     
 
+# need better table detection
+# table detection is very sloppy
 def parse_table(element):
-    # detect if table
-    # go to tbody
-    # check each tr
     
     tr_list = element.find_all('tr')
-    if any([re.search(r'\d+', tr.text) for tr in tr_list]):
+    if any([re.search(r'[0-9]{1,},[0-9]{1,}', tr.text) for tr in tr_list]) :
         element['parsed'] = True
         element['element-type'] = 'table:numeric'
         element['class'] = 'skipping'
         return
-    else:
-        for tr in tr_list:
-            parse_element(tr,recursive=True)
+    elif len([re.search(r'^[0-9]{1,}$', tr.text) for tr in tr_list]) > 5:
+        element['parsed'] = True
+        element['element-type'] = 'table:numeric'
+        element['class'] = 'skipping'
+        return
+    elif len([re.search(r'[1-2][0-9]{3}', tr.text) for tr in tr_list]) > 3:
+        element['parsed'] = True
+        element['element-type'] = 'table:numeric'
+        element['class'] = 'skipping'
+        return
+    
+    for tr in tr_list:
+        td_list = tr.find_all('td')
+        for td in td_list:
+            recursive_parser(tr)
+
      
 
 def recursive_parser(element):
@@ -66,7 +78,7 @@ def recursive_parser(element):
     if isinstance(element, Tag):
 
         # I need to add something for empty text
-        if element.name in ['p','span','div','b','i']:
+        if ((element.name in ['p','span','div','b','i','td']) | ('ix' in element.name)):
             element['parsed'] = True
             children = element.contents
             children_tags = [child for child in children if isinstance(child, Tag)]
@@ -98,9 +110,7 @@ def recursive_parser(element):
             
         # ignore tables for now
         elif element.name in ['table']:
-            element['parsed'] = True
-            element['element-type'] = 'table'
-            element['class'] = 'skipping'
+            parse_table(element)
             return
         
         else:
@@ -144,7 +154,7 @@ for file in os.listdir(dir_10k):
     files.append(f"{dir_10k}/{file}")
 
 
-for file in files[0:1]:
+for file in files[0:3]:
     # may want to adjust encoding to utf-8-sig
     with open(file) as f:
         html = f.read()
