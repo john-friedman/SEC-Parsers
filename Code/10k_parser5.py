@@ -8,19 +8,31 @@ from helper import open_soup, add_style, detect_bolded_text, detect_italicized_t
 # we need table parsing
 # we need context detection, e.g. first content item is bold. - I can probably do this in tree extraction
 
-def parse_navigable_string_of_element(element):
-    element['parsed'] = True
-    element['element-type'] = f'{element.name}:text'
-    if detect_bolded_text(element, recursive=False):
-        element['element-type'] = 'bold;'
-
-    if detect_italicized_text(element, recursive=False):
-        element['element-type'] = 'italic;'
+def parse_element(element):
     
-    if detect_underlined_text(element, recursive=False):
-        element['element-type'] = 'underline;'
+    # if no text, mark as empty
+    if element.text.strip() == "":
+        element['parsed'] = True
+        element['element-type'] = f'{element.name}:empty'
+        element['class'] = 'empty'
+        return
+    else:
+        element['parsed'] = True
+        element['element-type'] = f'{element.name}:text'
+        element['class'] = 'section_text'
+        if detect_bolded_text(element, recursive=False):
+            element['element-type'] = 'bold;'
+            element['class'] = 'header'
 
-    return
+        if detect_italicized_text(element, recursive=False):
+            element['element-type'] = 'italic;'
+            element['class'] = 'header'
+        
+        if detect_underlined_text(element, recursive=False):
+            element['element-type'] = 'underline;'
+            element['class'] = 'header'
+
+        return
 
 
 def recursive_parser(element):
@@ -35,13 +47,14 @@ def recursive_parser(element):
             element['parsed'] = True
             children = element.contents
             children_tags = [child for child in children if isinstance(child, Tag)]
-            children_strings = [child for child in children if isinstance(child, NavigableString)]
-
-            if len(children_strings) > 0:
-                parse_navigable_string_of_element(element)
             
-            for child in children_tags:
-                recursive_parser(child)
+            parse_element(element)
+
+            if element['class'] == 'empty':
+                return
+            else:
+                for child in children_tags:
+                    recursive_parser(child)
 
             return
 
@@ -105,7 +118,7 @@ for file in os.listdir(dir_10k):
     files.append(f"{dir_10k}/{file}")
 
 
-for file in files[0:10]:
+for file in files[0:5]:
     # may want to adjust encoding to utf-8-sig
     with open(file) as f:
         html = f.read()

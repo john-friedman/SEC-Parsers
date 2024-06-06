@@ -99,6 +99,9 @@ def detect_bolded_text(element,recursive=True):
             elif font_weight.isdigit():
                 if int(font_weight) > 500:
                     return True
+    else:
+        if element.name == 'b':
+            return True
 
     # check children
     if recursive:
@@ -114,6 +117,9 @@ def detect_italicized_text(element, recursive=True):
             font_style = element.get('style').split('font-style:')[1].split(';')[0].strip() 
             if font_style == 'italic':
                 return True
+    else:
+        if element.name == 'i':
+            return True
 
     # check children
     if recursive:
@@ -130,6 +136,9 @@ def detect_underlined_text(element, recursive=True):
             text_decoration = element.get('style').split('text-decoration:')[1].split(';')[0].strip()
             if text_decoration == 'underline':
                 return True
+    else:
+        if element.name == 'u':
+            return True
 
     # check children
     if recursive:
@@ -153,24 +162,24 @@ def add_element(element,soup):
 # clean html for parser
 def clean_html(soup):
     # reminder to look for element-type, as we will be using that attribute
-    for element in soup.find_all():
+    for element in soup.find_all(recursive=True):
         if element.has_attr("element-type"):
             del element['element-type']  
 
     # reminder to look for parsed, as we will be using that attribute
-    for element in soup.find_all():
+    for element in soup.find_all(recursive=True):
         if element.has_attr("parsed"):
             del element['parsed']  
 
     # remove existing background colors from all elements
     # Note: coded this quickly using copilot, did not check
-    for element in soup.find_all():
+    for element in soup.find_all(recursive=True):
         if element.has_attr("style"):
             element['style'] = re.sub(r'background(-color)*:[^;]{1,}','',element['style'])
 
     # remove hidden elements
     # may need to tweak
-    for element in soup.select('[style*="display: none"]'):
+    for element in soup.select('[style*="display: none"]',recursive=True):
         element.decompose()
-    for element in soup.select('[style*="display:none"]'):
+    for element in soup.select('[style*="display:none"]',recursive=True):
         element.decompose()
