@@ -42,17 +42,20 @@ def parse_element(element,recursive=False):
 def parse_table(element):
     
     tr_list = element.find_all('tr')
-    if any([re.search(r'[0-9]{1,},[0-9]{1,}', tr.text) for tr in tr_list]) :
+
+    if len([tr for tr in tr_list if re.search(r'[0-9]{1,},[0-9]{1,}', tr.text) is not None]) > 5 :
         element['parsed'] = True
         element['element-type'] = 'table:numeric'
         element['class'] = 'skipping'
         return
-    elif len([re.search(r'^[0-9]{1,}$', tr.text) for tr in tr_list]) > 5:
+    # check for page numbers
+    elif len([tr for tr in tr_list if re.search(r'\n[0-9]{1,}$', tr.text) is not None]) > 5:
         element['parsed'] = True
         element['element-type'] = 'table:numeric'
         element['class'] = 'skipping'
         return
-    elif len([re.search(r'[1-2][0-9]{3}', tr.text) for tr in tr_list]) > 3:
+    # check for years
+    elif len([tr for tr in tr_list if re.search(r'[1-2][0-9]{3}', tr.text) is not None]) > 5:
         element['parsed'] = True
         element['element-type'] = 'table:numeric'
         element['class'] = 'skipping'
@@ -117,3 +120,19 @@ def recursive_parser(element):
             else:
                 return
     
+def color_element(element):
+    color_dict = {'header':'BurlyWood','section_text':'Wheat','empty':'LightYellow','skipping':'Pink'}
+    element_class = element['class']
+
+    if element_class == 'empty':
+        add_style(element, f"background-color:{color_dict['empty']};")
+    elif element_class == 'header':
+        add_style(element, f"background-color:{color_dict['header']};")
+    elif element_class == 'skipping':
+        add_style(element, f"background-color:{color_dict['skipping']};")
+    elif element_class == 'section_text':
+        add_style(element, f"background-color:{color_dict['section_text']};")
+
+def color_parsing(soup):
+    for element in soup.find_all(attrs={'class': True}):
+        color_element(element)

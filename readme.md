@@ -1,5 +1,3 @@
-![Screenshot 1](Screenshots/1.png)
-
 Project to learn how to use Python's Beautiful Soup Library, as well as to understand how unstructured text can be stored in html documents.
 
 This project was difficult due to the extreme lack of standardization, followed by complications such as one element of a word being unbolded and the rest being bolded. I suspect that some of the complications are a deliberate attempt by companies / the filing contractors to make it harder to machine read the filings.
@@ -27,4 +25,17 @@ Notes on BeautifulSoup:
 Differences between this parser and others:
 1. Most parsers use regex to identify specific sections. This works well, except it does not allow accessing the rich unstandardized subsection data
 
-Note: I can use section lists to verify parsing etc
+TODO:
+Update 6/6 - Use table of contents. We need a good parser to first grab table of contents, and then inject classes into linked tags
+use to anchor for xml
+
+we probably will want to use table of contents links to guide xml process
+
+html parser - does not look at context
+xml parser - does + adds visualization
+
+Important to keep functions that use context seperated from those that do not
+
+Looks like tables for headers works ok, table parsing detection for numeric is not the best, but can be skipped for now
+we probably need headers with more details
+

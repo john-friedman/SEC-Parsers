@@ -94,6 +94,7 @@ def detect_underlined_text(element, recursive=True):
 
 # clean html for parser
 def clean_html(soup):
+
     # remove element-type attribute
     for element in soup.find_all(recursive=True):
         if element.has_attr("element-type"):
