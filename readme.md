@@ -26,8 +26,9 @@ Differences between this parser and others:
 1. Most parsers use regex to identify specific sections. This works well, except it does not allow accessing the rich unstandardized subsection data
 
 TODO:
+
 Update 6/6 - Use table of contents. We need a good parser to first grab table of contents, and then inject classes into linked tags
-use to anchor for xml
+use to anchor for xml. TOC PARSE -> Highlight -> XMLs
 
 we probably will want to use table of contents links to guide xml process
 

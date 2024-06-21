@@ -15,7 +15,7 @@ def xml_builder(soup,visualize=False):
     part_tag_dict = {}
     for tag in header_tags:
         if re.search(r'^part\s+(i|ii|iii|iv)$', tag.text, re.IGNORECASE):
-            part_tag_dict[re.sub(r'\n',' ',tag.text.strip()).upper()] = tag
+            part_tag_dict[re.sub(r'\n',' ',tag.text.strip()).upper().replace(" ","_")] = tag
 
 
     for key in part_tag_dict.keys():

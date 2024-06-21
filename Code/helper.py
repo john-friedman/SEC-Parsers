@@ -2,18 +2,49 @@ import re
 import tempfile
 import webbrowser
 from bs4 import BeautifulSoup, NavigableString, Tag
+import random
 
-## HTML PARSER HELPER FUNCTIONS ##
-# Open a BeautifulSoup object in a new tab
+# File to store helper functions for parsing SEC files
+
+def detect_table_of_contents(element):
+    """Detects if a table is likely to be a table of contents."""
+    # get number of links
+    links = element.find_all('a')
+    if len(links) > 5:
+        return True
+    
 def open_soup(soup):
+    """Opens a beautiful soup object in a web browser."""
     html = str(soup)
     with tempfile.NamedTemporaryFile('w', delete=False, suffix='.html', encoding="utf-8-sig") as f:
         url = 'file://' + f.name
         f.write(html)
     webbrowser.open(url)
 
-# add style to element
+def generate_pastel_colors(n):
+  """Generates a list of n pleasant pastel background colors.
+
+  Args:
+      n: The number of colors to generate.
+
+  Returns:
+      A list of n hexadecimal color strings representing pastel colors.
+  """
+  pastel_range = (210, 255)  # Range for pastel color lightness
+  pastel_saturation = (0.3, 0.8)  # Range for pastel color saturation
+  colors = []
+  for _ in range(n):
+    red = random.randint(*pastel_range)
+    green = random.randint(*pastel_range)
+    blue = random.randint(*pastel_range)
+    saturation = random.uniform(*pastel_saturation)
+    # Convert to hexadecimal string with "#" prefix
+    color = f"#{red:02x}{green:02x}{blue:02x}"
+    colors.append(color)
+  return colors
+
 def add_style(element, css_style,replace = False):
+    """adds a css style to a beautiful soup element."""
     if replace:
         element['style'] = css_style
     else:
@@ -22,100 +53,39 @@ def add_style(element, css_style,replace = False):
         else:
             element['style'] += ';' + css_style
 
+def get_text_between_Tags(elem1, elem2,background_color = False, clean=True):
+    """Get the text between two beautiful soup tags. """
+    end_bool = False
+    text = ''
+    item = elem1.next
+    while not end_bool:
+        if item == elem2:
+            end_bool = True
+        else:
+            if isinstance(item, NavigableString):
+                if clean == True:
+                    cleaned_item_text = item.text.strip()
+                    if cleaned_item_text != '':
+                        text += cleaned_item_text + '\n'
+                else:
+                    text += item
+            else:
+                if background_color:
+                    add_style(item, f"background-color:{background_color};")
+        # go to next item
+        item = item.next
+    return text
 
+def handle_table_of_contents(soup):
+    """Handles the table of contents in a sec 10k"""
+    tables = soup.findAll('table')
+    table_of_contents_detected = False
+    for table in tables:
+        if detect_table_of_contents(table):
+            table_of_contents_detected = True
+            break
 
-
-# detects if text is bolded
-def detect_bolded_text(element,recursive=True):
-    style = element.get('style')
-    if style:
-        if 'font-weight:' in style:
-            font_weight = element.get('style').split('font-weight:')[1].split(';')[0].strip()
-            if font_weight == 'bold':
-                return True
-        
-            # detect if font weight is integer above bold threshold
-            elif font_weight.isdigit():
-                if int(font_weight) > 500:
-                    return True
-    else:
-        if element.name == 'b':
-            return True
-
-    # check children
-    if recursive:
-        descendant_tags = [tag for tag in element.findChildren(recursive=True) if isinstance(tag, Tag)]
-        if 'b' in [tag.name for tag in descendant_tags]:
-            return True
+    if not table_of_contents_detected:
+        raise ValueError('Table of contents not detected')
     
-    return False
-
-# detects if text is italicized
-def detect_italicized_text(element, recursive=True):
-    style = element.get('style')
-    if style:
-        if 'font-style:' in element.get('style'):
-            font_style = element.get('style').split('font-style:')[1].split(';')[0].strip() 
-            if font_style == 'italic':
-                return True
-    else:
-        if element.name == 'i':
-            return True
-
-    # check children
-    if recursive:
-        descendant_tags = [tag for tag in element.findChildren(recursive=True) if isinstance(tag, Tag)]
-        if 'b' in [tag.name for tag in descendant_tags]:
-            return True
-    
-    return False
-
-# detects if text is underlined
-def detect_underlined_text(element, recursive=True):
-    style = element.get('style')
-    if style:
-        if 'text-decoration:' in element.get('style'):
-            text_decoration = element.get('style').split('text-decoration:')[1].split(';')[0].strip()
-            if text_decoration == 'underline':
-                return True
-    else:
-        if element.name == 'u':
-            return True
-
-    # check children
-    if recursive:
-        descendant_tags = [tag for tag in element.findChildren(recursive=True) if isinstance(tag, Tag)]
-        if 'b' in [tag.name for tag in descendant_tags]:
-            return True
-    
-    return False
-
-
-
-# clean html for parser
-def clean_html(soup):
-
-    # remove element-type attribute
-    for element in soup.find_all(recursive=True):
-        if element.has_attr("element-type"):
-            del element['element-type']  
-
-    # remove parsed attribute
-    for element in soup.find_all(recursive=True):
-        if element.has_attr("parsed"):
-            del element['parsed']  
-
-    # remove existing background colors
-    for element in soup.find_all(recursive=True):
-        if element.has_attr("style"):
-            element['style'] = re.sub(r'background(-color)*:[^;]{1,}','',element['style'])
-
-    # remove hidden elements
-    for element in soup.select('[style*="display: none"]',recursive=True):
-        element.decompose()
-    for element in soup.select('[style*="display:none"]',recursive=True):
-        element.decompose()
-
-
-
-## XML PARSER HELPER FUNCTIONS ##
+    return table
