@@ -3,6 +3,11 @@ Python package that parses SEC filings. So far can only parse 10-K Annual Report
 ![Tesla 10K](Assets/Screenshots/tsla_10k.png "Tesla 10K")
 [Parsed Tesla XML File](Assets/tsla_parsed_10k.xml)
 
+Installation: (will change to proper index)
+```
+pip install -i https://test.pypi.org/simple/ sec-parsers==0.2
+```
+
 Quickstart:
 ```
 from sec_parsers import parse_10k

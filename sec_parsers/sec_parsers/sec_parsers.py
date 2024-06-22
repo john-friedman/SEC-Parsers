@@ -3,7 +3,7 @@ import re
 import pandas as pd
 import xml.etree.cElementTree as ET
 
-from helper import open_soup,handle_table_of_contents, generate_pastel_colors,get_text_between_Tags
+from sec_parsers.helper import open_soup,handle_table_of_contents, generate_pastel_colors,get_text_between_Tags
 
 def parse_10k(html, visualize=True):
     # encoding is tricky with sec files, utf-8-sig seems to work
