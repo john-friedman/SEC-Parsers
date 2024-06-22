@@ -10,7 +10,7 @@ pip install sec-parsers
 
 Quickstart:
 ```
-from sec_parsers import parse_10k
+from sec_parsers.sec_parsers import parse_10k
 xml = parse_10k(10k_html, visualize=True)
 ```
 
