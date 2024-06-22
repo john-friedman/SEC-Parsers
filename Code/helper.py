@@ -3,6 +3,8 @@ import tempfile
 import webbrowser
 from bs4 import BeautifulSoup, NavigableString, Tag
 import random
+import pandas as pd
+
 
 # File to store helper functions for parsing SEC files
 
@@ -53,13 +55,21 @@ def add_style(element, css_style,replace = False):
         else:
             element['style'] += ';' + css_style
 
-def get_text_between_Tags(elem1, elem2,background_color = False, clean=True):
+def get_text_between_Tags(elem1, elem2,background_color = True, clean=True):
     """Get the text between two beautiful soup tags. """
     end_bool = False
     text = ''
+
+    if background_color:
+        pass
+        #add_style(elem1.parent, f"background-color:Olive;")
+
     item = elem1.next
     while not end_bool:
         if item == elem2:
+            if background_color:
+                pass
+                #add_style(elem2.parent, f"background-color:Olive;")
             end_bool = True
         else:
             if isinstance(item, NavigableString):
@@ -88,4 +98,46 @@ def handle_table_of_contents(soup):
     if not table_of_contents_detected:
         raise ValueError('Table of contents not detected')
     
-    return table
+    # parse table of contents
+    # if top item has no page number is probably part
+    # item rows have item (SEC), item title and link (exact name changes), and page number
+
+    # get all rows
+    tables_rows = table.find_all('tr')
+    # select rows which have text
+    table_rows = [row for row in tables_rows if row.text.strip() != '']
+
+    row_dict_list =[]
+    part = ''
+    for table_row in table_rows:
+        if re.search(r'^part\s+(i|ii|iii|iv)', table_row.text, re.IGNORECASE) is not None:
+            part = table_row.text
+        else:
+            row = {}
+            row['part'] = part
+            # Parse as item
+            for cell in table_row.find_all('td'):
+                # item
+                if re.search(r'^item', cell.text, re.IGNORECASE) is not None:
+                    row['item'] = cell.text
+                # link
+                elif cell.find('a') is not None:
+                    row['link_text'] = cell.find('a').text
+                    row['href'] = cell.find('a')['href']
+
+            if len(row) > 1:
+                row_dict_list.append(row)
+
+    # convert to dataframe
+    df = pd.DataFrame(row_dict_list)
+
+    # drop nan
+    # note: in the future, we may want to handle this more gracefully
+    df = df.dropna()
+    # reset index
+    df = df.reset_index(drop=True)
+    
+    # clean names
+    df['item'] = df['item'].apply(lambda x: re.sub('[^a-zA-Z0-9\n\.]', '', x)).str.replace('.','').str.lower()
+    df['part'] = df['part'].apply(lambda x: re.sub('[^a-zA-Z0-9\n\.]', '', x)).str.replace('.','').str.lower()
+    return df

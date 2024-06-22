@@ -12,48 +12,7 @@ def parse_10k(html, visualize=True):
 
     soup = BeautifulSoup(html, 'html.parser')
 
-    table = handle_table_of_contents(soup)
-    
-
-    # parse table of contents
-    # if top item has no page number is probably part
-    # item rows have item (SEC), item title and link (exact name changes), and page number
-
-    # get all rows
-    tables_rows = table.find_all('tr')
-    # select rows which have text
-    table_rows = [row for row in tables_rows if row.text.strip() != '']
-
-    row_dict_list =[]
-    part = ''
-    for table_row in table_rows:
-        if re.search(r'^part\s+(i|ii|iii|iv)', table_row.text, re.IGNORECASE) is not None:
-            part = table_row.text
-        else:
-            row = {}
-            row['part'] = part
-            # Parse as item
-            for cell in table_row.find_all('td'):
-                # item
-                if re.search(r'^item', cell.text, re.IGNORECASE) is not None:
-                    row['item'] = cell.text
-                # link
-                elif cell.find('a') is not None:
-                    row['link_text'] = cell.find('a').text
-                    row['href'] = cell.find('a')['href']
-
-            if len(row) > 1:
-                row_dict_list.append(row)
-
-    # convert to dataframe
-    df = pd.DataFrame(row_dict_list)
-
-    # drop nan
-    # note: in the future, we may want to handle this more gracefully
-    df = df.dropna()
-    # reset index
-    df = df.reset_index(drop=True)
-
+    df = handle_table_of_contents(soup)
 
     background_colors = generate_pastel_colors(df.shape[0])
 
@@ -67,13 +26,20 @@ def parse_10k(html, visualize=True):
             text = get_text_between_Tags(elem1, elem2, background_color=background_colors[idx])
             df.loc[idx, 'text'] = text
 
-    df['item'] = df['href'].str.split('.').str[0].str.replace('#','').str.strip().str.lower()
-
     # build xml
     root = ET.Element("root")
+    current_part = ''
     for idx, row in df.iterrows():
-        item = ET.SubElement(root, row['item'])
-        item.text = row['text']
+        part = row['part']
+        if len(part) > 0:
+            if part != current_part:
+                current_part = part
+                part_element = ET.SubElement(root, part)
+            item = ET.SubElement(part_element, row['item'])
+            item.text = row['text']
+        else:
+            item = ET.SubElement(root, row['item'])
+            item.text = row['text']
         
     tree = ET.ElementTree(root)
     if visualize:

@@ -1,42 +1,35 @@
-Project to learn how to use Python's Beautiful Soup Library, as well as to understand how unstructured text can be stored in html documents.
+Python package that parses SEC filings. So far can only parse 10-K Annual Reports.
 
-This project was difficult due to the extreme lack of standardization, followed by complications such as one element of a word being unbolded and the rest being bolded. I suspect that some of the complications are a deliberate attempt by companies / the filing contractors to make it harder to machine read the filings.
+![Tesla 10K](Assets/Screenshots/tsla_10k.png "Tesla 10K")
+[a relative link](Assets/tsla_parsed_10k.xml)
 
-Currently the project has multiple iterations of parsers
-1. parsers based on text only, with a tool to help check if parsing is mostly correct
-2. parsers based on elements using decompose
-3. parsers based on element implementing highlighting
-4. parsers based on iterating through the tree recursively, and simplifying the html [current]
+Why SEC 10-K's are hard to parse:
+* They are unstandardized. For example, subsection extraction (e.g. Seasonality) is hard to do because while these subheadings look normal to humans, in html they are quite complicated. e.g. a mess of bold tags vs css, sometimes a subheading is a table, sometimes the first letter is unbolded, but the rest is bolded.
 
-Each iteration of the parsers reflects my better understanding of how to use beautiful soup.
+How the 10-K parser works:
+1. Find table of contents.
+2. Use links in table of contents to find item elements.
+3. Extract text between items.
 
-![Screenshot 1](Screenshots/1.png)
-![Screenshot 1](Screenshots/2.png)
-![Screenshot 1](Screenshots/3.png)
+Current Features:
+* Convert sec 10k html to xml.
+* Visualize how parser works.
 
+Future Features:
+* Richer xml file with subheading nodes. If you want to see my tests to do this look in Screenshots / older code (html_parser.py).
+* More Parsers.
+* Better error handling.
 
-Notes on BeautifulSoup:
-* duplication of functions. Looking up resources online to mixed results, better to just read original code.
+Note that this package is a work in progress. Some documents will not parse correctly, which is why I added visualization features.
+
+Why I made this project:
+I wanted to learn how to use Python's Beautiful Soup Library, as well as to understand how unstructured text can be stored in html documents.
+
+Some things I learned:
+1. I have a suspicion that some company/contractor that submits sec filings is intentionally making SEC filings hard to machine read.
+2. Beautiful Soup documentation has a lot of deprecated functions.
 ```
     findNextSiblings = find_next_siblings   # BS3
     fetchNextSiblings = find_next_siblings  # BS2
 ```
-
-Differences between this parser and others:
-1. Most parsers use regex to identify specific sections. This works well, except it does not allow accessing the rich unstandardized subsection data
-
-TODO:
-
-Update 6/6 - Use table of contents. We need a good parser to first grab table of contents, and then inject classes into linked tags
-use to anchor for xml. TOC PARSE -> Highlight -> XMLs
-
-we probably will want to use table of contents links to guide xml process
-
-html parser - does not look at context
-xml parser - does + adds visualization
-
-Important to keep functions that use context seperated from those that do not
-
-Looks like tables for headers works ok, table parsing detection for numeric is not the best, but can be skipped for now
-we probably need headers with more details
 
