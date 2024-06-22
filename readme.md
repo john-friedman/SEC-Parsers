@@ -1,7 +1,15 @@
 Python package that parses SEC filings. So far can only parse 10-K Annual Reports.
 
 ![Tesla 10K](Assets/Screenshots/tsla_10k.png "Tesla 10K")
-[a relative link](Assets/tsla_parsed_10k.xml)
+[Parsed Tesla XML File](Assets/tsla_parsed_10k.xml)
+
+Quickstart:
+```
+from sec_parsers import parse_10k
+xml = parse_10k(10k_html, visualize=True)
+```
+
+For an example look at example.ipynb.
 
 Why SEC 10-K's are hard to parse:
 * They are unstandardized. For example, subsection extraction (e.g. Seasonality) is hard to do because while these subheadings look normal to humans, in html they are quite complicated. e.g. a mess of bold tags vs css, sometimes a subheading is a table, sometimes the first letter is unbolded, but the rest is bolded.
