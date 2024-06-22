@@ -5,4 +5,5 @@ sec_parsers/sec_parsers.py
 sec_parsers.egg-info/PKG-INFO
 sec_parsers.egg-info/SOURCES.txt
 sec_parsers.egg-info/dependency_links.txt
+sec_parsers.egg-info/requires.txt
 sec_parsers.egg-info/top_level.txt

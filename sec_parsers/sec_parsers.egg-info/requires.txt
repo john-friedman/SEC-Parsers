@@ -1,0 +1,7 @@
+beautifulsoup4
+pandas
+re
+tempfile
+webbrowser
+pandas
+xml
