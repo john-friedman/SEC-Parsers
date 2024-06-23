@@ -1,5 +1,2 @@
 beautifulsoup4
 pandas
-re
-tempfile
-pandas
