@@ -110,27 +110,33 @@ def handle_table_of_contents(soup):
     row_dict_list =[]
     part = ''
     for table_row in table_rows:
+        # first check if element is table of contents link
+        if 'table of contents' in table_row.text.strip().lower():
+            continue
+
+        # handle parts
         if re.search(r'^part', table_row.text.strip(), re.IGNORECASE) is not None:
             part = re.sub('\s+',' ',table_row.text.strip())
-            # remove part i.
+
+            part = re.search(r'^part\s+(i(\s+|$|\.)|ii(\s+|$|\.)|iii(\s+|$|\.)|iv(\s+|$|\.))', part, re.IGNORECASE).group(0).strip()
             part = re.sub(r'\.$','',part)
-            part = re.search(r'^part\s+(i(\s+|$)|ii(\s+|$)|iii(\s+|$)|iv(\s+|$))', part, re.IGNORECASE).group(0).strip()
-        else:
-            row = {}
-            row['part'] = part
-            # Parse as item
-            for cell in table_row.find_all('td'):
-                # item
-                if re.search(r'^(item|signatures)', cell.text, re.IGNORECASE) is not None:
-                    row['item'] = re.search("^[^.]+",re.sub('\s+',' ', cell.text.strip())).group(0)
 
-                # link
-                if cell.find('a') is not None:
-                    row['link_text'] = cell.find('a').text
-                    row['href'] = cell.find('a')['href']
+        # handle items
+        row = {}
+        row['part'] = part
+        # Parse as item
+        for cell in table_row.find_all('td'):
+            # item
+            if re.search(r'^(item|signatures)', cell.text.strip(), re.IGNORECASE) is not None:
+                row['item'] = re.search("^[^.]+",re.sub('\s+',' ', cell.text.strip())).group(0)
 
-            if len(row) > 1:
-                row_dict_list.append(row)
+            # link
+            if cell.find('a') is not None:
+                row['link_text'] = cell.find('a').text
+                row['href'] = cell.find('a')['href']
+
+        if len(row) > 1:
+            row_dict_list.append(row)
 
     # convert to dataframe
     df = pd.DataFrame(row_dict_list)

@@ -121,22 +121,22 @@ def handle_table_of_contents(soup):
             part = re.search(r'^part\s+(i(\s+|$|\.)|ii(\s+|$|\.)|iii(\s+|$|\.)|iv(\s+|$|\.))', part, re.IGNORECASE).group(0).strip()
             part = re.sub(r'\.$','',part)
 
-        else:
-            row = {}
-            row['part'] = part
-            # Parse as item
-            for cell in table_row.find_all('td'):
-                # item
-                if re.search(r'^(item|signatures)', cell.text.strip(), re.IGNORECASE) is not None:
-                    row['item'] = re.search("^[^.]+",re.sub('\s+',' ', cell.text.strip())).group(0)
+        # handle items
+        row = {}
+        row['part'] = part
+        # Parse as item
+        for cell in table_row.find_all('td'):
+            # item
+            if re.search(r'^(item|signatures)', cell.text.strip(), re.IGNORECASE) is not None:
+                row['item'] = re.search("^[^.]+",re.sub('\s+',' ', cell.text.strip())).group(0)
 
-                # link
-                if cell.find('a') is not None:
-                    row['link_text'] = cell.find('a').text
-                    row['href'] = cell.find('a')['href']
+            # link
+            if cell.find('a') is not None:
+                row['link_text'] = cell.find('a').text
+                row['href'] = cell.find('a')['href']
 
-            if len(row) > 1:
-                row_dict_list.append(row)
+        if len(row) > 1:
+            row_dict_list.append(row)
 
     # convert to dataframe
     df = pd.DataFrame(row_dict_list)
