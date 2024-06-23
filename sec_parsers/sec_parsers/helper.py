@@ -110,18 +110,22 @@ def handle_table_of_contents(soup):
     row_dict_list =[]
     part = ''
     for table_row in table_rows:
-        if re.search(r'^part\s+(i|ii|iii|iv)', table_row.text, re.IGNORECASE) is not None:
-            part = table_row.text
+        if re.search(r'^part', table_row.text.strip(), re.IGNORECASE) is not None:
+            part = re.sub('\s+',' ',table_row.text.strip())
+            # remove part i.
+            part = re.sub(r'\.$','',part)
+            part = re.search(r'^part\s+(i(\s+|$)|ii(\s+|$)|iii(\s+|$)|iv(\s+|$))', part, re.IGNORECASE).group(0).strip()
         else:
             row = {}
             row['part'] = part
             # Parse as item
             for cell in table_row.find_all('td'):
                 # item
-                if re.search(r'^item', cell.text, re.IGNORECASE) is not None:
-                    row['item'] = cell.text
+                if re.search(r'^(item|signatures)', cell.text, re.IGNORECASE) is not None:
+                    row['item'] = re.search("^[^.]+",re.sub('\s+',' ', cell.text.strip())).group(0)
+
                 # link
-                elif cell.find('a') is not None:
+                if cell.find('a') is not None:
                     row['link_text'] = cell.find('a').text
                     row['href'] = cell.find('a')['href']
 
@@ -141,3 +145,27 @@ def handle_table_of_contents(soup):
     df['item'] = df['item'].apply(lambda x: re.sub('[^a-zA-Z0-9\n\.]', '', x)).str.replace('.','').str.lower()
     df['part'] = df['part'].apply(lambda x: re.sub('[^a-zA-Z0-9\n\.]', '', x)).str.replace('.','').str.lower()
     return df
+
+
+# visualization
+def print_xml_structure(tree):
+    root = tree.getroot()
+
+    def indent(level):
+      return "  " * level
+
+    def print_element(element, level):
+      print(indent(level) + element.tag)
+      for child in element:
+        print_element(child, level + 1)
+
+    print_element(root, 0)
+
+def extract_text(element):
+    text = ''
+    if element.text is not None:
+        text = element.text.strip()
+    for child in element:
+        text += extract_text(child)
+    
+    return text

@@ -22,7 +22,11 @@ def parse_10k(html, visualize=True):
             id1 = df.loc[idx, 'href'][1:] 
             id2 = df.loc[idx+1, 'href'][1:]
             elem1 = soup.find(id=id1)
+            if elem1 is None:
+                elem1 = soup.find('a', {'name': id1})
             elem2 = soup.find(id=id2)
+            if elem2 is None:
+                elem2 = soup.find('a', {'name': id2})
             text = get_text_between_Tags(elem1, elem2, background_color=background_colors[idx])
             df.loc[idx, 'text'] = text
 
