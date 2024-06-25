@@ -14,3 +14,7 @@ tree = parse_10k(html)
 
 from xml_helper import print_xml_structure
 print_xml_structure(tree)
+
+# # save xml to file
+import xml.etree.ElementTree as ET
+tree.write('aapl-20200926.xml')

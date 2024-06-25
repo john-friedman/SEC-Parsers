@@ -76,17 +76,38 @@ def parse_10k(html):
             elements_between = get_elements_between_two_elements(item_elem, next_item_elem)
             subheadings_element_list = detect_subheadings(elements_between)
 
+            # inset item elem at the beginning and next_item elem at the end
+            # we do this as there is often text between the item and the first subheading. This also helps in case there are no subheadings
+            subheadings_element_list.insert(0, item_elem)
+            subheadings_element_list.append(next_item_elem)
+
             # now we iterate through the subheadings elements and get the text between them
-            # note we first need to add first elem and last elem to the list, to capture all text, also helps in case of misparsing
+            # wow this is borked. go shopping and think about it
             for sub_idx, _ in list(enumerate(subheadings_element_list)):
-                # find subheading name and clean
-                subheading_name = subheadings_element_list[sub_idx].text
+                # stop before last element
+                if sub_idx < len(subheadings_element_list) - 1:
+                    if subheadings_element_list[sub_idx] is not None:
+                        if sub_idx == 0:
+                            subheading_name = 'subsection' # generic name
+                        else:
+                            # find subheading name and clean
+                            subheading_name = subheadings_element_list[sub_idx].text
 
-                subsection_text = get_text_between_two_elements(subheadings_element_list[sub_idx], subheadings_element_list[sub_idx+1])
+                        if sub_idx == len(subheadings_element_list) - 1:
+                            # handle last subheading
+                            subsection_text = get_text_between_two_elements(subheadings_element_list[sub_idx], None)
 
-                # add to tree
-                xml_subsection_element = ET.SubElement(xml_item_element, subheading_name)
-                xml_subsection_element.text = subsection_text
+                            # add to tree
+                            xml_subsection_element = ET.SubElement(xml_item_element, subheading_name)
+                            xml_subsection_element.text = subsection_text
+                        else:
+                            subsection_text = get_text_between_two_elements(subheadings_element_list[sub_idx], subheadings_element_list[sub_idx+1])
+                        
+                            # add to tree
+                            xml_subsection_element = ET.SubElement(xml_item_element, subheading_name)
+                            xml_subsection_element.text = subsection_text
+
+
 
 
     tree = ET.ElementTree(root)
