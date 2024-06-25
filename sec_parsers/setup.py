@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name="sec_parsers",
     author="John Friedman",
-    version="0.406",
+    version="0.410",
     description = "A package to parse SEC filings",
     packages=find_packages(),
     install_requires=[
