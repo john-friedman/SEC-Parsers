@@ -4,7 +4,9 @@ import pandas as pd
 import xml.etree.cElementTree as ET
 from bs4 import NavigableString, Tag
 
-from html_helper import get_elements_between_two_elements, get_text_between_two_elements, detect_subheadings, handle_table_of_contents
+from html_helper import get_elements_between_two_elements, get_text_between_two_elements, detect_subheadings, get_table_of_contents
+
+#TODO we added support for part href being empty need to update here
 
 # untested, code sketch
 # with some work should return detailed xml tree
@@ -12,20 +14,14 @@ from html_helper import get_elements_between_two_elements, get_text_between_two_
 def parse_10k(html):
     soup = BeautifulSoup(html, 'html.parser')    
 
-    # read table of contents
-    # I think we want to change this to a list of dictionaries
-    #df = handle_table_of_contents(soup)
-    # maybe {name: 'part i', href: '#parti', items : [{name: 'item 1', href: '#item1'}, {name: 'item 2', href: '#item2'}]}
-    # need to do cleaning here too
-    toc_dict = handle_table_of_contents(soup)
+    toc_dict = get_table_of_contents(soup)
 
     root = ET.Element("root")
 
     parts_list = toc_dict['parts']
-    # -1 explanation remember to handle end tag
     for part_idx,_ in list(enumerate(parts_list)):
-        # [1:] to skip the # in the href
         part = parts_list[part_idx]
+        # [1:] to skip the # in the href
         part_id = part['href'][1:]
         part_name = part['name']
 
@@ -53,6 +49,7 @@ def parse_10k(html):
             item = items_list[item_idx]
             item_id = item['href'][1:]
             item_name = item['name']
+            item_desc = item['desc']
 
             item_elem = soup.find(id=item_id)
             if item_elem is None:
@@ -70,7 +67,7 @@ def parse_10k(html):
                 if next_item_elem is None:
                     next_item_elem = soup.find('a', {'name': next_item_id})
 
-            xml_item_element = ET.SubElement(xml_part_element, item_name)
+            xml_item_element = ET.SubElement(xml_part_element, item_name, desc =item_desc)
 
             # detect subheadings between item and next_item
             elements_between = get_elements_between_two_elements(item_elem, next_item_elem)

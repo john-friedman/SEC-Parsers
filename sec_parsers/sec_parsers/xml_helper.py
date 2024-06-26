@@ -1,4 +1,3 @@
-
 # Note, we'll be using 'node' for xml and 'element' for html terminology
 
 # change to get
@@ -21,6 +20,6 @@ def get_text_from_node(node):
     if node.text is not None:
         text = node.text.strip()
     for child in node:
-        text += extract_text(child)
+        text += get_text_from_node(child)
     
     return text

@@ -70,7 +70,7 @@ def detect_table_of_contents(element):
         return True
 
 # will need a bunch of work. This is our workhorse.
-def handle_table_of_contents(soup):
+def get_table_of_contents(soup):
     """Handles the table of contents in a sec 10k, returns a dictionary."""
     tables = soup.findAll('table')
     table_of_contents_detected = False
@@ -93,22 +93,36 @@ def handle_table_of_contents(soup):
             # clean part name
             part_name = re.sub('\s+','',row.text.lower().strip())
 
-            part = {'name': part_name, 'href': row.find('a')['href'], 'items': []}
+            part = {'name': part_name, 'items': []}
+
+            part_link = row.find('a')
+            if part_link:
+                part_href = part_link['href']
+                table_of_contents_dict['href'] = part_href
             table_of_contents_dict['parts'].append(part)
         
         elif 'item' in row.text.lower():
             item_text = row.text.lower().strip()
-            item_name = re.search('Item[\s+][0-9]{1,}[A-Z]{0,}(?=[\.|\s+|$])', item_text, re.IGNORECASE).group(0)
-            # clean item name
-            item_name = re.sub('\s+','',item_name)
+            # preprocessing
+            item_text = re.sub('\n',' ',item_text).strip()
+
+            item_name = re.search('Item\s+[0-9]{1,}[A-Z]{0,}(?=[\.|\s+|$])', item_text, re.IGNORECASE).group(0)
+            
             # remove item name from item text
             item_text = item_text.replace(item_name, '')
-            # cleanup by removing leading and trailing whitespace, periods
-            item_text = item_text.strip().strip('.')
+            # clean item name
+            item_name = re.sub('\s+','',item_name)
 
-            item_desc = re.search('^.*?(?=\d+$)', item_text, re.IGNORECASE).group(0)
+            # cleanup by removing leading and trailing whitespace, periods
+            item_text = item_text.strip().strip('.').strip()
+
+            # not a priority right now, but desc does get cut off e.g. form 10-k summary
+            item_desc = re.sub("\s+",' ',re.search('^.*?(?=[\d+$]|$)', item_text, re.IGNORECASE).group(0).strip())
             item = {'name': item_name, 'desc': item_desc, 'href': row.find('a')['href']}
             part['items'].append(item)
+        # not handling this right now
+        elif 'signature' in row.text.lower():
+            pass
 
     
     return table_of_contents_dict

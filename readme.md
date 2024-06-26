@@ -1,8 +1,8 @@
 # Experimental Branch
 
 ## TODO:
-1. test new approach to parsing on something handles tables is good at. get parser working
-2. Improve toc handling
+1. ~~test new approach to parsing on something handles tables is good at. get parser working~~
+2. Improve toc handling - using tests
 3. better names - maybe look up another package for inspiration? e.g. 
 4. utils? / _ in front of helper names
 5. misc QOL features

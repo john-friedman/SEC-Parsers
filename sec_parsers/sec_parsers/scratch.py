@@ -1,8 +1,7 @@
+# Note: this file is for me to debug and test code snippets. It is not part of the final project.
 import bs4
 
 from download import download_sec_filing
-
-from html_helper import get_elements_between_two_elements, open_soup, handle_table_of_contents, get_text_between_two_elements
 
 html = download_sec_filing('https://www.sec.gov/Archives/edgar/data/320193/000032019320000096/aapl-20200926.htm')
 
@@ -12,9 +11,9 @@ from parsers import parse_10k
 
 tree = parse_10k(html)
 
-from xml_helper import print_xml_structure
+from xml_helper import print_xml_structure, get_text_from_node
 print_xml_structure(tree)
 
 # # save xml to file
 import xml.etree.ElementTree as ET
-tree.write('aapl-20200926.xml')
+tree.write('aapl-20200926.xml', encoding='utf-8-sig')
