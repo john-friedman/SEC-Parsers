@@ -62,6 +62,9 @@ def get_text_between_two_elements(elem1, elem2):
     return text
 
 # works for now, but should do robustness checks - easy to catch
+
+# change this to use regex for parts + items
+# change this to detect if table has links. if not, its a toc without links which we will need to parse in another way
 def detect_table_of_contents(element):
     """Detects if a table is likely to be a table of contents."""
     # get number of links
@@ -118,8 +121,14 @@ def get_table_of_contents(soup):
 
             # not a priority right now, but desc does get cut off e.g. form 10-k summary
             item_desc = re.sub("\s+",' ',re.search('^.*?(?=[\d+$]|$)', item_text, re.IGNORECASE).group(0).strip())
-            item = {'name': item_name, 'desc': item_desc, 'href': row.find('a')['href']}
-            part['items'].append(item)
+
+            # if linked toc, but missing one or two elem links, it means its not there e.g. Financial Statements and Supplementary Data
+            # in 2024 Regional Health Properties, Inc. 10k
+
+            # here we simply ignore such items (they have no text anyway ) - need robustness check
+            if row.find('a'):
+                item = {'name': item_name, 'desc': item_desc, 'href': row.find('a')['href']}
+                part['items'].append(item)
         # not handling this right now
         elif 'signature' in row.text.lower():
             pass
