@@ -1,8 +1,8 @@
 # Experimental Branch
 
 # TODO tmrw
-1. fix bug
-2. look at filings for idea how to implement detailed parsing
+1. check why some files don't parse, then implement detailed parsing
+2. look at filings for idea how to implement detailed parsing - add table handling (convert to xml table?)
 
 # SEC Parsers
 Parses non-standardized SEC 10-K filings into well structured xml. Currently can parse about 80% of SEC 10 K filings. XML includes parts, items (such as item1a risk factors), as well as subheadings (e.g. seasonality).
@@ -17,7 +17,6 @@ A sample of parsed 10k xmls are available [here](https://www.dropbox.com/scl/fo/
 * ```get_text_from_node(node)``` gets the text from an xml node
 
 ## Current Issues before merger with main
-* parser_10k infinite loop issues
 * add subsection parsing using recursion - old code should help
 * add visualization
 
@@ -29,12 +28,30 @@ A sample of parsed 10k xmls are available [here](https://www.dropbox.com/scl/fo/
 * add download for normal branch from pypi, and experimental from pypitest
 
 ## Future
+* metadata - e.g. <metadata><cik><company_name> etc at base of root. also add tag for document
 * more options for parsing, 10Q, etc
 * tools to help check if html parsed to xml correctly. (Maybe some side by side flask interface?)
 * host parsed 10k xml files (~3000 companies, ~25 years, <50gb) online for download
 
 ## Notes:
 * Last update to main branch was very WIP with beginner mistakes (never wrote a python package before). I've now settled on a more concrete structure.
+
+## Statistics
+Statistics are likely better than they look. Small / weird companies are less likely to parse - make this section generate automatically from tests
+
+Table of Contents Parsing:
+* 79.7% parsed
+* 14.4% had an issue that can be resolved
+* 3% were not parsed has table without links is not supported yet
+* remainder unclear
+
+Conversion to xml:
+* 93.1% parsed succesfully
+* 6.9% had an issue
+
+Total parse rate is 74%.
+
+Last test run on 1039 10-Ks on June 27 2024.
 
 # Subsection Parsing
 * read 10 filings to get ideas.

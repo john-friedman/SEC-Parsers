@@ -1,941 +1,1040 @@
-file,toc_parsed,html_parsed
-../Data/10K/1001171_0001140361-24-026827.html,true,true
-../Data/10K/1001601_0001493152-24-014891.html,true,true
-../Data/10K/1004724_0000950170-24-039414.html,true,true
-../Data/10K/1004989_0001437749-24-010386.html,true,'NoneType' object has no attribute 'next'
-../Data/10K/100591_0001558370-24-004979.html,true,true
-../Data/10K/1008586_0001493152-24-017297.html,Table of contents parsing probably went wrong,
-../Data/10K/1008848_0000950170-24-039464.html,true,true
-../Data/10K/1009891_0001213900-24-033018.html,true,true
-../Data/10K/101538_0001654954-24-004576.html,true,true
-../Data/10K/1017655_0001437749-24-010365.html,Table of contents without links not supported yet,
-../Data/10K/1018840_0001018840-24-000019.html,true,true
-../Data/10K/1022408_0001140361-24-027200.html,true,true
-../Data/10K/1022899_0001493152-24-012333.html,true,true
-../Data/10K/1023731_0001023731-24-000042.html,true,true
-../Data/10K/1023994_0001213900-24-040541.html,true,true
-../Data/10K/1025771_0001477932-24-002131.html,'NoneType' object has no attribute 'group',
-../Data/10K/1032975_0001032975-24-000023.html,true,true
-../Data/10K/103379_0000103379-24-000008.html,true,true
-../Data/10K/1037038_0001037038-24-000014.html,true,true
-../Data/10K/1040896_0001628280-24-013949.html,true,true
-../Data/10K/1041859_0001628280-24-020436.html,true,true
-../Data/10K/1042642_0001558370-24-004539.html,true,true
-../Data/10K/1049011_0001493152-24-015154.html,true,true
-../Data/10K/1050825_0001050825-24-000060.html,'NoneType' object has no attribute 'group',
-../Data/10K/1051343_0001140361-24-018439.html,true,true
-../Data/10K/1054102_0001493152-24-012464.html,true,true
-../Data/10K/105744_0001214659-24-005800.html,'NoneType' object has no attribute 'group',
-../Data/10K/1058307_0001437749-24-011806.html,true,'NoneType' object has no attribute 'next'
-../Data/10K/1063537_0001437749-24-010135.html,true,true
-../Data/10K/1064722_0001493152-24-015016.html,'NoneType' object has no attribute 'group',
-../Data/10K/1066764_0001493152-24-012444.html,true,true
-../Data/10K/1066923_0001213900-24-033265.html,true,true
-../Data/10K/1068689_0001493152-24-014964.html,true,true
-../Data/10K/1069394_0001493152-24-012435.html,Table of contents parsing probably went wrong,
-../Data/10K/1070050_0001683168-24-002017.html,true,'NoneType' object has no attribute 'next'
-../Data/10K/1070235_0001070235-24-000057.html,'NoneType' object has no attribute 'group',
-../Data/10K/1072842_0001185185-24-000346.html,true,true
-../Data/10K/1077688_0001185185-24-000378.html,true,true
-../Data/10K/1078075_0001628280-24-023777.html,true,true
-../Data/10K/1080657_0001437749-24-012113.html,true,'NoneType' object has no attribute 'next'
-../Data/10K/1081834_0001214659-24-006961.html,Table of contents without links not supported yet,
-../Data/10K/1081938_0001683168-24-003575.html,true,true
-../Data/10K/1083220_0001558370-24-005326.html,'NoneType' object has no attribute 'group',
-../Data/10K/1083522_0001437749-24-010422.html,true,true
-../Data/10K/108385_0000108385-24-000024.html,'NoneType' object has no attribute 'group',
-../Data/10K/1084133_0001264931-24-000007.html,true,true
-../Data/10K/1084267_0001683168-24-002214.html,true,true
-../Data/10K/1084475_0001493152-24-015039.html,true,true
-../Data/10K/1084991_0001084991-24-000017.html,'NoneType' object has no attribute 'group',
-../Data/10K/1085243_0001493152-24-012364.html,true,true
-../Data/10K/1085277_0001663577-24-000119.html,true,'NoneType' object has no attribute 'next'
-../Data/10K/1086303_0001213900-24-028792.html,true,true
-../Data/10K/1086745_0001493152-24-012412.html,'NoneType' object has no attribute 'group',
-../Data/10K/1089815_0001140361-24-018303.html,true,true
-../Data/10K/1091596_0001437749-24-012587.html,true,true
-../Data/10K/109198_0000109198-24-000014.html,true,true
-../Data/10K/1092570_0001376474-24-000151.html,true,true
-../Data/10K/1093636_0001065949-24-000047.html,"string indices must be integers, not 'str'",
-../Data/10K/1096938_0001477932-24-001671.html,Table of contents parsing probably went wrong,
-../Data/10K/1098146_0001628280-24-013983.html,true,true
-../Data/10K/1099132_0001477932-24-001766.html,'NoneType' object has no attribute 'group',
-../Data/10K/1100397_0001493152-24-014822.html,true,true
-../Data/10K/1101433_0001654954-24-004360.html,true,true
-../Data/10K/1103795_0001683168-24-002236.html,true,true
-../Data/10K/1103833_0001477932-24-002238.html,'NoneType' object has no attribute 'group',
-../Data/10K/1106644_0001213900-24-028731.html,true,true
-../Data/10K/1107421_0000950170-24-038868.html,'NoneType' object has no attribute 'group',
-../Data/10K/1108645_0001477932-24-001631.html,true,true
-../Data/10K/1111741_0000950170-24-044527.html,true,'NoneType' object has no attribute 'next'
-../Data/10K/1113313_0001607062-24-000118.html,Table of contents without links not supported yet,
-../Data/10K/1113809_0001437749-24-012440.html,true,true
-../Data/10K/1117057_0001213900-24-028612.html,true,true
-../Data/10K/1118072_0001554795-24-000101.html,Table of contents without links not supported yet,
-../Data/10K/1121702_0001121702-24-000021.html,'NoneType' object has no attribute 'group',
-../Data/10K/1128281_0001437749-24-010272.html,Table of contents without links not supported yet,
-../Data/10K/1130598_0001558370-24-004525.html,'NoneType' object has no attribute 'group',
-../Data/10K/1130889_0001554795-24-000087.html,Table of contents without links not supported yet,
-../Data/10K/1132105_0000950170-24-041618.html,true,true
-../Data/10K/1132509_0001477932-24-002194.html,true,true
-../Data/10K/1134765_0001437749-24-012061.html,Table of contents without links not supported yet,
-../Data/10K/1134982_0001477932-24-002287.html,'NoneType' object has no attribute 'group',
-../Data/10K/1136174_0001628280-24-016456.html,true,true
-../Data/10K/1137883_0001410578-24-000385.html,'NoneType' object has no attribute 'group',
-../Data/10K/1138476_0001185185-24-000392.html,true,true
-../Data/10K/1138639_0001138639-24-000122.html,true,true
-../Data/10K/1140215_0001493152-24-012505.html,true,true
-../Data/10K/1145604_0001826466-24-000041.html,true,'NoneType' object has no attribute 'next'
-../Data/10K/1156041_0001493152-24-012685.html,true,true
-../Data/10K/1160945_0001554795-24-000099.html,Table of contents without links not supported yet,
-../Data/10K/1162461_0001628280-24-022628.html,true,true
-../Data/10K/1163389_0001903596-24-000204.html,true,true
-../Data/10K/1166708_0001493152-24-018527.html,true,true
-../Data/10K/1168081_0001213900-24-028585.html,true,true
-../Data/10K/1169561_0001169561-24-000039.html,true,true
-../Data/10K/1170010_0001170010-24-000034.html,true,true
-../Data/10K/1172178_0001493152-24-019985.html,true,true
-../Data/10K/1174891_0001493152-24-014061.html,true,true
-../Data/10K/1205922_0000950170-24-039700.html,true,true
-../Data/10K/1211805_0001493152-24-012542.html,true,true
-../Data/10K/1218683_0001213900-24-028158.html,true,true
-../Data/10K/1223389_0001223389-24-000028.html,true,'NoneType' object has no attribute 'next'
-../Data/10K/12239_0001213900-24-028218.html,true,true
-../Data/10K/1224133_0000950170-24-038807.html,true,true
-../Data/10K/1261379_0001213900-24-028573.html,true,true
-../Data/10K/1263364_0001493152-24-019773.html,true,true
-../Data/10K/1265521_0001493152-24-014594.html,true,true
-../Data/10K/1276531_0001376474-24-000170.html,'NoneType' object has no attribute 'group',
-../Data/10K/1282224_0001079973-24-000452.html,true,true
-../Data/10K/1282648_0001558370-24-004422.html,true,true
-../Data/10K/1282980_0001213900-24-028793.html,true,true
-../Data/10K/1284454_0001477932-24-002091.html,true,true
-../Data/10K/1285819_0001437749-24-010416.html,true,true
-../Data/10K/1289308_0001289308-24-000018.html,true,true
-../Data/10K/1295947_0001295947-24-000017.html,true,true
-../Data/10K/1296884_0001829126-24-002092.html,true,true
-../Data/10K/1302215_0001302215-24-000028.html,true,'NoneType' object has no attribute 'next'
-../Data/10K/1304280_0001304280-24-000024.html,true,true
-../Data/10K/1305253_0001628280-24-015297.html,true,'NoneType' object has no attribute 'next'
-../Data/10K/1310383_0001410578-24-000474.html,true,true
-../Data/10K/1310488_0001091818-24-000034.html,true,true
-../Data/10K/1310630_0001493152-24-014708.html,true,true
-../Data/10K/1311673_0001493152-24-012403.html,true,true
-../Data/10K/1314196_0001213900-24-032767.html,true,true
-../Data/10K/1318484_0001558370-24-005294.html,true,true
-../Data/10K/1321741_0001321741-24-000009.html,'NoneType' object has no attribute 'group',
-../Data/10K/1321828_0001493152-24-017421.html,'NoneType' object has no attribute 'group',
-../Data/10K/1321834_0001493152-24-012533.html,true,true
-../Data/10K/1324759_0001493152-24-013972.html,true,true
-../Data/10K/1324948_0001213900-24-044761.html,true,true
-../Data/10K/1326706_0001493152-24-013966.html,'NoneType' object has no attribute 'group',
-../Data/10K/1327688_0000950170-24-040394.html,true,true
-../Data/10K/1329606_0001493152-24-014897.html,true,true
-../Data/10K/1335112_0001575872-24-000488.html,true,true
-../Data/10K/1337013_0001628280-24-015511.html,'NoneType' object has no attribute 'group',
-../Data/10K/1339688_0001062993-24-007468.html,"string indices must be integers, not 'str'",
-../Data/10K/1342219_0001683168-24-002763.html,'NoneType' object has no attribute 'group',
-../Data/10K/1342958_0001493152-24-012365.html,true,true
-../Data/10K/1346655_0001017386-24-000088.html,Table of contents without links not supported yet,
-../Data/10K/1347652_0001347652-24-000051.html,true,true
-../Data/10K/1349706_0001214659-24-006652.html,true,true
-../Data/10K/1351636_0000950170-24-039479.html,true,true
-../Data/10K/1352952_0001096906-24-000789.html,true,true
-../Data/10K/1355848_0001355848-24-000052.html,true,'NoneType' object has no attribute 'next'
-../Data/10K/1358633_0001731122-24-000645.html,true,true
-../Data/10K/1360442_0001096906-24-001118.html,true,'NoneType' object has no attribute 'next'
-../Data/10K/1362988_0001628280-24-018039.html,true,true
-../Data/10K/1368365_0001368365-24-000060.html,true,true
-../Data/10K/1372299_0001628280-24-016378.html,true,true
-../Data/10K/1374339_0001558370-24-004532.html,true,true
-../Data/10K/1375793_0001493152-24-021380.html,true,true
-../Data/10K/1376231_0001213900-24-034236.html,true,true
-../Data/10K/1376804_0001829126-24-002516.html,true,true
-../Data/10K/1377936_0001213900-24-040080.html,true,true
-../Data/10K/1382574_0001493152-24-015595.html,true,true
-../Data/10K/1388295_0001493152-24-012247.html,true,true
-../Data/10K/1389122_0001213900-24-028573.html,true,true
-../Data/10K/1389123_0001213900-24-028573.html,true,
-../Data/10K/1389124_0001213900-24-028573.html,true,
-../Data/10K/1389125_0001213900-24-028573.html,true,
-../Data/10K/1389128_0001213900-24-028573.html,true,
-../Data/10K/1391426_0001903596-24-000247.html,true,
-../Data/10K/1393772_0001096906-24-000701.html,true,
-../Data/10K/1393781_0001213900-24-030968.html,true,
-../Data/10K/1394108_0001554795-24-000105.html,Table of contents without links not supported yet,
-../Data/10K/1396536_0001079973-24-000473.html,true,
-../Data/10K/1397047_0001213900-24-028705.html,true,
-../Data/10K/1397183_0001493152-24-012417.html,'NoneType' object has no attribute 'group',
-../Data/10K/1398805_0001683168-24-002470.html,true,
-../Data/10K/1399306_0001399306-24-000005.html,true,
-../Data/10K/1402945_0001437749-24-011671.html,true,
-../Data/10K/1404804_0001096906-24-000839.html,true,
-../Data/10K/1408146_0001437749-24-010242.html,Table of contents without links not supported yet,
-../Data/10K/1409171_0001409171-24-000028.html,true,
-../Data/10K/1409197_0001213900-24-033935.html,true,
-../Data/10K/1409269_0001437749-24-010159.html,true,
-../Data/10K/1410187_0001017386-24-000074.html,true,
-../Data/10K/1410428_0001558370-24-005211.html,true,
-../Data/10K/1411688_0001628280-24-025287.html,true,
-../Data/10K/1412126_0001213900-24-033498.html,true,
-../Data/10K/1413119_0001493152-24-012404.html,true,
-../Data/10K/1413754_0001493152-24-018935.html,true,
-../Data/10K/1413891_0001213900-24-034533.html,true,
-../Data/10K/1415332_0001640334-24-000558.html,"string indices must be integers, not 'str'",
-../Data/10K/1416090_0001096906-24-001010.html,'NoneType' object has no attribute 'group',
-../Data/10K/1416697_0001493152-24-012110.html,true,
-../Data/10K/1416876_0001493152-24-018817.html,true,
-../Data/10K/1417926_0001493152-24-014838.html,true,
-../Data/10K/1419051_0001493152-24-014975.html,true,
-../Data/10K/1419793_0001213900-24-034111.html,true,
-../Data/10K/1420565_0000950170-24-044508.html,true,
-../Data/10K/1421636_0001213900-24-028789.html,true,
-../Data/10K/1424657_0001213900-24-032958.html,true,
-../Data/10K/1424768_0001493152-24-014837.html,true,
-../Data/10K/1425355_0001654954-24-004122.html,'NoneType' object has no attribute 'group',
-../Data/10K/1425627_0001477932-24-001629.html,true,
-../Data/10K/1427570_0001558370-24-004559.html,true,
-../Data/10K/1429560_0001558370-24-004445.html,true,
-../Data/10K/1430306_0001999371-24-004297.html,true,
-../Data/10K/1430319_0001554795-24-000085.html,Table of contents without links not supported yet,
-../Data/10K/1431567_0001437749-24-010372.html,true,
-../Data/10K/1433642_0001433642-24-000064.html,true,
-../Data/10K/1434524_0001558370-24-004441.html,'NoneType' object has no attribute 'group',
-../Data/10K/1434647_0001437749-24-010430.html,true,
-../Data/10K/1434737_0001096906-24-000859.html,Table of contents without links not supported yet,
-../Data/10K/1435617_0001493152-24-018248.html,true,
-../Data/10K/1437283_0001214659-24-005793.html,'NoneType' object has no attribute 'group',
-../Data/10K/1439264_0001683168-24-002419.html,true,
-../Data/10K/1443646_0001443646-24-000075.html,true,
-../Data/10K/1443863_0001477932-24-001705.html,true,
-../Data/10K/1447380_0001493152-24-014966.html,true,
-../Data/10K/1448038_0000950170-24-045202.html,true,
-../Data/10K/1448431_0001213900-24-033000.html,true,
-../Data/10K/1448705_0001079973-24-000548.html,true,
-../Data/10K/1450704_0001829126-24-002582.html,'NoneType' object has no attribute 'group',
-../Data/10K/1450720_0001213900-24-028573.html,true,
-../Data/10K/1450722_0001213900-24-028573.html,true,
-../Data/10K/1452936_0001452936-24-000035.html,true,
-../Data/10K/1453593_0001493152-24-012145.html,true,
-../Data/10K/1454742_0001493152-24-012092.html,Table of contents parsing probably went wrong,
-../Data/10K/1460329_0001437749-24-010639.html,true,
-../Data/10K/1460602_0001493152-24-014652.html,true,
-../Data/10K/1460702_0001493152-24-013400.html,true,
-../Data/10K/1462056_0001462056-24-000033.html,true,
-../Data/10K/1462223_0001654954-24-004693.html,true,
-../Data/10K/1463361_0000950170-24-044237.html,true,
-../Data/10K/1463913_0001437749-24-010330.html,true,
-../Data/10K/1463972_0001558370-24-005117.html,'NoneType' object has no attribute 'group',
-../Data/10K/1464790_0001628280-24-017512.html,true,
-../Data/10K/1467761_0001829126-24-002449.html,true,
-../Data/10K/1468327_0001468327-24-000114.html,true,
-../Data/10K/1468929_0001493152-24-014127.html,true,
-../Data/10K/14707_0000014707-24-000012.html,'NoneType' object has no attribute 'group',
-../Data/10K/1471727_0001493152-24-014436.html,true,
-../Data/10K/1471781_0001731122-24-000657.html,true,
-../Data/10K/1473334_0001493152-24-014501.html,true,
-../Data/10K/1474432_0001628280-24-013860.html,true,
-../Data/10K/1474464_0000950170-24-039443.html,true,
-../Data/10K/1476963_0001558370-24-005902.html,true,
-../Data/10K/1477009_0001213900-24-031818.html,true,
-../Data/10K/1479915_0001493152-24-014570.html,true,
-../Data/10K/1481443_0001683168-24-002392.html,true,
-../Data/10K/1481646_0001481646-24-000020.html,'NoneType' object has no attribute 'group',
-../Data/10K/1483646_0001065949-24-000044.html,"string indices must be integers, not 'str'",
-../Data/10K/1485003_0001485003-24-000005.html,true,
-../Data/10K/1485029_0001096906-24-001168.html,"string indices must be integers, not 'str'",
-../Data/10K/1485074_0001477932-24-001717.html,true,
-../Data/10K/1487091_0001493152-24-014872.html,true,
-../Data/10K/1487718_0001213900-24-028635.html,true,
-../Data/10K/1488039_0000950170-24-039306.html,true,
-../Data/10K/1492674_0000950170-24-039310.html,true,
-../Data/10K/1493137_0001079973-24-000474.html,true,
-../Data/10K/1494413_0001262463-24-000041.html,Table of contents without links not supported yet,
-../Data/10K/1495231_0001495231-24-000046.html,true,
-../Data/10K/1496383_0001213900-24-038595.html,true,
-../Data/10K/1497230_0001654954-24-004626.html,true,
-../Data/10K/1498148_0001493152-24-021634.html,true,
-../Data/10K/1498233_0001498233-24-000021.html,true,
-../Data/10K/1500305_0001493152-24-013185.html,Table of contents parsing probably went wrong,
-../Data/10K/1502292_0000950170-24-039426.html,'NoneType' object has no attribute 'group',
-../Data/10K/1503658_0001493152-24-012376.html,true,
-../Data/10K/1505497_0001493152-24-012056.html,true,
-../Data/10K/1505611_0001213900-24-028228.html,true,
-../Data/10K/1507957_0001437749-24-010360.html,'NoneType' object has no attribute 'group',
-../Data/10K/1509223_0001410578-24-000425.html,true,
-../Data/10K/1509957_0001493152-24-014686.html,'NoneType' object has no attribute 'group',
-../Data/10K/1513525_0001213900-24-028701.html,true,
-../Data/10K/1514056_0001493152-24-014667.html,true,
-../Data/10K/1514443_0001829126-24-002229.html,true,
-../Data/10K/1514946_0001096906-24-000864.html,true,
-../Data/10K/1515139_0001493152-24-014702.html,true,
-../Data/10K/1515317_0001683168-24-002501.html,true,
-../Data/10K/1516513_0001516513-24-000035.html,true,
-../Data/10K/1517389_0001477932-24-002544.html,"string indices must be integers, not 'str'",
-../Data/10K/1518461_0001493152-24-012177.html,true,
-../Data/10K/1519449_0001519449-24-000012.html,'NoneType' object has no attribute 'group',
-../Data/10K/1519472_0001640334-24-000675.html,true,
-../Data/10K/1520358_0001628280-24-017645.html,true,
-../Data/10K/1522860_0001628280-24-014036.html,'NoneType' object has no attribute 'group',
-../Data/10K/1524025_0001628280-24-015839.html,true,
-../Data/10K/1524769_0001524769-24-000005.html,true,
-../Data/10K/1524872_0001683168-24-002407.html,true,
-../Data/10K/1525769_0001628280-24-014369.html,true,
-../Data/10K/1527702_0001663577-24-000092.html,true,
-../Data/10K/1529113_0001628280-24-016449.html,'NoneType' object has no attribute 'group',
-../Data/10K/1530163_0001213900-24-029049.html,true,
-../Data/10K/1530185_0001376474-24-000150.html,Table of contents parsing probably went wrong,
-../Data/10K/1530746_0001903596-24-000238.html,true,
-../Data/10K/1530766_0001493152-24-014860.html,true,
-../Data/10K/1533040_0001683168-24-002021.html,true,
-../Data/10K/1533758_0001533758-24-000007.html,true,
-../Data/10K/1534155_0001213900-24-035114.html,true,
-../Data/10K/1534155_0001213900-24-035125.html,true,
-../Data/10K/1534708_0001493152-24-012410.html,true,
-../Data/10K/1535079_0001437749-24-012072.html,Table of contents without links not supported yet,
-../Data/10K/1536089_0001493152-24-014885.html,true,
-../Data/10K/1536394_0001213900-24-033333.html,"string indices must be integers, not 'str'",
-../Data/10K/1538210_0001538210-24-000003.html,true,
-../Data/10K/1539850_0001493152-24-013032.html,true,
-../Data/10K/1543623_0001213900-24-041830.html,true,
-../Data/10K/1543652_0001096906-24-000682.html,true,
-../Data/10K/1549631_0001493152-24-012312.html,true,
-../Data/10K/1552189_0001493152-24-012107.html,true,
-../Data/10K/1554818_0001683168-24-002035.html,true,
-../Data/10K/1556811_0000950170-24-038794.html,Table of contents parsing probably went wrong,
-../Data/10K/1558013_0001888524-24-005352.html,Table of contents without links not supported yet,
-../Data/10K/1558740_0001829126-24-002653.html,true,
-../Data/10K/1559157_0001493152-24-012940.html,true,
-../Data/10K/1559356_0001493152-24-014710.html,true,
-../Data/10K/1559998_0001493152-24-017110.html,true,
-../Data/10K/1560452_0001185185-24-000371.html,true,
-../Data/10K/1561167_0000950170-24-039207.html,'NoneType' object has no attribute 'group',
-../Data/10K/1563298_0001079973-24-000601.html,true,
-../Data/10K/1564968_0000950170-24-039206.html,'NoneType' object has no attribute 'group',
-../Data/10K/1565228_0001493152-24-013015.html,true,
-../Data/10K/1566243_0001753926-24-000855.html,true,
-../Data/10K/1566610_0001493152-24-012416.html,true,
-../Data/10K/1566826_0001213900-24-033400.html,true,
-../Data/10K/1567900_0001437749-24-010302.html,true,
-../Data/10K/1567958_0000950170-24-039226.html,'NoneType' object has no attribute 'group',
-../Data/10K/1568385_0001628280-24-014146.html,true,
-../Data/10K/1568969_0001493152-24-012283.html,true,
-../Data/10K/1570132_0001079973-24-000814.html,true,
-../Data/10K/1570440_0000950170-24-039213.html,'NoneType' object has no attribute 'group',
-../Data/10K/1571934_0001410578-24-000410.html,'NoneType' object has no attribute 'group',
-../Data/10K/1572616_0000950170-24-038866.html,true,
-../Data/10K/1574094_0001493152-24-012357.html,true,
-../Data/10K/1574593_0000950170-24-039210.html,'NoneType' object has no attribute 'group',
-../Data/10K/1575142_0001640334-24-000602.html,'NoneType' object has no attribute 'group',
-../Data/10K/1575434_0000950170-24-039287.html,true,
-../Data/10K/1576197_0001493152-24-014808.html,true,
-../Data/10K/1576709_0000950170-24-039215.html,'NoneType' object has no attribute 'group',
-../Data/10K/1577310_0000950170-24-039217.html,'NoneType' object has no attribute 'group',
-../Data/10K/1579157_0000950170-24-052254.html,true,
-../Data/10K/1580063_0000950170-24-039423.html,true,
-../Data/10K/1583771_0001583771-24-000003.html,true,
-../Data/10K/1585608_0001558370-24-004439.html,'NoneType' object has no attribute 'group',
-../Data/10K/1586495_0001683168-24-002370.html,true,
-../Data/10K/1587987_0001587987-24-000054.html,'NoneType' object has no attribute 'group',
-../Data/10K/1588014_0001493152-24-014869.html,true,
-../Data/10K/1589149_0001493152-24-014799.html,true,
-../Data/10K/1590418_0001683168-24-001995.html,true,
-../Data/10K/1590496_0001213900-24-040309.html,true,
-../Data/10K/1590715_0001477932-24-002122.html,true,
-../Data/10K/1593184_0001683168-24-002317.html,true,
-../Data/10K/1593549_0001493152-24-012301.html,true,
-../Data/10K/1594204_0001214659-24-006714.html,"string indices must be integers, not 'str'",
-../Data/10K/1594968_0001683168-24-002466.html,true,
-../Data/10K/1595248_0001437749-24-010426.html,true,
-../Data/10K/1595527_0001595527-24-000006.html,true,
-../Data/10K/1597892_0001213900-24-036467.html,true,
-../Data/10K/1598981_0001493152-24-012456.html,true,
-../Data/10K/1599117_0001493152-24-012225.html,'NoneType' object has no attribute 'group',
-../Data/10K/1599407_0001213900-24-036197.html,true,
-../Data/10K/1600033_0001600033-24-000020.html,true,
-../Data/10K/1600347_0001493152-24-012424.html,true,
-../Data/10K/1600983_0001410578-24-000417.html,true,
-../Data/10K/1603207_0001493152-24-014342.html,true,
-../Data/10K/1603793_0001493152-24-021582.html,true,
-../Data/10K/1603978_0001603978-24-000013.html,true,
-../Data/10K/1604028_0001604028-24-000011.html,true,
-../Data/10K/1604778_0001604778-24-000036.html,true,
-../Data/10K/1605888_0001213900-24-031701.html,true,
-../Data/10K/1610250_0001558370-24-008176.html,true,
-../Data/10K/1610618_0001610618-24-000041.html,true,
-../Data/10K/1615063_0001493152-24-014609.html,true,
-../Data/10K/1615165_0000950170-24-038819.html,true,
-../Data/10K/1615222_0001999371-24-004693.html,true,
-../Data/10K/1616736_0001515971-24-000038.html,true,
-../Data/10K/1617765_0001062993-24-008449.html,Table of contents parsing probably went wrong,
-../Data/10K/1620179_0001558370-24-004674.html,true,
-../Data/10K/1621672_0001437749-24-011939.html,'NoneType' object has no attribute 'group',
-../Data/10K/1621906_0001213900-24-033519.html,true,
-../Data/10K/1622244_0001493152-24-021067.html,true,
-../Data/10K/1622345_0001493152-24-012355.html,true,
-../Data/10K/1623590_0001753926-24-000688.html,'NoneType' object has no attribute 'group',
-../Data/10K/1624794_0001624794-24-000032.html,'NoneType' object has no attribute 'group',
-../Data/10K/1626745_0001493152-24-014607.html,true,
-../Data/10K/1627282_0001627282-24-000039.html,true,
-../Data/10K/1628063_0000950170-24-039550.html,true,
-../Data/10K/1630176_0001096906-24-000706.html,true,
-../Data/10K/1630212_0001213900-24-033023.html,true,
-../Data/10K/1632121_0001493152-24-014644.html,true,
-../Data/10K/1634447_0001493152-24-014892.html,true,
-../Data/10K/1637866_0001493152-24-015461.html,true,
-../Data/10K/1639068_0001493152-24-014878.html,true,
-../Data/10K/1640384_0000950170-24-038953.html,true,
-../Data/10K/1641398_0001213900-24-029042.html,true,
-../Data/10K/1642363_0001214659-24-007437.html,Table of contents without links not supported yet,
-../Data/10K/1642380_0001493152-24-014720.html,true,
-../Data/10K/1643301_0001477932-24-003092.html,true,
-../Data/10K/1646188_0001213900-24-028244.html,Table of contents parsing probably went wrong,
-../Data/10K/1646972_0001646972-24-000060.html,true,
-../Data/10K/1648087_0001493152-24-014473.html,true,
-../Data/10K/1651721_0000950170-24-042640.html,true,
-../Data/10K/1651958_0001575872-24-000359.html,'NoneType' object has no attribute 'group',
-../Data/10K/1651992_0001477932-24-001977.html,'NoneType' object has no attribute 'group',
-../Data/10K/1652539_0001062993-24-010319.html,true,
-../Data/10K/1652958_0001683168-24-002725.html,true,
-../Data/10K/1657045_0001493152-24-012269.html,true,
-../Data/10K/1658521_0001017386-24-000056.html,Table of contents without links not supported yet,
-../Data/10K/1661039_0001654954-24-005983.html,"string indices must be integers, not 'str'",
-../Data/10K/1661600_0001683168-24-001970.html,true,
-../Data/10K/1661779_0001558370-24-005129.html,'NoneType' object has no attribute 'group',
-../Data/10K/1662574_0001683168-24-002468.html,true,
-../Data/10K/1662684_0001410578-24-000454.html,'NoneType' object has no attribute 'group',
-../Data/10K/1662774_0000950170-24-039440.html,true,
-../Data/10K/1668010_0001104659-24-047365.html,true,
-../Data/10K/1670196_0001477932-24-002163.html,true,
-../Data/10K/1672571_0001493152-24-014576.html,true,
-../Data/10K/1673481_0001493152-24-013038.html,true,
-../Data/10K/1676047_0001213900-24-037996.html,true,
-../Data/10K/1676238_0001676238-24-000049.html,true,
-../Data/10K/1679063_0001558370-24-005371.html,true,
-../Data/10K/1679817_0001493152-24-014825.html,true,
-../Data/10K/1680139_0001213900-24-028696.html,true,
-../Data/10K/1681556_0001493152-24-015888.html,true,
-../Data/10K/1682149_0001410578-24-000412.html,true,
-../Data/10K/1682220_0001410578-24-000381.html,true,
-../Data/10K/1682265_0001477932-24-002220.html,true,
-../Data/10K/1684144_0001558370-24-004517.html,true,
-../Data/10K/1685766_0001829126-24-002064.html,true,
-../Data/10K/1687605_0000950170-24-038790.html,Table of contents parsing probably went wrong,
-../Data/10K/1687919_0001493152-24-014817.html,true,
-../Data/10K/1687932_0000950170-24-041871.html,true,
-../Data/10K/1688126_0001493152-24-014823.html,true,
-../Data/10K/1688568_0001688568-24-000032.html,'NoneType' object has no attribute 'group',
-../Data/10K/1689084_0001477932-24-002100.html,'NoneType' object has no attribute 'group',
-../Data/10K/16918_0000016918-24-000054.html,true,
-../Data/10K/1691936_0000950170-24-039516.html,true,
-../Data/10K/1694617_0001185185-24-000374.html,true,
-../Data/10K/1695473_0001493152-24-012098.html,true,
-../Data/10K/1696025_0001477932-24-003022.html,true,
-../Data/10K/1697834_0001493152-24-021397.html,true,
-../Data/10K/1700849_0001185185-24-000394.html,true,
-../Data/10K/1701758_0001628280-24-015804.html,true,
-../Data/10K/1701963_0001213900-24-028552.html,true,
-../Data/10K/1703073_0001493152-24-014695.html,true,
-../Data/10K/1703157_0001017386-24-000116.html,'NoneType' object has no attribute 'group',
-../Data/10K/1706509_0001213900-24-033527.html,true,
-../Data/10K/1707919_0001140361-24-016853.html,true,
-../Data/10K/1709542_0001683168-24-002022.html,true,
-../Data/10K/1712762_0001493152-24-012358.html,true,
-../Data/10K/1713210_0001493152-24-012467.html,true,
-../Data/10K/1713393_0000950170-24-038796.html,true,
-../Data/10K/1714562_0001493152-24-014809.html,true,
-../Data/10K/1715819_0001410578-24-000581.html,"string indices must be integers, not 'str'",
-../Data/10K/1715933_0000950170-24-039058.html,true,
-../Data/10K/1716621_0001654954-24-003964.html,true,
-../Data/10K/1718224_0001477932-24-001711.html,true,
-../Data/10K/1718939_0001718939-24-000043.html,'NoneType' object has no attribute 'group',
-../Data/10K/1720286_0001477932-24-002055.html,true,
-../Data/10K/1720990_0001720990-24-000045.html,true,
-../Data/10K/1722438_0001437749-24-010388.html,true,
-../Data/10K/1722969_0001214659-24-005647.html,true,
-../Data/10K/1723059_0001213900-24-032898.html,true,
-../Data/10K/1723580_0001723580-24-000009.html,true,
-../Data/10K/1724009_0001079973-24-000454.html,true,
-../Data/10K/1725134_0001628280-24-016708.html,true,
-../Data/10K/1725872_0001725872-24-000001.html,true,
-../Data/10K/1725911_0001493152-24-014612.html,true,
-../Data/10K/1726711_0001213900-24-033466.html,true,
-../Data/10K/1727255_0001683168-24-001989.html,true,
-../Data/10K/1729427_0001683168-24-002032.html,true,
-../Data/10K/1729944_0001493152-24-014857.html,true,
-../Data/10K/1730773_0001493152-24-012503.html,true,
-../Data/10K/1730869_0001477932-24-002949.html,true,
-../Data/10K/17313_0000017313-24-000022.html,true,
-../Data/10K/1733443_0001410578-24-000418.html,true,
-../Data/10K/1734750_0001213900-24-033365.html,true,
-../Data/10K/1735041_0001213900-24-033426.html,true,
-../Data/10K/1735092_0001477932-24-002174.html,'NoneType' object has no attribute 'group',
-../Data/10K/1735948_0001104659-24-052140.html,true,
-../Data/10K/1737523_0001477932-24-002151.html,true,
-../Data/10K/1737953_0001737953-24-000008.html,true,
-../Data/10K/1739174_0001213900-24-030053.html,true,
-../Data/10K/1740742_0001829126-24-002120.html,'NoneType' object has no attribute 'group',
-../Data/10K/1741489_0001213900-24-028567.html,true,
-../Data/10K/1742927_0001437749-24-011955.html,true,
-../Data/10K/1748232_0001493152-24-016262.html,true,
-../Data/10K/1750106_0001493152-24-012509.html,true,
-../Data/10K/1750153_0001628280-24-014075.html,true,
-../Data/10K/1752372_0001493152-24-013755.html,true,
-../Data/10K/1753373_0001493152-24-014827.html,true,
-../Data/10K/1753681_0001477932-24-002748.html,true,
-../Data/10K/1755755_0001755755-24-000022.html,true,
-../Data/10K/1755953_0001213900-24-028732.html,true,
-../Data/10K/1756180_0001683168-24-002037.html,true,
-../Data/10K/1758009_0001213900-24-028799.html,true,
-../Data/10K/1760026_0001213900-24-032991.html,true,
-../Data/10K/1760233_0001493152-24-014101.html,true,
-../Data/10K/1760689_0001760689-24-000007.html,true,
-../Data/10K/1760903_0001493152-24-012476.html,true,
-../Data/10K/1761696_0001213900-24-028775.html,true,
-../Data/10K/1762359_0001762359-24-000023.html,true,
-../Data/10K/1763329_0001096906-24-000907.html,Table of contents parsing probably went wrong,
-../Data/10K/1763660_0001493152-24-018557.html,true,
-../Data/10K/1765048_0001765048-24-000010.html,Table of contents without links not supported yet,
-../Data/10K/1765107_0001765107-24-000019.html,true,
-../Data/10K/1766016_0001712543-24-000017.html,Table of contents without links not supported yet,
-../Data/10K/1766526_0001185185-24-000337.html,true,
-../Data/10K/1770141_0001770141-24-000046.html,true,
-../Data/10K/1771514_0000950170-24-043546.html,'NoneType' object has no attribute 'group',
-../Data/10K/1771706_0001558370-24-004519.html,true,
-../Data/10K/1771951_0001493152-24-012285.html,true,
-../Data/10K/1772720_0001628280-24-015334.html,true,
-../Data/10K/1773383_0001773383-24-000076.html,true,
-../Data/10K/1774170_0001493152-24-018526.html,'NoneType' object has no attribute 'group',
-../Data/10K/1774675_0001437749-24-012054.html,true,
-../Data/10K/1777319_0001493152-24-014818.html,true,
-../Data/10K/1777393_0001777393-24-000052.html,true,
-../Data/10K/1779474_0001779474-24-000023.html,true,
-../Data/10K/1780312_0000950170-24-039342.html,true,
-../Data/10K/1781726_0001493152-24-014774.html,true,
-../Data/10K/1782107_0001213900-24-032225.html,true,
-../Data/10K/1783875_0001628280-24-016208.html,true,
-../Data/10K/1784254_0001784254-24-000003.html,true,
-../Data/10K/1784970_0001099910-24-000189.html,true,
-../Data/10K/1785056_0000950170-24-039531.html,true,
-../Data/10K/1785424_0001628280-24-017691.html,true,
-../Data/10K/1785592_0000950170-24-039515.html,true,
-../Data/10K/1786835_0001140361-24-016720.html,true,
-../Data/10K/1788841_0001079973-24-000555.html,true,
-../Data/10K/1789192_0001493152-24-012356.html,true,
-../Data/10K/1792781_0001628280-24-014351.html,true,
-../Data/10K/1794276_0001493152-24-014769.html,true,
-../Data/10K/1794942_0001640334-24-000661.html,true,
-../Data/10K/1795938_0001493152-24-014566.html,true,
-../Data/10K/1796022_0001796022-24-000041.html,true,
-../Data/10K/1796160_0001096906-24-000832.html,true,
-../Data/10K/1796514_0001213900-24-032825.html,true,
-../Data/10K/1798270_0001798270-24-000012.html,true,
-../Data/10K/1799788_0001493152-24-014625.html,true,
-../Data/10K/1800347_0000950170-24-049948.html,true,
-../Data/10K/1800373_0001477932-24-002028.html,'NoneType' object has no attribute 'group',
-../Data/10K/1800637_0001213900-24-033048.html,true,
-../Data/10K/1800682_0001628280-24-014114.html,true,
-../Data/10K/1801417_0001213900-24-029324.html,true,
-../Data/10K/1801602_0001628280-24-013998.html,true,
-../Data/10K/1802450_0000950170-24-044197.html,true,
-../Data/10K/1803096_0001640334-24-000804.html,'NoneType' object has no attribute 'group',
-../Data/10K/1803977_0001493152-24-015181.html,true,
-../Data/10K/1805521_0001628280-24-025420.html,true,
-../Data/10K/1807616_0001213900-24-045019.html,true,
-../Data/10K/1807887_0001654954-24-004797.html,"string indices must be integers, not 'str'",
-../Data/10K/1809750_0001477932-24-001638.html,true,
-../Data/10K/1811109_0001213900-24-033517.html,true,
-../Data/10K/1812727_0001493152-24-013118.html,true,
-../Data/10K/1814215_0000950170-24-044503.html,true,
-../Data/10K/1814294_0001814294-24-000028.html,Table of contents parsing probably went wrong,
-../Data/10K/1814329_0000950170-24-045209.html,true,
-../Data/10K/1815903_0001410578-24-000401.html,true,
-../Data/10K/1816937_0001493152-24-012367.html,true,
-../Data/10K/1817004_0001493152-24-012378.html,"string indices must be integers, not 'str'",
-../Data/10K/1817232_0001213900-24-028142.html,true,
-../Data/10K/1817511_0001213900-24-032944.html,true,
-../Data/10K/1817640_0001213900-24-028925.html,true,
-../Data/10K/1818605_0001410578-24-000498.html,true,
-../Data/10K/1819615_0001819615-24-000031.html,true,
-../Data/10K/1820175_0001213900-24-028742.html,true,
-../Data/10K/1820875_0001829126-24-003713.html,true,
-../Data/10K/1821175_0001493152-24-012233.html,true,
-../Data/10K/1822886_0001493152-24-012466.html,true,
-../Data/10K/1823365_0001558370-24-004540.html,true,
-../Data/10K/1823635_0001493152-24-017474.html,true,
-../Data/10K/1824893_0000950170-24-043399.html,true,
-../Data/10K/1825079_0001825079-24-000008.html,true,
-../Data/10K/1825300_0001825300-24-000028.html,Table of contents parsing probably went wrong,
-../Data/10K/1825452_0001654954-24-004048.html,true,
-../Data/10K/1825962_0001213900-24-033871.html,true,
-../Data/10K/1826011_0000950170-24-039543.html,true,
-../Data/10K/1826397_0001493152-24-012418.html,true,
-../Data/10K/1826470_0000950170-24-040516.html,true,
-../Data/10K/1826660_0001493152-24-014934.html,true,
-../Data/10K/1826667_0001826667-24-000005.html,true,
-../Data/10K/1828248_0001410578-24-000414.html,true,
-../Data/10K/1828673_0000950170-24-039384.html,true,
-../Data/10K/1829635_0001410578-24-000413.html,true,
-../Data/10K/1829953_0001193125-24-083610.html,true,
-../Data/10K/1830029_0000950170-24-044534.html,true,
-../Data/10K/1831359_0001410578-24-000479.html,true,
-../Data/10K/1831868_0000950170-24-044855.html,true,
-../Data/10K/1831874_0001410578-24-000503.html,true,
-../Data/10K/1832136_0001410578-24-000439.html,true,
-../Data/10K/1835416_0001213900-24-028721.html,true,
-../Data/10K/1835512_0000950170-24-039442.html,true,
-../Data/10K/1835856_0001628280-24-015134.html,true,
-../Data/10K/1835972_0001213900-24-028818.html,true,
-../Data/10K/1836100_0001493152-24-014887.html,true,
-../Data/10K/1836176_0000950170-24-044851.html,'NoneType' object has no attribute 'group',
-../Data/10K/1836214_0001836214-24-000028.html,Table of contents parsing probably went wrong,
-../Data/10K/1836295_0001493152-24-012185.html,true,
-../Data/10K/1838162_0001213900-24-028726.html,true,
-../Data/10K/1838163_0001193125-24-083577.html,true,
-../Data/10K/1838513_0001193125-24-083642.html,true,
-../Data/10K/1838987_0001213900-24-028747.html,true,
-../Data/10K/1839133_0001493152-24-012430.html,true,
-../Data/10K/1839530_0001558370-24-004558.html,true,
-../Data/10K/1840233_0001558370-24-004530.html,true,
-../Data/10K/1840425_0001193125-24-099137.html,true,
-../Data/10K/1840877_0001213900-24-028894.html,true,
-../Data/10K/1842556_0001213900-24-039259.html,true,
-../Data/10K/1842566_0001654954-24-004059.html,true,
-../Data/10K/1842939_0000950170-24-038992.html,Table of contents without links not supported yet,
-../Data/10K/1843165_0001213900-24-028934.html,true,
-../Data/10K/1843370_0001140361-24-019913.html,true,
-../Data/10K/1843656_0001477932-24-002179.html,true,
-../Data/10K/1843973_0001628280-24-019447.html,true,
-../Data/10K/1843993_0001213900-24-028753.html,true,
-../Data/10K/1844419_0001410578-24-000477.html,true,
-../Data/10K/1844971_0001628280-24-015540.html,true,
-../Data/10K/1844981_0001213900-24-033508.html,true,
-../Data/10K/1845123_0001193125-24-083443.html,true,
-../Data/10K/1845459_0001845459-24-000007.html,true,
-../Data/10K/1846809_0001753926-24-000735.html,true,
-../Data/10K/1846975_0001829126-24-002546.html,true,
-../Data/10K/1847112_0001193125-24-083368.html,true,
-../Data/10K/1847241_0001213900-24-033569.html,true,
-../Data/10K/1847355_0001193125-24-086733.html,true,
-../Data/10K/1847440_0001410578-24-000437.html,true,
-../Data/10K/1847513_0001410578-24-000419.html,true,
-../Data/10K/1847577_0001140361-24-017987.html,"string indices must be integers, not 'str'",
-../Data/10K/1847607_0001104659-24-051951.html,true,
-../Data/10K/1847986_0001493152-24-014831.html,true,
-../Data/10K/1848437_0001410578-24-000374.html,"string indices must be integers, not 'str'",
-../Data/10K/1848672_0001096906-24-001101.html,true,
-../Data/10K/1848756_0001213900-24-046642.html,true,
-../Data/10K/1848821_0001193125-24-083404.html,true,
-../Data/10K/1848861_0001477932-24-002218.html,true,
-../Data/10K/1848898_0001213900-24-033098.html,true,
-../Data/10K/1849294_0001683168-24-002016.html,true,
-../Data/10K/1849380_0001493152-24-014092.html,true,
-../Data/10K/1849635_0001140361-24-017011.html,true,
-../Data/10K/1849670_0001558370-24-004533.html,true,
-../Data/10K/1849737_0001213900-24-028702.html,true,
-../Data/10K/1849820_0001849820-24-000029.html,true,
-../Data/10K/1849902_0001753926-24-000723.html,true,
-../Data/10K/1850262_0001193125-24-093469.html,true,
-../Data/10K/1850502_0001140361-24-020059.html,true,
-../Data/10K/1851048_0001213900-24-028588.html,true,
-../Data/10K/1851375_0001851375-24-000028.html,Table of contents parsing probably went wrong,
-../Data/10K/1851484_0001493152-24-014850.html,true,
-../Data/10K/1851612_0001140361-24-021328.html,true,
-../Data/10K/1851909_0001493152-24-012485.html,true,
-../Data/10K/1852016_0001193125-24-097784.html,true,
-../Data/10K/1852061_0000950170-24-039494.html,true,
-../Data/10K/1852131_0001628280-24-025460.html,true,
-../Data/10K/1852536_0001683168-24-002917.html,true,
-../Data/10K/1852736_0001929980-24-000160.html,true,
-../Data/10K/1852889_0001193125-24-098000.html,true,
-../Data/10K/1852973_0001213900-24-032953.html,true,
-../Data/10K/1853580_0001829126-24-002579.html,'NoneType' object has no attribute 'group',
-../Data/10K/1854463_0001493152-24-014685.html,'NoneType' object has no attribute 'group',
-../Data/10K/1854480_0001140361-24-018430.html,true,
-../Data/10K/1854526_0001477932-24-001718.html,true,
-../Data/10K/1854795_0001193125-24-098048.html,true,
-../Data/10K/1854816_0001477932-24-003036.html,'NoneType' object has no attribute 'group',
-../Data/10K/1854963_0001493152-24-012360.html,true,
-../Data/10K/1855457_0001855457-24-000015.html,true,
-../Data/10K/1855631_0001493152-24-017204.html,true,
-../Data/10K/1856161_0001829126-24-002578.html,true,
-../Data/10K/1856995_0001104659-24-064383.html,true,
-../Data/10K/1857410_0001193125-24-093395.html,true,
-../Data/10K/1857855_0001493152-24-012498.html,true,
-../Data/10K/1860514_0001829126-24-002417.html,true,
-../Data/10K/1860871_0001493152-24-016796.html,true,
-../Data/10K/1861063_0001213900-24-039767.html,true,
-../Data/10K/1861522_0001493152-24-014214.html,true,
-../Data/10K/1861622_0001493152-24-012382.html,true,
-../Data/10K/1862150_0001493152-24-012159.html,true,
-../Data/10K/1862463_0001213900-24-042933.html,true,
-../Data/10K/1863719_0001410578-24-000472.html,true,
-../Data/10K/1864032_0001214659-24-006651.html,true,
-../Data/10K/1864531_0001104659-24-046607.html,'NoneType' object has no attribute 'group',
-../Data/10K/1865200_0001410578-24-000408.html,"string indices must be integers, not 'str'",
-../Data/10K/1865861_0001193125-24-096274.html,true,
-../Data/10K/1866001_0001213900-24-028695.html,true,
-../Data/10K/1866226_0001213900-24-033414.html,true,
-../Data/10K/1866547_0001493152-24-014895.html,true,
-../Data/10K/1866816_0001493152-24-021130.html,true,
-../Data/10K/1867436_0001867436-24-000030.html,Table of contents parsing probably went wrong,
-../Data/10K/1867443_0001493152-24-014877.html,"string indices must be integers, not 'str'",
-../Data/10K/1868269_0001410578-24-000456.html,true,
-../Data/10K/1868419_0001410578-24-000540.html,true,
-../Data/10K/1870143_0001213900-24-035065.html,true,
-../Data/10K/1870144_0001079973-24-000480.html,true,
-../Data/10K/1870404_0001213900-24-029051.html,true,
-../Data/10K/1871181_0001493152-24-014351.html,true,
-../Data/10K/1871638_0001410578-24-000607.html,true,
-../Data/10K/1871745_0001193125-24-083603.html,true,
-../Data/10K/1872066_0001520138-24-000172.html,true,
-../Data/10K/1872292_0001493152-24-012253.html,true,
-../Data/10K/1872812_0001493152-24-012486.html,true,
-../Data/10K/1873441_0001213900-24-033049.html,true,
-../Data/10K/1875493_0001193125-24-083559.html,true,
-../Data/10K/1876255_0001193125-24-083290.html,true,
-../Data/10K/1876945_0001876945-24-000033.html,true,
-../Data/10K/1877461_0001477932-24-002182.html,true,
-../Data/10K/1877557_0001410578-24-000421.html,true,
-../Data/10K/1879270_0001185185-24-000386.html,true,
-../Data/10K/1879293_0001493152-24-014911.html,true,
-../Data/10K/1879373_0001493152-24-015564.html,true,
-../Data/10K/1879403_0001213900-24-033444.html,true,
-../Data/10K/1879747_0001879747-24-000029.html,Table of contents parsing probably went wrong,
-../Data/10K/1879848_0001410578-24-000471.html,true,
-../Data/10K/1879851_0001493152-24-014373.html,true,
-../Data/10K/1880431_0001213900-24-033415.html,true,
-../Data/10K/1881551_0001213900-24-032308.html,true,
-../Data/10K/1881741_0001213900-24-041641.html,true,
-../Data/10K/1883085_0001883085-24-000060.html,true,
-../Data/10K/1883788_0001493152-24-017073.html,true,
-../Data/10K/1883983_0001493152-24-017302.html,"string indices must be integers, not 'str'",
-../Data/10K/1883984_0001213900-24-033052.html,true,
-../Data/10K/1884046_0001213900-24-029881.html,true,
-../Data/10K/1884164_0001683168-24-002394.html,true,
-../Data/10K/1885461_0001213900-24-034104.html,'NoneType' object has no attribute 'group',
-../Data/10K/1885998_0001829126-24-002099.html,true,
-../Data/10K/1886362_0001213900-24-032972.html,true,
-../Data/10K/1886799_0001493152-24-014864.html,true,
-../Data/10K/1886894_0001493152-24-012392.html,true,
-../Data/10K/1888734_0001493152-24-012594.html,true,
-../Data/10K/1889106_0001493152-24-014684.html,true,
-../Data/10K/1889450_0001493152-24-013334.html,true,
-../Data/10K/1890671_0001493152-24-012289.html,true,
-../Data/10K/1892322_0001493152-24-013979.html,true,
-../Data/10K/1892492_0001493152-24-012608.html,true,
-../Data/10K/1893311_0001829126-24-002461.html,true,
-../Data/10K/1894057_0001410578-24-000372.html,true,
-../Data/10K/1894951_0001213900-24-036621.html,true,
-../Data/10K/1896212_0001493152-24-014889.html,'NoneType' object has no attribute 'group',
-../Data/10K/1897525_0001829126-24-003512.html,true,
-../Data/10K/1897971_0001410578-24-000465.html,true,
-../Data/10K/1898604_0001493152-24-012337.html,true,
-../Data/10K/1899236_0001899236-24-000028.html,Table of contents parsing probably went wrong,
-../Data/10K/1900520_0001213900-24-028660.html,true,
-../Data/10K/1901203_0001213900-24-028817.html,true,
-../Data/10K/1901336_0001410578-24-000490.html,true,
-../Data/10K/1901799_0000950170-24-044405.html,true,
-../Data/10K/1902700_0001185185-24-000363.html,'NoneType' object has no attribute 'group',
-../Data/10K/1902794_0001493152-24-012329.html,true,
-../Data/10K/1903464_0001213900-24-032604.html,"string indices must be integers, not 'str'",
-../Data/10K/1904286_0001493152-24-012141.html,true,
-../Data/10K/1906133_0001477932-24-002244.html,'NoneType' object has no attribute 'group',
-../Data/10K/1907223_0001213900-24-033573.html,true,
-../Data/10K/1907425_0001493152-24-013407.html,true,
-../Data/10K/1907730_0001829126-24-002515.html,true,
-../Data/10K/1908984_0001493152-24-012465.html,true,
-../Data/10K/1909747_0001628280-24-014147.html,true,
-../Data/10K/1910975_0001683168-24-002272.html,true,
-../Data/10K/1913577_0001213900-24-028809.html,"string indices must be integers, not 'str'",
-../Data/10K/1914496_0001914496-24-000042.html,true,
-../Data/10K/1915380_0001193125-24-082820.html,true,
-../Data/10K/1918080_0001213900-24-028664.html,true,
-../Data/10K/1918102_0001213900-24-028655.html,true,
-../Data/10K/1918661_0001213900-24-028868.html,true,
-../Data/10K/1919246_0001753926-24-000740.html,true,
-../Data/10K/1920406_0001213900-24-029033.html,true,
-../Data/10K/1921745_0001921745-24-000028.html,Table of contents parsing probably went wrong,
-../Data/10K/1921865_0001477932-24-001964.html,true,
-../Data/10K/1922858_0001213900-24-039311.html,true,
-../Data/10K/1923780_0001575872-24-000353.html,true,
-../Data/10K/1929231_0001213900-24-032537.html,true,
-../Data/10K/1932244_0001493152-24-015139.html,true,
-../Data/10K/1933567_0001493152-24-014832.html,true,
-../Data/10K/1934479_0001934479-24-000028.html,Table of contents parsing probably went wrong,
-../Data/10K/1936255_0001193125-24-083637.html,true,
-../Data/10K/1937891_0001493152-24-014881.html,true,
-../Data/10K/1937987_0001213900-24-036854.html,true,
-../Data/10K/1938046_0001493152-24-012508.html,true,
-../Data/10K/1938338_0001477932-24-002146.html,true,
-../Data/10K/1938569_0001213900-24-028690.html,true,
-../Data/10K/1938570_0001213900-24-028685.html,true,
-../Data/10K/1938571_0001213900-24-028681.html,true,
-../Data/10K/1939365_0001213900-24-031220.html,true,
-../Data/10K/1945422_0001213900-24-033399.html,true,
-../Data/10K/1945619_0001683168-24-002276.html,true,
-../Data/10K/1946021_0001929980-24-000075.html,true,
-../Data/10K/1946521_0001946521-24-000028.html,Table of contents parsing probably went wrong,
-../Data/10K/1946563_0001213900-24-028577.html,true,
-../Data/10K/1947861_0001213900-24-033428.html,true,
-../Data/10K/1950429_0001213900-24-030594.html,true,
-../Data/10K/1952853_0001493152-24-014560.html,true,
-../Data/10K/1953984_0001410578-24-000495.html,'NoneType' object has no attribute 'group',
-../Data/10K/1956055_0001929980-24-000086.html,true,
-../Data/10K/1956744_0001493152-24-012449.html,true,
-../Data/10K/1959023_0001213900-24-028274.html,true,
-../Data/10K/1959426_0001959426-24-000028.html,Table of contents parsing probably went wrong,
-../Data/10K/1960262_0001903596-24-000245.html,"string indices must be integers, not 'str'",
-../Data/10K/1961_0001264931-24-000014.html,true,
-../Data/10K/1962481_0001493152-24-012492.html,true,
-../Data/10K/1963088_0001410578-24-000492.html,true,
-../Data/10K/1966734_0001493152-24-013272.html,Table of contents parsing probably went wrong,
-../Data/10K/1969339_0001969339-24-000029.html,Table of contents parsing probably went wrong,
-../Data/10K/1969475_0001493152-24-014840.html,true,
-../Data/10K/1970129_0001640334-24-000686.html,"string indices must be integers, not 'str'",
-../Data/10K/1970622_0001213900-24-029041.html,true,
-../Data/10K/1971381_0001193125-24-083600.html,true,
-../Data/10K/1973047_0001973047-24-000012.html,Table of contents without links not supported yet,
-../Data/10K/1976923_0001065949-24-000042.html,"string indices must be integers, not 'str'",
-../Data/10K/1980088_0001628280-24-014131.html,'NoneType' object has no attribute 'group',
-../Data/10K/1980857_0001980857-24-000028.html,Table of contents parsing probably went wrong,
-../Data/10K/1982518_0001140361-24-016909.html,true,
-../Data/10K/1983736_0001493152-24-014165.html,true,
-../Data/10K/1985840_0001999371-24-004291.html,true,
-../Data/10K/1995430_0001995430-24-000028.html,Table of contents parsing probably went wrong,
-../Data/10K/1996210_0001437749-24-012085.html,true,
-../Data/10K/2003263_0002003263-24-000024.html,Table of contents parsing probably went wrong,
-../Data/10K/22701_0000022701-24-000002.html,true,
-../Data/10K/278165_0001493152-24-012457.html,true,
-../Data/10K/278166_0000278166-24-000059.html,true,
-../Data/10K/29952_0001683168-24-002246.html,true,
-../Data/10K/313143_0000313143-24-000020.html,"string indices must be integers, not 'str'",
-../Data/10K/313364_0001104659-24-041968.html,true,
-../Data/10K/314227_0001654954-24-004045.html,'NoneType' object has no attribute 'group',
-../Data/10K/31667_0001185185-24-000577.html,true,
-../Data/10K/317788_0001628280-24-025455.html,true,
-../Data/10K/319655_0001193125-24-083035.html,true,
-../Data/10K/33002_0000950170-24-057691.html,true,
-../Data/10K/33992_0001654954-24-004054.html,true,
-../Data/10K/34285_0001493152-24-012490.html,true,
-../Data/10K/356590_0001493152-24-014777.html,true,
-../Data/10K/38723_0000038723-24-000047.html,true,
-../Data/10K/45919_0000045919-24-000014.html,'NoneType' object has no attribute 'group',
-../Data/10K/46250_0000046250-24-000013.html,true,
-../Data/10K/56868_0001437749-24-011958.html,Table of contents without links not supported yet,
-../Data/10K/56873_0001558370-24-004603.html,'NoneType' object has no attribute 'group',
-../Data/10K/61004_0001437749-24-010393.html,true,
-../Data/10K/64463_0001493152-24-012303.html,true,
-../Data/10K/65172_0001558370-24-005598.html,true,
-../Data/10K/65596_0001213900-24-041746.html,true,
-../Data/10K/66496_0001193125-24-082941.html,'NoneType' object has no attribute 'group',
-../Data/10K/67347_0001140361-24-027133.html,true,
-../Data/10K/6845_0000006845-24-000088.html,true,
-../Data/10K/700764_0001079973-24-000746.html,'NoneType' object has no attribute 'group',
-../Data/10K/709005_0001654954-24-006563.html,'NoneType' object has no attribute 'group',
-../Data/10K/712515_0000712515-24-000023.html,'NoneType' object has no attribute 'group',
-../Data/10K/719274_0000950170-24-044482.html,true,
-../Data/10K/721693_0001213900-24-031988.html,true,
-../Data/10K/72205_0000950170-24-062540.html,true,
-../Data/10K/723533_0001017386-24-000060.html,true,
-../Data/10K/723733_0000723733-24-000004.html,true,
-../Data/10K/724910_0001376474-24-000214.html,true,
-../Data/10K/727346_0001493152-24-014714.html,'NoneType' object has no attribute 'group',
-../Data/10K/728385_0001477932-24-002170.html,true,
-../Data/10K/730349_0001493152-24-012992.html,true,
-../Data/10K/733269_0000733269-24-000018.html,true,
-../Data/10K/736012_0001683168-24-002011.html,true,
-../Data/10K/740971_0001140361-24-016955.html,true,
-../Data/10K/744825_0001437749-24-010308.html,true,
-../Data/10K/745732_0000745732-24-000009.html,true,
-../Data/10K/748790_0001628280-24-016428.html,'NoneType' object has no attribute 'group',
-../Data/10K/751365_0001628280-24-016004.html,true,
-../Data/10K/75288_0000075288-24-000003.html,true,
-../Data/10K/764195_0001493152-24-014744.html,'NoneType' object has no attribute 'group',
-../Data/10K/764897_0000950170-24-039408.html,true,
-../Data/10K/766404_0000766404-24-000004.html,true,
-../Data/10K/768216_0001185185-24-000399.html,true,
-../Data/10K/768835_0000768835-24-000026.html,'NoneType' object has no attribute 'group',
-../Data/10K/772406_0000772406-24-000031.html,true,
-../Data/10K/78239_0000078239-24-000013.html,true,
-../Data/10K/78749_0000950170-24-063222.html,true,
-../Data/10K/790179_0001554795-24-000096.html,Table of contents without links not supported yet,
-../Data/10K/792935_0001903596-24-000279.html,true,
-../Data/10K/793306_0001437749-24-010434.html,true,
-../Data/10K/797564_0001674796-24-000003.html,Table of contents not detected,
-../Data/10K/798081_0001654954-24-004465.html,true,
-../Data/10K/798528_0001193125-24-141624.html,true,
-../Data/10K/799165_0001558370-24-004547.html,true,
-../Data/10K/799288_0000950170-24-041066.html,true,
-../Data/10K/802257_0001185185-24-000401.html,true,
-../Data/10K/806172_0001171520-24-000208.html,true,
-../Data/10K/807707_0000950170-24-059558.html,true,
-../Data/10K/811212_0001437749-24-012088.html,true,
-../Data/10K/811641_0001213900-24-028718.html,true,
-../Data/10K/813716_0001493152-24-015391.html,'NoneType' object has no attribute 'group',
-../Data/10K/8146_0000950170-24-043875.html,true,
-../Data/10K/8177_0001140361-24-016971.html,true,
-../Data/10K/82473_0001493152-24-013409.html,Table of contents parsing probably went wrong,
-../Data/10K/825788_0001493152-24-012244.html,true,
-../Data/10K/827054_0000827054-24-000098.html,true,
-../Data/10K/831378_0001477932-24-002301.html,'NoneType' object has no attribute 'group',
-../Data/10K/832480_0001140361-24-016714.html,Table of contents without links not supported yet,
-../Data/10K/835662_0001493152-24-013947.html,true,
-../Data/10K/836564_0001683168-24-002402.html,true,
-../Data/10K/839087_0001213900-24-028734.html,true,
-../Data/10K/840715_0001753926-24-000656.html,true,
-../Data/10K/845698_0001558370-24-004466.html,true,
-../Data/10K/845819_0001515971-24-000035.html,true,
-../Data/10K/849399_0000849399-24-000036.html,true,
-../Data/10K/8504_0001493152-24-012100.html,true,
-../Data/10K/855787_0001437749-24-011131.html,Table of contents without links not supported yet,
-../Data/10K/860543_0001477932-24-002155.html,'NoneType' object has no attribute 'group',
-../Data/10K/862022_0001193125-24-083466.html,true,
-../Data/10K/862861_0001628280-24-015260.html,true,
-../Data/10K/864240_0001437749-24-010216.html,Table of contents without links not supported yet,
-../Data/10K/866291_0000950170-24-063770.html,true,
-../Data/10K/866374_0000866374-24-000021.html,true,
-../Data/10K/867038_0001017386-24-000085.html,Table of contents parsing probably went wrong,
-../Data/10K/874866_0000950170-24-064645.html,true,
-../Data/10K/875355_0001654954-24-004013.html,true,
-../Data/10K/876427_0001562762-24-000155.html,true,
-../Data/10K/878932_0001712543-24-000005.html,true,
-../Data/10K/880242_0001437749-24-010394.html,true,
-../Data/10K/881787_0001193125-24-083456.html,true,
-../Data/10K/885245_0000885245-24-000051.html,true,
-../Data/10K/889348_0001999371-24-004537.html,true,
-../Data/10K/891417_0001493152-24-012969.html,true,
-../Data/10K/894556_0001640334-24-000667.html,true,
-../Data/10K/894560_0001096906-24-000792.html,Table of contents parsing probably went wrong,
-../Data/10K/8947_0000008947-24-000044.html,true,
-../Data/10K/894871_0001493152-24-012368.html,true,
-../Data/10K/895464_0001640334-24-000618.html,true,
-../Data/10K/896493_0001214659-24-006963.html,true,
-../Data/10K/897078_0001493152-24-014876.html,true,
-../Data/10K/908259_0001493152-24-014475.html,true,
-../Data/10K/909494_0001437749-24-010358.html,true,
-../Data/10K/910267_0001829126-24-002110.html,true,
-../Data/10K/910521_0000910521-24-000017.html,true,
-../Data/10K/912463_0000912463-24-000029.html,'NoneType' object has no attribute 'group',
-../Data/10K/912544_0001493152-24-012323.html,true,
-../Data/10K/912615_0000950170-24-039320.html,true,
-../Data/10K/914122_0001437749-24-013321.html,'NoneType' object has no attribute 'group',
-../Data/10K/916789_0000916789-24-000015.html,true,
-../Data/10K/918545_0000918545-24-000002.html,Table of contents not detected,
-../Data/10K/918646_0000950170-24-063523.html,true,
-../Data/10K/924719_0001654954-24-006855.html,Table of contents parsing probably went wrong,
-../Data/10K/925660_0001548123-24-000046.html,"string indices must be integers, not 'str'",
-../Data/10K/926423_0001437749-24-013973.html,true,
-../Data/10K/926617_0000926617-24-000015.html,true,
-../Data/10K/927653_0000927653-24-000035.html,'NoneType' object has no attribute 'group',
-../Data/10K/934796_0001214659-24-007929.html,true,
-../Data/10K/942126_0001185185-24-000345.html,true,
-../Data/10K/943535_0001493152-24-014665.html,true,
-../Data/10K/944480_0001140361-24-017131.html,true,
-../Data/10K/945617_0001903596-24-000282.html,"string indices must be integers, not 'str'",
-../Data/10K/946486_0001437749-24-012210.html,true,
-../Data/10K/946581_0001628280-24-024623.html,true,
-../Data/10K/946644_0001493152-24-012058.html,true,
-../Data/10K/95953_0000095953-24-000018.html,'NoneType' object has no attribute 'group',
-../Data/10K/99106_0001513162-24-000044.html,true,
-../Data/10K/99302_0001437749-24-018456.html,true,
+file,toc_parsed,html_parsed,toc_parsed_time,html_parsed_time
+../Data/10K/1606_CORP.-1877461-0001477932-24-002182.html,true,true,0.195674180984497,0.3025531768798828
+../Data/10K/1847_Holdings_LLC-1599407-0001213900-24-036197.html,true,true,0.9361193180084229,2.7749617099761963
+../Data/10K/1st_FRANKLIN_FINANCIAL_CORP-38723-0000038723-24-000047.html,true,true,0.8108878135681152,1.519373655319214
+../Data/10K/23andMe_Holding_Co.-1804591-0001804591-24-000038.html,true,true,0.7174074649810791,1.873319149017334
+../Data/10K/4Front_Ventures_Corp.-1783875-0001628280-24-016208.html,true,'NoneType' object has no attribute 'next',0.6439619064331055,
+"../Data/10K/60_DEGREES_PHARMACEUTICALS,_INC.-1946563-0001213900-24-028577.html",true,true,0.7756667137145996,3.157589197158813
+../Data/10K/99_Acquisition_Group_Inc.-1950429-0001213900-24-030594.html,true,true,0.3701155185699463,1.0488369464874268
+"../Data/10K/AB_Commercial_Real_Estate_Private_Debt_Fund,_LLC-1876255-0001193125-24-083290.html",true,true,0.5615625381469727,2.232483148574829
+../Data/10K/Acasti_Pharma_Inc.-1444192-0000950170-24-075875.html,true,true,0.6797981262207031,2.7964115142822266
+"../Data/10K/Accolade,_Inc.-1481646-0001481646-24-000020.html",'NoneType' object has no attribute 'group',,,
+"../Data/10K/Acorda_Therapeutics,_Inc.-1008848-0000950170-24-039464.html",true,true,0.774181604385376,3.0745959281921387
+"../Data/10K/Acreage_Holdings,_Inc.-1762359-0001762359-24-000023.html",true,true,0.7503995895385742,2.241994857788086
+"../Data/10K/Acutus_Medical,_Inc.-1522860-0001628280-24-014036.html",'NoneType' object has no attribute 'group',,,
+"../Data/10K/ADIAL_PHARMACEUTICALS,_INC.-1513525-0001213900-24-028701.html",true,true,0.5647971630096436,1.5573177337646484
+"../Data/10K/Aditxt,_Inc.-1726711-0001213900-24-033466.html",true,true,0.921454668045044,3.4349899291992188
+"../Data/10K/ADM_ENDEAVORS,_INC.-1588014-0001493152-24-014869.html",true,true,0.4021365642547607,1.0685768127441406
+"../Data/10K/ADVANCED_DRAINAGE_SYSTEMS,_INC.-1604028-0001604028-24-000011.html",true,true,0.6918158531188965,1.9785869121551514
+../Data/10K/Aerkomm_Inc.-1590496-0001213900-24-040309.html,true,true,0.9292171001434326,3.8275578022003174
+../Data/10K/AERWINS_Technologies_Inc.-1855631-0001493152-24-017204.html,true,true,0.7394015789031982,3.5305280685424805
+../Data/10K/Aetherium_Acquisition_Corp-1866547-0001493152-24-014895.html,true,true,0.5552108287811279,1.115473985671997
+../Data/10K/African_Agriculture_Holdings_Inc.-1848898-0001213900-24-033098.html,true,true,0.6402633190155029,1.9289650917053223
+../Data/10K/Agape_ATP_Corp-1713210-0001493152-24-012467.html,true,true,0.5774240493774414,2.2139294147491455
+../Data/10K/AgEagle_Aerial_Systems_Inc.-8504-0001493152-24-012100.html,true,true,0.9589569568634032,3.9008028507232666
+../Data/10K/AGILYSYS_INC-78749-0000950170-24-063222.html,true,true,0.959848403930664,3.6594347953796387
+../Data/10K/AGRIFORCE_GROWING_SYSTEMS_LTD.-1826397-0001493152-24-012418.html,true,true,0.8781576156616211,2.8500680923461914
+../Data/10K/Agrify_Corp-1800637-0001213900-24-033048.html,true,'NoneType' object has no attribute 'next',1.0817296504974363,
+"../Data/10K/Aileron_Therapeutics,_Inc.-1420565-0000950170-24-044508.html",true,true,0.7637674808502197,2.269505500793457
+../Data/10K/Aimfinity_Investment_Corp._I-1903464-0001213900-24-032604.html,"string indices must be integers, not 'str'",,,
+../Data/10K/AIM_ImmunoTech_Inc.-946644-0001493152-24-012058.html,true,true,0.6809344291687012,2.636256694793701
+../Data/10K/Aircastle_LTD-1362988-0001628280-24-018039.html,true,true,0.5047283172607422,1.8215141296386719
+"../Data/10K/Airship_AI_Holdings,_Inc.-1842566-0001654954-24-004059.html",true,'NoneType' object has no attribute 'next',0.4303696155548095,
+../Data/10K/AIR_INDUSTRIES_GROUP-1009891-0001213900-24-033018.html,true,true,0.4583067893981933,1.3660478591918945
+../Data/10K/AIR_T_INC-353184-0000353184-24-000062.html,true,true,0.5239980220794678,2.260420799255371
+"../Data/10K/AiXin_Life_International,_Inc.-835662-0001493152-24-013947.html",true,true,0.48085618019104,1.5679960250854492
+../Data/10K/AI_Transportation_Acquisition_Corp-1966734-0001493152-24-013272.html,Table of contents parsing probably went wrong,,,
+"../Data/10K/Alaunos_Therapeutics,_Inc.-1107421-0000950170-24-038868.html",'NoneType' object has no attribute 'group',,,
+"../Data/10K/Albertsons_Companies,_Inc.-1646972-0001646972-24-000060.html",true,true,0.6111092567443848,3.3553881645202637
+../Data/10K/Alchemy_Investments_Acquisition_Corp_1-1901336-0001410578-24-000490.html,true,true,0.3570795059204101,1.0192699432373047
+../Data/10K/ALIXO-YOLLOO_CORP.-1977837-0001977837-24-000012.html,Table of contents without links not supported yet,,,
+"../Data/10K/ALLEGRO_MICROSYSTEMS,_INC.-866291-0000950170-24-063770.html",true,true,1.0332720279693604,3.3517069816589355
+../Data/10K/ALPHATIME_ACQUISITION_CORP-1889106-0001493152-24-014684.html,true,true,0.4564290046691894,1.668182134628296
+../Data/10K/AlphaVest_Acquisition_Corp.-1937891-0001493152-24-014881.html,true,true,0.6348617076873779,1.4631147384643555
+../Data/10K/Alpha_Investment_Inc.-1616736-0001515971-24-000038.html,true,true,0.1996872425079345,0.8796899318695068
+../Data/10K/Alset_Inc.-1750106-0001493152-24-012509.html,true,true,1.0644686222076416,5.313549757003784
+../Data/10K/AltEnergy_Acquisition_Corp-1852016-0001193125-24-097784.html,true,true,0.4782028198242187,1.681917667388916
+"../Data/10K/Alternus_Clean_Energy,_Inc.-1883984-0001213900-24-033052.html",true,true,1.0784640312194824,4.223989009857178
+"../Data/10K/AMERICAN_BATTERY_MATERIALS,_INC.-1487718-0001213900-24-028635.html",true,true,0.417964220046997,1.5864503383636475
+"../Data/10K/American_Cannabis_Company,_Inc.-945617-0001903596-24-000282.html","string indices must be integers, not 'str'",,,
+../Data/10K/AMERICAN_HONDA_FINANCE_CORP-864270-0000864270-24-000003.html,true,true,0.8256561756134033,2.1266331672668457
+../Data/10K/AMERICAN_REBEL_HOLDINGS_INC-1648087-0001493152-24-014473.html,true,true,0.5761892795562744,3.0779199600219727
+../Data/10K/American_Resources_Corp-1590715-0001477932-24-002122.html,true,true,0.5397789478302002,1.4805705547332764
+../Data/10K/AMERICAN_SHARED_HOSPITAL_SERVICES-744825-0001437749-24-010308.html,true,true,0.5059006214141846,1.7546825408935547
+../Data/10K/American_Strategic_Investment_Co.-1595527-0001595527-24-000006.html,true,true,0.5822536945343018,2.0883467197418213
+../Data/10K/AMERICAN_WOODMARK_CORP-794619-0000794619-24-000057.html,true,true,0.429556131362915,1.748852252960205
+"../Data/10K/AMERIGUARD_SECURITY_SERVICES,_INC.-1514443-0001829126-24-002229.html",true,true,0.1748168468475341,0.7084441184997559
+"../Data/10K/Ameritek_Ventures,_Inc.-1530185-0001376474-24-000150.html",Table of contents parsing probably went wrong,,,
+"../Data/10K/Ameri_Metro,_Inc._(formerly_Yellowwood)-1534155-0001213900-24-035114.html",true,'NoneType' object has no attribute 'next',0.0878465175628662,
+"../Data/10K/Ameri_Metro,_Inc._(formerly_Yellowwood)-1534155-0001213900-24-035125.html",true,'NoneType' object has no attribute 'next',0.0624182224273681,
+"../Data/10K/AMMO,_INC.-1015383-0001493152-24-023731.html",'NoneType' object has no attribute 'group',,,
+"../Data/10K/AmpliTech_Group,_Inc.-1518461-0001493152-24-012177.html",true,true,0.5982580184936523,2.9358654022216797
+../Data/10K/Anterix_Inc.-1304492-0001304492-24-000077.html,true,true,0.8535747528076172,1.2337415218353271
+../Data/10K/Antiaging_Quantum_Living_Inc.-1672571-0001493152-24-014576.html,true,true,0.2578387260437011,0.8328814506530762
+"../Data/10K/ANVI_GLOBAL_HOLDINGS,_INC.-1570132-0001079973-24-000814.html",true,true,0.1158356666564941,0.5341062545776367
+"../Data/10K/APOGEE_ENTERPRISES,_INC.-6845-0000006845-24-000088.html",true,true,0.8028721809387207,2.7703232765197754
+../Data/10K/Apollo_Infrastructure_Co_LLC-1971381-0001193125-24-083600.html,true,true,0.6596674919128418,3.344360113143921
+"../Data/10K/Apple_iSports_Group,_Inc.-1134982-0001477932-24-002287.html",'NoneType' object has no attribute 'group',,,
+"../Data/10K/Applied_UV,_Inc.-1811109-0001213900-24-033517.html",true,true,0.9544837474822998,4.667826414108276
+"../Data/10K/Appsoft_Technologies,_Inc.-1651992-0001477932-24-001977.html",'NoneType' object has no attribute 'group',,,
+../Data/10K/AppTech_Payments_Corp.-1070050-0001683168-24-002017.html,true,'NoneType' object has no attribute 'next',0.5450582504272461,
+"../Data/10K/APPYEA,_INC-1568969-0001493152-24-012283.html",true,true,0.8194694519042969,1.8407618999481201
+../Data/10K/AQUABOUNTY_TECHNOLOGIES_INC-1603978-0001603978-24-000013.html,true,true,0.7249219417572021,1.4619622230529785
+../Data/10K/Aquaron_Acquisition_Corp.-1861063-0001213900-24-039767.html,true,true,0.5626344680786133,1.334805965423584
+../Data/10K/Arax_Holdings_Corp-1566243-0001753926-24-000855.html,true,true,0.4294791221618652,0.7204039096832275
+"../Data/10K/Arena_Group_Holdings,_Inc.-894871-0001493152-24-012368.html",true,true,1.2422385215759275,3.2040419578552246
+../Data/10K/ARGAN_INC-100591-0001558370-24-004979.html,true,true,0.9853477478027344,1.7744522094726562
+../Data/10K/Arogo_Capital_Acquisition_Corp.-1881741-0001213900-24-041641.html,true,true,0.3939149379730224,1.0516939163208008
+../Data/10K/Arrowroot_Acquisition_Corp.-1835972-0001213900-24-028818.html,true,true,0.9570558071136476,1.8061389923095703
+../Data/10K/Artificial_Intelligence_Technology_Solutions_Inc.-1498148-0001493152-24-021634.html,true,true,1.616459608078003,4.122287034988403
+../Data/10K/ARVANA_INC-1113313-0001607062-24-000118.html,Table of contents without links not supported yet,,,
+../Data/10K/ASCENT_INDUSTRIES_CO.-95953-0000095953-24-000018.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/Aspen-1_Acquisition_Inc.-1918080-0001213900-24-028664.html,true,true,0.1645965576171875,0.39252805709838867
+../Data/10K/Aspira_Women's_Health_Inc.-926617-0000926617-24-000015.html,true,true,0.8510265350341797,1.775923490524292
+../Data/10K/ASP_Isotopes_Inc.-1921865-0001477932-24-001964.html,true,true,0.8050718307495117,2.8944990634918213
+../Data/10K/Asset_Entities_Inc.-1920406-0001213900-24-029033.html,true,true,0.7010807991027832,1.8856656551361084
+../Data/10K/Assure_Holdings_Corp.-1798270-0001798270-24-000012.html,true,true,1.1848251819610596,3.0950286388397217
+"../Data/10K/Astra_Space,_Inc.-1814329-0000950170-24-045209.html",true,true,1.888777017593384,5.221997261047363
+"../Data/10K/AstroNova,_Inc.-8146-0000950170-24-043875.html",true,true,2.365008592605591,2.500601291656494
+"../Data/10K/AST_SpaceMobile,_Inc.-1780312-0000950170-24-039342.html",true,true,2.4070138931274414,2.844588279724121
+../Data/10K/ATLANTIC_AMERICAN_CORP-8177-0001140361-24-016971.html,true,true,2.024296998977661,4.444216251373291
+"../Data/10K/AtlasClear_Holdings,_Inc.-1963088-0001410578-24-000492.html",true,true,0.8052897453308105,1.0831997394561768
+"../Data/10K/ATOSSA_THERAPEUTICS,_INC.-1488039-0000950170-24-039306.html",true,true,1.0639681816101074,1.9676110744476318
+../Data/10K/AUDDIA_INC.-1554818-0001683168-24-002035.html,true,true,0.6831667423248291,1.7952032089233398
+"../Data/10K/Ault_Alliance,_Inc.-896493-0001214659-24-006963.html",true,'NoneType' object has no attribute 'next',2.2946667671203613,
+../Data/10K/Ault_Disruptive_Technologies_Corp-1864032-0001214659-24-006651.html,true,true,0.4227406978607178,1.2253365516662598
+../Data/10K/AURA_SYSTEMS_INC-826253-0001213900-24-049745.html,true,true,0.8149945735931396,1.4591012001037598
+"../Data/10K/Authentic_Holdings,_Inc.-1338929-0001477932-24-003655.html",true,true,0.5468916893005371,1.0062363147735596
+"../Data/10K/Autodesk,_Inc.-769397-0000769397-24-000090.html",true,true,1.5672407150268557,4.538812160491943
+"../Data/10K/Autonomix_Medical,_Inc.-1617867-0001437749-24-018932.html",true,true,0.715458869934082,1.8501262664794922
+../Data/10K/Avalon_GloboCare_Corp.-1630212-0001213900-24-033023.html,true,true,1.3618371486663818,3.5646138191223145
+"../Data/10K/Avenir_Wellness_Solutions,_Inc.-1643301-0001477932-24-003092.html",true,'NoneType' object has no attribute 'next',1.160064935684204,
+"../Data/10K/AXIM_BIOTECHNOLOGIES,_INC.-1514946-0001096906-24-000864.html",true,true,0.9213812351226808,1.4927592277526855
+"../Data/10K/Ayala_Pharmaceuticals,_Inc.-1100397-0001493152-24-014822.html",true,true,0.9448626041412354,2.579770565032959
+"../Data/10K/AYRO,_Inc.-1086745-0001493152-24-012412.html",'NoneType' object has no attribute 'group',,,
+../Data/10K/AZZ_INC-8947-0000008947-24-000044.html,true,true,1.24895977973938,3.236301898956299
+"../Data/10K/B._Riley_Financial,_Inc.-1464790-0001628280-24-017512.html",true,true,1.727006196975708,4.184661865234375
+"../Data/10K/Backblaze,_Inc.-1462056-0001462056-24-000033.html",true,true,0.5402700901031494,2.0723555088043213
+"../Data/10K/Balance_Labs,_Inc.-1632121-0001493152-24-014644.html",true,true,0.7006311416625977,1.1348960399627686
+../Data/10K/BALTIC_INTERNATIONAL_USA_INC-918545-0000918545-24-000002.html,Table of contents not detected,,,
+../Data/10K/Bannix_Acquisition_Corp.-1845942-0001731122-24-000909.html,true,true,0.5951159000396729,1.3773245811462402
+"../Data/10K/Banzai_International,_Inc.-1826011-0000950170-24-039543.html",true,true,1.5440106391906738,3.8319947719573975
+"../Data/10K/Bark,_Inc.-1819574-0001819574-24-000025.html",true,true,0.7817442417144775,2.1196448802948
+"../Data/10K/BASANITE,_INC.-1448705-0001079973-24-000548.html",true,true,0.8556900024414062,1.6015031337738037
+../Data/10K/BATTALION_OIL_CORP-1282648-0001558370-24-004422.html,true,true,0.9664297103881836,3.0748467445373535
+../Data/10K/Bayview_Acquisition_Corp-1969475-0001493152-24-014840.html,true,true,0.4216535091400146,1.3967792987823486
+../Data/10K/Beam_Global-1398805-0001683168-24-002470.html,true,true,0.8129053115844727,1.4564473628997803
+../Data/10K/Bellevue_Life_Sciences_Acquisition_Corp.-1840425-0001193125-24-099137.html,true,true,0.4706711769104004,1.0973713397979736
+../Data/10K/Berenson_Acquisition_Corp._I-1869673-0001193125-24-151633.html,true,true,0.7494781017303467,1.874917984008789
+"../Data/10K/Bespoke_Extracts,_Inc.-1409197-0001213900-24-033935.html",true,true,0.5457742214202881,1.255709171295166
+../Data/10K/Better_Choice_Co_Inc.-1471727-0001493152-24-014436.html,true,true,0.8472316265106201,0.7051548957824707
+../Data/10K/Better_Home_&_Finance_Holding_Co-1835856-0001628280-24-015134.html,true,true,1.5394339561462402,4.772459506988525
+"../Data/10K/Beyond_Air,_Inc.-1641631-0001493152-24-025000.html",true,true,1.582279920578003,3.733942747116089
+../Data/10K/BF_Garden_Tax_Credit_Fund_IV_L.P.-913778-0001410578-24-001031.html,true,true,0.3833179473876953,1.1932971477508545
+../Data/10K/BIG_LOTS_INC-768835-0000768835-24-000026.html,'NoneType' object has no attribute 'group',,,
+"../Data/10K/Binah_Capital_Group,_Inc.-1953984-0001410578-24-000495.html",'NoneType' object has no attribute 'group',,,
+"../Data/10K/BIOADAPTIVES,_INC.-1575142-0001640334-24-000602.html",'NoneType' object has no attribute 'group',,,
+"../Data/10K/bioAffinity_Technologies,_Inc.-1712762-0001493152-24-012358.html",true,true,1.0523614883422852,2.261356830596924
+../Data/10K/BioCorRx_Inc.-1443863-0001477932-24-001705.html,true,'NoneType' object has no attribute 'next',0.8518328666687012,
+../Data/10K/BIOETHICS_LTD-894560-0001096906-24-000792.html,Table of contents parsing probably went wrong,,,
+"../Data/10K/BIOFORCE_NANOSCIENCES_HOLDINGS,_INC.-1310488-0001091818-24-000034.html",true,true,0.1626522541046142,0.3606252670288086
+"../Data/10K/BIOLARGO,_INC.-880242-0001437749-24-010394.html",true,true,0.9423985481262208,1.7567636966705322
+../Data/10K/BiomX_Inc.-1739174-0001213900-24-030053.html,true,true,0.9892354011535645,2.5605058670043945
+../Data/10K/BioNexus_Gene_Lab_Corp-1737523-0001477932-24-002151.html,true,true,0.922471523284912,1.6317272186279297
+"../Data/10K/BIORA_THERAPEUTICS,_INC.-1580063-0000950170-24-039423.html",true,true,1.2176101207733154,3.5885322093963623
+"../Data/10K/BIOREGENX,_INC.-1593184-0001683168-24-002317.html",true,true,0.4578502178192138,0.9124767780303955
+"../Data/10K/BioRestorative_Therapies,_Inc.-1505497-0001493152-24-012056.html",true,true,1.0156912803649902,2.180332660675049
+"../Data/10K/BioSig_Technologies,_Inc.-1530766-0001493152-24-014860.html",true,true,1.177656650543213,3.561721086502075
+../Data/10K/Biostax_Corp.-1559356-0001493152-24-014710.html,true,true,0.9713594913482666,2.3089702129364014
+../Data/10K/Bio_Essence_Corp-1723059-0001213900-24-032898.html,true,true,0.6082212924957275,0.8651382923126221
+../Data/10K/BIO_KEY_INTERNATIONAL_INC-1019034-0001437749-24-019357.html,true,true,1.0103154182434082,2.229653835296631
+../Data/10K/Bitcoin_Depot_Inc.-1901799-0000950170-24-044405.html,true,true,1.670539617538452,5.0693864822387695
+../Data/10K/Bitech_Technologies_Corp-1066764-0001493152-24-012444.html,true,true,0.6280357837677002,1.341383695602417
+../Data/10K/BLACKBERRY_Ltd-1070235-0001070235-24-000057.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/BLACKBOXSTOCKS_INC.-1567900-0001437749-24-010302.html,true,true,0.6206409931182861,1.3344500064849854
+"../Data/10K/BLACKSTAR_ENTERPRISE_GROUP,_INC.-1483646-0001065949-24-000044.html","string indices must be integers, not 'str'",,,
+../Data/10K/bleuacacia_ltd-1843370-0001140361-24-019913.html,true,true,0.6221699714660645,1.8852283954620361
+../Data/10K/Blockchain_Coinvestors_Acquisition_Corp._I-1873441-0001213900-24-033049.html,true,true,0.735893964767456,1.8373749256134033
+../Data/10K/BLUE_DOLPHIN_ENERGY_CO-793306-0001437749-24-010434.html,true,true,1.2275843620300293,3.8000402450561523
+"../Data/10K/Blue_Line_Protection_Group,_Inc.-1416697-0001493152-24-012110.html",true,true,0.4976377487182617,1.1613538265228271
+../Data/10K/Blue_Star_Foods_Corp.-1730773-0001493152-24-012503.html,true,true,1.167790174484253,3.112881660461426
+"../Data/10K/BLUM_HOLDINGS,_INC.-1996210-0001437749-24-012085.html",true,true,1.7063994407653809,4.389289617538452
+"../Data/10K/BM_Technologies,_Inc.-1725872-0001725872-24-000001.html",true,'NoneType' object has no attribute 'next',0.6638813018798828,
+"../Data/10K/Boot_Barn_Holdings,_Inc.-1610250-0001558370-24-008176.html",true,true,0.7063169479370117,2.3184523582458496
+../Data/10K/Booz_Allen_Hamilton_Holding_Corp-1443646-0001443646-24-000075.html,true,true,1.2440133094787598,2.9308574199676514
+../Data/10K/Borealis_Foods_Inc.-1852973-0001213900-24-032953.html,true,true,0.4145810604095459,1.2778830528259277
+../Data/10K/Boxabl_Inc.-1816937-0001493152-24-012367.html,true,true,1.1311657428741455,2.7319414615631104
+../Data/10K/BRAINSTORM_CELL_THERAPEUTICS_INC.-1137883-0001410578-24-000385.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/BranchOut_Food_Inc.-1962481-0001493152-24-012492.html,true,true,0.9318153858184814,2.593555450439453
+../Data/10K/Brand_Engagement_Network_Inc.-1838163-0001193125-24-083577.html,true,true,0.729517936706543,1.5384852886199951
+"../Data/10K/Braze,_Inc.-1676238-0001676238-24-000049.html",true,true,0.7851431369781494,2.4335477352142334
+../Data/10K/Breeze_Holdings_Acquisition_Corp.-1817640-0001213900-24-028925.html,true,true,0.7894337177276611,1.9852972030639648
+../Data/10K/BrewBilt_Brewing_Co-1399306-0001399306-24-000005.html,true,true,0.9353904724121094,2.224597454071045
+../Data/10K/Bright_Green_Corp-1886799-0001493152-24-014864.html,true,true,0.8055441379547119,1.7897872924804688
+"../Data/10K/Bright_Mountain_Media,_Inc.-1568385-0001628280-24-014146.html",true,true,0.9911136627197266,1.8762507438659668
+"../Data/10K/Broad_Street_Realty,_Inc.-764897-0000950170-24-039408.html",true,true,2.185465097427368,7.263486385345459
+"../Data/10K/brooqLy,_Inc.-1854526-0001477932-24-001718.html",true,true,0.3031370639801025,0.9566683769226074
+"../Data/10K/Brownie's_Marine_Group,_Inc-1166708-0001493152-24-018527.html",true,true,1.0408508777618408,2.0562973022460938
+../Data/10K/BROWN_FORMAN_CORP-14693-0000014693-24-000086.html,true,true,1.0842487812042236,3.1740822792053223
+../Data/10K/BTC_Digital_Ltd.-1796514-0001213900-24-032825.html,true,true,0.8813161849975586,1.9320850372314453
+"../Data/10K/BT_Brands,_Inc.-1718224-0001477932-24-001711.html",true,true,0.7003865242004395,1.766127586364746
+../Data/10K/BUCKLE_INC-885245-0000885245-24-000051.html,true,true,0.4003996849060058,1.297940969467163
+../Data/10K/BUILD-A-BEAR_WORKSHOP_INC-1113809-0001437749-24-012440.html,true,true,0.7692575454711914,1.636162519454956
+../Data/10K/Bukit_Jalil_Global_Acquisition_1_Ltd.-1956055-0001929980-24-000086.html,true,'NoneType' object has no attribute 'next',0.3939211368560791,
+"../Data/10K/BurgerFi_International,_Inc.-1723580-0001723580-24-000009.html",true,true,0.8528554439544678,2.5460715293884277
+../Data/10K/BurTech_Acquisition_Corp.-1871638-0001410578-24-000607.html,true,true,0.4360179901123047,0.7698922157287598
+../Data/10K/BURZYNSKI_RESEARCH_INSTITUTE_INC-724445-0001558370-24-008731.html,true,true,0.5651853084564209,1.05149507522583
+../Data/10K/byNordic_Acquisition_Corp-1801417-0001213900-24-029324.html,true,true,0.497218370437622,1.2169935703277588
+"../Data/10K/C-Bond_Systems,_Inc-1421636-0001213900-24-028789.html",true,true,0.8463952541351318,2.230344533920288
+"../Data/10K/C3.ai,_Inc.-1577526-0001628280-24-028786.html",true,'NoneType' object has no attribute 'next',0.8492302894592285,
+../Data/10K/Cactus_Acquisition_Corp._1_Ltd-1865861-0001193125-24-096274.html,true,true,0.6865861415863037,1.70088529586792
+../Data/10K/CALERES_INC-14707-0000014707-24-000012.html,'NoneType' object has no attribute 'group',,,
+"../Data/10K/CalEthos,_Inc.-1174891-0001493152-24-014061.html",true,true,0.7590210437774658,1.2884225845336914
+../Data/10K/CaliberCos_Inc.-1627282-0001627282-24-000039.html,true,true,1.0062050819396973,2.013016939163208
+../Data/10K/CANCER_CAPITAL_CORP-1130889-0001554795-24-000087.html,Table of contents without links not supported yet,,,
+../Data/10K/Canna-Global_Acquisition_Corp-1867443-0001493152-24-014877.html,"string indices must be integers, not 'str'",,,
+"../Data/10K/Cannabis_Sativa,_Inc.-1360442-0001096906-24-001118.html",true,'NoneType' object has no attribute 'next',0.4505460262298584,
+../Data/10K/Cannaisseur_Group_Inc.-1879270-0001185185-24-000386.html,true,true,0.5452322959899902,1.3029239177703857
+"../Data/10K/CANNAPHARMARX,_INC.-1081938-0001683168-24-003575.html",true,true,0.6847696304321289,1.3829295635223389
+../Data/10K/Cannonau_Corp.-1410187-0001017386-24-000074.html,true,true,0.2735357284545898,0.7075014114379883
+../Data/10K/Canoo_Inc.-1750153-0001628280-24-014075.html,true,true,1.0799007415771484,2.643754005432129
+../Data/10K/Canopy_Growth_Corp-1737927-0000950170-24-066240.html,true,true,3.363634824752808,13.52210283279419
+"../Data/10K/Cano_Health,_Inc.-1800682-0001628280-24-014114.html",true,'NoneType' object has no attribute 'next',1.5777056217193604,
+../Data/10K/Can_B_Corp-1509957-0001493152-24-014686.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/CAPITAL_SOUTHWEST_CORP-17313-0000017313-24-000022.html,true,true,2.208258628845215,10.684431314468384
+../Data/10K/Capri_Holdings_Ltd-1530721-0001530721-24-000041.html,'NoneType' object has no attribute 'group',,,
+"../Data/10K/Capstone_Green_Energy_Holdings,_Inc.-1009759-0001558370-24-009109.html",true,true,1.355236530303955,3.5657200813293457
+"../Data/10K/Cardio_Diagnostics_Holdings,_Inc.-1870144-0001079973-24-000480.html",true,true,0.5232009887695312,2.168008327484131
+../Data/10K/Carisma_Therapeutics_Inc.-1485003-0001485003-24-000005.html,true,true,0.4767763614654541,1.7897889614105225
+../Data/10K/CarMax_Auto_Owner_Trust_2020-3-1814294-0001814294-24-000028.html,Table of contents parsing probably went wrong,,,
+../Data/10K/CarMax_Auto_Owner_Trust_2020-4-1825300-0001825300-24-000028.html,Table of contents parsing probably went wrong,,,
+../Data/10K/CarMax_Auto_Owner_Trust_2021-1-1836214-0001836214-24-000028.html,Table of contents parsing probably went wrong,,,
+../Data/10K/CarMax_Auto_Owner_Trust_2021-2-1851375-0001851375-24-000028.html,Table of contents parsing probably went wrong,,,
+../Data/10K/CarMax_Auto_Owner_Trust_2021-3-1867436-0001867436-24-000030.html,Table of contents parsing probably went wrong,,,
+../Data/10K/CarMax_Auto_Owner_Trust_2021-4-1879747-0001879747-24-000029.html,Table of contents parsing probably went wrong,,,
+../Data/10K/CarMax_Auto_Owner_Trust_2022-1-1899236-0001899236-24-000028.html,Table of contents parsing probably went wrong,,,
+../Data/10K/CarMax_Auto_Owner_Trust_2022-2-1921745-0001921745-24-000028.html,Table of contents parsing probably went wrong,,,
+../Data/10K/CarMax_Auto_Owner_Trust_2022-3-1934479-0001934479-24-000028.html,Table of contents parsing probably went wrong,,,
+../Data/10K/CarMax_Auto_Owner_Trust_2022-4-1946521-0001946521-24-000028.html,Table of contents parsing probably went wrong,,,
+../Data/10K/CarMax_Auto_Owner_Trust_2023-1-1959426-0001959426-24-000028.html,Table of contents parsing probably went wrong,,,
+../Data/10K/CarMax_Auto_Owner_Trust_2023-2-1969339-0001969339-24-000029.html,Table of contents parsing probably went wrong,,,
+../Data/10K/CarMax_Auto_Owner_Trust_2023-3-1980857-0001980857-24-000028.html,Table of contents parsing probably went wrong,,,
+../Data/10K/CarMax_Auto_Owner_Trust_2023-4-1995430-0001995430-24-000028.html,Table of contents parsing probably went wrong,,,
+../Data/10K/CarMax_Auto_Owner_Trust_2024-1-2003263-0002003263-24-000024.html,Table of contents parsing probably went wrong,,,
+../Data/10K/CARMAX_INC-1170010-0001170010-24-000034.html,true,true,0.7481532096862793,3.201972007751465
+../Data/10K/Carmell_Corp-1842939-0000950170-24-038992.html,Table of contents without links not supported yet,,,
+../Data/10K/Cartica_Acquisition_Corp-1848437-0001410578-24-000374.html,"string indices must be integers, not 'str'",,,
+../Data/10K/CASEYS_GENERAL_STORES_INC-726958-0000726958-24-000046.html,true,true,0.239342451095581,1.1695446968078613
+../Data/10K/Catcha_Investment_Corp-1838293-0001213900-24-053321.html,true,true,0.5598840713500977,2.0262439250946045
+"../Data/10K/Catheter_Precision,_Inc.-1716621-0001654954-24-003964.html",true,true,0.7054851055145264,2.1504642963409424
+../Data/10K/CAVCO_INDUSTRIES_INC.-278166-0000278166-24-000059.html,true,true,0.5769689083099365,1.454590082168579
+"../Data/10K/Cell_Source,_Inc.-1569340-0001493152-24-024903.html",true,true,0.8674285411834717,3.97521710395813
+../Data/10K/Cenntro_Inc.-1707919-0001140361-24-016853.html,true,true,1.389303207397461,4.8434247970581055
+"../Data/10K/Central_Plains_Bancshares,_Inc.-1979332-0000950170-24-076246.html",true,true,1.5836994647979736,5.311980485916138
+"../Data/10K/Cepton,_Inc.-1498233-0001498233-24-000021.html",true,true,0.3513936996459961,2.047194480895996
+"../Data/10K/CERO_THERAPEUTICS_HOLDINGS,_INC.-1870404-0001213900-24-029051.html",true,true,0.939544916152954,2.827667236328125
+../Data/10K/CFN_Enterprises_Inc.-1352952-0001096906-24-000789.html,true,true,0.4296979904174804,1.137993574142456
+"../Data/10K/ChargePoint_Holdings,_Inc.-1777393-0001777393-24-000052.html",true,true,0.5729930400848389,2.432760238647461
+"../Data/10K/Charlie's_Holdings,_Inc.-1134765-0001437749-24-012061.html",Table of contents without links not supported yet,,,
+../Data/10K/CHASE_PACKAGING_CORP-1025771-0001477932-24-002131.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/Chenghe_Acquisition_I_Co.-1868269-0001410578-24-000456.html,true,true,0.4606444835662842,1.1319243907928467
+../Data/10K/CHESAPEAKE_GRANITE_WASH_TRUST-1524769-0001524769-24-000005.html,true,true,0.2038085460662841,1.050147294998169
+"../Data/10K/Chicken_Soup_for_the_Soul_Entertainment,_Inc.-1679063-0001558370-24-005371.html",true,true,0.8118155002593994,3.722055673599243
+"../Data/10K/Childrens_Place,_Inc.-1041859-0001628280-24-020436.html",true,true,0.4822967052459717,1.7595434188842773
+../Data/10K/Chilean_Cobalt_Corp.-1727255-0001683168-24-001989.html,true,true,0.446030855178833,1.6458377838134766
+"../Data/10K/CHINA_CHANGJIANG_MINING_&_NEW_ENERGY_COMPANY,_LTD.-29952-0001683168-24-002246.html",true,true,0.1617586612701416,0.7684643268585205
+../Data/10K/China_Foods_Holdings_Ltd.-1310630-0001493152-24-014708.html,true,true,0.4483692646026611,1.5228230953216553
+"../Data/10K/CHINA_PHARMA_HOLDINGS,_INC.-1106644-0001213900-24-028731.html",true,true,0.4336247444152832,1.78810453414917
+"../Data/10K/Chosen,_Inc.-1733443-0001410578-24-000418.html",true,true,0.4162600040435791,1.083010196685791
+../Data/10K/Chromocell_Therapeutics_Corp-1919246-0001753926-24-000740.html,true,true,0.5683071613311768,2.304046869277954
+../Data/10K/Churchill_Capital_Corp_VII-1828248-0001410578-24-000414.html,true,true,0.2803876399993896,1.0057964324951172
+"../Data/10K/Cidara_Therapeutics,_Inc.-1610618-0001610618-24-000041.html",true,true,0.8739604949951172,4.092054843902588
+"../Data/10K/CIM_Opportunity_Zone_Fund,_L.P.-1765107-0001765107-24-000019.html",true,true,0.4397854804992676,1.366525411605835
+../Data/10K/Cingulate_Inc.-1862150-0001493152-24-012159.html,true,true,0.7307088375091553,3.4444944858551025
+"../Data/10K/CIRRUS_LOGIC,_INC.-772406-0000772406-24-000031.html",true,true,0.489668607711792,1.836688756942749
+../Data/10K/CIRTRAN_CORP-813716-0001493152-24-015391.html,'NoneType' object has no attribute 'group',,,
+"../Data/10K/CISO_Global,_Inc.-1777319-0001493152-24-014818.html",true,true,0.5681240558624268,2.6220498085021973
+../Data/10K/Citigroup_Commercial_Mortgage_Trust_2012-GC8-1556811-0000950170-24-038794.html,Table of contents parsing probably went wrong,,,
+../Data/10K/CITIGROUP_COMMERCIAL_MORTGAGE_TRUST_2016-C3-1687605-0000950170-24-038790.html,Table of contents parsing probably went wrong,,,
+../Data/10K/CITIGROUP_COMMERCIAL_MORTGAGE_TRUST_2017-B1-1713393-0000950170-24-038796.html,true,true,0.0672011375427246,0.10794806480407715
+../Data/10K/Citi_Trends_Inc-1318484-0001558370-24-005294.html,true,true,0.4148845672607422,2.0390470027923584
+"../Data/10K/Clean_Energy_Technologies,_Inc.-1329606-0001493152-24-014897.html",true,true,0.6359496116638184,2.905191421508789
+../Data/10K/Clean_Vision_Corp-1391426-0001903596-24-000247.html,true,'NoneType' object has no attribute 'next',0.4764904975891113,
+../Data/10K/CLEARONE_INC-840715-0001753926-24-000656.html,true,true,0.877260684967041,2.9780476093292236
+../Data/10K/ClearSign_Technologies_Corp-1434524-0001558370-24-004441.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/Clever_Leaves_Holdings_Inc.-1819615-0001819615-24-000031.html,true,'NoneType' object has no attribute 'next',0.5884766578674316,
+"../Data/10K/CMG_HOLDINGS_GROUP,_INC.-1346655-0001017386-24-000088.html",Table of contents without links not supported yet,,,
+"../Data/10K/CNS_Pharmaceuticals,_Inc.-1729427-0001683168-24-002032.html",true,true,0.3701570034027099,1.4430794715881348
+../Data/10K/Coliseum_Acquisition_Corp.-1847440-0001410578-24-000437.html,true,true,0.2796273231506347,1.053271770477295
+../Data/10K/COLUMBUS_MCKINNON_CORP-1005229-0001005229-24-000166.html,true,'NoneType' object has no attribute 'next',0.7047779560089111,
+../Data/10K/COMMVAULT_SYSTEMS_INC-1169561-0001169561-24-000039.html,true,true,0.2528281211853027,1.5865771770477295
+../Data/10K/Compass_Digital_Acquisition_Corp.-1851909-0001493152-24-012485.html,true,true,0.4584262371063232,1.648402214050293
+"../Data/10K/Complete_Solaria,_Inc.-1838987-0001213900-24-028747.html",true,true,0.7312161922454834,3.5700933933258057
+../Data/10K/CONDUIT_PHARMACEUTICALS_INC.-1896212-0001493152-24-014889.html,'NoneType' object has no attribute 'group',,,
+"../Data/10K/Conifer_Holdings,_Inc.-1502292-0000950170-24-039426.html",'NoneType' object has no attribute 'group',,,
+../Data/10K/CONNS_INC-1223389-0001223389-24-000028.html,true,'NoneType' object has no attribute 'next',0.880103588104248,
+"../Data/10K/CONSTELLATION_BRANDS,_INC.-16918-0000016918-24-000054.html",true,true,1.3989229202270508,4.38177490234375
+"../Data/10K/Container_Store_Group,_Inc.-1411688-0001628280-24-025287.html",true,true,0.6388852596282959,2.2639124393463135
+"../Data/10K/CorEnergy_Infrastructure_Trust,_Inc.-1347652-0001347652-24-000051.html",true,true,0.9091742038726808,2.71622633934021
+../Data/10K/Corner_Growth_Acquisition_Corp.-1829953-0001193125-24-083610.html,true,true,0.3254683017730713,1.677959680557251
+../Data/10K/CORNER_GROWTH_ACQUISITION_CORP._2-1847513-0001410578-24-000419.html,true,true,0.4522416591644287,1.131748914718628
+../Data/10K/Correlate_Energy_Corp.-1108645-0001477932-24-001631.html,true,true,0.5262541770935059,2.567394256591797
+../Data/10K/CORVEL_CORP-874866-0000950170-24-064645.html,true,true,0.7460176944732666,2.2134087085723877
+../Data/10K/Cosmos_Group_Holdings_Inc.-1706509-0001213900-24-033527.html,true,true,0.5979409217834473,2.732093334197998
+"../Data/10K/Coyni,_Inc.-768216-0001185185-24-000399.html",true,true,0.1357274055480957,0.6119298934936523
+../Data/10K/CPI_AEROSTRUCTURES_INC-889348-0001999371-24-004537.html,true,true,0.5053176879882812,1.2407946586608887
+../Data/10K/CQENS_Technologies_Inc.-1479915-0001493152-24-014570.html,true,true,0.3459193706512451,1.091033697128296
+../Data/10K/Creations_Inc-1795938-0001493152-24-014566.html,true,true,0.2140302658081054,1.145378589630127
+../Data/10K/Credo_Technology_Group_Holding_Ltd-1807794-0001628280-24-029629.html,true,true,0.4474353790283203,1.775059461593628
+../Data/10K/CROSS_TIMBERS_ROYALTY_TRUST-881787-0001193125-24-083456.html,true,true,0.3270881175994873,2.5436551570892334
+../Data/10K/Crown_Electrokinetics_Corp.-1761696-0001213900-24-028775.html,true,true,0.6906359195709229,3.6428864002227783
+"../Data/10K/Crown_Equity_Holdings,_Inc.-1103833-0001477932-24-002238.html",'NoneType' object has no attribute 'group',,,
+"../Data/10K/Crucial_Innovations,_Corp.-1766016-0001712543-24-000017.html",Table of contents without links not supported yet,,,
+"../Data/10K/Cryomass_Technologies,_Inc.-1533030-0001213900-24-052565.html",true,true,0.5260958671569824,1.3241028785705566
+../Data/10K/Crypto_Co-1688126-0001493152-24-014823.html,true,true,0.3319933414459228,1.0097801685333252
+../Data/10K/CSLM_ACQUISITION_CORP.-1875493-0001193125-24-083559.html,true,true,0.387451171875,1.5256006717681885
+"../Data/10K/CSW_INDUSTRIALS,_INC.-1624794-0001624794-24-000032.html",'NoneType' object has no attribute 'group',,,
+../Data/10K/Cuentas_Inc.-1424657-0001213900-24-032958.html,true,'NoneType' object has no attribute 'next',0.4544277191162109,
+../Data/10K/CUTERA_INC-1162461-0001628280-24-022628.html,true,true,0.945993185043335,4.017733335494995
+../Data/10K/CXApp_Inc.-1820875-0001829126-24-003713.html,true,true,0.6783761978149414,2.6657421588897705
+"../Data/10K/CXJ_GROUP_CO.,_Ltd-1823635-0001493152-24-017474.html",true,true,0.4778470993041992,1.3030123710632324
+../Data/10K/CYANOTECH_CORP-768408-0001437749-24-021266.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/Cyber_App_Solutions_Corp.-1851048-0001213900-24-028588.html,true,true,0.4676294326782226,2.027215003967285
+"../Data/10K/C_&_C_TOURS,_INC.-1430319-0001554795-24-000085.html",Table of contents without links not supported yet,,,
+"../Data/10K/Data443_Risk_Mitigation,_Inc.-1068689-0001493152-24-014964.html",true,true,0.7205073833465576,2.890285015106201
+../Data/10K/Data_Call_Technologies-1321828-0001493152-24-017421.html,'NoneType' object has no attribute 'group',,,
+"../Data/10K/Dave_&_Buster's_Entertainment,_Inc.-1525769-0001628280-24-014369.html",true,true,0.4437997341156006,1.2212471961975098
+../Data/10K/DAWSON_GEOPHYSICAL_CO-799165-0001558370-24-004547.html,true,true,0.5863223075866699,1.6028614044189453
+"../Data/10K/DecisionPoint_Systems,_Inc.-1505611-0001213900-24-028228.html",true,true,0.4336156845092773,1.9196326732635498
+../Data/10K/DECKERS_OUTDOOR_CORP-910521-0000910521-24-000017.html,true,true,0.5759050846099854,1.7171101570129395
+"../Data/10K/Deep_Green_Waste_&_Recycling,_Inc.-1637866-0001493152-24-015461.html",true,true,0.5057930946350098,2.4036693572998047
+../Data/10K/Denali_Capital_Acquisition_Corp.-1913577-0001213900-24-028809.html,"string indices must be integers, not 'str'",,,
+../Data/10K/Desert_Hawk_Gold_Corp.-1168081-0001213900-24-028585.html,true,true,0.2254035472869873,0.9109690189361572
+../Data/10K/DIGIASIA_CORP.-1844981-0001213900-24-033508.html,true,true,0.4341278076171875,1.6791832447052002
+"../Data/10K/DIGITAL_ALLY,_INC.-1342958-0001493152-24-012365.html",true,true,0.823270320892334,3.26250958442688
+"../Data/10K/Digital_Brands_Group,_Inc.-1668010-0001104659-24-047365.html",true,true,0.6732256412506104,2.0300614833831787
+../Data/10K/DIGITAL_HEALTH_ACQUISITION_CORP.-1864531-0001104659-24-046607.html,'NoneType' object has no attribute 'group',,,
+"../Data/10K/Digital_Media_Solutions,_Inc.-1725134-0001628280-24-016708.html",true,true,0.7304234504699707,3.3256354331970215
+"../Data/10K/Digital_Turbine,_Inc.-317788-0001628280-24-025455.html",true,true,0.5156066417694092,2.293675422668457
+"../Data/10K/DIH_HOLDING_US,_INC.-1883788-0001493152-24-017073.html",true,true,0.5970818996429443,1.9022104740142822
+../Data/10K/Direct_Selling_Acquisition_Corp.-1871745-0001193125-24-083603.html,true,true,0.2950410842895508,1.3350586891174316
+../Data/10K/DISH_DBS_CORP-1042642-0001558370-24-004539.html,true,true,0.9885985851287842,2.4182631969451904
+../Data/10K/Distoken_Acquisition_Corp-1818605-0001410578-24-000498.html,true,true,0.4175631999969482,1.0365540981292725
+../Data/10K/DIVALL_INSURED_INCOME_PROPERTIES_2_LIMITED_PARTNERSHIP-825788-0001493152-24-012244.html,true,true,0.2122254371643066,0.9559807777404785
+"../Data/10K/dMY_Squared_Technology_Group,_Inc.-1915380-0001193125-24-082820.html",true,true,0.5288794040679932,1.5554163455963135
+"../Data/10K/Dolphin_Entertainment,_Inc.-1282224-0001079973-24-000452.html",true,true,0.5817298889160156,2.2927916049957275
+"../Data/10K/Doma_Holdings,_Inc.-1722438-0001437749-24-010388.html",true,true,0.9455208778381348,4.786146879196167
+../Data/10K/Dominari_Holdings_Inc.-12239-0001213900-24-028218.html,true,true,0.7130465507507324,3.20170259475708
+../Data/10K/DORIAN_LPG_LTD.-1596993-0001596993-24-000030.html,true,true,1.038252592086792,4.472564935684204
+"../Data/10K/Doximity,_Inc.-1516513-0001516513-24-000035.html",true,true,0.6138343811035156,3.2972371578216553
+../Data/10K/Dragonfly_Energy_Holdings_Corp.-1847986-0001493152-24-014831.html,true,true,0.7940635681152344,4.460210084915161
+"../Data/10K/Dror_Ortho-Design,_Inc.-1282980-0001213900-24-028793.html",true,true,0.530280590057373,2.5015249252319336
+../Data/10K/DUET_Acquisition_Corp.-1890671-0001493152-24-012289.html,true,true,0.5084435939788818,1.7901406288146973
+"../Data/10K/DUOS_TECHNOLOGIES_GROUP,_INC.-1396536-0001079973-24-000473.html",true,true,0.613588809967041,3.338792562484741
+../Data/10K/DXC_Technology_Co-1688568-0001688568-24-000032.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/Dynamic_Shares_Trust-1771951-0001493152-24-012285.html,true,true,0.2558777332305908,1.74131178855896
+../Data/10K/DYNARESOURCE_INC-1111741-0000950170-24-044527.html,true,'NoneType' object has no attribute 'next',1.014608383178711,
+"../Data/10K/Dynatrace,_Inc.-1773383-0001773383-24-000076.html",true,true,0.5159440040588379,3.231536626815796
+"../Data/10K/e.l.f._Beauty,_Inc.-1600033-0001600033-24-000020.html",true,true,0.6343014240264893,2.197733163833618
+"../Data/10K/E2open_Parent_Holdings,_Inc.-1800347-0000950170-24-049948.html",true,true,1.4188740253448486,9.117339372634888
+../Data/10K/EAGLE_MATERIALS_INC-918646-0000950170-24-063523.html,true,true,1.2937242984771729,7.847584009170532
+"../Data/10K/Eastside_Distilling,_Inc.-1534708-0001493152-24-012410.html",true,true,0.2922544479370117,2.4800846576690674
+"../Data/10K/ECD_Automotive_Design,_Inc.-1922858-0001213900-24-039311.html",true,true,0.9488110542297364,3.555600881576538
+"../Data/10K/Edgemode,_Inc.-1652958-0001683168-24-002725.html",true,true,0.3613545894622803,2.5840916633605957
+../Data/10K/Edible_Garden_AG_Inc-1809750-0001477932-24-001638.html,true,true,0.4551868438720703,3.0652964115142822
+../Data/10K/EDUCATIONAL_DEVELOPMENT_CORP-31667-0001185185-24-000577.html,true,true,0.4258041381835937,1.648047924041748
+"../Data/10K/Eiger_BioPharmaceuticals,_Inc.-1305253-0001628280-24-015297.html",true,'NoneType' object has no attribute 'next',0.2804672718048095,
+../Data/10K/Eightco_Holdings_Inc.-1892492-0001493152-24-012608.html,true,true,0.7417724132537842,4.331960916519165
+../Data/10K/Elastic_N.V.-1707753-0001707753-24-000014.html,true,true,0.5298538208007812,3.779590606689453
+"../Data/10K/Electromedical_Technologies,_Inc-1715819-0001410578-24-000581.html","string indices must be integers, not 'str'",,,
+../Data/10K/ELECTRONIC_ARTS_INC.-712515-0000712515-24-000023.html,'NoneType' object has no attribute 'group',,,
+"../Data/10K/Electronic_Servitor_Publication_Network,_Inc.-1709542-0001683168-24-002022.html",true,true,0.3880558013916015,1.3028719425201416
+../Data/10K/Elite_Performance_Holding_Corp-1753681-0001477932-24-002748.html,true,true,0.2426939010620117,1.4464209079742432
+"../Data/10K/Elvictor_Group,_Inc.-1741489-0001213900-24-028567.html",true,true,0.3966577053070068,1.7255074977874756
+../Data/10K/ENDI_Corp.-1908984-0001493152-24-012465.html,true,true,0.5801615715026855,3.4689650535583496
+../Data/10K/Energy_&_Water_Development_Corp-1563298-0001079973-24-000601.html,true,true,0.4371185302734375,1.843337059020996
+../Data/10K/EnerSys-1289308-0001289308-24-000018.html,true,true,0.9190061092376708,6.2196362018585205
+"../Data/10K/ENNIS,_INC.-33002-0000950170-24-057691.html",true,true,0.7819108963012695,3.0948023796081543
+../Data/10K/Enphys_Acquisition_Corp.-1850502-0001140361-24-020059.html,true,true,0.6146254539489746,2.674856185913086
+"../Data/10K/Envoy_Medical,_Inc.-1840877-0001213900-24-028894.html",true,true,0.6358158588409424,4.267929315567017
+../Data/10K/EOS_INC.-1651958-0001575872-24-000359.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/EPLUS_INC-1022408-0001140361-24-027200.html,true,true,1.0741589069366455,6.087707996368408
+"../Data/10K/EQUUS_TOTAL_RETURN,_INC.-878932-0001712543-24-000005.html",true,true,0.2931203842163086,3.560756206512451
+../Data/10K/ESH_Acquisition_Corp.-1918661-0001213900-24-028868.html,true,true,0.5253753662109375,1.2740874290466309
+../Data/10K/ETHEMA_HEALTH_Corp-792935-0001903596-24-000279.html,true,true,0.5173454284667969,2.4630179405212402
+../Data/10K/Eva_Live_Inc-1983736-0001493152-24-014165.html,true,true,0.3937914371490478,1.1253621578216553
+../Data/10K/Everest_Consolidator_Acquisition_Corp-1863719-0001410578-24-000472.html,true,true,0.4257605075836181,1.2880909442901611
+"../Data/10K/Everything_Blockchain,_Inc.-1730869-0001477932-24-002949.html",true,true,0.4802091121673584,1.992950677871704
+../Data/10K/EVOME_MEDICAL_TECHNOLOGIES_INC.-1617765-0001062993-24-008449.html,Table of contents parsing probably went wrong,,,
+../Data/10K/ExchangeRight_Income_Fund-1771514-0000950170-24-043546.html,'NoneType' object has no attribute 'group',,,
+"../Data/10K/Exela_Technologies,_Inc.-1620179-0001558370-24-004674.html",true,true,1.2548258304595947,4.689947128295898
+"../Data/10K/EXICURE,_INC.-1698530-0001698530-24-000051.html",true,true,0.2919797897338867,1.6627237796783447
+../Data/10K/Ezagoo_Ltd-1752372-0001493152-24-013755.html,true,true,1.1009836196899414,1.1622529029846191
+../Data/10K/EzFill_Holdings_Inc-1817004-0001493152-24-012378.html,"string indices must be integers, not 'str'",,,
+"../Data/10K/Falcon's_Beyond_Global,_Inc.-1937987-0001213900-24-036854.html",true,true,1.00364089012146,3.7998504638671875
+../Data/10K/FARADAY_FUTURE_INTELLIGENT_ELECTRIC_INC.-1805521-0001628280-24-025420.html,true,true,0.9214019775390624,4.08618950843811
+../Data/10K/Fathom_Digital_Manufacturing_Corp-1836176-0000950170-24-044851.html,'NoneType' object has no attribute 'group',,,
+"../Data/10K/FingerMotion,_Inc.-1602409-0001520138-24-000219.html",true,true,0.692716121673584,2.3651282787323
+../Data/10K/Finnovate_Acquisition_Corp.-1857855-0001493152-24-012498.html,true,true,0.2816364765167236,1.5542194843292236
+../Data/10K/Fintech_Scion_Ltd-1623590-0001753926-24-000688.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/FIRST_CAPITAL_INTERNATIONAL_INC-1072842-0001185185-24-000346.html,true,true,0.2547223567962646,0.784121036529541
+"../Data/10K/First_Choice_Healthcare_Solutions,_Inc.-1416876-0001493152-24-018817.html",true,true,0.9763410091400146,4.18205714225769
+../Data/10K/FLEXIBLE_SOLUTIONS_INTERNATIONAL_INC-1069394-0001493152-24-012435.html,Table of contents parsing probably went wrong,,,
+../Data/10K/FLEXPOINT_SENSOR_SYSTEMS_INC-925660-0001548123-24-000046.html,"string indices must be integers, not 'str'",,,
+"../Data/10K/FlexShopper,_Inc.-1397047-0001213900-24-028705.html",true,true,0.8830447196960449,3.1524200439453125
+../Data/10K/FLEX_LTD.-866374-0000866374-24-000021.html,true,'NoneType' object has no attribute 'next',0.637622594833374,
+"../Data/10K/Fluent,_Inc.-1460329-0001437749-24-010639.html",true,true,0.5835459232330322,1.6818780899047852
+../Data/10K/FLYEXCLUSIVE_INC.-1843973-0001628280-24-019447.html,true,true,0.5827867984771729,2.6207637786865234
+../Data/10K/Focus_Impact_Acquisition_Corp.-1854480-0001140361-24-018430.html,true,true,0.542593240737915,1.844022274017334
+../Data/10K/Focus_Impact_BH3_Acquisition_Co-1851612-0001140361-24-021328.html,true,true,0.5367152690887451,2.0704994201660156
+../Data/10K/FOCUS_UNIVERSAL_INC.-1590418-0001683168-24-001995.html,true,true,0.5582692623138428,2.5668563842773438
+../Data/10K/FORGE_INNOVATION_DEVELOPMENT_CORP.-1687919-0001493152-24-014817.html,true,true,0.3417582511901855,1.0533459186553955
+../Data/10K/Fortune_Rise_Acquisition_Corp-1849294-0001683168-24-002016.html,true,true,0.2375431060791015,1.1934940814971924
+"../Data/10K/Fortune_Valley_Treasures,_Inc.-1626745-0001493152-24-014607.html",true,true,0.74723219871521,2.8849849700927734
+../Data/10K/Four_Leaf_Acquisition_Corp-1936255-0001193125-24-083637.html,true,true,0.4321410655975342,1.459366798400879
+../Data/10K/FOXO_TECHNOLOGIES_INC.-1812360-0001213900-24-050377.html,true,true,0.7017381191253662,3.0694997310638428
+"../Data/10K/FRACTYL_HEALTH,_INC.-1572616-0000950170-24-038866.html",true,true,0.8456215858459473,2.948057174682617
+../Data/10K/Freedom_Holding_Corp.-924805-0000924805-24-000041.html,true,'NoneType' object has no attribute 'next',1.2586078643798828,
+"../Data/10K/Freeze_Tag,_Inc.-1485074-0001477932-24-001717.html",true,true,0.2706124782562256,1.3032200336456299
+"../Data/10K/Free_Flow,_Inc.-1543652-0001096906-24-000682.html",true,'NoneType' object has no attribute 'next',0.5184948444366455,
+../Data/10K/FRIEDMAN_INDUSTRIES_INC-39092-0001437749-24-019948.html,Table of contents parsing probably went wrong,,,
+../Data/10K/Frontier_Balanced_Fund-1389122-0001213900-24-028573.html,true,true,3.110663414001465,76.16908597946167
+../Data/10K/Frontier_Diversified_Fund-1450720-0001213900-24-028573.html,true,true,3.903384923934937,77.65332269668579
+../Data/10K/Frontier_Funds-1261379-0001213900-24-028573.html,true,true,4.164127588272095,74.24179577827454
+../Data/10K/Frontier_Global_Fund-1389124-0001213900-24-028573.html,true,true,4.115251779556274,76.05365037918091
+../Data/10K/Frontier_Heritage_Fund-1389123-0001213900-24-028573.html,true,true,4.700551986694336,75.37662625312805
+../Data/10K/Frontier_Masters_Fund-1450722-0001213900-24-028573.html,true,true,4.186514139175415,76.19419956207275
+../Data/10K/Frontier_Select_Fund-1389125-0001213900-24-028573.html,true,true,4.266582012176514,75.55182361602783
+../Data/10K/FULLNET_COMMUNICATIONS_INC-1092570-0001376474-24-000151.html,true,true,0.2009394168853759,0.7528848648071289
+../Data/10K/FutureTech_II_Acquisition_Corp.-1889450-0001493152-24-013334.html,true,true,0.2002372741699218,0.8638756275177002
+../Data/10K/Future_FinTech_Group_Inc.-1066923-0001213900-24-033265.html,true,true,0.4577970504760742,3.465965747833252
+"../Data/10K/GameSquare_Holdings,_Inc.-1714562-0001493152-24-014809.html",true,true,1.947798728942871,2.731525421142578
+"../Data/10K/Gaucho_Group_Holdings,_Inc.-1559998-0001493152-24-017110.html",true,true,1.0892767906188965,4.247670412063599
+../Data/10K/GBT_Technologies_Inc.-1471781-0001731122-24-000657.html,true,true,0.642864465713501,2.134472131729126
+../Data/10K/GD_Culture_Group_Ltd-1641398-0001213900-24-029042.html,true,true,0.8402352333068848,2.5845959186553955
+"../Data/10K/General_Enterprise_Ventures,_Inc.-894556-0001640334-24-000667.html",true,true,0.3354785442352295,1.522075891494751
+../Data/10K/GENERAL_MILLS_INC-40704-0001193125-24-168943.html,Table of contents not detected,,,
+"../Data/10K/Generations_Bancorp_NY,_Inc.-1823365-0001558370-24-004540.html",true,true,1.9516847133636477,7.34587836265564
+../Data/10K/Generation_Asia_I_Acquisition_Ltd-1852061-0000950170-24-039494.html,true,true,0.3354499340057373,1.584172248840332
+"../Data/10K/GENERATION_INCOME_PROPERTIES,_INC.-1651721-0000950170-24-042640.html",true,'NoneType' object has no attribute 'next',1.4868037700653076,
+"../Data/10K/Genprex,_Inc.-1595248-0001437749-24-010426.html",true,true,0.5653817653656006,2.104417562484741
+../Data/10K/Gen_Digital_Inc.-849399-0000849399-24-000036.html,true,true,0.6785135269165039,1.7021617889404297
+"../Data/10K/GEX_MANAGEMENT,_INC.-1681556-0001493152-24-015888.html",true,true,0.5644454956054688,2.111685276031494
+../Data/10K/GIVEMEPOWER_CORP-1064722-0001493152-24-015016.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/Glidelogic_Corp.-1848672-0001096906-24-001101.html,true,true,0.1260840892791748,0.5331974029541016
+../Data/10K/GLOBALINK_INVESTMENT_INC.-1888734-0001493152-24-012594.html,true,true,0.5270447731018066,1.7276017665863037
+../Data/10K/GlobalTech_Corp-1938338-0001477932-24-002146.html,true,true,0.6211066246032715,1.9607272148132324
+../Data/10K/Global_Blockchain_Acquisition_Corp.-1894951-0001213900-24-036621.html,true,true,0.4355049133300781,1.4597866535186768
+"../Data/10K/Global_Clean_Energy_Holdings,_Inc.-748790-0001628280-24-016428.html",'NoneType' object has no attribute 'group',,,
+../Data/10K/Global_Gas_Corp-1817232-0001213900-24-028142.html,true,true,0.5198428630828857,1.2524282932281494
+../Data/10K/Global_Lights_Acquisition_Corp-1897971-0001410578-24-000465.html,true,true,0.3658511638641357,0.8000948429107666
+../Data/10K/Global_Technology_Acquisition_Corp._I-1848821-0001193125-24-083404.html,true,true,0.6291251182556152,1.4595425128936768
+"../Data/10K/GLOBAL_TECH_INDUSTRIES_GROUP,_INC.-356590-0001493152-24-014777.html",true,true,0.5736193656921387,1.2247166633605957
+"../Data/10K/Global_Warming_Solutions,_Inc.-1430300-0001477932-24-003836.html",true,'NoneType' object has no attribute 'next',0.2198727130889892,
+../Data/10K/GMS_Inc.-1600438-0001628280-24-029139.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/Goal_Acquisitions_Corp.-1836100-0001493152-24-014887.html,true,true,0.5652196407318115,1.5697321891784668
+"../Data/10K/Gofba,_Inc.-1735092-0001477932-24-002174.html",'NoneType' object has no attribute 'group',,,
+../Data/10K/Goldenstone_Acquisition_Ltd.-1858007-0001213900-24-049138.html,true,true,0.5199129581451416,0.8615274429321289
+"../Data/10K/GOLDENWELL_BIOTECH,_INC.-1800373-0001477932-24-002028.html",'NoneType' object has no attribute 'group',,,
+../Data/10K/Gold_Flora_Corp.-1876945-0001876945-24-000033.html,true,true,0.9431970119476318,2.8904895782470703
+"../Data/10K/Goodness_Growth_Holdings,_Inc.-1771706-0001558370-24-004519.html",true,'NoneType' object has no attribute 'next',0.91164231300354,
+"../Data/10K/GOOD_GAMING,_INC.-1454742-0001493152-24-012092.html",Table of contents parsing probably went wrong,,,
+"../Data/10K/Go_Go_Buyers,_Inc.-1842563-0001842563-24-000015.html",Table of contents without links not supported yet,,,
+"../Data/10K/GPODS,_INC.-1748232-0001493152-24-016262.html",true,true,0.34429931640625,1.0365269184112549
+../Data/10K/GRAHAM_CORP-716314-0000950170-24-070222.html,true,true,1.524965763092041,4.731400966644287
+../Data/10K/GRANT_PARK_FUTURES_FUND_LIMITED_PARTNERSHIP-845698-0001558370-24-004466.html,true,true,2.873420476913452,5.456745147705078
+../Data/10K/GRAPHJET_TECHNOLOGY-1879373-0001493152-24-015564.html,true,true,0.8475081920623779,1.7969996929168701
+"../Data/10K/Greater_Cannabis_Company,_Inc.-1695473-0001493152-24-012098.html",true,true,0.3769011497497558,1.0830645561218262
+../Data/10K/Greenbrook_TMS_Inc.-1735948-0001104659-24-052140.html,true,true,1.6189978122711182,2.34848690032959
+../Data/10K/Greenidge_Generation_Holdings_Inc.-1844971-0001628280-24-015540.html,true,true,0.67578125,1.615488052368164
+../Data/10K/Greenland_Technologies_Holding_Corp.-1735041-0001213900-24-033426.html,true,true,1.0006518363952637,2.65447735786438
+"../Data/10K/Greenwave_Technology_Solutions,_Inc.-1589149-0001493152-24-014799.html",true,true,1.112879753112793,2.507722854614258
+"../Data/10K/Greenwich_LifeSciences,_Inc.-1799788-0001493152-24-014625.html",true,true,0.5026073455810547,1.8057012557983398
+"../Data/10K/GRESHAM_WORLDWIDE,_INC.-719274-0000950170-24-044482.html",true,true,1.6940364837646484,3.265188217163086
+../Data/10K/GRIID_Infrastructure_Inc.-1830029-0000950170-24-044534.html,true,true,1.1325440406799316,2.1521339416503906
+"../Data/10K/Grom_Social_Enterprises,_Inc.-1662574-0001683168-24-002468.html",true,true,1.4363272190093994,4.011169195175171
+"../Data/10K/Gryphon_Digital_Mining,_Inc.-1755953-0001213900-24-028732.html",true,true,1.394979476928711,3.432983636856079
+../Data/10K/GSE_SYSTEMS_INC-944480-0001140361-24-017131.html,true,true,1.4482014179229736,3.626387596130371
+../Data/10K/GSI_TECHNOLOGY_INC-1126741-0001558370-24-009139.html,true,true,1.026112079620361,2.7165887355804443
+../Data/10K/GUESS_INC-912463-0000912463-24-000029.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/GUOCHUN_INTERNATIONAL_INC.-1765048-0001765048-24-000010.html,Table of contents without links not supported yet,,,
+"../Data/10K/Gushen,_Inc-1639327-0001213900-24-048361.html",true,true,0.8970108032226562,2.5464117527008057
+../Data/10K/HAEMONETICS_CORP-313143-0000313143-24-000020.html,"string indices must be integers, not 'str'",,,
+../Data/10K/Hamilton_Lane_INC-1433642-0001433642-24-000064.html,true,true,1.0992271900177002,3.0934345722198486
+../Data/10K/Hapi_Metaverse_Inc.-1600347-0001493152-24-012424.html,true,true,0.72412109375,1.765167236328125
+../Data/10K/HARTE_HANKS_INC-45919-0000045919-24-000014.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/HAWKINS_INC-46250-0000046250-24-000013.html,true,true,0.6594109535217285,1.6382877826690674
+../Data/10K/HCW_Biologics_Inc.-1828673-0000950170-24-039384.html,true,true,0.7396841049194336,2.307645082473755
+../Data/10K/Healthcare_AI_Acquisition_Corp.-1848861-0001477932-24-002218.html,true,true,0.5206460952758789,1.1789681911468506
+../Data/10K/HealthLynked_Corp-1680139-0001213900-24-028696.html,true,true,1.0171048641204834,3.07620906829834
+../Data/10K/HEALTHY_EXTRACTS_INC.-1630176-0001096906-24-000706.html,true,true,0.7232754230499268,1.9700202941894531
+"../Data/10K/HeartCore_Enterprises,_Inc.-1892322-0001493152-24-013979.html",true,true,1.396597146987915,3.925227165222168
+../Data/10K/HELEN_OF_TROY_LTD-916789-0000916789-24-000015.html,true,true,1.1007099151611328,3.3177928924560547
+"../Data/10K/Hepion_Pharmaceuticals,_Inc.-1583771-0001583771-24-000003.html",true,true,0.6124279499053955,1.0356800556182861
+../Data/10K/HHG_Capital_Corp-1822886-0001493152-24-012466.html,true,true,1.0191869735717771,2.1241471767425537
+../Data/10K/Hi-Great_Group_Holding_Co-1807616-0001213900-24-045019.html,true,true,0.3468537330627441,0.564812183380127
+"../Data/10K/HIGH_WIRE_NETWORKS,_INC.-1413891-0001213900-24-034533.html",true,true,1.081256628036499,2.93748140335083
+../Data/10K/HNR_Acquisition_Corp.-1842556-0001213900-24-039259.html,true,true,1.1218338012695312,2.9018092155456543
+../Data/10K/Honda_Auto_Receivables_2021-1_Owner_Trust-1840882-0000950170-24-076194.html,Table of contents parsing probably went wrong,,,
+../Data/10K/Honda_Auto_Receivables_2021-2_Owner_Trust-1857290-0000950170-24-076193.html,Table of contents parsing probably went wrong,,,
+../Data/10K/Honda_Auto_Receivables_2021-3_Owner_Trust-1874803-0000950170-24-076190.html,Table of contents parsing probably went wrong,,,
+../Data/10K/Honda_Auto_Receivables_2021-4_Owner_Trust-1889115-0000950170-24-076195.html,Table of contents parsing probably went wrong,,,
+../Data/10K/Honda_Auto_Receivables_2022-1_Owner_Trust-1902266-0000950170-24-076184.html,Table of contents parsing probably went wrong,,,
+../Data/10K/Honda_Auto_Receivables_2022-2_Owner_Trust-1937619-0000950170-24-076185.html,Table of contents parsing probably went wrong,,,
+../Data/10K/Honda_Auto_Receivables_2023-1_Owner_Trust-1962487-0000950170-24-076197.html,Table of contents parsing probably went wrong,,,
+../Data/10K/Honda_Auto_Receivables_2023-2_Owner_Trust-1976562-0000950170-24-076192.html,Table of contents parsing probably went wrong,,,
+../Data/10K/Honda_Auto_Receivables_2023-3_Owner_Trust-1985449-0000950170-24-076198.html,Table of contents parsing probably went wrong,,,
+../Data/10K/Honda_Auto_Receivables_2023-4_Owner_Trust-1996308-0000950170-24-076189.html,Table of contents parsing probably went wrong,,,
+../Data/10K/Honda_Auto_Receivables_2024-1_Owner_Trust-2008953-0000950170-24-076196.html,Table of contents parsing probably went wrong,,,
+"../Data/10K/Hongchang_International_Co.,_Ltd-1086303-0001213900-24-028792.html",true,true,0.7847399711608887,1.114682674407959
+../Data/10K/HONG_YUAN_HOLDING_GROUP-1324759-0001493152-24-013972.html,true,true,0.243159532546997,0.4711003303527832
+../Data/10K/HOOKER_FURNISHINGS_Corp-1077688-0001185185-24-000378.html,true,true,1.2337894439697266,2.84966778755188
+../Data/10K/Horizon_Space_Acquisition_I_Corp.-1946021-0001929980-24-000075.html,true,true,0.4709858894348144,0.77079176902771
+"../Data/10K/HOULIHAN_LOKEY,_INC.-1302215-0001302215-24-000028.html",true,'NoneType' object has no attribute 'next',0.5499293804168701,
+../Data/10K/HOUSTON_AMERICAN_ENERGY_CORP-1156041-0001493152-24-012685.html,true,true,0.8542876243591309,1.8124022483825684
+"../Data/10K/HST_Global,_Inc.-797564-0001674796-24-000003.html",Table of contents not detected,,,
+../Data/10K/Hubilu_Venture_Corp-1639068-0001493152-24-014878.html,true,true,0.7516095638275146,2.1823413372039795
+../Data/10K/Hughes_Satellite_Systems_Corp-1533758-0001533758-24-000007.html,true,true,1.0841741561889648,2.197584390640259
+../Data/10K/HUGOTON_ROYALTY_TRUST-862022-0001193125-24-083466.html,true,true,0.5175180435180664,1.9303884506225586
+../Data/10K/I-ON_Digital_Corp.-1580490-0001493152-24-022975.html,true,true,0.6775076389312744,1.6161363124847412
+../Data/10K/iCoreConnect_Inc.-1906133-0001477932-24-002244.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/Idaho_Copper_Corp-1263364-0001493152-24-019773.html,true,true,0.2874658107757568,1.3024635314941406
+../Data/10K/Ideal_Power_Inc.-1507957-0001437749-24-010360.html,'NoneType' object has no attribute 'group',,,
+"../Data/10K/IDEANOMICS,_INC.-837852-0001628280-24-028863.html",true,true,0.8721160888671875,4.193387031555176
+../Data/10K/IEH_Corp-50292-0001213900-24-052905.html,true,true,0.2366025447845459,1.0060555934906006
+"../Data/10K/IGC_Pharma,_Inc.-1326205-0001185185-24-000650.html",true,true,0.6604266166687012,2.819221019744873
+../Data/10K/Ilustrato_Pictures_International_Inc.-1496383-0001213900-24-038595.html,true,true,0.6906886100769043,3.240490674972534
+"../Data/10K/IMAC_Holdings,_Inc.-1729944-0001493152-24-014857.html",true,true,0.6441245079040527,2.4183456897735596
+"../Data/10K/Immunovant,_Inc.-1764013-0001764013-24-000109.html",true,true,0.2537934780120849,1.7571759223937988
+../Data/10K/INCEPTION_MINING_INC.-1416090-0001096906-24-001010.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/Infinera_Corp-1138639-0001138639-24-000122.html,true,true,1.2339086532592771,3.6951656341552734
+../Data/10K/Inflection_Point_Acquisition_Corp._II-1970622-0001213900-24-029041.html,true,true,0.4560089111328125,1.5759732723236084
+"../Data/10K/InfuSystem_Holdings,_Inc-1337013-0001628280-24-015511.html",'NoneType' object has no attribute 'group',,,
+../Data/10K/INNSUITES_HOSPITALITY_TRUST-82473-0001493152-24-013409.html,Table of contents parsing probably went wrong,,,
+"../Data/10K/Inspired_Entertainment,_Inc.-1615063-0001493152-24-014609.html",true,true,1.982647180557251,6.174516677856445
+"../Data/10K/INSPIRE_VETERINARY_PARTNERS,_INC.-1939365-0001213900-24-031220.html",true,true,1.1823651790618896,3.173548698425293
+../Data/10K/Integral_Acquisition_Corp_1-1850262-0001193125-24-093469.html,true,true,0.8479256629943848,1.5551435947418213
+../Data/10K/INTEGRATED_RAIL_&_RESOURCES_ACQUISITION_CORP-1854795-0001193125-24-098048.html,true,true,0.721400260925293,1.6844589710235596
+../Data/10K/Integrated_Wellness_Acquisition_Corp-1877557-0001410578-24-000421.html,true,true,0.5198633670806885,1.0039050579071045
+"../Data/10K/Intellicheck,_Inc.-1040896-0001628280-24-013949.html",true,true,0.5424714088439941,1.1509337425231934
+"../Data/10K/Interactive_Strength,_Inc.-1785056-0000950170-24-039531.html",true,true,1.5554051399230957,3.5144855976104736
+../Data/10K/INTERNET_SCIENCES_INC.-1720286-0001477932-24-002055.html,true,true,0.407466173171997,0.6607301235198975
+"../Data/10K/INTERPACE_BIOSCIENCES,_INC.-1054102-0001493152-24-012464.html",true,true,1.0691230297088623,2.6152663230895996
+"../Data/10K/Intorio,_Corp.-1852536-0001683168-24-002917.html",true,true,0.1736688613891601,0.3610680103302002
+../Data/10K/INTRUSION_INC-736012-0001683168-24-002011.html,true,true,0.5977203845977783,1.1457598209381104
+../Data/10K/Investcorp_Europe_Acquisition_Corp_I-1857410-0001193125-24-093395.html,true,true,0.5546624660491943,1.3796606063842773
+../Data/10K/Investcorp_India_Acquisition_Corp-1852889-0001193125-24-098000.html,true,true,0.5792202949523926,1.3735785484313965
+"../Data/10K/INVO_Bioscience,_Inc.-1417926-0001493152-24-014838.html",true,true,0.9764630794525146,3.1048970222473145
+../Data/10K/iQSTEL_Inc-1527702-0001663577-24-000092.html,true,'NoneType' object has no attribute 'next',0.7522757053375244,
+"../Data/10K/IR-Med,_Inc.-1839133-0001493152-24-012430.html",true,true,0.9318070411682128,2.1521966457366943
+../Data/10K/Iris_Acquisition_Corp-1831874-0001410578-24-000503.html,true,true,0.6137745380401611,1.718071699142456
+../Data/10K/Iron_Horse_Acquisitions_Corp.-1901203-0001213900-24-028817.html,true,true,0.4873116016387939,0.8283233642578125
+"../Data/10K/ISUN,_INC.-1634447-0001493152-24-014892.html",true,true,0.877471923828125,2.6689453125
+"../Data/10K/ITERIS,_INC.-350868-0000350868-24-000016.html",true,true,0.4406671524047851,1.3651094436645508
+"../Data/10K/Iveda_Solutions,_Inc.-1397183-0001493152-24-012417.html",'NoneType' object has no attribute 'group',,,
+"../Data/10K/IZEA_Worldwide,_Inc.-1495231-0001495231-24-000046.html",true,true,0.7038483619689941,1.885357141494751
+"../Data/10K/J.Jill,_Inc.-1687932-0000950170-24-041871.html",true,true,0.9742238521575928,2.1153404712677
+../Data/10K/Jacksam_Corp-860543-0001477932-24-002155.html,'NoneType' object has no attribute 'group',,,
+"../Data/10K/Jaguar_Health,_Inc.-1585608-0001558370-24-004439.html",'NoneType' object has no attribute 'group',,,
+../Data/10K/James_Maritime_Holdings_Inc.-889353-0001096906-24-001296.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/JanOne_Inc.-862861-0001628280-24-015260.html,true,true,0.529287576675415,1.8527348041534424
+../Data/10K/Jaws_Mustang_Acquisition_Corp-1831359-0001410578-24-000479.html,true,true,0.6310901641845703,1.0510435104370117
+../Data/10K/Jet.AI_Inc.-1861622-0001493152-24-012382.html,true,true,0.6381821632385254,1.6024539470672607
+../Data/10K/JOCOM_HOLDINGS_CORP.-1907425-0001493152-24-013407.html,true,true,0.4549205303192138,0.8935649394989014
+"../Data/10K/JOHN_WILEY_&_SONS,_INC.-107140-0000107140-24-000114.html",true,true,1.2266948223114014,4.100538492202759
+../Data/10K/JONES_SODA_CO-1083522-0001437749-24-010422.html,true,true,0.5512170791625977,1.360382080078125
+../Data/10K/JRSIS_HEALTH_CARE_Corp-1597892-0001213900-24-036467.html,true,true,0.802753210067749,2.0877392292022705
+"../Data/10K/Jubilant_Flame_International,_Ltd-1517389-0001477932-24-002544.html","string indices must be integers, not 'str'",,,
+../Data/10K/Jushi_Holdings_Inc.-1909747-0001628280-24-014147.html,true,true,1.069063663482666,3.389735460281372
+../Data/10K/JVSPAC_Acquisition_Corp.-1866001-0001213900-24-028695.html,true,true,0.2997171878814697,0.6907985210418701
+../Data/10K/J_M_SMUCKER_Co-91419-0000091419-24-000054.html,true,'NoneType' object has no attribute 'next',1.037489414215088,
+"../Data/10K/Kartoon_Studios,_Inc.-1355848-0001355848-24-000052.html",true,'NoneType' object has no attribute 'next',0.7924447059631348,
+"../Data/10K/Katapult_Holdings,_Inc.-1785424-0001628280-24-017691.html",true,true,1.320242404937744,3.7993056774139404
+"../Data/10K/KAT_EXPLORATION,_INC.-1474558-0001683168-24-004347.html",true,true,0.188284158706665,0.47067809104919434
+"../Data/10K/Kaya_Holdings,_Inc.-1530746-0001903596-24-000238.html",true,true,0.8791630268096924,1.4340333938598633
+../Data/10K/KB_Global_Holdings_Ltd-1897525-0001829126-24-003512.html,true,true,0.3928396701812744,0.8475964069366455
+../Data/10K/KIDPIK_CORP.-1861522-0001493152-24-014214.html,true,true,0.7235877513885498,1.8202118873596191
+../Data/10K/KID_CASTLE_EDUCATIONAL_CORP-1049011-0001493152-24-015154.html,true,true,0.6433961391448975,1.6143128871917725
+"../Data/10K/Kindcard,_Inc.-1696025-0001477932-24-003022.html",true,true,0.3225419521331787,0.5970807075500488
+../Data/10K/Kinetic_Seas_Inc.-1945619-0001683168-24-002276.html,true,true,0.4465868473052978,0.9555177688598633
+"../Data/10K/KINGSTONE_COMPANIES,_INC.-33992-0001654954-24-004054.html",true,true,2.401253700256348,6.022001266479492
+"../Data/10K/Knightscope,_Inc.-1600983-0001410578-24-000417.html",true,'NoneType' object has no attribute 'next',1.1165404319763184,
+"../Data/10K/KonaTel,_Inc.-845819-0001515971-24-000035.html",true,true,0.4412004947662353,1.5546705722808838
+"../Data/10K/KORE_Group_Holdings,_Inc.-1855457-0001855457-24-000015.html",true,true,1.062824249267578,2.2161967754364014
+"../Data/10K/Kraig_Biocraft_Laboratories,_Inc-1413119-0001493152-24-012404.html",true,true,0.9243078231811525,2.763967514038086
+../Data/10K/KROGER_CO-56873-0001558370-24-004603.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/Kuber_Resources_Corp-1081834-0001214659-24-006961.html,Table of contents without links not supported yet,,,
+"../Data/10K/KULR_Technology_Group,_Inc.-1662684-0001410578-24-000454.html",'NoneType' object has no attribute 'group',,,
+"../Data/10K/KwikClick,_Inc.-1884164-0001683168-24-002394.html",true,true,0.3443539142608642,0.8673129081726074
+"../Data/10K/Kyndryl_Holdings,_Inc.-1867072-0001558370-24-008788.html",true,true,1.7564404010772705,5.634755849838257
+../Data/10K/LA-Z-BOY_INC-57131-0000057131-24-000028.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/LAKELAND_INDUSTRIES_INC-798081-0001654954-24-004465.html,true,'NoneType' object has no attribute 'next',0.613746166229248,
+"../Data/10K/LANDS'_END,_INC.-799288-0000950170-24-041066.html",true,true,1.5053062438964844,4.161827802658081
+../Data/10K/Laser_Photonics_Corp-1807887-0001654954-24-004797.html,"string indices must be integers, not 'str'",,,
+../Data/10K/La_Rosa_Holdings_Corp.-1879403-0001213900-24-033444.html,true,true,1.227660894393921,3.4065134525299072
+../Data/10K/Learn_CW_Investment_Corp-1847577-0001140361-24-017987.html,"string indices must be integers, not 'str'",,,
+../Data/10K/Leet_Technology_Inc.-1586495-0001683168-24-002370.html,true,true,0.7706930637359619,1.689579725265503
+"../Data/10K/LEGEND_SPICES,_INC.-1970129-0001640334-24-000686.html","string indices must be integers, not 'str'",,,
+"../Data/10K/LENDWAY,_INC.-875355-0001654954-24-004013.html",true,true,0.5490927696228027,1.317960262298584
+../Data/10K/Lever_Global_Corp-1932244-0001493152-24-015139.html,true,true,0.5370588302612305,1.084892749786377
+../Data/10K/LGL_GROUP_INC-61004-0001437749-24-010393.html,true,true,0.957979679107666,2.3621013164520264
+../Data/10K/LIBERTY_STAR_URANIUM_&_METALS_CORP.-1172178-0001493152-24-019985.html,true,true,0.6579828262329102,1.5732977390289307
+"../Data/10K/Lifeloc_Technologies,_Inc-1493137-0001079973-24-000474.html",true,true,0.5710864067077637,1.3529984951019287
+"../Data/10K/Lightstone_Value_Plus_REIT_I,_Inc.-1296884-0001829126-24-002092.html",true,true,0.7383029460906982,2.372041702270508
+../Data/10K/Limitless_X_Holdings_Inc.-1803977-0001493152-24-015181.html,true,true,0.8468620777130127,1.866910457611084
+../Data/10K/LION_COPPER_&_GOLD_CORP.-1339688-0001062993-24-007468.html,"string indices must be integers, not 'str'",,,
+../Data/10K/LiquidValue_Development_Inc.-1503658-0001493152-24-012376.html,true,true,0.659318208694458,1.6011888980865479
+../Data/10K/Lithium_Corp-1415332-0001640334-24-000558.html,"string indices must be integers, not 'str'",,,
+"../Data/10K/Livento_Group,_Inc.-1593549-0001493152-24-012301.html",true,true,0.9268064498901368,1.9312684535980225
+"../Data/10K/LiveRamp_Holdings,_Inc.-733269-0000733269-24-000018.html",true,'NoneType' object has no attribute 'next',0.9253323078155518,
+"../Data/10K/LM_FUNDING_AMERICA,_INC.-1640384-0000950170-24-038953.html",true,true,1.1000254154205322,2.581153392791748
+"../Data/10K/LogicMark,_Inc.-1566826-0001213900-24-033400.html",true,true,0.8096027374267578,1.6176412105560303
+"../Data/10K/LOGIQ,_INC.-1335112-0001575872-24-000488.html",true,true,1.4142251014709473,3.3613080978393555
+../Data/10K/LOGITECH_INTERNATIONAL_S.A.-1032975-0001032975-24-000023.html,true,true,0.9862170219421388,2.0558695793151855
+../Data/10K/Longwen_Group_Corp.-723533-0001017386-24-000060.html,true,true,0.6280984878540039,1.3968167304992676
+"../Data/10K/Loop_Industries,_Inc.-1504678-0001654954-24-007029.html",true,true,0.800013542175293,2.06695818901062
+../Data/10K/Lottery.com_Inc.-1673481-0001493152-24-013038.html,true,true,0.7933685779571533,4.217806577682495
+../Data/10K/Lovesac_Co-1701758-0001628280-24-015804.html,true,true,0.442023754119873,1.0972418785095215
+../Data/10K/LQR_House_Inc.-1843165-0001213900-24-028934.html,true,true,0.7090902328491211,1.6633810997009277
+"../Data/10K/LUDWIG_ENTERPRISES,_INC.-1960262-0001903596-24-000245.html","string indices must be integers, not 'str'",,,
+../Data/10K/LUXURBAN_HOTELS_INC.-1893311-0001829126-24-002461.html,true,true,1.132333517074585,3.196721076965332
+../Data/10K/LVPAI_GROUP_Ltd-831378-0001477932-24-002301.html,'NoneType' object has no attribute 'group',,,
+"../Data/10K/M2i_Global,_Inc.-1753373-0001493152-24-014827.html",true,true,0.300257921218872,0.7278079986572266
+../Data/10K/MACH_NATURAL_RESOURCES_LP-1980088-0001628280-24-014131.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/MAGELLAN_GOLD_Corp-1515317-0001683168-24-002501.html,true,true,0.4730622768402099,1.0838344097137451
+"../Data/10K/Mag_Mile_Capital,_Inc.-1879293-0001493152-24-014911.html",true,true,0.5574884414672852,1.4454703330993652
+"../Data/10K/Mama's_Creations,_Inc.-1520358-0001628280-24-017645.html",true,true,0.3818755149841308,0.863419771194458
+"../Data/10K/MANGOCEUTICALS,_INC.-1938046-0001493152-24-012508.html",true,true,1.0227420330047607,2.871368408203125
+../Data/10K/MANHATTAN_SCIENTIFICS_INC-1099132-0001477932-24-001766.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/Maquia_Capital_Acquisition_Corp-1844419-0001410578-24-000477.html,true,true,0.7233402729034424,1.454272985458374
+../Data/10K/Marblegate_Acquisition_Corp.-1838513-0001193125-24-083642.html,true,true,0.5500597953796387,1.2504370212554932
+../Data/10K/MARCHEX_INC-1224133-0000950170-24-038807.html,true,true,0.7544596195220947,1.9775888919830322
+"../Data/10K/MARIZYME,_INC.-1413754-0001493152-24-018935.html",true,true,1.0825793743133545,3.8704628944396973
+../Data/10K/MARKY_CORP.-1973047-0001973047-24-000012.html,Table of contents without links not supported yet,,,
+../Data/10K/Marvion_Inc.-1439264-0001683168-24-002419.html,true,true,0.7394964694976807,1.8994133472442627
+../Data/10K/Massimo_Group-1952853-0001493152-24-014560.html,true,true,0.7236077785491943,2.0947906970977783
+../Data/10K/Mawson_Infrastructure_Group_Inc.-1218683-0001213900-24-028158.html,true,true,0.8484783172607422,1.7729618549346924
+../Data/10K/MCKESSON_CORP-927653-0000927653-24-000035.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/MCX_Technologies_Corp-1535079-0001437749-24-012072.html,Table of contents without links not supported yet,,,
+../Data/10K/Mediaco_Holding_Inc.-1784254-0001784254-24-000003.html,true,true,0.4078636169433594,1.364835500717163
+../Data/10K/Medies-1918694-0001683168-24-004100.html,true,true,0.398007869720459,0.5346097946166992
+../Data/10K/Medtronic_plc-1613103-0001613103-24-000072.html,'NoneType' object has no attribute 'group',,,
+"../Data/10K/Mentor_Capital,_Inc.-1599117-0001493152-24-012225.html",'NoneType' object has no attribute 'group',,,
+../Data/10K/MESABI_TRUST-65172-0001558370-24-005598.html,true,true,0.1730799674987793,0.3763439655303955
+"../Data/10K/MESO_NUMISMATICS,_INC.-1760026-0001213900-24-032991.html",true,true,0.8768296241760254,1.538013219833374
+"../Data/10K/Metalert,_Inc.-1375793-0001493152-24-021380.html",true,true,0.754274845123291,1.8690743446350098
+"../Data/10K/METAWORKS_PLATFORMS,_INC.-1515139-0001493152-24-014702.html",true,true,0.7048416137695312,1.9989392757415771
+../Data/10K/MGO_Global_Inc.-1902794-0001493152-24-012329.html,true,true,0.7680447101593018,1.785214900970459
+"../Data/10K/MGT_CAPITAL_INVESTMENTS,_INC.-1001601-0001493152-24-014891.html",true,true,0.675668478012085,1.4276132583618164
+../Data/10K/MIAMI_BREEZE_CAR_CARE_INC-1872066-0001520138-24-000172.html,true,true,0.2982144355773926,0.9625709056854248
+../Data/10K/MICROCHIP_TECHNOLOGY_INC-827054-0000827054-24-000098.html,true,true,1.1458799839019775,2.3461616039276123
+../Data/10K/micromobility.com_Inc.-1788841-0001079973-24-000555.html,true,'NoneType' object has no attribute 'next',0.912057399749756,
+"../Data/10K/Microvast_Holdings,_Inc.-1760689-0001760689-24-000007.html",true,true,0.9769167900085448,2.8989391326904297
+../Data/10K/Midwest_Energy_Emissions_Corp.-728385-0001477932-24-002170.html,true,true,0.7751162052154541,2.1067452430725098
+../Data/10K/MILLS_MUSIC_TRUST-66496-0001193125-24-082941.html,'NoneType' object has no attribute 'group',,,
+"../Data/10K/Mill_City_Ventures_III,_Ltd-1425355-0001654954-24-004122.html",'NoneType' object has no attribute 'group',,,
+"../Data/10K/MIND_TECHNOLOGY,_INC-926423-0001437749-24-013973.html",true,true,0.7517380714416504,1.590604543685913
+../Data/10K/Minerva_Gold_Inc.-1854816-0001477932-24-003036.html,'NoneType' object has no attribute 'group',,,
+"../Data/10K/MINIM,_INC.-1467761-0001829126-24-002449.html",true,true,0.5513544082641602,1.8507308959960938
+"../Data/10K/MIRA_PHARMACEUTICALS,_INC.-1904286-0001493152-24-012141.html",true,true,0.9397153854370116,2.6271815299987793
+"../Data/10K/Mitesco,_Inc.-802257-0001185185-24-000401.html",true,true,1.8559930324554443,5.593175172805786
+"../Data/10K/Moatable,_Inc.-1509223-0001410578-24-000425.html",true,true,1.902997970581055,3.392350435256958
+"../Data/10K/Mobile_Global_Esports,_Inc.-1886362-0001213900-24-032972.html",true,true,0.4245932102203369,1.2084572315216064
+"../Data/10K/Mobiquity_Technologies,_Inc.-1084267-0001683168-24-002214.html",true,true,1.3870995044708252,2.619917392730713
+../Data/10K/MOBIVITY_HOLDINGS_CORP.-1447380-0001493152-24-014966.html,true,true,0.6617615222930908,1.9335229396820068
+../Data/10K/MODINE_MANUFACTURING_CO-67347-0001140361-24-027133.html,true,true,1.5994949340820312,5.081817388534546
+"../Data/10K/Modular_Medical,_Inc.-1074871-0001213900-24-054877.html",true,true,0.9253056049346924,2.658801555633545
+../Data/10K/Momentus_Inc.-1781162-0001628280-24-026929.html,true,true,0.849611759185791,1.847041130065918
+"../Data/10K/MONRO,_INC.-876427-0001562762-24-000155.html",true,'NoneType' object has no attribute 'next',1.2823336124420166,
+"../Data/10K/Moody_National_REIT_II,_Inc.-1615222-0001999371-24-004693.html",true,true,0.911236047744751,2.4022202491760254
+../Data/10K/Morgan_Stanley_Bank_of_America_Merrill_Lynch_Trust_2012-C6-1558013-0001888524-24-005352.html,Table of contents without links not supported yet,,,
+../Data/10K/Moringa_Acquisition_Corp-1835416-0001213900-24-028721.html,true,true,0.4563288688659668,1.5057179927825928
+../Data/10K/Mosaic_ImmunoEngineering_Inc.-836564-0001683168-24-002402.html,true,true,0.6356561183929443,1.3273839950561523
+../Data/10K/MOTORCAR_PARTS_OF_AMERICA_INC-918251-0001140361-24-029700.html,true,true,1.289541244506836,3.263634204864502
+../Data/10K/Motorsport_Games_Inc.-1821175-0001493152-24-012233.html,true,true,1.4010162353515625,3.8807685375213623
+../Data/10K/Mountain_&_Co._I_Acquisition_Corp.-1856995-0001104659-24-064383.html,true,true,0.4085779190063476,1.1451246738433838
+"../Data/10K/MOUNTAIN_TOP_PROPERTIES,_INC.-1658521-0001017386-24-000056.html",Table of contents without links not supported yet,,,
+../Data/10K/Movano_Inc.-1734750-0001213900-24-033365.html,true,true,0.8960506916046143,1.770047664642334
+../Data/10K/MOVEIX_INC.-1685766-0001829126-24-002064.html,true,true,0.1728556156158447,0.4848456382751465
+"../Data/10K/MSP_Recovery,_Inc.-1802450-0000950170-24-044197.html",true,true,1.1143310070037842,3.468599557876587
+"../Data/10K/MULTI_SOFT_II,_INC-766404-0000766404-24-000004.html",true,'NoneType' object has no attribute 'next',0.2043068408966064,
+"../Data/10K/MULTI_SOLUTIONS_II,_INC-723733-0000723733-24-000004.html",true,true,0.3432512283325195,0.453357458114624
+"../Data/10K/Mycotopia_Therapies,_Inc.-1763329-0001096906-24-000907.html",Table of contents parsing probably went wrong,,,
+"../Data/10K/MyMD_Pharmaceuticals,_Inc.-1321834-0001493152-24-012533.html",true,true,1.3052630424499512,3.8152058124542236
+"../Data/10K/My_Size,_Inc.-1211805-0001493152-24-012542.html",true,true,1.0674734115600586,3.2016334533691406
+"../Data/10K/N2OFF,_Inc.-1789192-0001493152-24-012356.html",true,true,1.3988022804260254,3.455930233001709
+"../Data/10K/Namliong_SkyCosmos,_Inc.-1342219-0001683168-24-002763.html",'NoneType' object has no attribute 'group',,,
+"../Data/10K/NanoVibronix,_Inc.-1326706-0001493152-24-013966.html",'NoneType' object has no attribute 'group',,,
+../Data/10K/Nano_Magic_Inc.-891417-0001493152-24-012969.html,true,true,0.7684895992279053,2.1173906326293945
+"../Data/10K/NATHANS_FAMOUS,_INC.-69733-0001437749-24-020013.html",Table of contents without links not supported yet,,,
+../Data/10K/Natics_Corp.-1933359-0001683168-24-003953.html,true,true,0.2365229129791259,0.5965702533721924
+../Data/10K/NATIONAL_BEVERAGE_CORP-69891-0001437749-24-021311.html,true,true,0.6602144241333008,1.5134820938110352
+../Data/10K/NATURAL_GAS_SERVICES_GROUP_INC-1084991-0001084991-24-000017.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/Nature's_Miracle_Holding_Inc.-1947861-0001213900-24-033428.html,true,true,0.9130406379699708,2.8313307762145996
+"../Data/10K/Nauticus_Robotics,_Inc.-1849820-0001849820-24-000029.html",true,true,0.6431846618652344,1.7473235130310059
+"../Data/10K/NetApp,_Inc.-1002047-0000950170-24-071327.html",true,'NoneType' object has no attribute 'next',1.9578797817230225,
+../Data/10K/NetBrands_Corp.-1725911-0001493152-24-014612.html,true,true,0.3294732570648193,1.0344550609588623
+../Data/10K/NETSCOUT_SYSTEMS_INC-1078075-0001628280-24-023777.html,true,true,0.9876489639282228,1.8217520713806152
+../Data/10K/NETWORK_CN_INC-934796-0001214659-24-007929.html,true,true,0.6762840747833252,1.8178648948669434
+"../Data/10K/Neuraxis,_INC-1933567-0001493152-24-014832.html",true,true,1.2713301181793213,3.3266589641571045
+../Data/10K/Newbury_Street_Acquisition_Corp-1831978-0001410578-24-000990.html,true,true,0.4573178291320801,1.3179118633270264
+"../Data/10K/NewtekOne,_Inc.-1587987-0001587987-24-000054.html",'NoneType' object has no attribute 'group',,,
+"../Data/10K/New_Asia_Holdings,_Inc.-1485029-0001096906-24-001168.html","string indices must be integers, not 'str'",,,
+"../Data/10K/New_Concept_Energy,_Inc.-105744-0001214659-24-005800.html",'NoneType' object has no attribute 'group',,,
+../Data/10K/New_Momentum_Corp.-1132509-0001477932-24-002194.html,true,true,0.4248192310333252,1.2688677310943604
+../Data/10K/NEW_PEOPLES_BANKSHARES_INC-1163389-0001903596-24-000204.html,true,true,1.5219671726226809,5.112931251525879
+../Data/10K/New_York_REIT_Liquidating_LLC-1474464-0000950170-24-039443.html,true,true,0.5434975624084473,1.01983642578125
+"../Data/10K/NEXGEL,_INC.-1468929-0001493152-24-014127.html",true,true,0.8170757293701172,1.9562718868255615
+"../Data/10K/NexImmune,_Inc.-1538210-0001538210-24-000003.html",true,true,0.6279981136322021,1.5217137336730957
+../Data/10K/NEXT-ChemX_Corporation.-1657045-0001493152-24-012269.html,true,true,0.2824373245239258,1.0454189777374268
+../Data/10K/NextPlat_Corp-1058307-0001437749-24-011806.html,true,'NoneType' object has no attribute 'next',1.415220022201538,
+../Data/10K/Nextracker_Inc.-1852131-0001628280-24-025460.html,true,true,0.7224295139312744,2.125098705291748
+../Data/10K/Next_Technology_Holding_Inc.-1784970-0001099910-24-000189.html,true,true,0.6344201564788818,0.9280726909637451
+../Data/10K/NGL_Energy_Partners_LP-1504461-0001504461-24-000013.html,true,true,1.350451946258545,3.701737880706787
+"../Data/10K/NIKA_PHARMACEUTICALS,_INC-1145604-0001826466-24-000041.html",true,'NoneType' object has no attribute 'next',0.3308138847351074,
+"../Data/10K/NKGen_Biotech,_Inc.-1845459-0001845459-24-000007.html",true,true,0.8626337051391602,2.5481796264648438
+../Data/10K/NOBILITY_HOMES_INC-72205-0000950170-24-062540.html,true,true,0.5818710327148438,1.5858426094055176
+../Data/10K/NOBLE_ROMANS_INC-709005-0001654954-24-006563.html,'NoneType' object has no attribute 'group',,,
+"../Data/10K/NOCERA,_INC.-1756180-0001683168-24-002037.html",true,true,0.8626267910003662,2.0662999153137207
+"../Data/10K/Norris_Industries,_Inc.-1603793-0001493152-24-021582.html",true,true,0.5033090114593506,1.193701982498169
+../Data/10K/Northann_Corp.-1923780-0001575872-24-000353.html,true,true,1.6631324291229248,3.7862820625305176
+"../Data/10K/Notable_Labs,_Ltd.-1603207-0001493152-24-014342.html",true,true,1.2888028621673584,3.0865840911865234
+"../Data/10K/Nova_Lifestyle,_Inc.-1473334-0001493152-24-014501.html",true,true,1.0024759769439695,1.8817856311798096
+../Data/10K/NOVA_STAR_INNOVATIONS_INC-1160945-0001554795-24-000099.html,Table of contents without links not supported yet,,,
+../Data/10K/Novelis_Inc.-1304280-0001304280-24-000024.html,true,true,1.400171995162964,4.268775463104248
+../Data/10K/NovelStem_International_Corp.-912544-0001493152-24-012323.html,true,true,1.0272791385650637,2.1531763076782227
+../Data/10K/NP_Life_Sciences_Health_Industry_Group_Inc.-1781726-0001493152-24-014774.html,true,true,0.3465428352355957,0.9947938919067383
+"../Data/10K/Nuburu,_Inc.-1814215-0000950170-24-044503.html",true,true,1.317373514175415,2.547592878341675
+"../Data/10K/Nuo_Therapeutics,_Inc.-1091596-0001437749-24-012587.html",true,true,0.3929941654205322,0.8794534206390381
+../Data/10K/NutriBand_Inc.-1676047-0001213900-24-037996.html,true,true,0.9267151355743408,2.1970386505126953
+"../Data/10K/Nxu,_Inc.-1722969-0001214659-24-005647.html",true,true,0.8001956939697266,1.9389958381652832
+../Data/10K/Oak_Valley_Bancorp-1431567-0001437749-24-010372.html,true,true,1.7027552127838137,3.868056058883667
+../Data/10K/Oak_Woods_Acquisition_Corp-1945422-0001213900-24-033399.html,true,true,0.4873073101043701,1.827744960784912
+../Data/10K/OCA_Acquisition_Corp.-1820175-0001213900-24-028742.html,true,true,0.6917963027954102,1.286271095275879
+../Data/10K/OceanTech_Acquisitions_I_Corp.-1846809-0001753926-24-000735.html,true,true,0.817267656326294,2.307741165161133
+"../Data/10K/Ocugen,_Inc.-1372299-0001628280-24-016378.html",true,true,1.2528190612792969,2.4580934047698975
+../Data/10K/ODYSSEY_MARINE_EXPLORATION_INC-798528-0001193125-24-141624.html,true,true,3.2809009552001958,10.891046285629272
+"../Data/10K/OLB_GROUP,_INC.-1314196-0001213900-24-032767.html",true,true,0.612208366394043,2.2073540687561035
+../Data/10K/OLD_POINT_FINANCIAL_CORP-740971-0001140361-24-016955.html,true,true,2.5425705909729004,7.03505277633667
+../Data/10K/OMEROS_CORP-1285819-0001437749-24-010416.html,true,true,0.9890153408050536,2.5323073863983154
+../Data/10K/OMNIQ_Corp.-278165-0001493152-24-012457.html,true,true,0.7212464809417725,1.8164055347442627
+../Data/10K/Omnitek_Engineering_Corp-1404804-0001096906-24-000839.html,true,true,0.8656430244445801,0.8921210765838623
+../Data/10K/Oncocyte_Corp-1642380-0001493152-24-014720.html,true,true,1.0042471885681152,2.9727354049682617
+"../Data/10K/Onconetix,_Inc.-1782107-0001213900-24-032225.html",true,true,1.4446558952331543,4.243677139282227
+"../Data/10K/Onconova_Therapeutics,_Inc.-1130598-0001558370-24-004525.html",'NoneType' object has no attribute 'group',,,
+"../Data/10K/Oncotelic_Therapeutics,_Inc.-908259-0001493152-24-014475.html",true,true,1.5625078678131104,3.234217643737793
+../Data/10K/Ondas_Holdings_Inc.-1646188-0001213900-24-028244.html,Table of contents parsing probably went wrong,,,
+../Data/10K/OneMedNet_Corp-1849380-0001493152-24-014092.html,true,true,0.8616087436676025,2.2528932094573975
+../Data/10K/OneMeta_Inc.-1388295-0001493152-24-012247.html,true,true,0.5237202644348145,1.7273850440979004
+"../Data/10K/One_World_Products,_Inc.-1622244-0001493152-24-021067.html",true,true,1.3676555156707764,3.4163146018981934
+"../Data/10K/Onfolio_Holdings,_Inc-1825452-0001654954-24-004048.html",true,true,0.7518715858459473,1.5364036560058594
+"../Data/10K/Ontrak,_Inc.-1136174-0001628280-24-016456.html",true,true,0.86606764793396,1.8825640678405762
+../Data/10K/OOMA_INC-1327688-0000950170-24-040394.html,true,true,1.3172156810760498,3.7095017433166504
+../Data/10K/OPGEN_INC-1293818-0001829126-24-003930.html,true,true,0.8981382846832275,2.3438432216644287
+../Data/10K/OptimizeRx_Corp-1448431-0001213900-24-033000.html,true,true,0.8939850330352783,1.2764537334442139
+"../Data/10K/Optimus_Healthcare_Services,_Inc.-1892025-0001213900-24-053154.html",true,true,0.881251335144043,1.4729876518249512
+../Data/10K/ORACLE_CORP-1341439-0000950170-24-075605.html,true,true,2.1315245628356934,3.250136375427246
+"../Data/10K/ORGANOVO_HOLDINGS,_INC.-1497253-0000950170-24-067301.html",true,true,0.9580175876617432,2.2932164669036865
+../Data/10K/Orgenesis_Inc.-1460602-0001493152-24-014652.html,true,true,1.681267261505127,4.052618026733398
+"../Data/10K/ORIGINCLEAR,_INC.-1419793-0001213900-24-034111.html",true,true,1.0984952449798584,2.3760550022125244
+../Data/10K/Orion_Bliss_Corp.-1854183-0001683168-24-003963.html,"string indices must be integers, not 'str'",,,
+"../Data/10K/ORION_ENERGY_SYSTEMS,_INC.-1409375-0000950170-24-072435.html",true,true,1.6486098766326904,4.59585976600647
+../Data/10K/Osiris_Acquisition_Corp.-1832136-0001410578-24-000439.html,true,true,0.5184874534606934,1.0597448348999023
+../Data/10K/OXFORD_INDUSTRIES_INC-75288-0000075288-24-000003.html,true,true,1.3006577491760254,4.21049690246582
+"../Data/10K/OZOP_ENERGY_SOLUTIONS,_INC.-1679817-0001493152-24-014825.html",true,true,0.643718957901001,1.5297679901123047
+../Data/10K/PACIFIC_HEALTH_CARE_ORGANIZATION_INC-1138476-0001185185-24-000392.html,true,true,0.6920461654663086,1.7283949851989746
+"../Data/10K/Pacific_Oak_Strategic_Opportunity_REIT,_Inc.-1452936-0001452936-24-000035.html",true,true,1.141469955444336,2.671374797821045
+../Data/10K/Pagaya_Technologies_Ltd.-1883085-0001883085-24-000060.html,true,true,1.1819226741790771,3.3234517574310303
+../Data/10K/PAID_INC-1017655-0001437749-24-010365.html,Table of contents without links not supported yet,,,
+"../Data/10K/PANACEA_LIFE_SCIENCES_HOLDINGS,_INC.-1552189-0001493152-24-012107.html",true,true,0.6447014808654785,1.4995112419128418
+../Data/10K/Papaya_Growth_Opportunity_Corp._I-1894057-0001410578-24-000372.html,true,true,0.4554386138916015,1.1942472457885742
+../Data/10K/PARK_AEROSPACE_CORP-76267-0001437749-24-019951.html,Table of contents without links not supported yet,,,
+../Data/10K/Patria_Latin_American_Opportunity_Acquisition_Corp.-1849737-0001213900-24-028702.html,true,true,0.4710476398468017,1.5389211177825928
+../Data/10K/PATRIOT_NATIONAL_BANCORP_INC-1098146-0001628280-24-013983.html,true,true,1.7447631359100342,5.2646026611328125
+"../Data/10K/PATTERSON_COMPANIES,_INC.-891024-0000891024-24-000008.html",true,true,0.5979559421539307,2.23190975189209
+"../Data/10K/PB_Bankshares,_Inc.-1849670-0001558370-24-004533.html",true,true,2.0572047233581543,6.16531777381897
+../Data/10K/Pearl_Holdings_Acquisition_Corp-1856161-0001829126-24-002578.html,true,true,0.3938159942626953,1.3194506168365479
+../Data/10K/Perception_Capital_Corp._III-1853580-0001829126-24-002579.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/Perception_Capital_Corp._IV-1870143-0001213900-24-035065.html,true,true,0.6280345916748047,1.4774079322814941
+"../Data/10K/Perma-Pipe_International_Holdings,_Inc.-914122-0001437749-24-013321.html",'NoneType' object has no attribute 'group',,,
+../Data/10K/PermRock_Royalty_Trust-1724009-0001079973-24-000454.html,true,true,0.2824759483337402,1.6039645671844482
+"../Data/10K/Petco_Health_&_Wellness_Company,_Inc.-1826470-0000950170-24-040516.html",true,true,1.3019287586212158,3.9750518798828125
+../Data/10K/PETMED_EXPRESS_INC-1040130-0001040130-24-000046.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/PetroGas_Co-1609258-0001640334-24-001017.html,'NoneType' object has no attribute 'group',,,
+"../Data/10K/Petros_Pharmaceuticals,_Inc.-1815903-0001410578-24-000401.html",true,true,0.972881555557251,1.882988452911377
+../Data/10K/Phio_Pharmaceuticals_Corp.-1533040-0001683168-24-002021.html,true,true,0.5336246490478516,1.5858159065246582
+../Data/10K/PHOENIX_MOTOR_INC.-1879848-0001410578-24-000471.html,true,true,0.7860672473907471,1.5372042655944824
+../Data/10K/Pineapple_Energy_Inc.-22701-0000022701-24-000002.html,true,true,1.0714097023010254,3.152810573577881
+../Data/10K/PINEAPPLE_EXPRESS_CANNABIS_Co-1710495-0001493152-24-022263.html,true,true,0.282926082611084,0.8639829158782959
+"../Data/10K/Pioneer_Green_Farms,_Inc.-1902700-0001185185-24-000363.html",'NoneType' object has no attribute 'group',,,
+../Data/10K/Planet_Green_Holdings_Corp.-1117057-0001213900-24-028612.html,true,true,0.6741394996643066,2.314110279083252
+../Data/10K/Plutonian_Acquisition_Corp.-1929231-0001213900-24-032537.html,true,true,0.3609464168548584,0.9578602313995361
+"../Data/10K/Polar_Power,_Inc.-1622345-0001493152-24-012355.html",true,true,0.8494179248809814,2.058274507522583
+"../Data/10K/POWERDYNE_INTERNATIONAL,_INC.-1435617-0001493152-24-018248.html",true,true,0.4553697109222412,1.2008297443389893
+"../Data/10K/Powerfleet,_Inc.-1774170-0001493152-24-018526.html",'NoneType' object has no attribute 'group',,,
+"../Data/10K/Presidio_Property_Trust,_Inc.-1080657-0001437749-24-012113.html",true,'NoneType' object has no attribute 'next',1.7186012268066406,
+../Data/10K/PRESSURE_BIOSCIENCES_INC-830656-0001493152-24-023201.html,true,true,0.8783745765686035,2.5840673446655273
+../Data/10K/PRESTIGE_CAPITAL_CORP-790179-0001554795-24-000096.html,Table of contents without links not supported yet,,,
+../Data/10K/Prestige_Consumer_Healthcare_Inc.-1295947-0001295947-24-000017.html,true,true,1.632432460784912,3.0963780879974365
+../Data/10K/PRIMEENERGY_RESOURCES_CORP-56868-0001437749-24-011958.html,Table of contents without links not supported yet,,,
+../Data/10K/Progressive_Care_Inc.-1402945-0001437749-24-011671.html,true,true,1.313880443572998,2.8501529693603516
+../Data/10K/Project_Energy_Reimagined_Acquisition_Corp.-1847241-0001213900-24-033569.html,true,true,0.6758520603179932,1.7597484588623047
+../Data/10K/ProMIS_Neurosciences_Inc.-1374339-0001558370-24-004532.html,true,true,0.8340601921081543,2.3900060653686523
+"../Data/10K/Pure_Storage,_Inc.-1474432-0001628280-24-013860.html",true,true,0.7696952819824219,2.323312997817993
+../Data/10K/Pyrophyte_Acquisition_Corp.-1848756-0001213900-24-046642.html,true,true,0.563312292098999,1.1629996299743652
+"../Data/10K/PYXUS_INTERNATIONAL,_INC.-939930-0000939930-24-000081.html",true,true,1.0335705280303955,3.49379563331604
+../Data/10K/QMIS_TBS_Capital_Group_Corp.-1796160-0001096906-24-000832.html,true,true,0.7253818511962891,1.587174415588379
+"../Data/10K/Qorvo,_Inc.-1604778-0001604778-24-000036.html",true,true,0.7832577228546143,2.249650001525879
+../Data/10K/Qrons_Inc.-1689084-0001477932-24-002100.html,'NoneType' object has no attribute 'group',,,
+"../Data/10K/QS_Energy,_Inc.-1103795-0001683168-24-002236.html",true,true,0.4000122547149658,1.0528628826141357
+../Data/10K/Quadro_Acquisition_One_Corp.-1825962-0001213900-24-033871.html,true,true,0.5355732440948486,1.364405632019043
+"../Data/10K/Qualigen_Therapeutics,_Inc.-1460702-0001493152-24-013400.html",true,true,1.1633119583129885,3.3595824241638184
+"../Data/10K/Qualis_Innovations,_Inc.-1871181-0001493152-24-014351.html",true,true,0.4235084056854248,0.9890100955963135
+../Data/10K/Quality_Industrial_Corp.-1393781-0001213900-24-030968.html,true,true,0.7842071056365967,1.7258403301239014
+../Data/10K/Quantum_Computing_Inc.-1758009-0001213900-24-028799.html,true,true,0.69124436378479,1.397308349609375
+"../Data/10K/Quarta-Rad,_Inc.-1549631-0001493152-24-012312.html",true,true,0.4858942031860351,0.9896461963653564
+"../Data/10K/Quest_Water_Global,_Inc.-1487091-0001493152-24-014872.html",true,true,0.3773043155670166,1.241844892501831
+"../Data/10K/Quince_Therapeutics,_Inc.-1662774-0000950170-24-039440.html",true,true,1.4107632637023926,4.328597068786621
+../Data/10K/QUOTEMEDIA_INC-1101433-0001654954-24-004360.html,true,true,0.5986599922180176,0.9621191024780273
+../Data/10K/Rainmaker_Worldwide_Inc.-1872292-0001493152-24-012253.html,true,true,0.6812758445739746,1.2402958869934082
+../Data/10K/RALPH_LAUREN_CORP-1037038-0001037038-24-000014.html,true,true,1.112572193145752,2.7181131839752197
+../Data/10K/Rapid_Line_Inc.-1910975-0001683168-24-002272.html,true,true,0.3455603122711181,0.5031599998474121
+../Data/10K/RBC_Bearings_INC-1324948-0001213900-24-044761.html,true,true,1.035738229751587,2.3599283695220947
+"../Data/10K/RDE,_Inc.-1760233-0001493152-24-014101.html",true,true,0.84906005859375,2.5449304580688477
+"../Data/10K/Real_Brands,_Inc.-1084133-0001264931-24-000007.html",true,true,0.5499086380004883,1.1791372299194336
+"../Data/10K/Recruiter.com_Group,_Inc.-1462223-0001654954-24-004693.html",true,true,0.9413998126983644,1.8870105743408203
+../Data/10K/Redwoods_Acquisition_Corp.-1907223-0001213900-24-033573.html,true,true,0.5333006381988525,1.0835003852844238
+../Data/10K/Redwood_Mortgage_Investors_IX-1448038-0000950170-24-045202.html,true,true,1.4114513397216797,4.313045263290405
+"../Data/10K/REED'S,_INC.-1140215-0001493152-24-012505.html",true,true,0.800349235534668,2.293297052383423
+"../Data/10K/REGENEREX_PHARMA,_INC.-1357878-0001472375-24-000045.html","string indices must be integers, not 'str'",,,
+"../Data/10K/REGIONAL_HEALTH_PROPERTIES,_INC-1004724-0000950170-24-039414.html",true,true,1.872198820114136,5.125021934509277
+"../Data/10K/REGO_PAYMENT_ARCHITECTURES,_INC.-1437283-0001214659-24-005793.html",'NoneType' object has no attribute 'group',,,
+../Data/10K/RELIABILITY_INC-34285-0001493152-24-012490.html,true,'NoneType' object has no attribute 'next',0.7400712966918945,
+"../Data/10K/Reliance_Global_Group,_Inc.-1812727-0001493152-24-013118.html",true,true,1.3526082038879397,3.48797607421875
+"../Data/10K/Reliant_Holdings,_Inc.-1682265-0001477932-24-002220.html",true,true,0.627896785736084,1.418790340423584
+"../Data/10K/REMARK_HOLDINGS,_INC.-1368365-0001368365-24-000060.html",true,true,0.5661866664886475,1.539644718170166
+../Data/10K/RemSleep_Holdings_Inc.-1412126-0001213900-24-033498.html,true,true,0.5807812213897705,1.0837039947509766
+"../Data/10K/RenovoRx,_Inc.-1574094-0001493152-24-012357.html",true,true,1.0124595165252686,3.248805046081543
+"../Data/10K/Rent_the_Runway,_Inc.-1468327-0001468327-24-000114.html",true,true,0.7055370807647705,2.1723225116729736
+"../Data/10K/Replimune_Group,_Inc.-1737953-0001737953-24-000008.html",true,true,0.6595497131347656,1.3393301963806152
+"../Data/10K/Reservoir_Media,_Inc.-1824403-0001410578-24-000975.html","string indices must be integers, not 'str'",,,
+../Data/10K/ReShape_Lifesciences_Inc.-1427570-0001558370-24-004559.html,true,true,0.8807969093322754,2.6309261322021484
+"../Data/10K/Resonate_Blends,_Inc.-897078-0001493152-24-014876.html",true,true,0.625636100769043,1.3201878070831299
+../Data/10K/RetinalGenix_Technologies_Inc.-1836295-0001493152-24-012185.html,true,true,0.5941934585571289,1.733060359954834
+"../Data/10K/REVIVA_PHARMACEUTICALS_HOLDINGS,_INC.-1742927-0001437749-24-011955.html",true,true,0.9333374500274658,2.7157676219940186
+../Data/10K/RF_Acquisition_Corp.-1847607-0001104659-24-051951.html,true,true,0.5809268951416016,1.1162176132202148
+../Data/10K/RiceBran_Technologies-1063537-0001437749-24-010135.html,true,true,0.8581235408782959,2.250345230102539
+../Data/10K/RIVERVIEW_BANCORP_INC-1041368-0000939057-24-000163.html,true,true,2.449581861495972,8.069690465927124
+"../Data/10K/Rocky_Mountain_Chocolate_Factory,_Inc.-1616262-0000950170-24-072997.html",true,true,1.2386033535003662,3.5783424377441406
+../Data/10K/Roivant_Sciences_Ltd.-1635088-0001140361-24-028145.html,true,true,1.9251079559326167,5.72876763343811
+"../Data/10K/ROSS_STORES,_INC.-745732-0000745732-24-000009.html",true,true,0.6978137493133545,1.6886327266693115
+../Data/10K/Roth_CH_Acquisition_Co.-1860514-0001829126-24-002417.html,true,true,0.6945679187774658,1.1619675159454346
+../Data/10K/Roth_CH_Acquisition_V_Co.-1885998-0001829126-24-002099.html,true,true,0.4258348941802978,0.9877946376800537
+"../Data/10K/Royale_Energy,_Inc.-1694617-0001185185-24-000374.html",true,true,0.7408053874969482,1.2091197967529297
+../Data/10K/Royalty_Management_Holding_Corp-1843656-0001477932-24-002179.html,true,true,0.5971782207489014,1.2829804420471191
+../Data/10K/Sachem_Capital_Corp.-1682220-0001410578-24-000381.html,true,true,1.0151262283325195,2.18168044090271
+"../Data/10K/Safety_Shot,_Inc.-1760903-0001493152-24-012476.html",true,true,0.9874637126922609,1.8986384868621826
+../Data/10K/Safe_&_Green_Development_Corp-1959023-0001213900-24-028274.html,true,true,0.7538857460021973,1.6916885375976562
+../Data/10K/SAFE_&_GREEN_HOLDINGS_CORP.-1023994-0001213900-24-040541.html,true,true,1.621074676513672,4.285419464111328
+"../Data/10K/Saker_Aviation_Services,_Inc.-1128281-0001437749-24-010272.html",Table of contents without links not supported yet,,,
+"../Data/10K/Samsara_Luggage,_Inc.-1530163-0001213900-24-029049.html",true,true,0.8150265216827393,1.8579251766204834
+../Data/10K/SAN_JUAN_BASIN_ROYALTY_TRUST-319655-0001193125-24-083035.html,true,true,0.3298094272613525,1.2774031162261963
+../Data/10K/SARATOGA_INVESTMENT_CORP.-1377936-0001213900-24-040080.html,true,true,5.262247562408447,68.48606061935425
+../Data/10K/SATIVUS_TECH_CORP.-1661600-0001683168-24-001970.html,true,true,0.4235117435455322,1.3187251091003418
+../Data/10K/SCANDIUM_INTERNATIONAL_MINING_CORP.-1408146-0001437749-24-010242.html,Table of contents without links not supported yet,,,
+"../Data/10K/SCIENTIFIC_ENERGY,_INC-1276531-0001376474-24-000170.html",'NoneType' object has no attribute 'group',,,
+"../Data/10K/Scorpius_Holdings,_Inc.-1476963-0001558370-24-005902.html",true,true,1.004979372024536,2.493246078491211
+"../Data/10K/Sculptor_Diversified_Real_Estate_Income_Trust,_Inc.-1914496-0001914496-24-000042.html",true,'NoneType' object has no attribute 'next',0.8162229061126709,
+../Data/10K/SDCL_EDGE_Acquisition_Corp-1846975-0001829126-24-002546.html,true,true,0.6124563217163086,1.8046112060546875
+../Data/10K/SeaStar_Medical_Holding_Corp-1831868-0000950170-24-044855.html,true,'NoneType' object has no attribute 'next',2.198495864868164,
+../Data/10K/SEATech_Ventures_Corp.-1763660-0001493152-24-018557.html,true,true,0.7710039615631104,1.5378544330596924
+"../Data/10K/Securetech_Innovations,_Inc.-1703157-0001017386-24-000116.html",'NoneType' object has no attribute 'group',,,
+../Data/10K/SEGUIN_NATURAL_HAIR_PRODUCTS_INC.-1642363-0001214659-24-007437.html,Table of contents without links not supported yet,,,
+"../Data/10K/SELECTIS_HEALTH,_INC.-727346-0001493152-24-014714.html",'NoneType' object has no attribute 'group',,,
+../Data/10K/Seneca_Foods_Corp-88948-0001437749-24-020198.html,true,true,0.2014782428741455,0.5807855129241943
+../Data/10K/SENTIENT_BRANDS_HOLDINGS_INC.-1358633-0001731122-24-000645.html,true,true,0.4360795021057129,0.9272053241729736
+../Data/10K/SEP_Acquisition_Corp.-1849902-0001753926-24-000723.html,true,true,0.626305341720581,1.6170310974121094
+"../Data/10K/SeqLL,_Inc.-1605888-0001213900-24-031701.html",true,true,0.6606369018554688,1.867896318435669
+../Data/10K/Sequoia_Mortgage_Trust_2012-6-1561167-0000950170-24-039207.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/Sequoia_Mortgage_Trust_2013-2-1564968-0000950170-24-039206.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/Sequoia_Mortgage_Trust_2013-3-1567958-0000950170-24-039226.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/Sequoia_Mortgage_Trust_2013-4-1570440-0000950170-24-039213.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/Sequoia_Mortgage_Trust_2013-6-1574593-0000950170-24-039210.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/Sequoia_Mortgage_Trust_2013-7-1576709-0000950170-24-039215.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/Sequoia_Mortgage_Trust_2013-8-1577310-0000950170-24-039217.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/Seritage_Growth_Properties-1628063-0000950170-24-039550.html,true,true,1.710458755493164,4.2800328731536865
+"../Data/10K/SHF_Holdings,_Inc.-1854963-0001493152-24-012360.html",true,true,1.407820463180542,3.080667018890381
+../Data/10K/SHOREPOWER_TECHNOLOGIES_INC.-764630-0001493152-24-023724.html,true,true,0.3760595321655273,1.3825280666351318
+../Data/10K/ShoulderUP_Technology_Acquisition_Corp.-1885461-0001213900-24-034104.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/SIEBERT_FINANCIAL_CORP-65596-0001213900-24-041746.html,true,true,0.7443604469299316,2.337831497192383
+../Data/10K/Skillsoft_Corp.-1774675-0001437749-24-012054.html,true,true,1.4673030376434326,4.537983417510986
+../Data/10K/SKINOVATION_PHARMACEUTICAL_INC-1118072-0001554795-24-000101.html,Table of contents without links not supported yet,,,
+"../Data/10K/SKINVISIBLE,_INC.-1085277-0001663577-24-000119.html",true,'NoneType' object has no attribute 'next',0.3303837776184082,
+../Data/10K/Skyline_Champion_Corp-90896-0000950170-24-065649.html,true,true,1.4130773544311523,2.4924206733703613
+"../Data/10K/Skyward_Specialty_Insurance_Group,_Inc.-1519449-0001519449-24-000012.html",'NoneType' object has no attribute 'group',,,
+../Data/10K/SKYX_Platforms_Corp.-1598981-0001493152-24-012456.html,true,true,1.0263664722442627,2.2457268238067627
+../Data/10K/Slam_Corp.-1838162-0001213900-24-028726.html,true,true,0.7217891216278076,1.6049120426177979
+../Data/10K/Smart_Powerr_Corp.-721693-0001213900-24-031988.html,true,true,0.5648972988128662,1.8937499523162842
+"../Data/10K/SMC_Entertainment,_Inc.-1497230-0001654954-24-004626.html",true,true,0.5963163375854492,1.3027229309082031
+"../Data/10K/SMITH_&_WESSON_BRANDS,_INC.-1092796-0000950170-24-075584.html",true,'NoneType' object has no attribute 'next',1.177942991256714,
+../Data/10K/Smith_Douglas_Homes_Corp.-1982518-0001140361-24-016909.html,true,true,1.051619052886963,4.958821773529053
+../Data/10K/SMITH_MIDLAND_CORP-924719-0001654954-24-006855.html,Table of contents parsing probably went wrong,,,
+"../Data/10K/Snail,_Inc.-1886894-0001493152-24-012392.html",true,true,1.2404227256774902,4.002011775970459
+"../Data/10K/SOBR_Safe,_Inc.-1425627-0001477932-24-001629.html",true,'NoneType' object has no attribute 'next',0.9811913967132568,
+../Data/10K/SOCIETY_PASS_INCORPORATED.-1817511-0001213900-24-032944.html,true,true,1.5840764045715332,4.4318811893463135
+"../Data/10K/SolarMax_Technology,_Inc.-1519472-0001640334-24-000675.html",true,true,1.2752470970153809,2.9098093509674072
+../Data/10K/Solidion_Technology_Inc.-1881551-0001213900-24-032308.html,true,true,0.4290509223937988,1.2329771518707275
+"../Data/10K/Soluna_Holdings,_Inc-64463-0001493152-24-012303.html",true,true,1.989640235900879,4.294463634490967
+"../Data/10K/Sonoma_Pharmaceuticals,_Inc.-1367083-0001683168-24-004275.html",true,true,0.644395112991333,1.8389003276824951
+../Data/10K/SONO_TEK_CORP-806172-0001171520-24-000208.html,true,'NoneType' object has no attribute 'next',0.4085493087768554,
+"../Data/10K/SOUNDTHINKING,_INC.-1351636-0000950170-24-039479.html",true,true,1.4670891761779783,3.769751787185669
+../Data/10K/Southport_Acquisition_Corp-1865200-0001410578-24-000408.html,"string indices must be integers, not 'str'",,,
+"../Data/10K/South_East_Asia_Development,_Corp.-1673431-0001683168-24-003931.html",true,true,0.2493934631347656,0.6512806415557861
+../Data/10K/Spark_I_Acquisition_Corp-1884046-0001213900-24-029881.html,true,true,0.6754353046417236,1.466442584991455
+"../Data/10K/SPAR_Group,_Inc.-1004989-0001437749-24-010386.html",true,'NoneType' object has no attribute 'next',0.8952651023864746,
+../Data/10K/SPINDLETOP_OIL_&_GAS_CO-867038-0001017386-24-000085.html,Table of contents parsing probably went wrong,,,
+"../Data/10K/SPIRITS_TIME_INTERNATIONAL,_INC.-1434737-0001096906-24-000859.html",Table of contents without links not supported yet,,,
+"../Data/10K/SPORTSMAN'S_WAREHOUSE_HOLDINGS,_INC.-1132105-0000950170-24-041618.html",true,true,0.926938533782959,2.9456748962402344
+"../Data/10K/SpringBig_Holdings,_Inc.-1801602-0001628280-24-013998.html",true,true,0.6448678970336914,1.960986614227295
+../Data/10K/SPRUCE_POWER_HOLDING_CORP-1772720-0001628280-24-015334.html,true,'NoneType' object has no attribute 'next',0.8126895427703857,
+"../Data/10K/SRM_Entertainment,_Inc.-1956744-0001493152-24-012449.html",true,true,0.4237816333770752,1.0524227619171143
+"../Data/10K/Staffing_360_Solutions,_Inc.-1499717-0001493152-24-023534.html",true,true,1.1921229362487793,3.9548940658569336
+"../Data/10K/Starco_Brands,_Inc.-1539850-0001493152-24-013032.html",true,true,0.9275012016296388,2.2407822608947754
+"../Data/10K/STARGUIDE_GROUP,_INC.-1803096-0001640334-24-000804.html",'NoneType' object has no attribute 'group',,,
+"../Data/10K/Stark_Focus_Group,_Inc.-1794942-0001640334-24-000661.html",true,true,0.2027027606964111,0.4866929054260254
+"../Data/10K/STARTENGINE_CROWDFUNDING,_INC.-1661779-0001558370-24-005129.html",'NoneType' object has no attribute 'group',,,
+../Data/10K/Star_Mountain_Lower_Middle-Market_Capital_Corp-1786835-0001140361-24-016720.html,true,true,3.1922767162323,9.048795700073242
+../Data/10K/STEELCASE_INC-1050825-0001050825-24-000060.html,'NoneType' object has no attribute 'group',,,
+"../Data/10K/Stem_Holdings,_Inc.-1697834-0001493152-24-021397.html",true,true,1.2476365566253662,2.8291518688201904
+../Data/10K/StepStone_Group_Inc.-1796022-0001796022-24-000041.html,true,true,1.0683515071868896,3.2924437522888184
+../Data/10K/STERIS_plc-1757898-0001757898-24-000008.html,'NoneType' object has no attribute 'group',,,
+"../Data/10K/Strategic_Environmental_&_Energy_Resources,_Inc.-1576197-0001493152-24-014808.html",true,true,0.8161270618438721,1.7573511600494385
+../Data/10K/STREAMLINE_HEALTH_SOLUTIONS_INC.-1008586-0001493152-24-017297.html,Table of contents parsing probably went wrong,,,
+"../Data/10K/STRYVE_FOODS,_INC.-1691936-0000950170-24-039516.html",true,true,1.099757194519043,3.2110517024993896
+../Data/10K/SUIC_Worldwide_Holdings_Ltd.-1394108-0001554795-24-000105.html,Table of contents without links not supported yet,,,
+"../Data/10K/Summit_Healthcare_REIT,_Inc-1310383-0001410578-24-000474.html",true,true,0.8768072128295898,1.7322344779968262
+../Data/10K/SUNRISE_REAL_ESTATE_GROUP_INC-1083490-0001410578-24-000987.html,'NoneType' object has no attribute 'group',,,
+"../Data/10K/Sunstock,_Inc.-1559157-0001493152-24-012940.html",true,true,0.4030489921569824,0.5482091903686523
+"../Data/10K/Super_League_Enterprise,_Inc.-1621672-0001437749-24-011939.html",'NoneType' object has no attribute 'group',,,
+../Data/10K/Surfside_Acquisition_Inc.-1918102-0001213900-24-028655.html,true,true,0.1740062236785888,0.37722015380859375
+../Data/10K/SusGlobal_Energy_Corp.-1652539-0001062993-24-010319.html,true,'NoneType' object has no attribute 'next',0.8960583209991455,
+../Data/10K/Sustainable_Projects_Group_Inc.-1500305-0001493152-24-013185.html,Table of contents parsing probably went wrong,,,
+../Data/10K/Swiftmerge_Acquisition_Corp.-1845123-0001193125-24-083443.html,true,true,0.6286647319793701,1.4306423664093018
+"../Data/10K/Synaptogenix,_Inc.-1571934-0001410578-24-000410.html",'NoneType' object has no attribute 'group',,,
+"../Data/10K/SYNTEC_OPTICS_HOLDINGS,_INC.-1866816-0001493152-24-021130.html",true,true,0.7234532833099365,1.6631944179534912
+../Data/10K/SYPRIS_SOLUTIONS_INC-864240-0001437749-24-010216.html,Table of contents without links not supported yet,,,
+"../Data/10K/T2_Biosystems,_Inc.-1492674-0000950170-24-039310.html",true,true,1.4007468223571775,4.184621095657349
+../Data/10K/TAITRON_COMPONENTS_INC-942126-0001185185-24-000345.html,true,true,0.4248056411743164,1.2723212242126465
+../Data/10K/TAKE_TWO_INTERACTIVE_SOFTWARE_INC-946581-0001628280-24-024623.html,true,true,1.1757655143737793,2.3160464763641357
+../Data/10K/Target_Global_Acquisition_I_Corp.-1847355-0001193125-24-086733.html,true,true,0.5382003784179688,1.3790650367736816
+../Data/10K/TCW_Direct_Lending_VII_LLC-1715933-0000950170-24-039058.html,true,true,2.260291814804077,4.357974529266357
+../Data/10K/TC_BioPharm_(Holdings)_plc-1872812-0001493152-24-012486.html,true,true,1.4072883129119873,4.1751062870025635
+"../Data/10K/TechCom,_Inc.-1481443-0001683168-24-002392.html",true,true,0.1860623359680175,0.627824068069458
+"../Data/10K/Tectonic_Financial,_Inc.-1766526-0001185185-24-000337.html",true,true,2.6392221450805664,7.960694789886475
+../Data/10K/TenX_Keane_Acquisition-1851484-0001493152-24-014850.html,true,true,0.3622610569000244,0.8788855075836182
+../Data/10K/Terran_Orbital_Corp-1835512-0000950170-24-039442.html,true,true,1.475421667098999,3.0577995777130127
+../Data/10K/Tevogen_Bio_Holdings_Inc.-1860871-0001493152-24-016796.html,true,true,0.8045878410339355,2.373173236846924
+../Data/10K/Texas_Republic_Capital_Corp-1560452-0001185185-24-000371.html,true,true,0.7534205913543701,1.6478610038757324
+"../Data/10K/THERAPEUTIC_SOLUTIONS_INTERNATIONAL,_INC.-1419051-0001493152-24-014975.html",true,true,0.6745812892913818,1.3849952220916748
+"../Data/10K/ThermoGenesis_Holdings,_Inc.-811212-0001437749-24-012088.html",true,true,0.7590527534484863,2.229081392288208
+"../Data/10K/Thermon_Group_Holdings,_Inc.-1489096-0001489096-24-000099.html",true,true,0.8664727210998535,2.6187214851379395
+"../Data/10K/Thunder_Bridge_Capital_Partners_IV,_Inc.-1843993-0001213900-24-028753.html",true,true,0.7656340599060059,2.222872495651245
+../Data/10K/Thunder_Energies_Corp-1524872-0001683168-24-002407.html,true,true,0.7571196556091309,1.9005248546600342
+../Data/10K/Tidal_Commodities_Trust_I-1985840-0001999371-24-004291.html,true,true,0.2986063957214355,1.3193762302398682
+"../Data/10K/TILLY'S,_INC.-1524025-0001628280-24-015839.html",true,true,0.7056558132171631,1.787435531616211
+../Data/10K/Titan_Environmental_Solutions_Inc.-1514056-0001493152-24-014667.html,true,true,1.4929053783416748,4.094666004180908
+../Data/10K/Titan_Machinery_Inc.-1409171-0001409171-24-000028.html,true,true,0.821434736251831,2.377835273742676
+../Data/10K/TITAN_PHARMACEUTICALS_INC-910267-0001829126-24-002110.html,true,true,0.848689079284668,1.7734580039978027
+../Data/10K/TMT_Acquisition_Corp.-1879851-0001493152-24-014373.html,true,true,0.5824499130249023,1.1146924495697021
+../Data/10K/TOFUTTI_BRANDS_INC-730349-0001493152-24-012992.html,true,true,0.3552291393280029,1.3173012733459473
+"../Data/10K/TOMI_Environmental_Solutions,_Inc.-314227-0001654954-24-004045.html",'NoneType' object has no attribute 'group',,,
+../Data/10K/Tonix_Pharmaceuticals_Holding_Corp.-1430306-0001999371-24-004297.html,true,true,1.568324089050293,5.3354387283325195
+../Data/10K/Torrid_Holdings_Inc.-1792781-0001628280-24-014351.html,true,true,0.5817227363586426,2.24639892578125
+../Data/10K/TortoiseEcofin_Acquisition_Corp._III-1847112-0001193125-24-083368.html,true,true,0.7084164619445801,1.6470627784729004
+../Data/10K/TOYOTA_MOTOR_CREDIT_CORP-834071-0000950170-24-068427.html,true,true,2.42578673362732,7.369479656219482
+"../Data/10K/TPT_GLOBAL_TECH,_INC.-1661039-0001654954-24-005983.html","string indices must be integers, not 'str'",,,
+../Data/10K/TRANSCAT_INC-99302-0001437749-24-018456.html,true,true,1.430741548538208,3.421100616455078
+"../Data/10K/Transcode_Therapeutics,_Inc.-1829635-0001410578-24-000413.html",true,true,0.5341567993164062,1.7283005714416504
+../Data/10K/TRANS_LUX_Corp-99106-0001513162-24-000044.html,true,true,1.0861501693725586,2.0859200954437256
+../Data/10K/TREES_Corp_(Colorado)-1477009-0001213900-24-031818.html,true,true,0.9124884605407716,2.9279487133026123
+../Data/10K/TREVENA_INC-1429560-0001558370-24-004445.html,true,true,0.8479306697845459,2.516298294067383
+"../Data/10K/TriSalus_Life_Sciences,_Inc.-1826667-0001826667-24-000005.html",true,true,0.8962812423706055,2.6606931686401367
+../Data/10K/Tristar_Acquisition_I_Corp.-1852736-0001929980-24-000160.html,true,'NoneType' object has no attribute 'next',0.6464593410491943,
+../Data/10K/TRIUMPH_GROUP_INC-1021162-0000950170-24-067390.html,'NoneType' object has no attribute 'group',,,
+"../Data/10K/TRULEUM,_INC.-855787-0001437749-24-011131.html",Table of contents without links not supported yet,,,
+../Data/10K/Trump_Media_&_Technology_Group_Corp.-1849635-0001140361-24-017011.html,true,true,0.9870519638061525,2.44242000579834
+../Data/10K/Trustfeed_Corp.-1265521-0001493152-24-014594.html,true,true,0.4237771034240722,0.9717497825622559
+"../Data/10K/Trutankless,_Inc.-1429393-0001477932-24-003883.html",true,true,0.4556171894073486,1.1150360107421875
+"../Data/10K/TRxADE_HEALTH,_INC-1382574-0001493152-24-015595.html",true,true,1.0658197402954102,3.2140746116638184
+"../Data/10K/TurnOnGreen,_Inc.-1349706-0001214659-24-006652.html",true,true,0.4395387172698974,1.6824045181274414
+../Data/10K/Two_Hands_Corp-1494413-0001262463-24-000041.html,Table of contents without links not supported yet,,,
+../Data/10K/T_Stamp_Inc-1718939-0001718939-24-000043.html,'NoneType' object has no attribute 'group',,,
+"../Data/10K/U.S._Lighting_Group,_Inc.-1536394-0001213900-24-033333.html","string indices must be integers, not 'str'",,,
+"../Data/10K/U.S._NeuroSurgical_Holdings,_Inc.-1089815-0001140361-24-018303.html",true,true,0.4414482116699219,1.2434842586517334
+"../Data/10K/Under_Armour,_Inc.-1336917-0001336917-24-000073.html",true,true,1.216010808944702,3.642608165740967
+../Data/10K/Unicoin_Inc.-1740742-0001829126-24-002120.html,'NoneType' object has no attribute 'group',,,
+"../Data/10K/United_Health_Products,_Inc.-1096938-0001477932-24-001671.html",Table of contents parsing probably went wrong,,,
+../Data/10K/UNITED_STATES_ANTIMONY_CORP-101538-0001654954-24-004576.html,true,true,0.8894414901733398,2.254347562789917
+../Data/10K/Unite_Acquisition_1_Corp.-1938571-0001213900-24-028681.html,true,true,0.2077980041503906,0.45523834228515625
+../Data/10K/Unite_Acquisition_2_Corp.-1938570-0001213900-24-028685.html,true,true,0.3472256660461426,0.4632232189178467
+../Data/10K/Unite_Acquisition_3_Corp.-1938569-0001213900-24-028690.html,true,true,0.2683031558990478,0.61110520362854
+"../Data/10K/Unity_Biotechnology,_Inc.-1463361-0000950170-24-044237.html",true,true,3.191837310791016,9.46727705001831
+../Data/10K/Universal_Gaming_Corp-1670196-0001477932-24-002163.html,true,true,0.1736397743225097,0.43972039222717285
+../Data/10K/UPAY-1677897-0001575872-24-000650.html,true,true,1.036198616027832,2.262032985687256
+"../Data/10K/UpHealth,_Inc.-1770141-0001770141-24-000046.html",true,'NoneType' object has no attribute 'next',1.1149239540100098,
+"../Data/10K/URBAN_ONE,_INC.-1041657-0001558370-24-009018.html",'NoneType' object has no attribute 'group',,,
+../Data/10K/URBAN_OUTFITTERS_INC-912615-0000950170-24-039320.html,true,true,1.6207914352416992,2.831789016723633
+../Data/10K/US_Alliance_Corp-1463913-0001437749-24-010330.html,true,true,0.7677545547485352,1.9009816646575928
+../Data/10K/US_NUCLEAR_CORP.-1543623-0001213900-24-041830.html,true,true,0.911412477493286,1.1289167404174805
+../Data/10K/UTG_INC-832480-0001140361-24-016714.html,Table of contents without links not supported yet,,,
+"../Data/10K/VACCINEX,_INC.-1205922-0000950170-24-039700.html",true,true,0.8954391479492188,2.1182096004486084
+../Data/10K/Vado_Corp.-1700849-0001185185-24-000394.html,true,true,0.9761178493499756,2.2786788940429688
+../Data/10K/VASO_Corp-839087-0001213900-24-028734.html,true,true,0.991185188293457,1.8375792503356934
+"../Data/10K/Velo3D,_Inc.-1825079-0001825079-24-000008.html",true,true,1.194791555404663,3.610527753829956
+../Data/10K/Venetian-1_Acquisition_Corp.-1900520-0001213900-24-028660.html,true,true,0.4389181137084961,0.5344595909118652
+../Data/10K/Venus_Concept_Inc.-1409269-0001437749-24-010159.html,true,true,1.806791067123413,4.702671527862549
+"../Data/10K/Verb_Technology_Company,_Inc.-1566610-0001493152-24-012416.html",true,true,1.2295382022857666,3.2933707237243652
+"../Data/10K/Vericity,_Inc.-1575434-0000950170-24-039287.html",true,'NoneType' object has no attribute 'next',2.9034206867218018,
+"../Data/10K/Veritone,_Inc.-1615165-0000950170-24-038819.html",true,true,1.7948923110961914,5.1594765186309814
+../Data/10K/Versus_Systems_Inc.-1701963-0001213900-24-028552.html,true,true,0.8024563789367676,2.2299253940582275
+"../Data/10K/Vestiage,_Inc.-1594968-0001683168-24-002466.html",true,true,0.6916983127593994,0.5181987285614014
+../Data/10K/VIASAT_INC-797721-0000950170-24-066031.html,true,true,1.7441670894622805,4.1515960693359375
+"../Data/10K/VICTORY_CLEAN_ENERGY,_INC.-700764-0001079973-24-000746.html",'NoneType' object has no attribute 'group',,,
+"../Data/10K/Video_River_Networks,_Inc.-1084475-0001493152-24-015039.html",true,true,0.82855224609375,1.8210878372192383
+../Data/10K/VINCE_HOLDING_CORP.-1579157-0000950170-24-052254.html,true,true,1.1638333797454834,2.805145740509033
+"../Data/10K/VINEBROOK_HOMES_TRUST,_INC.-1755755-0001755755-24-000022.html",true,'NoneType' object has no attribute 'next',1.6594653129577637,
+../Data/10K/VIRCO_MFG_CORPORATION-751365-0001628280-24-016004.html,true,true,0.4241294860839844,1.4776756763458252
+"../Data/10K/VirTra,_Inc-1085243-0001493152-24-012364.html",true,true,0.9268512725830078,2.0572445392608643
+../Data/10K/VIRTUAL_INTERACTIVE_TECHNOLOGIES_CORP.-1536089-0001493152-24-014885.html,true,true,0.5347082614898682,1.3486545085906982
+../Data/10K/VISION_SENSING_ACQUISITION_CORP.-1883983-0001493152-24-017302.html,"string indices must be integers, not 'str'",,,
+"../Data/10K/Vislink_Technologies,_Inc.-1565228-0001493152-24-013015.html",true,true,1.2545478343963623,2.6057522296905518
+"../Data/10K/Vistagen_Therapeutics,_Inc.-1411685-0001411685-24-000022.html",'NoneType' object has no attribute 'group',,,
+../Data/10K/Vista_Outdoor_Inc.-1616318-0001616318-24-000061.html,true,true,0.9263393878936768,2.7462902069091797
+"../Data/10K/Vivakor,_Inc.-1450704-0001829126-24-002582.html",'NoneType' object has no attribute 'group',,,
+../Data/10K/VIVIC_CORP.-1703073-0001493152-24-014695.html,true,true,0.6435647010803223,1.3500607013702393
+"../Data/10K/VNUE,_Inc.-1376804-0001829126-24-002516.html",true,true,0.755000114440918,1.9160871505737305
+../Data/10K/Vocodia_Holdings_Corp-1880431-0001213900-24-033415.html,true,true,0.7175607681274414,1.866445541381836
+../Data/10K/VOXX_International_Corp-807707-0000950170-24-059558.html,true,'NoneType' object has no attribute 'next',1.9505650997161863,
+"../Data/10K/VPR_Brands,_LP.-1376231-0001213900-24-034236.html",true,true,0.5184013843536377,1.759420394897461
+../Data/10K/Vuzix_Corp-1463972-0001558370-24-005117.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/VYCOR_MEDICAL_INC-1424768-0001493152-24-014837.html,true,true,0.5823252201080322,1.3254497051239014
+../Data/10K/V_F_CORP-103379-0000103379-24-000008.html,true,true,1.3321444988250732,3.0001063346862793
+"../Data/10K/WEED,_INC.-1393772-0001096906-24-000701.html",true,true,0.5661048889160156,0.847395658493042
+../Data/10K/Welsbach_Technology_Metals_Acquisition_Corp.-1866226-0001213900-24-033414.html,true,true,0.5813930034637451,1.2246899604797363
+../Data/10K/Western_Acquisition_Ventures_Corp.-1868419-0001410578-24-000540.html,true,true,0.4712655544281006,1.0018141269683838
+../Data/10K/Western_Uranium_&_Vanadium_Corp.-1621906-0001213900-24-033519.html,true,true,0.7050118446350098,1.7174358367919922
+../Data/10K/Wetouch_Technology_Inc.-1826660-0001493152-24-014934.html,true,true,0.9901103973388672,2.719027280807495
+../Data/10K/WinVest_Acquisition_Corp.-1854463-0001493152-24-014685.html,'NoneType' object has no attribute 'group',,,
+../Data/10K/Winvest_Group_Ltd-1558740-0001829126-24-002653.html,true,true,0.5025646686553955,0.8366637229919434
+"../Data/10K/WISA_TECHNOLOGIES,_INC.-1682149-0001410578-24-000412.html",true,true,0.9022819995880128,1.9004533290863037
+"../Data/10K/WM_TECHNOLOGY,_INC.-1779474-0001779474-24-000023.html",true,true,0.8786907196044922,2.135032892227173
+../Data/10K/WORLDS_INC-1961-0001264931-24-000014.html,true,true,0.4343132972717285,0.8348174095153809
+../Data/10K/WORLD_ACCEPTANCE_CORP-108385-0000108385-24-000024.html,'NoneType' object has no attribute 'group',,,
+"../Data/10K/WORLD_HEALTH_ENERGY_HOLDINGS,_INC.-943535-0001493152-24-014665.html",true,true,0.8462498188018799,2.045159339904785
+"../Data/10K/XBP_Europe_Holdings,_Inc.-1839530-0001558370-24-004558.html",true,true,0.93023681640625,2.8242030143737793
+"../Data/10K/XCel_Brands,_Inc.-1083220-0001558370-24-005326.html",'NoneType' object has no attribute 'group',,,
+"../Data/10K/Xilio_Therapeutics,_Inc.-1840233-0001558370-24-004530.html",true,true,0.5661733150482178,1.7883119583129883
+"../Data/10K/Xtant_Medical_Holdings,_Inc.-1453593-0001493152-24-012145.html",true,true,1.2021138668060305,3.2009215354919434
+"../Data/10K/XTI_Aerospace,_Inc.-1529113-0001628280-24-016449.html",'NoneType' object has no attribute 'group',,,
+"../Data/10K/XWELL,_Inc.-1410428-0001558370-24-005211.html",true,true,1.2308464050292969,2.0565309524536133
+"../Data/10K/Yale_Transaction_Finders,_Inc.-1311673-0001493152-24-012403.html",true,true,0.4375667572021484,0.6913251876831055
+../Data/10K/YCQH_Agricultural_Technology_Co._Ltd-1794276-0001493152-24-014769.html,true,true,0.3937585353851318,1.286412000656128
+"../Data/10K/YIELD10_BIOSCIENCE,_INC.-1121702-0001121702-24-000021.html",'NoneType' object has no attribute 'group',,,
+../Data/10K/Yong_Bai_Chao_New_Retail_Corp-1284454-0001477932-24-002091.html,true,true,0.2672369480133056,0.6604335308074951
+../Data/10K/Yoshiharu_Global_Co.-1898604-0001493152-24-012337.html,true,true,0.7611253261566162,1.8990144729614258
+../Data/10K/Yotta_Acquisition_Corp-1907730-0001829126-24-002515.html,true,true,0.4414393901824951,0.8014028072357178
+"../Data/10K/YOUNEEQAI_TECHNICAL_SERVICES,_INC.-1976923-0001065949-24-000042.html","string indices must be integers, not 'str'",,,
+../Data/10K/Yubo_International_Biotech_Ltd-895464-0001640334-24-000618.html,true,true,0.4392144680023193,1.611069917678833
+"../Data/10K/ZEVRA_THERAPEUTICS,_INC.-1434647-0001437749-24-010430.html",true,'NoneType' object has no attribute 'next',1.988739252090454,
+../Data/10K/ZHEN_DING_RESOURCES_INC.-1594204-0001214659-24-006714.html,"string indices must be integers, not 'str'",,,
+../Data/10K/Zomedica_Corp.-1684144-0001558370-24-004517.html,true,true,1.1171231269836426,1.8809692859649658

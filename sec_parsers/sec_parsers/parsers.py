@@ -9,7 +9,7 @@ from sec_parsers.html_helper import get_elements_between_two_elements, get_text_
 # note: we can use part elem if we want for links. But it's not needed as in all cases I've seen so far, there is no text between parts and items.
 # with some work should return detailed xml tree
 # add visualizer option? -yes
-def parse_10k(html):
+def parse_10k(html, verbose=False):
     soup = BeautifulSoup(html, 'html.parser')    
 
     toc_dict = get_table_of_contents(soup)
@@ -20,15 +20,20 @@ def parse_10k(html):
     for part_idx,_ in list(enumerate(parts_list)):
         part = parts_list[part_idx]
         part_name = part['name']
+        if verbose:
+            print(f'Parsing part {part_idx+1} of {len(parts_list)}: {part_name}')
 
 
         xml_part_element = ET.SubElement(root, part_name)
         items_list = part['items']
         for item_idx, _ in list(enumerate(items_list)):
+
             item = items_list[item_idx]
             item_id = item['href'][1:]
             item_name = item['name']
             item_desc = item['desc']
+            if verbose:
+                print(f'Parsing item {item_idx+1} of {len(items_list)}: {item_name}')
 
             item_elem = soup.find(id=item_id)
             if item_elem is None:
@@ -60,6 +65,8 @@ def parse_10k(html):
             # now we iterate through the subheadings elements and get the text between them
             # wow this is borked. go shopping and think about it
             for sub_idx, _ in list(enumerate(subheadings_element_list)):
+                if verbose:
+                    print(f'Parsing subheading {sub_idx+1} of {len(subheadings_element_list)}')
                 # stop before last element
                 if sub_idx < len(subheadings_element_list) - 1:
                     if subheadings_element_list[sub_idx] is not None:

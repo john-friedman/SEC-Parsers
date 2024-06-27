@@ -1,7 +1,7 @@
 import bs4
 import pandas as pd
 import os
-from sec_parsers import get_table_of_contents, open_soup
+from sec_parsers import get_table_of_contents, open_soup, save_xml
 from sec_parsers import parse_10k
 import numpy as np
 from time import time
@@ -22,6 +22,8 @@ def generate_tests_df(dir_10k,out_path):
     df = pd.DataFrame(files, columns=['file'])
     df['toc_parsed'] = ''
     df['html_parsed'] = ''
+    df['toc_parsed_time'] = ''
+    df['html_parsed_time'] = ''
     df.to_csv(out_path, index=False)
 
 def check_toc_parsing(toc_dict):
@@ -47,6 +49,7 @@ def run_toc_tests(dir_10k,out_path,new=False):
     parsing_df = pd.read_csv(out_path)
     for idx, row in parsing_df[parsing_df.toc_parsed.isna()].iterrows():
         try:
+            start_time = time()
             file = row['file']
             with open(file, 'r', encoding='utf-8-sig') as f:
                 html = f.read()
@@ -58,29 +61,33 @@ def run_toc_tests(dir_10k,out_path,new=False):
             #print(df)
 
             parsing_df.loc[idx, 'toc_parsed'] = 'true'
+            parsing_df.loc[idx, 'toc_parsed_time'] = time() - start_time
             parsing_df.to_csv(out_path, index=False)
                 
         except Exception as e:
             print(f"{idx}: {file}")
             print(e)
             parsing_df.loc[idx, 'toc_parsed'] = str(e)
-            
             parsing_df.to_csv(out_path, index=False)    
 
-def run_parsing_tests(out_path,new=False):
+def run_parsing_tests(out_path,dir_10k_parsed,new=False):
     df = pd.read_csv(out_path)
     if new:
         df['html_parsed'] = np.nan
 
     for idx, row in df[((df.html_parsed.isna()) & (df.toc_parsed=='true'))].iterrows():
         try:
+            start_time = time()
             file = row['file']
             with open(file, 'r', encoding='utf-8-sig') as f:
                 html = f.read()
 
-            soup = bs4.BeautifulSoup(html, 'html.parser')
             tree = parse_10k(html)
+            # fix
+            save_xml(tree, file.replace('10K', 'Parsed/10K').replace('.html', '.xml'))
+
             df.loc[idx, 'html_parsed'] = 'true'
+            df.loc[idx, 'html_parsed_time'] = time() - start_time
             df.to_csv(out_path, index=False)
         except Exception as e:
             print(f"{idx}: {file}")
