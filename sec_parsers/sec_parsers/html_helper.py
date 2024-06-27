@@ -113,22 +113,33 @@ def get_table_of_contents(soup):
             table_of_contents_dict['parts'].append(part)
         
         elif 'item' in row.text.lower():
-            item_text = row.text.lower().strip()
-            # preprocessing
-            item_text = re.sub('\n',' ',item_text).strip()
+            # This is going to be tricky and require manual checking of item names.
+            # we're currently using regex. This works well but fails if the item is in a form <td>Item 1A</td><td>blah blah</td>
+            # moving to a td based system, but will need to check for edge cases. There will be edge cases. need to set up tests for item names
+            # easy to check because standardized
+            item_text = row.text
 
-            item_name = re.search('Item\s+[0-9]{1,}[A-Z]{0,}(?=[\.|\s+|$])', item_text, re.IGNORECASE).group(0)
-            
-            # remove item name from item text
-            item_text = item_text.replace(item_name, '')
-            # clean item name
+            cells = row.find_all('td')
+            item_cell = [cell for cell in cells if 'item' in cell.text.lower()][0]
+            # remove item cell from cells
+            cells.remove(item_cell)
+
+            # remove item name from item_text
+            item_text = re.sub(item_cell.text, '', item_text).strip()
+
+            # cleaning add func and add to cleaning.py
+            item_name = item_cell.text.lower().strip()
             item_name = re.sub('\s+','',item_name)
 
-            # cleanup by removing leading and trailing whitespace, periods
-            item_text = item_text.strip().strip('.').strip()
-
             # not a priority right now, but desc does get cut off e.g. form 10-k summary
-            item_desc = re.sub("\s+",' ',re.search('^.*?(?=[\d+$]|$)', item_text, re.IGNORECASE).group(0).strip())
+            # likely to introduce issues with changes here
+            page_cell = [cell for cell in cells if re.search('\d+', cell.text.strip())][0]
+            cells.remove(page_cell)
+
+            if len(cells) == 1:
+                item_desc = cells[0].text.strip()
+            else:
+                raise ValueError('Item description not found')
 
             # if linked toc, but missing one or two elem links, it means its not there e.g. Financial Statements and Supplementary Data
             # in 2024 Regional Health Properties, Inc. 10k
@@ -145,6 +156,14 @@ def get_table_of_contents(soup):
     if len(table_of_contents_dict['parts']) < 3:
         raise ValueError('Table of contents parsing probably went wrong')
     
+    # check links (e.g. in 4Front_Ventures_Corp.-1783875-0001628280-24-016208.html item 1b and 1c have same link)
+    # check if duplicate links, for now raise valueerror
+    for part in table_of_contents_dict['parts']:
+        items_list = part['items']
+        links = [item['href'] for item in items_list]
+        if len(links) != len(set(links)):
+            raise ValueError('Duplicate links detected in TOC. This is not supported yet.')
+
     return table_of_contents_dict
     
 def detect_subheadings(elements):

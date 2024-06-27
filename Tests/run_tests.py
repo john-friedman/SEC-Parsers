@@ -1,7 +1,6 @@
 from tests import run_toc_tests, run_parsing_tests
 import pandas as pd
-# 10 K parsing tests
-# previous results: as of 6/26 - on subsamble about 80% of toc parsed, and then 95% of that was parsed correctly
+# 10 K parsing tests - need to cleanup code for reuse - add global?
 dir_10k = "../Data/10K/"
 dir_10k_parsed = "../Data/Parsed/10K"
 test_csv_path = "parsing_tests.csv"
@@ -11,7 +10,7 @@ run_toc_tests(dir_10k,test_csv_path,new=False)
 run_parsing_tests(test_csv_path,dir_10k_parsed,new=False)
 
 # view results
-parsing_df = pd.read_csv("parsing_tests.csv")
+parsing_df = pd.read_csv(test_csv_path)
 toc_parsed_counts = parsing_df.toc_parsed.value_counts()
 html_parsed_counts = parsing_df.html_parsed.value_counts()
 

@@ -1,8 +1,10 @@
 # Experimental Branch
 
 # TODO tmrw
-1. check why some files don't parse, then implement detailed parsing
-2. look at filings for idea how to implement detailed parsing - add table handling (convert to xml table?)
+1. ~~check why some files don't parse, then implement detailed parsing~~
+2. ~~look at filings for idea how to implement detailed parsing - add table handling (convert to xml table?)~~
+3. there are major issues lol. We'll switch to detailed parser immediately
+we'll start work on detailed parser afterwards
 
 # SEC Parsers
 Parses non-standardized SEC 10-K filings into well structured xml. Currently can parse about 80% of SEC 10 K filings. XML includes parts, items (such as item1a risk factors), as well as subheadings (e.g. seasonality).
@@ -15,6 +17,8 @@ A sample of parsed 10k xmls are available [here](https://www.dropbox.com/scl/fo/
 * ```download_sec_filing(url)``` downloads a sec filing from url using headers
 * ```print_xml_structure(tree)``` prints tree structure of parsed html file
 * ```get_text_from_node(node)``` gets the text from an xml node
+
+## Quickstart
 
 ## Current Issues before merger with main
 * add subsection parsing using recursion - old code should help
@@ -40,12 +44,15 @@ A sample of parsed 10k xmls are available [here](https://www.dropbox.com/scl/fo/
 Statistics are likely better than they look. Small / weird companies are less likely to parse - make this section generate automatically from tests
 
 Table of Contents Parsing:
+* took 12 minutes
 * 79.7% parsed
 * 14.4% had an issue that can be resolved
 * 3% were not parsed has table without links is not supported yet
 * remainder unclear
 
+
 Conversion to xml:
+* took 40 minutes
 * 93.1% parsed succesfully
 * 6.9% had an issue
 

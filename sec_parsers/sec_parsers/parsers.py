@@ -26,6 +26,7 @@ def parse_10k(html, verbose=False):
 
         xml_part_element = ET.SubElement(root, part_name)
         items_list = part['items']
+
         for item_idx, _ in list(enumerate(items_list)):
 
             item = items_list[item_idx]
