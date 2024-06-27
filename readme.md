@@ -18,4 +18,5 @@ Before pushing experimental to main, remember to update jupyter notebooks / stac
 Everything is WIP rn, so structure is fluid. Figure out good naming conventions and how to hide / show functions in packages.
 
 TODO:
-consider using lxml html parser
+consider using lxml html parser - it takes ~2-4 seconds to parse a file into xml. 
+could be because i'm doing something dumb, but I think a decent amount of overhead is from beautiful soup. 

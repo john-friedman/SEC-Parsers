@@ -1,106 +1,106 @@
 file,toc_parsed,html_parsed
-../../Data/10K/1001171_0001140361-24-026827.html,true,'href'
-../../Data/10K/1001601_0001493152-24-014891.html,true,'href'
-../../Data/10K/1004724_0000950170-24-039414.html,true,'href'
-../../Data/10K/1004989_0001437749-24-010386.html,true,'href'
-../../Data/10K/100591_0001558370-24-004979.html,true,'href'
+../../Data/10K/1001171_0001140361-24-026827.html,true,true
+../../Data/10K/1001601_0001493152-24-014891.html,true,true
+../../Data/10K/1004724_0000950170-24-039414.html,true,true
+../../Data/10K/1004989_0001437749-24-010386.html,true,'NoneType' object has no attribute 'next'
+../../Data/10K/100591_0001558370-24-004979.html,true,true
 ../../Data/10K/1008586_0001493152-24-017297.html,Table of contents parsing probably went wrong,Table of contents parsing probably went wrong
-../../Data/10K/1008848_0000950170-24-039464.html,true,'href'
-../../Data/10K/1009891_0001213900-24-033018.html,true,'href'
-../../Data/10K/101538_0001654954-24-004576.html,true,'href'
+../../Data/10K/1008848_0000950170-24-039464.html,true,true
+../../Data/10K/1009891_0001213900-24-033018.html,true,true
+../../Data/10K/101538_0001654954-24-004576.html,true,true
 ../../Data/10K/1017655_0001437749-24-010365.html,Table of contents without links not supported yet,Table of contents without links not supported yet
-../../Data/10K/1018840_0001018840-24-000019.html,true,'href'
-../../Data/10K/1022408_0001140361-24-027200.html,true,'href'
-../../Data/10K/1022899_0001493152-24-012333.html,true,'href'
-../../Data/10K/1023731_0001023731-24-000042.html,true,'href'
-../../Data/10K/1023994_0001213900-24-040541.html,true,'href'
-../../Data/10K/1025771_0001477932-24-002131.html,'NoneType' object has no attribute 'group','NoneType' object has no attribute 'group'
-../../Data/10K/1032975_0001032975-24-000023.html,true,'href'
-../../Data/10K/103379_0000103379-24-000008.html,true,'href'
-../../Data/10K/1037038_0001037038-24-000014.html,true,'href'
-../../Data/10K/1040896_0001628280-24-013949.html,true,'href'
-../../Data/10K/1041859_0001628280-24-020436.html,true,
-../../Data/10K/1042642_0001558370-24-004539.html,true,
-../../Data/10K/1049011_0001493152-24-015154.html,true,
+../../Data/10K/1018840_0001018840-24-000019.html,true,true
+../../Data/10K/1022408_0001140361-24-027200.html,true,true
+../../Data/10K/1022899_0001493152-24-012333.html,true,true
+../../Data/10K/1023731_0001023731-24-000042.html,true,true
+../../Data/10K/1023994_0001213900-24-040541.html,true,true
+../../Data/10K/1025771_0001477932-24-002131.html,'NoneType' object has no attribute 'group',
+../../Data/10K/1032975_0001032975-24-000023.html,true,true
+../../Data/10K/103379_0000103379-24-000008.html,true,true
+../../Data/10K/1037038_0001037038-24-000014.html,true,true
+../../Data/10K/1040896_0001628280-24-013949.html,true,true
+../../Data/10K/1041859_0001628280-24-020436.html,true,true
+../../Data/10K/1042642_0001558370-24-004539.html,true,true
+../../Data/10K/1049011_0001493152-24-015154.html,true,true
 ../../Data/10K/1050825_0001050825-24-000060.html,'NoneType' object has no attribute 'group',
-../../Data/10K/1051343_0001140361-24-018439.html,true,
-../../Data/10K/1054102_0001493152-24-012464.html,true,
+../../Data/10K/1051343_0001140361-24-018439.html,true,true
+../../Data/10K/1054102_0001493152-24-012464.html,true,true
 ../../Data/10K/105744_0001214659-24-005800.html,'NoneType' object has no attribute 'group',
-../../Data/10K/1058307_0001437749-24-011806.html,true,
-../../Data/10K/1063537_0001437749-24-010135.html,true,
+../../Data/10K/1058307_0001437749-24-011806.html,true,'NoneType' object has no attribute 'next'
+../../Data/10K/1063537_0001437749-24-010135.html,true,true
 ../../Data/10K/1064722_0001493152-24-015016.html,'NoneType' object has no attribute 'group',
-../../Data/10K/1066764_0001493152-24-012444.html,true,
-../../Data/10K/1066923_0001213900-24-033265.html,true,
-../../Data/10K/1068689_0001493152-24-014964.html,true,
+../../Data/10K/1066764_0001493152-24-012444.html,true,true
+../../Data/10K/1066923_0001213900-24-033265.html,true,true
+../../Data/10K/1068689_0001493152-24-014964.html,true,true
 ../../Data/10K/1069394_0001493152-24-012435.html,Table of contents parsing probably went wrong,
-../../Data/10K/1070050_0001683168-24-002017.html,true,
+../../Data/10K/1070050_0001683168-24-002017.html,true,'NoneType' object has no attribute 'next'
 ../../Data/10K/1070235_0001070235-24-000057.html,'NoneType' object has no attribute 'group',
-../../Data/10K/1072842_0001185185-24-000346.html,true,
-../../Data/10K/1077688_0001185185-24-000378.html,true,
-../../Data/10K/1078075_0001628280-24-023777.html,true,
-../../Data/10K/1080657_0001437749-24-012113.html,true,
+../../Data/10K/1072842_0001185185-24-000346.html,true,true
+../../Data/10K/1077688_0001185185-24-000378.html,true,true
+../../Data/10K/1078075_0001628280-24-023777.html,true,true
+../../Data/10K/1080657_0001437749-24-012113.html,true,'NoneType' object has no attribute 'next'
 ../../Data/10K/1081834_0001214659-24-006961.html,Table of contents without links not supported yet,
-../../Data/10K/1081938_0001683168-24-003575.html,true,
+../../Data/10K/1081938_0001683168-24-003575.html,true,true
 ../../Data/10K/1083220_0001558370-24-005326.html,'NoneType' object has no attribute 'group',
-../../Data/10K/1083522_0001437749-24-010422.html,true,
+../../Data/10K/1083522_0001437749-24-010422.html,true,true
 ../../Data/10K/108385_0000108385-24-000024.html,'NoneType' object has no attribute 'group',
-../../Data/10K/1084133_0001264931-24-000007.html,true,
-../../Data/10K/1084267_0001683168-24-002214.html,true,
-../../Data/10K/1084475_0001493152-24-015039.html,true,
+../../Data/10K/1084133_0001264931-24-000007.html,true,true
+../../Data/10K/1084267_0001683168-24-002214.html,true,true
+../../Data/10K/1084475_0001493152-24-015039.html,true,true
 ../../Data/10K/1084991_0001084991-24-000017.html,'NoneType' object has no attribute 'group',
-../../Data/10K/1085243_0001493152-24-012364.html,true,
-../../Data/10K/1085277_0001663577-24-000119.html,true,
-../../Data/10K/1086303_0001213900-24-028792.html,true,
+../../Data/10K/1085243_0001493152-24-012364.html,true,true
+../../Data/10K/1085277_0001663577-24-000119.html,true,'NoneType' object has no attribute 'next'
+../../Data/10K/1086303_0001213900-24-028792.html,true,true
 ../../Data/10K/1086745_0001493152-24-012412.html,'NoneType' object has no attribute 'group',
-../../Data/10K/1089815_0001140361-24-018303.html,true,
-../../Data/10K/1091596_0001437749-24-012587.html,true,
-../../Data/10K/109198_0000109198-24-000014.html,true,
-../../Data/10K/1092570_0001376474-24-000151.html,true,
+../../Data/10K/1089815_0001140361-24-018303.html,true,true
+../../Data/10K/1091596_0001437749-24-012587.html,true,true
+../../Data/10K/109198_0000109198-24-000014.html,true,true
+../../Data/10K/1092570_0001376474-24-000151.html,true,true
 ../../Data/10K/1093636_0001065949-24-000047.html,"string indices must be integers, not 'str'",
 ../../Data/10K/1096938_0001477932-24-001671.html,Table of contents parsing probably went wrong,
-../../Data/10K/1098146_0001628280-24-013983.html,true,
+../../Data/10K/1098146_0001628280-24-013983.html,true,true
 ../../Data/10K/1099132_0001477932-24-001766.html,'NoneType' object has no attribute 'group',
-../../Data/10K/1100397_0001493152-24-014822.html,true,
-../../Data/10K/1101433_0001654954-24-004360.html,true,
-../../Data/10K/1103795_0001683168-24-002236.html,true,
+../../Data/10K/1100397_0001493152-24-014822.html,true,true
+../../Data/10K/1101433_0001654954-24-004360.html,true,true
+../../Data/10K/1103795_0001683168-24-002236.html,true,true
 ../../Data/10K/1103833_0001477932-24-002238.html,'NoneType' object has no attribute 'group',
-../../Data/10K/1106644_0001213900-24-028731.html,true,
+../../Data/10K/1106644_0001213900-24-028731.html,true,true
 ../../Data/10K/1107421_0000950170-24-038868.html,'NoneType' object has no attribute 'group',
-../../Data/10K/1108645_0001477932-24-001631.html,true,
-../../Data/10K/1111741_0000950170-24-044527.html,true,
+../../Data/10K/1108645_0001477932-24-001631.html,true,true
+../../Data/10K/1111741_0000950170-24-044527.html,true,'NoneType' object has no attribute 'next'
 ../../Data/10K/1113313_0001607062-24-000118.html,Table of contents without links not supported yet,
-../../Data/10K/1113809_0001437749-24-012440.html,true,
-../../Data/10K/1117057_0001213900-24-028612.html,true,
+../../Data/10K/1113809_0001437749-24-012440.html,true,true
+../../Data/10K/1117057_0001213900-24-028612.html,true,true
 ../../Data/10K/1118072_0001554795-24-000101.html,Table of contents without links not supported yet,
 ../../Data/10K/1121702_0001121702-24-000021.html,'NoneType' object has no attribute 'group',
 ../../Data/10K/1128281_0001437749-24-010272.html,Table of contents without links not supported yet,
 ../../Data/10K/1130598_0001558370-24-004525.html,'NoneType' object has no attribute 'group',
 ../../Data/10K/1130889_0001554795-24-000087.html,Table of contents without links not supported yet,
-../../Data/10K/1132105_0000950170-24-041618.html,true,
-../../Data/10K/1132509_0001477932-24-002194.html,true,
+../../Data/10K/1132105_0000950170-24-041618.html,true,true
+../../Data/10K/1132509_0001477932-24-002194.html,true,true
 ../../Data/10K/1134765_0001437749-24-012061.html,Table of contents without links not supported yet,
 ../../Data/10K/1134982_0001477932-24-002287.html,'NoneType' object has no attribute 'group',
-../../Data/10K/1136174_0001628280-24-016456.html,true,
+../../Data/10K/1136174_0001628280-24-016456.html,true,true
 ../../Data/10K/1137883_0001410578-24-000385.html,'NoneType' object has no attribute 'group',
-../../Data/10K/1138476_0001185185-24-000392.html,true,
-../../Data/10K/1138639_0001138639-24-000122.html,true,
-../../Data/10K/1140215_0001493152-24-012505.html,true,
-../../Data/10K/1145604_0001826466-24-000041.html,true,
-../../Data/10K/1156041_0001493152-24-012685.html,true,
+../../Data/10K/1138476_0001185185-24-000392.html,true,true
+../../Data/10K/1138639_0001138639-24-000122.html,true,true
+../../Data/10K/1140215_0001493152-24-012505.html,true,true
+../../Data/10K/1145604_0001826466-24-000041.html,true,'NoneType' object has no attribute 'next'
+../../Data/10K/1156041_0001493152-24-012685.html,true,true
 ../../Data/10K/1160945_0001554795-24-000099.html,Table of contents without links not supported yet,
-../../Data/10K/1162461_0001628280-24-022628.html,true,
-../../Data/10K/1163389_0001903596-24-000204.html,true,
-../../Data/10K/1166708_0001493152-24-018527.html,true,
-../../Data/10K/1168081_0001213900-24-028585.html,true,
-../../Data/10K/1169561_0001169561-24-000039.html,true,
-../../Data/10K/1170010_0001170010-24-000034.html,true,
-../../Data/10K/1172178_0001493152-24-019985.html,true,
-../../Data/10K/1174891_0001493152-24-014061.html,true,
-../../Data/10K/1205922_0000950170-24-039700.html,true,
-../../Data/10K/1211805_0001493152-24-012542.html,true,
-../../Data/10K/1218683_0001213900-24-028158.html,true,
-../../Data/10K/1223389_0001223389-24-000028.html,true,
-../../Data/10K/12239_0001213900-24-028218.html,true,
+../../Data/10K/1162461_0001628280-24-022628.html,true,true
+../../Data/10K/1163389_0001903596-24-000204.html,true,true
+../../Data/10K/1166708_0001493152-24-018527.html,true,true
+../../Data/10K/1168081_0001213900-24-028585.html,true,true
+../../Data/10K/1169561_0001169561-24-000039.html,true,true
+../../Data/10K/1170010_0001170010-24-000034.html,true,true
+../../Data/10K/1172178_0001493152-24-019985.html,true,true
+../../Data/10K/1174891_0001493152-24-014061.html,true,true
+../../Data/10K/1205922_0000950170-24-039700.html,true,true
+../../Data/10K/1211805_0001493152-24-012542.html,true,true
+../../Data/10K/1218683_0001213900-24-028158.html,true,true
+../../Data/10K/1223389_0001223389-24-000028.html,true,'NoneType' object has no attribute 'next'
+../../Data/10K/12239_0001213900-24-028218.html,true,true
 ../../Data/10K/1224133_0000950170-24-038807.html,true,
 ../../Data/10K/1261379_0001213900-24-028573.html,true,
 ../../Data/10K/1263364_0001493152-24-019773.html,true,

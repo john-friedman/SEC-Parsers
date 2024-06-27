@@ -6,9 +6,8 @@ from bs4 import NavigableString, Tag
 
 from html_helper import get_elements_between_two_elements, get_text_between_two_elements, detect_subheadings, get_table_of_contents
 
-#TODO we added support for part href being empty need to update here
 
-# untested, code sketch
+# note: we can use part elem if we want for links. But it's not needed as in all cases I've seen so far, there is no text between parts and items.
 # with some work should return detailed xml tree
 # add visualizer option? -yes
 def parse_10k(html):
@@ -21,26 +20,8 @@ def parse_10k(html):
     parts_list = toc_dict['parts']
     for part_idx,_ in list(enumerate(parts_list)):
         part = parts_list[part_idx]
-        part_id = part['href'][1:]
         part_name = part['name']
 
-        # find elements using href
-        part_elem = soup.find(id=part_id)
-        if part_elem is None:
-            # sometimes links have names instead of id
-            part_elem = soup.find('a', {'name': part_id})
-
-        # handle last part
-        if part_idx == len(parts_list) - 1:
-            next_part_elem = None
-        else:
-            next_part = parts_list[part_idx+1]
-            next_part_id = next_part['href'][1:]
-            next_part_name = next_part['name']
-
-            next_part_elem = soup.find(id=next_part_id)
-            if next_part_elem is None:
-                next_part_elem = soup.find('a', {'name': next_part_id})
 
         xml_part_element = ET.SubElement(root, part_name)
         items_list = part['items']
