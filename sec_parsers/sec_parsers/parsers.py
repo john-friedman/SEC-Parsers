@@ -21,7 +21,6 @@ def parse_10k(html):
     parts_list = toc_dict['parts']
     for part_idx,_ in list(enumerate(parts_list)):
         part = parts_list[part_idx]
-        # [1:] to skip the # in the href
         part_id = part['href'][1:]
         part_name = part['name']
 

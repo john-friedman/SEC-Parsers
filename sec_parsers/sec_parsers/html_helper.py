@@ -62,15 +62,21 @@ def get_text_between_two_elements(elem1, elem2):
     return text
 
 # works for now, but should do robustness checks - easy to catch
-
-# change this to use regex for parts + items
-# change this to detect if table has links. if not, its a toc without links which we will need to parse in another way
 def detect_table_of_contents(element):
+    toc_type = 'not-toc'
     """Detects if a table is likely to be a table of contents."""
-    # get number of links
+
+    # toc - needs seperate parser if no links
+    num_items = len(re.findall('(\s+|^|\n)Item(\s+|$|\n)', element.text, re.IGNORECASE))
+    if num_items > 5:
+        toc_type = 'toc'
+
+    # linked toc
     links = element.find_all('a')
     if len(links) > 5:
-        return True
+        toc_type = 'toc-links'
+
+    return toc_type
 
 # will need a bunch of work. This is our workhorse.
 def get_table_of_contents(soup):
@@ -78,9 +84,13 @@ def get_table_of_contents(soup):
     tables = soup.findAll('table')
     table_of_contents_detected = False
     for table in tables:
-        if detect_table_of_contents(table):
+        toc_type = detect_table_of_contents(table)
+        if toc_type == 'toc-links':
             table_of_contents_detected = True
             break
+        elif toc_type == 'toc':
+            table_of_contents_detected = True
+            raise ValueError('Table of contents without links not supported yet')
 
     if not table_of_contents_detected:
         raise ValueError('Table of contents not detected')
@@ -100,8 +110,7 @@ def get_table_of_contents(soup):
 
             part_link = row.find('a')
             if part_link:
-                part_href = part_link['href']
-                table_of_contents_dict['href'] = part_href
+                part['href'] = part_link['href']
             table_of_contents_dict['parts'].append(part)
         
         elif 'item' in row.text.lower():
@@ -133,6 +142,9 @@ def get_table_of_contents(soup):
         elif 'signature' in row.text.lower():
             pass
 
+    #check if toc_dict parts has length less than 3
+    if len(table_of_contents_dict['parts']) < 3:
+        raise ValueError('Table of contents parsing probably went wrong')
     
     return table_of_contents_dict
     
