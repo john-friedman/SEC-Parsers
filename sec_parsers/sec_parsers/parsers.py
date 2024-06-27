@@ -2,9 +2,8 @@ from bs4 import BeautifulSoup
 import re
 import pandas as pd
 import xml.etree.cElementTree as ET
-from bs4 import NavigableString, Tag
 
-from html_helper import get_elements_between_two_elements, get_text_between_two_elements, detect_subheadings, get_table_of_contents
+from sec_parsers.html_helper import get_elements_between_two_elements, get_text_between_two_elements, detect_subheadings, get_table_of_contents
 
 
 # note: we can use part elem if we want for links. But it's not needed as in all cases I've seen so far, there is no text between parts and items.

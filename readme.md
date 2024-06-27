@@ -1,22 +1,55 @@
 # Experimental Branch
 
-## TODO:
-1. ~~test new approach to parsing on something handles tables is good at. get parser working~~
-2. Improve toc handling - using tests
-3. better names - maybe look up another package for inspiration? e.g. 
-4. utils? / _ in front of helper names
-5. misc QOL features
-6. visualization
-7. better github structure 
-8. upload to test pypi and update main branch with notice of experimental branch
-9. TESTS. I have 1k 10k sec filings from last 90 days on my computer. see how many parse, then dig in to see how well.
-10. benchmarks (mostly how many 10k parsed etc), but some for time taken
-* better visualization will do wonders here - maybe make pyqt gui to compare side by side?
+# TODO tmrw
+1. fix bug
+2. look at filings for idea how to implement detailed parsing
 
-Before pushing experimental to main, remember to update jupyter notebooks / stackoverflow answers.
+# SEC Parsers
+Parses non-standardized SEC 10-K filings into well structured xml. Currently can parse about 80% of SEC 10 K filings. XML includes parts, items (such as item1a risk factors), as well as subheadings (e.g. seasonality).
 
-Everything is WIP rn, so structure is fluid. Figure out good naming conventions and how to hide / show functions in packages.
+A sample of parsed 10k xmls are available [here](https://www.dropbox.com/scl/fo/np1lpow7r3bissz80ze3o/AKGM8skBrUfEGlSweofAUDU?rlkey=cz1r78jofntjeq4ax2vb2yd0u&e=1&st=mdcwgfcm&dl=0). I would like to upload every parsed 10k xml, but I lack the storage (I need ~50gb, and I have 2gb.) If you can help me with this problem please let me know!
 
-TODO:
-consider using lxml html parser - it takes ~2-4 seconds to parse a file into xml. 
-could be because i'm doing something dumb, but I think a decent amount of overhead is from beautiful soup. 
+## Functions
+* ```parse_10k(html)``` converts a sec filing from non-standardized html into well structured xml
+* ```get_table_of_contents(html)``` reads the table of contents from a sec filing html
+* ```download_sec_filing(url)``` downloads a sec filing from url using headers
+* ```print_xml_structure(tree)``` prints tree structure of parsed html file
+* ```get_text_from_node(node)``` gets the text from an xml node
+
+## Current Issues before merger with main
+* parser_10k infinite loop issues
+* add subsection parsing using recursion - old code should help
+* add visualization
+
+## On upload to main
+* edit stackoverflow questions - I goofed and had a bad package structure. e.g. from sec_parsers.sec_parsers import parse_10k instead of from sec_parsers import parse_10k
+* update jupyter notebooks
+* add statistics on how many files parsed - (currently looks to be ~75%)
+* upload parsed xmls to dropbox and share publicly
+* add download for normal branch from pypi, and experimental from pypitest
+
+## Future
+* more options for parsing, 10Q, etc
+* tools to help check if html parsed to xml correctly. (Maybe some side by side flask interface?)
+* host parsed 10k xml files (~3000 companies, ~25 years, <50gb) online for download
+
+## Notes:
+* Last update to main branch was very WIP with beginner mistakes (never wrote a python package before). I've now settled on a more concrete structure.
+
+# Subsection Parsing
+* read 10 filings to get ideas.
+* detect unique test
+* need a way to notice if tag is surronded by text e.g. random bolded thing in paragraph
+* check if nearest neighbors are unbolded e.g. pART I (caps are bold in this case), assume is subheader
+* might just use some combination of detect unique + position (e.g. \n asset management \n)
+* actually its more difficult than that, because I need parents and children
+
+## Efficiency
+* Code runtime: files parse every ~2 seconds or so. Parsing every 10k filing that is available online would take < 2 days, with multiprocessing, < 4 hours. As such, I will not initially spend effort optimizing runtime. I'll wait until I begin parsing other types of documents where total runtime is much longer to think about optimization.
+* Probably will try lxml's html parser. Initial tests suggest its about 2x as fast for this use-case. Also could just use beautifulsoup's lxml parser
+
+## Other useful SEC stuff
+* [sec-parser](https://github.com/alphanome-ai/sec-parser) - oops, we have similar names. They were first, my bad. They parse 10-Qs well.
+* [edgartools](https://github.com/dgunning/edgartools) - good interface for interacting with SEC's EDGAR system
+* [sec-api](https://sec-api.io/). Paid API to search / download SEC filings. Basically, SEC's EDGAR but setup in a much nicer format. I haven't used it since it costs money.
+* [Bill McDonald's 10-X Archive](https://sraf.nd.edu/data/stage-one-10-x-parse-data/)

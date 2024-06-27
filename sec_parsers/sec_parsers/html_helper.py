@@ -5,7 +5,6 @@ from bs4 import BeautifulSoup, NavigableString, Tag
 import random
 import pandas as pd
 
-    
 # Parsing #
 def get_elements_between_two_elements(elem1, elem2):
     """Get all elements between two beautiful soup tags. if elem2 is None, get all elements after elem1."""

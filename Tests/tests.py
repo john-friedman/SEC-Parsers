@@ -1,21 +1,10 @@
-# tests for checking if the table of contents was read correctly
 import bs4
 import pandas as pd
-import re
-from download import download_sec_filing
 import os
-from html_helper import get_table_of_contents, open_soup, detect_table_of_contents
-from parsers import parse_10k
+from sec_parsers import get_table_of_contents, open_soup
+from sec_parsers import parse_10k
 import numpy as np
-from xml_helper import print_xml_structure
-
-dir_10k = "../../Data/10K/"
-out_path = "parsing_tests.csv"
-
-# current results, 625 true, 21 toc without links not supported, 75 nonetype group, 19 string indices must be int, 19 parsing went wrong
-# ok so we're at about 80% success rate for table parsing, lets see how that compares to the html parsing
-# looks like about 95% pct success rate for html parsing based on table parsing
-# so we can parse like 75% of the 10ks, which is pretty good
+from time import time
 
 def view_errors():
     parsing_df = pd.read_csv("parsing_tests.csv")
@@ -51,7 +40,7 @@ def check_toc_parsing(toc_dict):
     df = pd.DataFrame(records)
     return df
 
-def run_toc_tests(new=False):
+def run_toc_tests(dir_10k,out_path,new=False):
     if new:
         generate_tests_df(dir_10k,out_path)
 
@@ -78,7 +67,7 @@ def run_toc_tests(new=False):
             
             parsing_df.to_csv(out_path, index=False)    
 
-def run_parsing_tests(new=False):
+def run_parsing_tests(out_path,new=False):
     df = pd.read_csv(out_path)
     if new:
         df['html_parsed'] = np.nan
