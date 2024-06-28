@@ -1,17 +1,26 @@
 from time import time
-from style_detection import detect_style_from_string, detect_style_from_element, detect_table,detect_link, detect_image
-from xml_helper import get_text, set_background_color
-# visualize first. Once visualization is good, we'll add parsing to root
-# first understand
-def iterate_element(element,msg=''):
+from style_detection import detect_style_from_string, detect_style_from_element, detect_table,detect_link, detect_image,detect_table_of_contents, get_all_text
+from xml_helper import get_text, set_background_color, remove_background_color
 
-    # skipping some elements
-    
+
+def recursive_parse(element):
+
+    values = element.values()
+    if len(values) == 1:
+        if 'display:none' in values[0]:
+            return
+
     if detect_table(element):
-        # add something here to wipe existing background color
-        set_background_color(element, '#7FFF00')
+        # remove style from all children so that background color can be set
+        for descendant in element.iterdescendants():
+            remove_background_color(descendant)
+
+        if detect_table_of_contents(element) == "toc":
+            set_background_color(element, '#00FFFF')
+        else:
+            set_background_color(element, '#7FFF00')
         return
-    
+
     if detect_link(element):
         set_background_color(element, '#7FFF00')
         return
@@ -20,25 +29,6 @@ def iterate_element(element,msg=''):
         set_background_color(element, '#7FFF00')
         return
 
-    values = element.values()
-    if len(values) == 1:
-        if 'display:none' in values[0]:
-            return
-
-    s1 = time()
-    children = element.getchildren()
-    for child_idx, child in enumerate(children):
-        if len(children) == 1:
-            iterate_element(child,'only child')
-        elif child_idx == 0:
-            iterate_element(child,'first child')
-        else:
-            iterate_element(child,'')
-    
-    next_element = element.getnext()
-    if next_element:
-        iterate_element(next_element)
-    
     text = get_text(element)
     if text == '':
         pass
@@ -51,6 +41,8 @@ def iterate_element(element,msg=''):
             pass
 
 
-    s2 = time()
-    return s2 - s1
+    for child in element.iterchildren():
+        recursive_parse(child)
 
+    return
+        

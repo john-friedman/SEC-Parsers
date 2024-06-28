@@ -1,7 +1,7 @@
 import webbrowser
 import tempfile
 from lxml import html
-
+import re
 
 def get_text(element):
     """Get text from element including tail"""
@@ -22,15 +22,33 @@ def get_all_text(node):
 
 
 # visualization
+def remove_style(element):
+    """Removes the style attribute from an element."""
+    element.attrib.pop('style', None)
+
+def remove_background_color(element):
+    """Removes the background color from an element."""
+    current_style = element.get('style')
+    if current_style:
+        # remove background color from style if exists
+        current_style = re.sub(r'background-color:.*?($|;)','',current_style)
+        element.set('style', current_style)
+    else:
+        element.set('style', '')
 
 def set_background_color(element, color):
     """Sets the background color for an element."""
-    # did this just add 10 seconds to parsing?, lol it did!
     current_style = element.get('style')
-    new_style = f'{current_style}; background-color: {color}'
-    element.set('style', new_style)
-    #element.set('style', f'background-color: {color}')
+    if current_style:
+        new_style = f'{current_style}; background-color: {color}'
+        element.set('style', new_style)
+    else:
+        element.set('style', f'background-color: {color}')
+    
 
+
+def remove_background(element):
+    return
 
 def open_tree(tree):
     """Opens a lxml tree in a web browser."""

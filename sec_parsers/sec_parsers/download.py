@@ -19,11 +19,12 @@ def download_sec_filing(url):
     """Download the SEC filing from the given URL."""
     global headers
     sec_response = requests.get(url, headers=headers)
-
+    
     if sec_response.status_code != 200:
         print(f"Error {sec_response.status_code}: failed to download {url}")
         return None
     
-    html = sec_response.text
+    # important to encode the text as utf-8 as the lxml parser expects it
+    html = sec_response.text.encode("utf-8")
     return html
 

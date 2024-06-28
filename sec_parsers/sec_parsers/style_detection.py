@@ -84,43 +84,62 @@ def detect_style_from_element(element):
                 return True
         return False
     
+    def detect_underline_from_css(element):
+        """Detects underline from css"""
+        if element.get('style'):
+            if 'text-decoration:underline' in element.get('style'):
+                return True
+        return False
+    
+    def detect_italic_from_css(element):
+        """Detects italic from css"""
+        if element.get('style'):
+            if 'font-style:italic' in element.get('style'):
+                return True
+        return False
+    
     if detect_bold_from_css(element):
         return 'bold'
+    elif detect_underline_from_css(element):
+        return 'underline'
+    elif detect_italic_from_css(element):
+        return 'italic'
     else:
         return 'no style found'
     
 
-# needs work probably
-# add way to check for lots of text (e.g. paragraph table as in METAs 10k)
+# needs work 
 def detect_table(table):
     """Detects if table or header disguised as a table"""
-    def is_number(s):
-        """
-        Checks if a string is a number.
-
-        Args:
-            s: The string to check.
-
-        Returns:
-            True if the string is a number, False otherwise.
-        """
-        try:
-            float(s)
-            return True
-        except ValueError:
-            return False
-        
-    number_count = 0
-    if table.tag == 'table':
-        for row in table.xpath('tr'):
-            for cell in row.xpath('td | th'):
-                text = get_all_text(cell)
-                if is_number(text):
-                    number_count += 1
-
-        if number_count > 3:
-            return True
+    if table.tag != 'table':
+        return False
+    text = get_all_text(table)
+    number_count = len(re.findall(r'\d', text))
+    if number_count > 5:
+        return True
+    
+    char_count = len(text)
+    if char_count > 400:
+        return True
+    
     return False
+
+
+def detect_table_of_contents(element):
+    toc_type = 'not-toc'
+    """Detects if a table is likely to be a table of contents."""
+
+    # toc - needs seperate parser if no links
+    num_items = len(re.findall('(\s+|^|\n)Item(\s+|$|\n)', get_all_text(element), re.IGNORECASE))
+    if num_items > 5:
+        toc_type = 'toc'
+
+    # linked toc
+    # links = element.find_all('a')
+    # if len(links) > 5:
+    #     toc_type = 'toc-links'
+
+    return toc_type
 
 def detect_toc_link(node):
     """Detects if a node is a table of contents link."""

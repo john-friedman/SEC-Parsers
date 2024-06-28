@@ -1,10 +1,11 @@
 # Experimental Branch
 
 # TODO tmrw
-1. ~~check why some files don't parse, then implement detailed parsing~~
-2. ~~look at filings for idea how to implement detailed parsing - add table handling (convert to xml table?)~~
-3. there are major issues lol. We'll switch to detailed parser immediately
-we'll start work on detailed parser afterwards
+1. Detailed parsers visualization
+2. fix up table stuff (e.g. paragraphs, coloring scheme)
+2. add relative parsing
+3. naive parse
+4. figure out structure for relative parse
 
 # SEC Parsers
 Parses non-standardized SEC 10-K filings into well structured xml. Currently can parse about 80% of SEC 10 K filings. XML includes parts, items (such as item1a risk factors), as well as subheadings (e.g. seasonality).

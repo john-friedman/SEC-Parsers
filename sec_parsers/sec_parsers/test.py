@@ -1,19 +1,24 @@
 from download import download_sec_filing
 from lxml import etree
-from parsers import iterate_element
+from parsers import recursive_parse
 from xml_helper import open_tree
 from style_detection import *
+import os
+from time import time
 
 
-# figure out how to add encoding
-# https://www.sec.gov/Archives/edgar/data/1318605/000095017022000796/tsla-20211231.htm encoding issue
+dir_10k = "../../Data/10K"
+files = os.listdir(dir_10k)
+files = [dir_10k + "/" + file for file in files]
+for file in files[0:1]:
+    print(file)
+    with open(file, 'r',encoding='utf-8') as f:
+        sec_html = f.read()
 
-sec_html = download_sec_filing('https://www.sec.gov/Archives/edgar/data/1326801/000132680123000013/meta-20221231.htm')
-parser = etree.HTMLParser(encoding='utf-8')
+parser = etree.HTMLParser(encoding='utf-8',remove_comments=True)
+s1 = time()
 root = etree.fromstring(sec_html, parser)
-
-
-body = root.find('body')
-time = iterate_element(body)
-print(time)
+recursive_parse(root)
+e1 = time()
+print(e1-s1)
 open_tree(root)
