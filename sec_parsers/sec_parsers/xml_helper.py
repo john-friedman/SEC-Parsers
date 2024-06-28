@@ -25,7 +25,12 @@ def get_all_text(node):
 
 def set_background_color(element, color):
     """Sets the background color for an element."""
-    element.set('style', f'background-color: {color}')
+    # did this just add 10 seconds to parsing?, lol it did!
+    current_style = element.get('style')
+    new_style = f'{current_style}; background-color: {color}'
+    element.set('style', new_style)
+    #element.set('style', f'background-color: {color}')
+
 
 def open_tree(tree):
     """Opens a lxml tree in a web browser."""

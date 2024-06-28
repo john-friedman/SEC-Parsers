@@ -5,7 +5,7 @@ from xml_helper import get_all_text
 
 # since we need styles that are non standardized this will be fun
 
-def detect_style(string):
+def detect_style_from_string(string):
     def detect_emphasis_capitalization(string):
         """Seen in amazon's 2024 10k e.g. We Have Foreign Exchange Risk"""
         words = string.split()
@@ -20,7 +20,7 @@ def detect_style(string):
     
     def detect_item(string):
         """e.g. Item 1A. Risk Factors"""
-        match = re.search(r"^Item\s+\d+[A-Z]",string, re.IGNORECASE)
+        match = re.search(r"^Item\s+\d+[A-Z]{0,}",string, re.IGNORECASE)
         if match:
             return True
         return False
@@ -52,6 +52,12 @@ def detect_style(string):
         if match:
             return True
         return False
+    
+    def all_caps(string):
+        """e.g. FORM 10-K SUMMARY"""
+        if string.isupper():
+            return True
+        return False
 
     
     if detect_emphasis_capitalization(string):
@@ -67,7 +73,25 @@ def detect_style(string):
     else:
         return 'no style found'
     
+def detect_style_from_element(element):
+    def detect_bold_from_css(element):
+        """Detects bold from css"""
+        if element.get('style'):
+            if 'font-weight:bold' in element.get('style'):
+                return True
+            # change to be any font weight greater than 400
+            elif 'font-weight:700' in element.get('style'):
+                return True
+        return False
+    
+    if detect_bold_from_css(element):
+        return 'bold'
+    else:
+        return 'no style found'
+    
 
+# needs work probably
+# add way to check for lots of text (e.g. paragraph table as in METAs 10k)
 def detect_table(table):
     """Detects if table or header disguised as a table"""
     def is_number(s):
@@ -94,7 +118,7 @@ def detect_table(table):
                 if is_number(text):
                     number_count += 1
 
-        if number_count > 5:
+        if number_count > 3:
             return True
     return False
 
@@ -104,4 +128,16 @@ def detect_toc_link(node):
         text = get_all_text(node)
         if text.lower() in ['table of contents','toc']:
             return True
+    return False
+
+def detect_link(node):
+    """Detects if a node is a link."""
+    if node.tag == 'a':
+        return True
+    return False
+
+def detect_image(node):
+    """Detects if a node is an image."""
+    if node.tag == 'img':
+        return True
     return False

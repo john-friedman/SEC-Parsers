@@ -1,2 +1,10 @@
+wow some weird time sinks - not sure why.
 # lookup what this is called
 #tree  = etree.fromstring('<html> <body> <div>text1 <p> par1</p> text2 <p>par2</p> text3</div> </body> </html>', parser)
+
+TODO:
+use relative stuff after style detection
+
+e.g. style detection gets you likely stuff
+then we check nearest neighbor stuff
+e.g. note+ unique style neighbor gets merged into desc
