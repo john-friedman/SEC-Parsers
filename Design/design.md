@@ -3,7 +3,7 @@
 * used manual inspection to verify if parsing was correct.
 2. Various parsers that used detect unique text (e.g. bold, italic, etc) to guess what was a header / section
 * Worked pretty well, but got too complex, so rewrote. 
-3. Table of Contents Parser (stable) - parser that read the table of contents and used the links inside to form the skeleton of the xml tree
+3. Table of Contents Parser (stable) - parser that read the table of contents and used the links inside to form the skeleton of the xml tree. Works up until about 2pm PST June 27 2024 when I broke it. 1-2 commits before then should work
 * Worked well: [stats]. However, decided to use lessons learned to try a new approach
 4. Parser that uses visible style to construct tree.
 * This will be hard. Lots of edge cases such as pART I (caps denote bold), etc

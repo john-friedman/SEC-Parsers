@@ -133,20 +133,20 @@ def get_table_of_contents(soup):
 
             # not a priority right now, but desc does get cut off e.g. form 10-k summary
             # likely to introduce issues with changes here
-            page_cell = [cell for cell in cells if re.search('\d+', cell.text.strip())][0]
-            cells.remove(page_cell)
+            # page_cell = [cell for cell in cells if re.search('\d+', cell.text.strip())][0]
+            # cells.remove(page_cell)
 
-            if len(cells) == 1:
-                item_desc = cells[0].text.strip()
-            else:
-                raise ValueError('Item description not found')
+            # if len(cells) == 1:
+            #     item_desc = cells[0].text.strip()
+            # else:
+            #     raise ValueError('Item description not found')
 
             # if linked toc, but missing one or two elem links, it means its not there e.g. Financial Statements and Supplementary Data
             # in 2024 Regional Health Properties, Inc. 10k
 
             # here we simply ignore such items (they have no text anyway ) - need robustness check
             if row.find('a'):
-                item = {'name': item_name, 'desc': item_desc, 'href': row.find('a')['href']}
+                item = {'name': item_name, 'href': row.find('a')['href']}
                 part['items'].append(item)
         # not handling this right now
         elif 'signature' in row.text.lower():
@@ -179,6 +179,8 @@ def open_soup(soup):
         url = 'file://' + f.name
         f.write(html)
     webbrowser.open(url)
+
+
 
 def generate_pastel_colors(n):
   """Generates a list of n pleasant pastel background colors.

@@ -1,5 +1,5 @@
 import pandas as pd
-from sec_parsers import parse_10k, open_soup
+from sec_parsers import parse_10k, open_soup,get_table_of_contents
 from bs4 import BeautifulSoup
 import re
 import tempfile
@@ -48,6 +48,8 @@ from sec_parsers.html_helper import detect_table_of_contents
 file = '../Data/10K/Aimfinity_Investment_Corp._I-1903464-0001213900-24-032604.html'
 with open(file, 'r',encoding='utf-8-sig') as f:
     html = f.read()
+
+soup = BeautifulSoup(html, 'html.parser')
 
 tree = parse_10k(html)
 

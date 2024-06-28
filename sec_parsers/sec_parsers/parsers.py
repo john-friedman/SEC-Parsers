@@ -9,6 +9,7 @@ from sec_parsers.html_helper import get_elements_between_two_elements, get_text_
 # note: we can use part elem if we want for links. But it's not needed as in all cases I've seen so far, there is no text between parts and items.
 # with some work should return detailed xml tree
 # add visualizer option? -yes
+# due to update at version 4.2 only parses 1/2 or so. Easy to fix by ignoring item_desc
 def parse_10k(html, verbose=False):
     soup = BeautifulSoup(html, 'html.parser')    
 
@@ -32,7 +33,6 @@ def parse_10k(html, verbose=False):
             item = items_list[item_idx]
             item_id = item['href'][1:]
             item_name = item['name']
-            item_desc = item['desc']
             if verbose:
                 print(f'Parsing item {item_idx+1} of {len(items_list)}: {item_name}')
 
@@ -52,7 +52,7 @@ def parse_10k(html, verbose=False):
                 if next_item_elem is None:
                     next_item_elem = soup.find('a', {'name': next_item_id})
 
-            xml_item_element = ET.SubElement(xml_part_element, item_name, desc =item_desc)
+            xml_item_element = ET.SubElement(xml_part_element, item_name)
 
             # detect subheadings between item and next_item
             elements_between = get_elements_between_two_elements(item_elem, next_item_elem)
