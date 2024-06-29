@@ -1,4 +1,6 @@
 TODO:
+explain difficulties and how to solve them as well as design ideas
+
 if no text below before next header asusme parent?
 is sentence combined with italics etc
 is first child?

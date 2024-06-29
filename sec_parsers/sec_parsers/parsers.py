@@ -3,7 +3,10 @@ from style_detection import detect_style_from_string, detect_style_from_element,
 from xml_helper import get_text, set_background_color, remove_background_color, open_tree,check_if_is_first_child
 
 
+# add item and part detection
 def recursive_parse(element):
+    if element.attrib.get('parsing') == None:
+        element.attrib['parsing'] = ''
 
     values = element.values()
     if len(values) == 1:
@@ -25,24 +28,49 @@ def recursive_parse(element):
         element.attrib['parsing'] = 'image;'
         return
 
-    text = get_text(element)
+    text = get_text(element).strip()
     if text == '':
         pass
     else:
-        if element.attrib.get('parsing') == None:
-            element.attrib['parsing'] = ''
         string_style = detect_style_from_string(text)
         element_style = detect_style_from_element(element)
+        parsing_string = ''
         if string_style != 'no style found':
-            element.attrib['parsing'] += string_style
+            parsing_string += string_style
 
         if element_style != '':
-            element.attrib['parsing'] += element_style
+            parsing_string+= element_style
 
-    # pruning incorrect parsing
-    if not check_if_is_first_child(element):
-        element.attrib['parsing'] = ''
-    
+        # if no style found
+        if parsing_string == '':
+            parsing_string = 'text;'
+            element.attrib['parsing'] = parsing_string
+        else:
+            element.attrib['parsing'] = parsing_string
+            # this could really break stuff
+            tail = element.tail
+            if tail:
+                parent = element.getparent()
+                parent.attrib['parsing'] = parsing_string + 'had_tail;'
+                element.attrib['parsing'] += 'parent_had_tail;'
+
+    # pruning
+    # this needs work
+    element_parsing_string = element.attrib['parsing']
+    if element_parsing_string == 'text;':
+        pass
+    elif element_parsing_string == '':
+        pass
+    # this does not work because the children haven't been parsed yet!?
+    elif 'had_tail;' in element_parsing_string:
+        pass
+    else:
+        is_first_child = check_if_is_first_child(element)
+        if is_first_child:
+            pass
+        else:
+            element.attrib['parsing'] = 'text;'
+        
 
 
     for child in element.iterchildren():
@@ -74,7 +102,15 @@ def visualize_tree(root):
             set_background_color(element, '#A9A9A9')
         elif parsing == '':
             pass
+        elif parsing == 'text;':
+            set_background_color(element, '#FFEBCD')
         else:
             set_background_color(element, '#FA8072')
 
     open_tree(root)
+
+
+# start from part i to part 4 skipping signatures and intro
+# logic: part then item
+def construct_xml_tree(parsed_html):
+    pass

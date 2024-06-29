@@ -3,6 +3,10 @@ import tempfile
 from lxml import html
 import re
 
+def find_by_text(node, text):
+    """Find a node by text."""
+    return node.xpath(f"//*[contains(text(), '{text}')]")
+
 # need to think logic here through
 # need opposite of tail
 def check_if_is_first_child(element):
@@ -10,7 +14,15 @@ def check_if_is_first_child(element):
     previous_element = element.getprevious()
 
     if previous_element is None:
-        return True
+        parent = element.getparent()
+        parent_text = parent.text
+        if parent_text:
+            parent_text = parent_text.strip()
+            if parent_text == '':
+                return True
+        else:
+            return True
+
     elif len(previous_element.getchildren()) > 0:
         return False
 

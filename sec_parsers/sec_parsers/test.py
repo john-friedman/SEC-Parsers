@@ -5,6 +5,8 @@ from style_detection import *
 import os
 from time import time
 
+from xml_helper import find_by_text, get_all_text, get_text
+
 
 dir_10k = "../../Data/10K"
 files = os.listdir(dir_10k)
@@ -12,7 +14,7 @@ files = [dir_10k + "/" + file for file in files]
 
 parser = etree.HTMLParser(encoding='utf-8',remove_comments=True)
 
-for file in files[12:15]:
+for file in files[0:1]:
     print(file)
     with open(file, 'r',encoding='utf-8') as f:
         sec_html = f.read()
@@ -25,4 +27,4 @@ for file in files[12:15]:
     visualize_tree(root)
 
 
-element = root.xpath('//table')[3]
+element =find_by_text(root, 'Item 5. Mark')
