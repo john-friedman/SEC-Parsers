@@ -1,6 +1,6 @@
 from time import time
 from style_detection import detect_style_from_string, detect_style_from_element, detect_table,detect_link, detect_image,detect_table_of_contents, get_all_text
-from xml_helper import get_text, set_background_color, remove_background_color, open_tree,check_if_is_first_child
+from xml_helper import get_text, set_background_color, remove_background_color, open_tree,check_if_is_first_child, element_has_text
 
 
 # add item and part detection
@@ -47,12 +47,6 @@ def recursive_parse(element):
             element.attrib['parsing'] = parsing_string
         else:
             element.attrib['parsing'] = parsing_string
-            # this could really break stuff
-            tail = element.tail
-            if tail:
-                parent = element.getparent()
-                parent.attrib['parsing'] = parsing_string + 'had_tail;'
-                element.attrib['parsing'] += 'parent_had_tail;'
 
     # pruning
     # this needs work
@@ -61,9 +55,6 @@ def recursive_parse(element):
         pass
     elif element_parsing_string == '':
         pass
-    # this does not work because the children haven't been parsed yet!?
-    elif 'had_tail;' in element_parsing_string:
-        pass
     else:
         is_first_child = check_if_is_first_child(element)
         if is_first_child:
@@ -71,6 +62,7 @@ def recursive_parse(element):
         else:
             element.attrib['parsing'] = 'text;'
         
+
 
 
     for child in element.iterchildren():

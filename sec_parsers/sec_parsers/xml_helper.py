@@ -9,20 +9,24 @@ def find_by_text(node, text):
 
 # need to think logic here through
 # need opposite of tail
+
+# checks if parent has text before any element. if it has text after element that shows up in childs tail
+def element_has_text(element):
+    text = element.text
+    if text:
+        text = text.strip()
+        if text != '':
+            return True
+    return False
+
 def check_if_is_first_child(element):
     """Get first child of element"""
     previous_element = element.getprevious()
 
     if previous_element is None:
         parent = element.getparent()
-        parent_text = parent.text
-        if parent_text:
-            parent_text = parent_text.strip()
-            if parent_text == '':
-                return True
-        else:
+        if not element_has_text(parent):
             return True
-
     elif len(previous_element.getchildren()) > 0:
         return False
 
