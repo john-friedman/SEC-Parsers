@@ -3,6 +3,16 @@ import tempfile
 from lxml import html
 import re
 
+# sloppy code but should work
+def check_if_is_first_child(element):
+    """Get first child of element"""
+    parent = element.getparent()
+
+    for child in element.iterchildren():
+        if child == element:
+            return True
+        return False
+    
 def get_text(element):
     """Get text from element including tail"""
     text = ''

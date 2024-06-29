@@ -1,3 +1,5 @@
+TODO:
+think about how I want to handle style -e.g. dict?
 
 # lookup what this is called
 #tree  = etree.fromstring('<html> <body> <div>text1 <p> par1</p> text2 <p>par2</p> text3</div> </body> </html>', parser)

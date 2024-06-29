@@ -2,8 +2,11 @@ import re
 from xml_helper import get_all_text
 
 
-
-# since we need styles that are non standardized this will be fun
+def detect_bullet_point(string):
+    """e.g. •"""
+    if any(char in string.strip() for char in ['•','●','●','●','●']):
+        return True
+    return False
 
 def detect_style_from_string(string):
     def detect_emphasis_capitalization(string):
@@ -32,19 +35,6 @@ def detect_style_from_string(string):
             return True
         return False
         
-    def title_case(string):
-        """e.g. The power of AI from google 10k"""
-
-        if '.' in string:
-            return False
-        words = string.split()
-        if not words:
-            return False
-        
-        if words[0].istitle():
-            return True
-        
-        return False
 
     def note_detection(string):
         """e.g. Note 1"""
@@ -58,54 +48,76 @@ def detect_style_from_string(string):
         if string.isupper():
             return True
         return False
-
+    
     
     if detect_emphasis_capitalization(string):
-        return 'emphasis'
+        return 'emphasis;'
     elif detect_item(string):
-        return 'item'
+        return 'item;'
     elif level_detection(string):
-        return 'level'
-    elif title_case(string):
-        return 'title case'
+        return 'level;'
+    elif all_caps(string):
+        return 'all caps;'
     elif note_detection(string):
-        return 'note'
+        return 'note;'
+    elif detect_bullet_point(string):
+        return 'bullet point;'
     else:
-        return 'no style found'
+        return ''
     
 def detect_style_from_element(element):
     def detect_bold_from_css(element):
         """Detects bold from css"""
         if element.get('style'):
             if 'font-weight:bold' in element.get('style'):
-                return True
+                return 'font-weight:bold;'
             # change to be any font weight greater than 400
             elif 'font-weight:700' in element.get('style'):
-                return True
-        return False
+                return 'font-weight:700;'
+        return ''
     
     def detect_underline_from_css(element):
         """Detects underline from css"""
         if element.get('style'):
             if 'text-decoration:underline' in element.get('style'):
-                return True
-        return False
+                return 'text-decoration:underline;'
+        return ''
     
     def detect_italic_from_css(element):
         """Detects italic from css"""
         if element.get('style'):
             if 'font-style:italic' in element.get('style'):
-                return True
-        return False
+                return 'font-style:italic;'
+        return ''
     
-    if detect_bold_from_css(element):
-        return 'bold'
-    elif detect_underline_from_css(element):
-        return 'underline'
-    elif detect_italic_from_css(element):
-        return 'italic'
-    else:
-        return 'no style found'
+    ["strong","b","em","i","u"]
+    def detect_special_from_html(element):
+        """Detects special from html"""
+        if element.tag == 'b':
+            return 'bold-tag;'
+        elif element.tag == 'i':
+            return 'italic-tag;'
+        elif element.tag == 'u':
+            return 'underline-tag;'
+        elif element.tag == 'em':
+            return 'emphasis-tag;'
+        elif element.tag == 'strong':
+            return 'strong-tag;'
+        
+        return ''
+    
+    # check it or descendants have text
+    text = get_all_text(element).strip()
+    if len(text) == 0:
+        return ''
+
+    
+    style = ''
+    style += detect_bold_from_css(element)
+    style += detect_underline_from_css(element)
+    style += detect_italic_from_css(element)
+    style += detect_special_from_html(element)
+    return style
     
 
 # needs work 
@@ -114,6 +126,9 @@ def detect_table(table):
     if table.tag != 'table':
         return False
     text = get_all_text(table)
+
+    if detect_bullet_point(text):
+        return False
     number_count = len(re.findall(r'\d', text))
     if number_count > 5:
         return True
