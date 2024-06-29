@@ -3,15 +3,18 @@ import tempfile
 from lxml import html
 import re
 
-# sloppy code but should work
+# need to think logic here through
+# need opposite of tail
 def check_if_is_first_child(element):
     """Get first child of element"""
-    parent = element.getparent()
+    previous_element = element.getprevious()
 
-    for child in element.iterchildren():
-        if child == element:
-            return True
+    if previous_element is None:
+        return True
+    elif len(previous_element.getchildren()) > 0:
         return False
+
+    return False
     
 def get_text(element):
     """Get text from element including tail"""

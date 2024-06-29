@@ -1,6 +1,7 @@
 TODO:
-think about how I want to handle style -e.g. dict?
-
+if no text below before next header asusme parent?
+is sentence combined with italics etc
+is first child?
 # lookup what this is called
 #tree  = etree.fromstring('<html> <body> <div>text1 <p> par1</p> text2 <p>par2</p> text3</div> </body> </html>', parser)
 

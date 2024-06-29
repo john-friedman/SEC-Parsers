@@ -145,8 +145,8 @@ def detect_table_of_contents(element):
     """Detects if a table is likely to be a table of contents."""
 
     # toc - needs seperate parser if no links
-    num_items = len(re.findall('(\s+|^|\n)Item(\s+|$|\n)', get_all_text(element), re.IGNORECASE))
-    if num_items > 5:
+    num_items = len(re.findall('Item(\s+|$|\n)', get_all_text(element), re.IGNORECASE))
+    if num_items > 9:
         toc_type = 'toc'
 
     # linked toc

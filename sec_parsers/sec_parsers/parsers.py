@@ -1,6 +1,6 @@
 from time import time
 from style_detection import detect_style_from_string, detect_style_from_element, detect_table,detect_link, detect_image,detect_table_of_contents, get_all_text
-from xml_helper import get_text, set_background_color, remove_background_color, open_tree
+from xml_helper import get_text, set_background_color, remove_background_color, open_tree,check_if_is_first_child
 
 
 def recursive_parse(element):
@@ -38,6 +38,11 @@ def recursive_parse(element):
 
         if element_style != '':
             element.attrib['parsing'] += element_style
+
+    # pruning incorrect parsing
+    if not check_if_is_first_child(element):
+        element.attrib['parsing'] = ''
+    
 
 
     for child in element.iterchildren():

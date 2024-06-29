@@ -12,7 +12,7 @@ files = [dir_10k + "/" + file for file in files]
 
 parser = etree.HTMLParser(encoding='utf-8',remove_comments=True)
 
-for file in files[1:2]:
+for file in files[12:15]:
     print(file)
     with open(file, 'r',encoding='utf-8') as f:
         sec_html = f.read()
@@ -24,5 +24,5 @@ for file in files[1:2]:
     print(e1-s1)
     visualize_tree(root)
 
-root.xpath('.//*[contains(text(),"qualifying trigger event")]')[1]
 
+element = root.xpath('//table')[3]
