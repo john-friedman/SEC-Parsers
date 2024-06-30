@@ -14,7 +14,7 @@ files = [dir_10k + "/" + file for file in files]
 
 parser = etree.HTMLParser(encoding='utf-8',remove_comments=True)
 
-for file in files[101:102]:
+for file in files[0:5]:
     print(file)
     with open(file, 'r',encoding='utf-8') as f:
         sec_html = f.read()
@@ -27,4 +27,4 @@ for file in files[101:102]:
     visualize_tree(root)
 
 
-element =find_by_text(root, 'DRY EYE DISEASE')
+element =find_by_text(root, 'Kenneth Berlin')[0]

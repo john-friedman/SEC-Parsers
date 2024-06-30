@@ -76,7 +76,7 @@ def detect_style_from_string(string):
     else:
         return ''
     
-# need to modify to check parents e.g. <b> or <strong>
+# needs rewrite
 def detect_style_from_element(element):
     def detect_bold_from_css(element):
         """Detects bold from css"""
@@ -86,6 +86,23 @@ def detect_style_from_element(element):
             # change to be any font weight greater than 400
             elif 'font-weight:700' in element.get('style'):
                 return 'font-weight:700;'
+        return ''
+    
+    def detect_from_html(element):
+        
+        ancestors = list(element.iterancestors())
+        # detect bold from ancestors
+        for ancestor in ancestors:
+            if ancestor.tag in ['b','strong']:
+                return 'bold-tag;'
+        # detect emphasis from ancestors
+        for ancestor in ancestors:
+            if ancestor.tag in ['em','i']:
+                return 'emphasis-tag;'
+        # detect underline from ancestors
+        for ancestor in ancestors:
+            if ancestor.tag in ['u']:
+                return 'underline-tag;'
         return ''
     
     def detect_underline_from_css(element):
@@ -126,6 +143,7 @@ def detect_style_from_element(element):
     
     style = ''
     style += detect_bold_from_css(element)
+    style += detect_from_html(element)
     style += detect_underline_from_css(element)
     style += detect_italic_from_css(element)
     style += detect_special_from_html(element)

@@ -54,9 +54,14 @@ def recursive_parse(element):
                         parsing_string = ''
                     elif previous_element_parsing_string == '':
                         parsing_string = ''
-            
 
-            element.attrib['parsing'] = parsing_string
+
+            # will this work?
+            if ((get_all_text(element) == '') and (element.tail is not None)):
+                parent = element.getparent()
+                parent.attrib['parsing'] = parsing_string
+            else:
+                element.attrib['parsing'] = parsing_string
 
 
 
