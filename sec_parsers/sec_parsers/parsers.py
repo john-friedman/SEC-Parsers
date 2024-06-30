@@ -36,15 +36,11 @@ def recursive_parse(element):
     else:
         string_style = detect_style_from_string(text)
         element_style = detect_style_from_element(element)
-        parsing_string = ''
-        if string_style != 'no style found':
-            parsing_string += string_style
 
-        if element_style != '':
-            parsing_string+= element_style
+        parsing_string = ''
 
         # if no style found / pruning / cleaning
-        if parsing_string == '':
+        if (string_style+element_style == ''):
             element.attrib['parsing'] = ''
         else:
             previous_element = element.getprevious()
@@ -52,20 +48,32 @@ def recursive_parse(element):
                 if element_has_text(previous_element):
                     previous_element_parsing_string = previous_element.attrib.get('parsing')
                     if previous_element_parsing_string == 'bullet point;':
-                        parsing_string = ''
+                        string_style = ''
+                        element_style = ''
                     elif previous_element_parsing_string == '':
-                        parsing_string = ''
+                        string_style = ''
+                        element_style = ''
 
-            # check if item
+            # change to functions
             if re.search('^item',get_all_text(element).strip(), re.IGNORECASE):
                 parsing_string = 'item;'
             elif re.search('^part',get_all_text(element).strip(), re.IGNORECASE):
                 parsing_string = 'part;'
 
-            # will this work?
+            if any(style in element_style for style in ['font-weight:bold','font-weight:700;','b-tag;','strong-tag;']):
+                parsing_string += 'bold;'
+
+            if any(style in element_style for style in ['font-style:italic','em','i']):
+                parsing_string += 'italic;'
+
+            if any(style in element_style for style in ['text-decoration:underline','u']):
+                parsing_string += 'underline;'
+
+            parsing_string += string_style
+
             if ((get_all_text(element) == '') and (element.tail is not None)):
                 parent = element.getparent()
-                parent.attrib['parsing'] = parsing_string
+                parent.attrib['parsing'] = parsing_string + 'parent;'
             else:
                 element.attrib['parsing'] = parsing_string
 

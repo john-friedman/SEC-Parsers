@@ -76,7 +76,6 @@ def detect_style_from_string(string):
     else:
         return ''
     
-# needs rewrite
 def detect_style_from_element(element):
     def detect_bold_from_css(element):
         """Detects bold from css"""
@@ -89,20 +88,15 @@ def detect_style_from_element(element):
         return ''
     
     def detect_from_html(element):
-        
         ancestors = list(element.iterancestors())
+        # include self
+        ancestors = ancestors + [element]
         # detect bold from ancestors
         for ancestor in ancestors:
-            if ancestor.tag in ['b','strong']:
-                return 'bold-tag;'
-        # detect emphasis from ancestors
-        for ancestor in ancestors:
-            if ancestor.tag in ['em','i']:
-                return 'emphasis-tag;'
-        # detect underline from ancestors
-        for ancestor in ancestors:
-            if ancestor.tag in ['u']:
-                return 'underline-tag;'
+            tag_list = ['b','strong','em','i','u']
+            if ancestor.tag in tag_list:
+                return f'{ancestor.tag}-tag;'
+            
         return ''
     
     def detect_underline_from_css(element):
@@ -119,21 +113,6 @@ def detect_style_from_element(element):
                 return 'font-style:italic;'
         return ''
     
-    ["strong","b","em","i","u"]
-    def detect_special_from_html(element):
-        """Detects special from html"""
-        if element.tag == 'b':
-            return 'bold-tag;'
-        elif element.tag == 'i':
-            return 'italic-tag;'
-        elif element.tag == 'u':
-            return 'underline-tag;'
-        elif element.tag == 'em':
-            return 'emphasis-tag;'
-        elif element.tag == 'strong':
-            return 'strong-tag;'
-        
-        return ''
     
     # check it or descendants have text
     text = get_all_text(element).strip()
@@ -146,7 +125,6 @@ def detect_style_from_element(element):
     style += detect_from_html(element)
     style += detect_underline_from_css(element)
     style += detect_italic_from_css(element)
-    style += detect_special_from_html(element)
     return style
     
 
