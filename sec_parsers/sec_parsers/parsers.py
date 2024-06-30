@@ -3,6 +3,7 @@ from style_detection import detect_style_from_string, detect_style_from_element,
 from xml_helper import get_text, set_background_color, remove_background_color, open_tree,check_if_is_first_child, element_has_text, element_has_tail
 from lxml import etree
 import re
+from helper import colors
 
 # add item and part detection
 def recursive_parse(element):
@@ -54,11 +55,7 @@ def recursive_parse(element):
                         string_style = ''
                         element_style = ''
 
-            # change to functions
-            if re.search('^item',get_all_text(element).strip(), re.IGNORECASE):
-                parsing_string = 'item;'
-            elif re.search('^part',get_all_text(element).strip(), re.IGNORECASE):
-                parsing_string = 'part;'
+
 
             if any(style in element_style for style in ['font-weight:bold','font-weight:700;','b-tag;','strong-tag;']):
                 parsing_string += 'bold;'
@@ -68,6 +65,18 @@ def recursive_parse(element):
 
             if any(style in element_style for style in ['text-decoration:underline','u']):
                 parsing_string += 'underline;'
+
+            # change to functions
+            if re.search('^item',get_all_text(element).strip(), re.IGNORECASE):
+                parsing_string = 'item;'
+                string_style = ''
+            elif string_style == 'item;':
+                parsing_string = 'item;'
+                string_style = ''
+            
+            if re.search('^part',get_all_text(element).strip(), re.IGNORECASE):
+                parsing_string = 'part;'
+                string_style = ''
 
             parsing_string += string_style
 
@@ -81,7 +90,7 @@ def recursive_parse(element):
 
     return
         
-# split visualization for now
+# add gradient colors for different style headings
 def visualize_tree(root):
     # remove style from all descendants so that background color can be set
     for descendant in root.iterdescendants():
@@ -89,30 +98,18 @@ def visualize_tree(root):
 
     # find all elements with parsing attribute
     elements = root.xpath('//*[@parsing]')
+    # get all unique parsing values
+    parsing_values = list(set([element.attrib['parsing'] for element in elements]))
+    # create a color dict
+    color_dict = {parsing: color for parsing, color in zip(parsing_values, colors[0:len(parsing_values)])}
     for element in elements:
-
         # get attribute parsing
         parsing = element.attrib['parsing']
-        if parsing == 'part;':
-            set_background_color(element, '#FA8072')
-        elif parsing == 'item;':
-            set_background_color(element, '#FFA500')
-        elif parsing == 'table of contents;':
-            set_background_color(element, '#00FFFF')
-        elif parsing == 'table;':
-            set_background_color(element, '#D8BFD8')
-        elif parsing == 'link;':
-            set_background_color(element, '#D8BFD8')
-        elif parsing == 'image;':
-            set_background_color(element, '#D8BFD8')
-        elif parsing == 'bullet point;':
-            set_background_color(element, '#A9A9A9')
-        elif parsing == 'page number;':
-            set_background_color(element, '#D8BFD8')
-        elif parsing == '':
+        if parsing == '':
             pass
         else:
-            set_background_color(element, '#FFD700')
+            color = color_dict[parsing]
+            set_background_color(element, color)
 
     open_tree(root)
 
