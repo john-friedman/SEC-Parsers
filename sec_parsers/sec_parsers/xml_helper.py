@@ -19,6 +19,14 @@ def element_has_text(element):
             return True
     return False
 
+def element_has_tail(element):
+    tail = element.tail
+    if tail:
+        tail = tail.strip()
+        if tail != '':
+            return True
+    return False
+
 def check_if_is_first_child(element):
     """Get first child of element"""
     previous_element = element.getprevious()

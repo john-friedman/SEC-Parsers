@@ -1,5 +1,7 @@
 TODO:
-explain difficulties and how to solve them as well as design ideas
+implement tail stuff / head
+after thaat should be ready for conversion to xml
+set up logic and run
 
 if no text below before next header asusme parent?
 is sentence combined with italics etc
