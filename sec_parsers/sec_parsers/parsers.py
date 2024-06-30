@@ -48,11 +48,12 @@ def recursive_parse(element):
         else:
             previous_element = element.getprevious()
             if previous_element is not None:
-                previous_element_parsing_string = previous_element.attrib.get('parsing')
-                if previous_element_parsing_string == 'bullet point;':
-                    parsing_string = ''
-                elif previous_element_parsing_string == '':
-                    parsing_string = ''
+                if element_has_text(previous_element):
+                    previous_element_parsing_string = previous_element.attrib.get('parsing')
+                    if previous_element_parsing_string == 'bullet point;':
+                        parsing_string = ''
+                    elif previous_element_parsing_string == '':
+                        parsing_string = ''
             
 
             element.attrib['parsing'] = parsing_string

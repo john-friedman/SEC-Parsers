@@ -1,5 +1,6 @@
 TODO:
-start making tree, do basic logic
+start making tree, do basic logic. once this part is done, check how well it worked
+if good publish
 
 to fix: 
 fix missing lhs of header - difficut

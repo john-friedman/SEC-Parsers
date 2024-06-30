@@ -11,7 +11,7 @@ def detect_bullet_point(string):
 def detect_style_from_string(string):
     def detect_emphasis_capitalization(string):
         """Seen in amazon's 2024 10k e.g. We Have Foreign Exchange Risk"""
-        if string in ['None.','Omitted.']:
+        if string in ['None','None.','Omitted.']:
             return False
         
         words = string.split()
@@ -137,6 +137,10 @@ def detect_table(table):
     """Detects if table or header disguised as a table"""
     if table.tag != 'table':
         return False
+    
+    tr_list = table.xpath('//tr')
+    if len(tr_list) > 3:
+        return True
     text = get_all_text(table)
 
     if detect_bullet_point(text):
