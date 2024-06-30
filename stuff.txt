@@ -1,7 +1,9 @@
 TODO:
-implement tail stuff / head
-after thaat should be ready for conversion to xml
-set up logic and run
+start making tree, do basic logic
+
+to fix: 
+fix missing lhs of header - difficut
+add ability for detect styole from element to look up parents, e.g. bold / strong
 
 if no text below before next header asusme parent?
 is sentence combined with italics etc

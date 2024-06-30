@@ -11,6 +11,9 @@ def detect_bullet_point(string):
 def detect_style_from_string(string):
     def detect_emphasis_capitalization(string):
         """Seen in amazon's 2024 10k e.g. We Have Foreign Exchange Risk"""
+        if string in ['None.','Omitted.']:
+            return False
+        
         words = string.split()
         if not words:
             return False
@@ -28,6 +31,7 @@ def detect_style_from_string(string):
             return True
         return False
         
+    # deprecated for now
     def level_detection(string):
         """e.g. amazon Level 1"""
         match = re.search(r"^Level\s+\d+",string)
@@ -49,13 +53,20 @@ def detect_style_from_string(string):
             return True
         return False
     
+    def detect_page_number(string):
+        if re.search(r"^\d+$",string, re.IGNORECASE):
+            return True
+        elif re.search(r'F-\d+$',string, re.IGNORECASE):
+            return True
+        else:
+            return False
     
-    if detect_emphasis_capitalization(string):
+    if detect_page_number(string):
+        return 'page number;'
+    elif detect_emphasis_capitalization(string):
         return 'emphasis;'
     elif detect_item(string):
         return 'item;'
-    elif level_detection(string):
-        return 'level;'
     elif all_caps(string):
         return 'all caps;'
     elif note_detection(string):
@@ -65,6 +76,7 @@ def detect_style_from_string(string):
     else:
         return ''
     
+# need to modify to check parents e.g. <b> or <strong>
 def detect_style_from_element(element):
     def detect_bold_from_css(element):
         """Detects bold from css"""

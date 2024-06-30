@@ -30,7 +30,8 @@ def recursive_parse(element):
 
     text = get_text(element).strip()
     if text == '':
-        pass
+        for child in element.iterchildren():
+            recursive_parse(child)
     else:
         string_style = detect_style_from_string(text)
         element_style = detect_style_from_element(element)
@@ -41,7 +42,7 @@ def recursive_parse(element):
         if element_style != '':
             parsing_string+= element_style
 
-        # if no style found
+        # if no style found / pruning
         if parsing_string == '':
             element.attrib['parsing'] = ''
         else:
@@ -50,29 +51,13 @@ def recursive_parse(element):
                 previous_element_parsing_string = previous_element.attrib.get('parsing')
                 if previous_element_parsing_string == 'bullet point;':
                     parsing_string = ''
+                elif previous_element_parsing_string == '':
+                    parsing_string = ''
+            
 
-            # check if first child
-            if not check_if_is_first_child(element):
-                parsing_string = ''
-
-            # check that element has no tail
-            if element_has_tail(element):
-                tail = element.tail
-                if detect_style_from_string(tail) != '':
-                    parent = element.getparent()
-                    parent.attrib['parsing'] = parsing_string
-                else:
-                    element.attrib['parsing'] = parsing_string
-
-            else:
-                element.attrib['parsing'] = parsing_string
-
-        
+            element.attrib['parsing'] = parsing_string
 
 
-
-    for child in element.iterchildren():
-        recursive_parse(child)
 
     return
         
@@ -98,6 +83,8 @@ def visualize_tree(root):
             set_background_color(element, '#7FFF00')
         elif parsing == 'bullet point;':
             set_background_color(element, '#A9A9A9')
+        elif parsing == 'page number;':
+            set_background_color(element, '#7FFF00')
         elif parsing == '':
             pass
         elif 'text;' in parsing:
