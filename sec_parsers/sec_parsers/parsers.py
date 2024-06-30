@@ -1,7 +1,8 @@
 from time import time
 from style_detection import detect_style_from_string, detect_style_from_element, detect_table,detect_link, detect_image,detect_table_of_contents, get_all_text
 from xml_helper import get_text, set_background_color, remove_background_color, open_tree,check_if_is_first_child, element_has_text, element_has_tail
-
+from lxml import etree
+import re
 
 # add item and part detection
 def recursive_parse(element):
@@ -42,7 +43,7 @@ def recursive_parse(element):
         if element_style != '':
             parsing_string+= element_style
 
-        # if no style found / pruning
+        # if no style found / pruning / cleaning
         if parsing_string == '':
             element.attrib['parsing'] = ''
         else:
@@ -55,6 +56,11 @@ def recursive_parse(element):
                     elif previous_element_parsing_string == '':
                         parsing_string = ''
 
+            # check if item
+            if re.search('^item',get_all_text(element).strip(), re.IGNORECASE):
+                parsing_string = 'item;'
+            elif re.search('^part',get_all_text(element).strip(), re.IGNORECASE):
+                parsing_string = 'part;'
 
             # will this work?
             if ((get_all_text(element) == '') and (element.tail is not None)):
@@ -79,29 +85,54 @@ def visualize_tree(root):
 
         # get attribute parsing
         parsing = element.attrib['parsing']
-        if parsing == 'table of contents;':
+        if parsing == 'part;':
+            set_background_color(element, '#FA8072')
+        elif parsing == 'item;':
+            set_background_color(element, '#FFA500')
+        elif parsing == 'table of contents;':
             set_background_color(element, '#00FFFF')
         elif parsing == 'table;':
-            set_background_color(element, '#7FFF00')
+            set_background_color(element, '#D8BFD8')
         elif parsing == 'link;':
-            set_background_color(element, '#7FFF00')
+            set_background_color(element, '#D8BFD8')
         elif parsing == 'image;':
-            set_background_color(element, '#7FFF00')
+            set_background_color(element, '#D8BFD8')
         elif parsing == 'bullet point;':
             set_background_color(element, '#A9A9A9')
         elif parsing == 'page number;':
-            set_background_color(element, '#7FFF00')
+            set_background_color(element, '#D8BFD8')
         elif parsing == '':
             pass
-        elif 'text;' in parsing:
-            set_background_color(element, '#FFEBCD')
         else:
-            set_background_color(element, '#FA8072')
+            set_background_color(element, '#FFD700')
 
     open_tree(root)
 
 
 # start from part i to part 4 skipping signatures and intro
 # logic: part then item
+
+# start code sloppy then fix
 def construct_xml_tree(parsed_html):
-    pass
+    root = etree.Element('root')
+
+    # find all parsing elements
+    elements = parsed_html.xpath('//*[@parsing]')
+    # select elements with parsing attribute
+    parse_bool = False
+    for idx,element in enumerate(elements):
+        parsing = element.attrib['parsing']
+        text = get_text(element).strip()
+        
+        if text ==  'PART I':
+            parse_bool = True
+        elif text == 'SIGNATURES':
+            parse_bool = False
+
+        if parse_bool:
+            if parsing == 'part;':
+                part_node = etree.SubElement(root, "part", title=text)
+            elif parsing == 'item;':
+                item_node = etree.SubElement(part_node, "item", title=text)
+
+    return root

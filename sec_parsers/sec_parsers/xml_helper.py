@@ -1,6 +1,6 @@
 import webbrowser
 import tempfile
-from lxml import html
+from lxml import html, etree
 import re
 
 def find_by_text(node, text):
@@ -97,3 +97,7 @@ def open_tree(tree):
 
     url = 'file://' + f.name
     webbrowser.open(url)
+
+def print_tree(root):
+    """Prints a lxml tree."""
+    print(etree.tostring(root, pretty_print=True))
