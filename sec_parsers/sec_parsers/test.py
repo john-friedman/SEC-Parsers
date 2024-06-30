@@ -27,4 +27,4 @@ for file in files[0:1]:
     visualize_tree(root)
 
 
-element =find_by_text(root, 'Company Overview')
+element =find_by_text(root, 'Headquartered in North America')

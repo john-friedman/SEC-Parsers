@@ -43,23 +43,27 @@ def recursive_parse(element):
 
         # if no style found
         if parsing_string == '':
-            parsing_string = 'text;'
-            element.attrib['parsing'] = parsing_string
+            element.attrib['parsing'] = ''
         else:
-            parent = element.getparent()
-            if element_has_text(parent):
-                # fix - didn't work
-                previous_element = element.getprevious()
-                if previous_element:
-                    previous_parsing_style = previous_element.attrib['parsing']
-                    if not ((previous_parsing_style) == '' | (previous_parsing_style == 'text;')):
-                        element.attrib['parsing'] = previous_parsing_style
-                else:
-                    element.attrib['parsing'] = 'text;'
-            elif element_has_tail(element):
-                parent.attrib['parsing'] = parsing_string
+            previous_element = element.getprevious()
+            if previous_element is not None:
+                previous_element_parsing_string = previous_element.attrib.get('parsing')
+                if previous_element_parsing_string == 'bullet point;':
+                    parsing_string = ''
 
-                    
+            # check if first child
+            if not check_if_is_first_child(element):
+                parsing_string = ''
+
+            # check that element has no tail
+            if element_has_tail(element):
+                tail = element.tail
+                if detect_style_from_string(tail) != '':
+                    parent = element.getparent()
+                    parent.attrib['parsing'] = parsing_string
+                else:
+                    element.attrib['parsing'] = parsing_string
+
             else:
                 element.attrib['parsing'] = parsing_string
 
@@ -96,7 +100,7 @@ def visualize_tree(root):
             set_background_color(element, '#A9A9A9')
         elif parsing == '':
             pass
-        elif parsing == 'text;':
+        elif 'text;' in parsing:
             set_background_color(element, '#FFEBCD')
         else:
             set_background_color(element, '#FA8072')

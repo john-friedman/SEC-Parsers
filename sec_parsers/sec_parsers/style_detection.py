@@ -15,7 +15,7 @@ def detect_style_from_string(string):
         if not words:
             return False
         for word in words:
-            if word.lower() in ["of",'to','a','and','by','in','the','or','on','for']:
+            if word.lower() in ["of",'to','a','and','by','in','the','or','on','for','as','with','that','but','not','so','yet','an','at','off','per','up','via']:
                 continue
             if not word[0].isupper():
                 return False

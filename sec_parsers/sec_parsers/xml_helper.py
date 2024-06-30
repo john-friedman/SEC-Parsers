@@ -35,6 +35,8 @@ def check_if_is_first_child(element):
         parent = element.getparent()
         if not element_has_text(parent):
             return True
+        else:
+            return False
     elif len(previous_element.getchildren()) > 0:
         return False
 
