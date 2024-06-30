@@ -44,27 +44,15 @@ def recursive_parse(element):
         if (string_style+element_style == ''):
             element.attrib['parsing'] = ''
         else:
-            previous_element = element.getprevious()
-            if previous_element is not None:
-                if element_has_text(previous_element):
-                    previous_element_parsing_string = previous_element.attrib.get('parsing')
-                    if previous_element_parsing_string == 'bullet point;':
-                        string_style = ''
-                        element_style = ''
-                    elif previous_element_parsing_string == '':
-                        string_style = ''
-                        element_style = ''
-
-
 
             if any(style in element_style for style in ['font-weight:bold','font-weight:700;','b-tag;','strong-tag;']):
-                parsing_string += 'bold;'
+                parsing_string += 'bold-tag;'
 
             if any(style in element_style for style in ['font-style:italic','em','i']):
-                parsing_string += 'italic;'
+                parsing_string += 'italic-tag;'
 
             if any(style in element_style for style in ['text-decoration:underline','u']):
-                parsing_string += 'underline;'
+                parsing_string += 'underline-tag;'
 
             # change to functions
             if re.search('^item',get_all_text(element).strip(), re.IGNORECASE):
@@ -78,9 +66,28 @@ def recursive_parse(element):
                 parsing_string = 'part;'
                 string_style = ''
 
+            #relative
+            previous_element = element.getprevious()
+            if previous_element is not None:
+                if element_has_text(previous_element):
+                    # change to go back further if empty?
+                    previous_element_parsing_string = previous_element.attrib.get('parsing')
+                    if previous_element_parsing_string == 'bullet point;':
+                        string_style = ''
+                    elif previous_element_parsing_string == '':
+                        string_style = ''
+                    elif previous_element_parsing_string == 'item;':
+                        string_style = 'item;'
+                    elif previous_element_parsing_string == 'part;':
+                        string_style = 'part;'
+
+
             parsing_string += string_style
 
             if ((get_all_text(element) == '') and (element.tail is not None)):
+                parent = element.getparent()
+                parent.attrib['parsing'] = parsing_string + 'parent;'
+            elif ((parsing_string == 'item;') and (element.tail is not None)):
                 parent = element.getparent()
                 parent.attrib['parsing'] = parsing_string + 'parent;'
             else:
