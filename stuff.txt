@@ -1,6 +1,9 @@
 TODO:
 start making tree, do basic logic. once this part is done, check how well it worked
-if good publish
+check how well things work for other stuff
+think through rewrite of some functions - e.g. get previous () excluding ''
+
+add github link to repo
 
 to fix: 
 fix missing lhs of header - difficut

@@ -1,26 +1,46 @@
-colors = [
-    "#dfe2f1",  # Pale blush pink
-    "#eebbcc",  # Rose gold
-    "#ffe0b2",  # Soft peach
-    "#f5f5f5",  # Cream
-    "#e5dac4",  # Light sand
-    "#dcd0e8",  # Pale lavender
-    "#c0bace",  # Lilac
-    "#a085bd",  # Dusty purple
-    "#93c5e8",  # Periwinkle
-    "#87ceeb",  # Sky blue
-    "#c7f4f3",  # Robin's egg blue
-    "#90e0e0",  # Mint green
-    "#a5b3c2",  # Sage green
-    "#c0c0c0",  # Light olive
-    "#e0dfd0",  # Oatmeal
-    "#d3d3d3",  # Light taupe
-    "#a9a9a9",  # Greige
-    "#f0f0f0",  # Pale silver
-    "#ffc107", # Sunshine yellow
-    "#f08080", # Coral pink
-    "#f473b9", # Magenta
-    "#ca67eb", # Medium orchid
-    "#9d38bd", # Plum purple
-    "#cd5b45", # Maroon
+# Important colors (strong contrast, emphasis)
+headers_colors_dict = {'part;': '#B8860B',
+                       'item;': '#BDB76B',
+                       }
+
+# Less important colors (muted tones, background elements)
+headers_colors_list = [
+    "#f5f5f5",  # Very Light Gray
+    "#e0e0e0",  # Light Gray
+    "#d6d6d6",  # Light Gray
+    "#cccccc",  # Light Gray
+    "#d9d9d9",  # Very Light Gray
+    "#f0f0f0",  # Even Lighter Gray
+    "#e6e6e6",  # Very Light Gray
+    "#f2f2f2",  # Even Lighter Gray
+
+    # Muted colors with lower saturation
+    "#d3d3d3",  # Muted Gray
+    "#d0cccc",  # Muted Blue
+    "#e0e0e6",  # Muted Lavender
+    "#e6e0e0",  # Muted Pink
+    "#d9e0e0",  # Muted Teal
+    "#e6dfd6",  # Muted Green
+    "#e0d6d6",  # Muted Peach
+    "#dcdcdc",  # Muted Silver
+
+    # Even more muted colors
+    "#e5e5e5",  # Very Light Gray (more muted)
+    "#cfcfcf",  # Light Gray (more muted)
+    "#bdbdbd",  # Light Gray (more muted)
+    "#bebebe",  # Light Gray (more muted)
+    "#cecece",  # Very Light Gray (more muted)
+    "#ebeb eb",  # Even Lighter Gray (more muted)
+    "#cfcfcf",  # Very Light Gray (more muted)
+    "#d7d7d7",  # Even Lighter Gray (more muted)
+
+    # Muted colors with even lower saturation (carefully consider contrast)
+    "#d9d9d9",  # Muted Gray (even lower saturation)
+    "#c2c2c2",  # Muted Blue (even lower saturation)
+    "#d6d6d9",  # Muted Lavender (even lower saturation)
+    "#d9d3d3",  # Muted Pink (even lower saturation)
+    "#d0d3d3",  # Muted Teal (even lower saturation)
+    "#dfd9d9",  # Muted Green (even lower saturation)
+    "#d3d6d6",  # Muted Peach (even lower saturation)
+    "#cacaca",  # Muted Silver (even lower saturation)
 ]

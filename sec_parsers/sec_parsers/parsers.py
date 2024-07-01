@@ -3,9 +3,8 @@ from style_detection import detect_style_from_string, detect_style_from_element,
 from xml_helper import get_text, set_background_color, remove_background_color, open_tree,check_if_is_first_child, element_has_text, element_has_tail
 from lxml import etree
 import re
-from helper import colors
+from helper import headers_colors_dict, headers_colors_list
 
-# add item and part detection
 def recursive_parse(element):
     if element.attrib.get('parsing') == None:
         element.attrib['parsing'] = ''
@@ -101,7 +100,9 @@ def recursive_parse(element):
 
     return
         
-# add gradient colors for different style headings
+# need to add static colors at some point
+# palette for headings
+# palette for identified stuff
 def visualize_tree(root):
     # remove style from all descendants so that background color can be set
     for descendant in root.iterdescendants():
@@ -112,7 +113,10 @@ def visualize_tree(root):
     # get all unique parsing values
     parsing_values = list(set([element.attrib['parsing'] for element in elements]))
     # create a color dict
-    color_dict =dict(zip(parsing_values, colors[:len(parsing_values)])) 
+    color_dict =dict(zip(parsing_values, headers_colors_list[:len(parsing_values)])) 
+    # replace color dict values with values from headers_colors_dict
+    for key in headers_colors_dict.keys():
+        color_dict[key] = headers_colors_dict[key]
     for element in elements:
         # get attribute parsing
         parsing = element.attrib['parsing']
@@ -126,9 +130,8 @@ def visualize_tree(root):
 
 
 # start from part i to part 4 skipping signatures and intro
-# logic: part then item
-
-# start code sloppy then fix
+# function to decide hierarchy of headers
+# function to create nodes
 def construct_xml_tree(parsed_html):
     root = etree.Element('root')
 
