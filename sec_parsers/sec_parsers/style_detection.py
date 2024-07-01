@@ -1,6 +1,14 @@
 import re
 from xml_helper import get_all_text
 
+# simple for now
+def is_paragraph(text):
+    periods = text.count('.')
+    commas = text.count(',')
+    if periods > 0:
+        return True
+    
+    return False
 
 def detect_bullet_point(string):
     """e.g. •"""
@@ -20,6 +28,10 @@ def detect_style_from_string(string):
         for word in words:
             if word.lower() in ["of",'to','a','and','by','in','the','or','on','for','as','with','that','but','not','so','yet','an','at','off','per','up','via']:
                 continue
+            # check for numbers, e.g. 2021, but not ITEM2021. ITEM2021 counts as upper
+            elif not any(char.isalpha() for char in word):
+                continue
+
             if not word[0].isupper():
                 return False
         return True
@@ -51,6 +63,9 @@ def detect_style_from_string(string):
         """e.g. FORM 10-K SUMMARY"""
         if string.isupper():
             return True
+        # may cause issue
+        elif string.isdigit():
+            return True
         return False
     
     def detect_page_number(string):
@@ -63,12 +78,12 @@ def detect_style_from_string(string):
     
     if detect_page_number(string):
         return 'page number;'
+    elif all_caps(string):
+        return 'all caps;'
     elif detect_emphasis_capitalization(string):
         return 'emphasis;'
     elif detect_item(string):
         return 'item;'
-    elif all_caps(string):
-        return 'all caps;'
     elif note_detection(string):
         return 'note;'
     elif detect_bullet_point(string):

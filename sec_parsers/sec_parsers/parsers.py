@@ -1,5 +1,5 @@
 from time import time
-from style_detection import detect_style_from_string, detect_style_from_element, detect_table,detect_link, detect_image,detect_table_of_contents, get_all_text
+from style_detection import detect_style_from_string, detect_style_from_element, detect_table,detect_link, detect_image,detect_table_of_contents, get_all_text, is_paragraph
 from xml_helper import get_text, set_background_color, remove_background_color, open_tree,check_if_is_first_child, element_has_text, element_has_tail
 from lxml import etree
 import re
@@ -53,7 +53,12 @@ def recursive_parse(element):
             if any(style in element_style for style in ['text-decoration:underline','u']):
                 parsing_string += 'underline-tag;'
 
-            # change to functions
+            # check for items after risk factor which are text, but in italics
+            if ((parsing_string == 'italic-tag;') and (is_paragraph(text))):
+                parsing_string = ''
+                string_style = ''
+
+            # change this to functions
             if re.search('^item',get_all_text(element).strip(), re.IGNORECASE):
                 parsing_string = 'item;'
                 string_style = ''

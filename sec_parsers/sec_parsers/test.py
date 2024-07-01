@@ -14,7 +14,7 @@ files = [dir_10k + "/" + file for file in files]
 
 parser = etree.HTMLParser(encoding='utf-8',remove_comments=True)
 
-for file in files[0:1]:
+for file in files[100:101]:
     print(file)
     with open(file, 'r',encoding='utf-8') as f:
         sec_html = f.read()
@@ -28,4 +28,5 @@ for file in files[0:1]:
     xml = construct_xml_tree(root)
     #print_tree(xml)
 
+element = find_by_text(root, 'You should consider carefully the risks and uncertainties described')
 
