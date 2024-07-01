@@ -17,5 +17,10 @@ colors = [
     "#d3d3d3",  # Light taupe
     "#a9a9a9",  # Greige
     "#f0f0f0",  # Pale silver
-    "#ffffff"   # White
+    "#ffc107", # Sunshine yellow
+    "#f08080", # Coral pink
+    "#f473b9", # Magenta
+    "#ca67eb", # Medium orchid
+    "#9d38bd", # Plum purple
+    "#cd5b45", # Maroon
 ]

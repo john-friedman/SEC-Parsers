@@ -74,12 +74,16 @@ def recursive_parse(element):
                     previous_element_parsing_string = previous_element.attrib.get('parsing')
                     if previous_element_parsing_string == 'bullet point;':
                         string_style = ''
+                        parsing_string = ''
                     elif previous_element_parsing_string == '':
                         string_style = ''
+                        parsing_string = ''
                     elif previous_element_parsing_string == 'item;':
                         string_style = 'item;'
+                        parsing_string = ''
                     elif previous_element_parsing_string == 'part;':
                         string_style = 'part;'
+                        parsing_string = ''
 
 
             parsing_string += string_style
@@ -108,7 +112,7 @@ def visualize_tree(root):
     # get all unique parsing values
     parsing_values = list(set([element.attrib['parsing'] for element in elements]))
     # create a color dict
-    color_dict = {parsing: color for parsing, color in zip(parsing_values, colors[0:len(parsing_values)])}
+    color_dict =dict(zip(parsing_values, colors[:len(parsing_values)])) 
     for element in elements:
         # get attribute parsing
         parsing = element.attrib['parsing']
