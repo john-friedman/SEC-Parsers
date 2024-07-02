@@ -1,11 +1,17 @@
 from time import time
 from style_detection import detect_style_from_string, detect_style_from_element, detect_table,detect_link, detect_image,detect_table_of_contents, get_all_text, is_paragraph
-from xml_helper import get_text, set_background_color, remove_background_color, open_tree,check_if_is_first_child, element_has_text, element_has_tail
+from xml_helper import get_text, set_background_color, remove_background_color, open_tree,check_if_is_first_child, element_has_text, element_has_tail,get_text_between_elements
 from lxml import etree
 import re
 from helper import headers_colors_dict, headers_colors_list
 
 def recursive_parse(element):
+    # check if visible
+    style = element.attrib.get('style')
+    if style is not None:
+        if 'display:none' in re.sub(' ','',style):
+            return
+
     if element.attrib.get('parsing') == None:
         element.attrib['parsing'] = ''
 
@@ -70,6 +76,10 @@ def recursive_parse(element):
                 parsing_string = 'part;'
                 string_style = ''
 
+            if re.search('^SIGNATURES$',get_all_text(element).strip()):
+                parsing_string = 'signature;'
+                string_style = ''
+
             #relative
             previous_element = element.getprevious()
             if previous_element is not None:
@@ -101,9 +111,7 @@ def recursive_parse(element):
             else:
                 element.attrib['parsing'] = parsing_string
 
-
-
-    return
+    return 
         
 # need to add static colors at some point
 # palette for headings
@@ -134,29 +142,74 @@ def visualize_tree(root):
     open_tree(root)
 
 
-# start from part i to part 4 skipping signatures and intro
-# function to decide hierarchy of headers
-# function to create nodes
+
+# this is heavily WIP
 def construct_xml_tree(parsed_html):
+    """Constructs an xml tree from a parsed html file"""
+    # initializes root
     root = etree.Element('root')
+    root.attrib['parsing'] = 'root;'
 
     # find all parsing elements
     elements = parsed_html.xpath('//*[@parsing]')
-    # select elements with parsing attribute
-    parse_bool = False
-    for idx,element in enumerate(elements):
-        parsing = element.attrib['parsing']
-        text = get_text(element).strip()
-        
-        if text ==  'PART I':
-            parse_bool = True
-        elif text == 'SIGNATURES':
-            parse_bool = False
+    # subset by elements where parsing is not empty
+    elements = [element for element in elements if element.attrib['parsing'] != '']
+    # find the first part parsing
+    first_part_element = [element for element in elements if element.attrib['parsing'] == 'part;'][0]
+    # find signatures
+    signature = [element for element in elements if element.attrib['parsing'] == 'signature;'][0]
 
-        if parse_bool:
-            if parsing == 'part;':
-                part_node = etree.SubElement(root, "part", title=text)
-            elif parsing == 'item;':
-                item_node = etree.SubElement(part_node, "item", title=text)
+    # subset elements between first part and signature
+    elements = elements[elements.index(first_part_element):elements.index(signature)]
 
-    return root
+
+    # gives each element an id
+    for idx, element in enumerate(elements):
+        element.attrib['id'] = str(idx)
+    
+    # fix here. we accidentally did next, instead of previous
+    count = 0
+    node_hierarchy = [root]
+    while count < len(elements):
+        element = elements[count]
+        next_element = elements[count+1]
+
+        element_parsing_string = element.attrib['parsing']
+        next_element_parsing_string = next_element.attrib['parsing']
+
+        # remove parent from parsing string
+        element_parsing_string = re.sub('parent;','',element_parsing_string)
+        next_element_parsing_string = re.sub('parent;','',next_element_parsing_string)
+
+        desc = get_all_text(element)
+        title = re.sub(' ','',desc.strip().lower())
+        text = get_text_between_elements(parsed_html,element, next_element)
+        if element_parsing_string == 'part;':
+            node_class = 'part'
+        elif element_parsing_string == 'item;':
+            node_class = 'item'
+        else:
+            node_class = 'section'
+
+        node = etree.Element(node_class, title = title, desc= desc, text = text, parsing = element_parsing_string)
+
+        node_hierachy_parsing_strings = [node.attrib['parsing'] for node in node_hierarchy]
+
+        # check if parsing string is in node hierarchy
+        if element_parsing_string not in node_hierachy_parsing_strings:
+            node_hierarchy.append(node)
+        elif element_parsing_string == node_hierachy_parsing_strings[-1]:
+            pass
+        else:
+            # delete all elements after element_parsing_string
+            idx = node_hierachy_parsing_strings.index(element_parsing_string)
+            node_hierarchy = node_hierarchy[:idx+1]
+
+        if element_parsing_string == next_element_parsing_string:
+            # sibling
+            node_hierarchy[-2].append(node)
+        else:
+            # child
+            node_hierarchy[-1].append(node)
+            
+        count += 1

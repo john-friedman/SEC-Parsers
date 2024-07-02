@@ -5,7 +5,7 @@ from style_detection import *
 import os
 from time import time
 
-from xml_helper import find_by_text, get_all_text, get_text, print_tree
+from xml_helper import find_by_text, get_all_text, get_text, print_tree,get_text_between_elements
 
 
 dir_10k = "../../Data/10K"
@@ -14,19 +14,17 @@ files = [dir_10k + "/" + file for file in files]
 
 parser = etree.HTMLParser(encoding='utf-8',remove_comments=True)
 
-for file in files[100:101]:
+for file in files[0:1]:
     print(file)
     with open(file, 'r',encoding='utf-8') as f:
         sec_html = f.read()
 
     s1 = time()
-    root = etree.fromstring(sec_html, parser)
-    recursive_parse(root)
+    parsed_html = etree.fromstring(sec_html, parser)
+    # mutablity
+    recursive_parse(parsed_html)
     e1 = time()
     print(e1-s1)
-    visualize_tree(root)
-    xml = construct_xml_tree(root)
-    #print_tree(xml)
-
-element = find_by_text(root, 'You should consider carefully the risks and uncertainties described')
-
+    #visualize_tree(parsed_html)
+    #xml = construct_xml_tree(parsed_html)
+    

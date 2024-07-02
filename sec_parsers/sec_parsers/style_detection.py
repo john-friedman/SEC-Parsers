@@ -16,6 +16,7 @@ def detect_bullet_point(string):
         return True
     return False
 
+
 def detect_style_from_string(string):
     def detect_emphasis_capitalization(string):
         """Seen in amazon's 2024 10k e.g. We Have Foreign Exchange Risk"""
@@ -91,6 +92,7 @@ def detect_style_from_string(string):
     else:
         return ''
     
+# add multiple so italic and bold
 def detect_style_from_element(element):
     def detect_bold_from_css(element):
         """Detects bold from css"""
@@ -103,6 +105,7 @@ def detect_style_from_element(element):
         return ''
     
     def detect_from_html(element):
+        element_style = ''
         ancestors = list(element.iterancestors())
         # include self
         ancestors = ancestors + [element]
@@ -110,9 +113,9 @@ def detect_style_from_element(element):
         for ancestor in ancestors:
             tag_list = ['b','strong','em','i','u']
             if ancestor.tag in tag_list:
-                return f'{ancestor.tag}-tag;'
+                element_style += f'{ancestor.tag}-tag;'
             
-        return ''
+        return element_style
     
     def detect_underline_from_css(element):
         """Detects underline from css"""

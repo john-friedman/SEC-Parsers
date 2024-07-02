@@ -1,11 +1,12 @@
 # Important colors (strong contrast, emphasis)
 headers_colors_dict = {'part;': '#B8860B',
                        'item;': '#BDB76B',
-                       'bullet-point;': '#FAFAD2', # LightGoldenRodYellow
+                       'bullet point;': '#FAFAD2', # LightGoldenRodYellow
                        'table;': '#FAFAD2', # LightGoldenRodYellow
                        'table of contents;': '#E0FFFF', # Light Cyan
                        'link;': '#FFB6C1', # LightPink
                           'image;': '#FFB6C1', # LightPink
+                          'signature;': '#E0FFFF', # Light Cyan
                        }
 
 # Less important colors (muted tones, background elements)

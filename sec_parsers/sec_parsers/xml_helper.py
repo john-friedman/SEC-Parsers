@@ -3,6 +3,29 @@ import tempfile
 from lxml import html, etree
 import re
 
+from lxml import etree
+
+# needs work
+def get_text_between_elements(root, start_element, end_element):
+    text = ""
+    in_between_bool = False
+    for element in root.iter():
+        if element == start_element:
+            in_between_bool = True
+        elif element == end_element:
+            in_between_bool = False
+        elif in_between_bool:
+            element_text = get_text(element).strip()
+            if element_text != '':
+                text += element_text + '\n'
+
+    return text
+
+  
+
+
+
+
 def find_by_text(node, text):
     """Find a node by text."""
     return node.xpath(f"//*[contains(text(), '{text}')]")
