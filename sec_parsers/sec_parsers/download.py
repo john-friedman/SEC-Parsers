@@ -6,6 +6,8 @@ def random_num():
     return rd.randint(1, 1000000)
 
 # add random number to user agent to avoid being blocked if too many people use package
+# Note: If you use this package a bunch, please set your own user agent
+# Will add a nude in the future
 headers = {
     'User-Agent': f'Sample Company Name {str(random_num)} AdminContact@<sample company domain>.com'
 }

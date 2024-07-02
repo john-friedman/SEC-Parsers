@@ -5,7 +5,20 @@ import re
 
 from lxml import etree
 
-# needs work
+#WIP
+def get_elements_between_elements(root, start_element, end_element):
+    elements = []
+    in_between_bool = False
+    for element in root.iter():
+        if element == start_element:
+            in_between_bool = True
+        elif element == end_element:
+            in_between_bool = False
+        elif in_between_bool:
+            elements.append(element)
+
+    return elements
+# WIP
 def get_text_between_elements(root, start_element, end_element):
     text = ""
     in_between_bool = False

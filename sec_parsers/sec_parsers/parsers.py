@@ -1,9 +1,10 @@
 from time import time
 from style_detection import detect_style_from_string, detect_style_from_element, detect_table,detect_link, detect_image,detect_table_of_contents, get_all_text, is_paragraph
-from xml_helper import get_text, set_background_color, remove_background_color, open_tree,check_if_is_first_child, element_has_text, element_has_tail,get_text_between_elements
+from xml_helper import get_text, set_background_color, remove_background_color, open_tree,check_if_is_first_child, element_has_text, element_has_tail,get_text_between_elements,get_elements_between_elements
 from lxml import etree
 import re
-from helper import headers_colors_dict, headers_colors_list
+from visualization_helper import headers_colors_dict, headers_colors_list
+from helper import get_hierarchy_from_lists, get_preceding_elements, find_last_index
 
 def recursive_parse(element):
     # check if visible
@@ -142,7 +143,6 @@ def visualize_tree(root):
     open_tree(root)
 
 
-
 # this is heavily WIP
 def construct_xml_tree(parsed_html):
     """Constructs an xml tree from a parsed html file"""
@@ -161,25 +161,22 @@ def construct_xml_tree(parsed_html):
 
     # subset elements between first part and signature
     elements = elements[elements.index(first_part_element):elements.index(signature)]
+    # add the signature to the end of the elements
+    elements.append(signature)
 
-
-    # gives each element an id
-    for idx, element in enumerate(elements):
-        element.attrib['id'] = str(idx)
+    element_parsing_strings = [element.attrib['parsing'] for element in elements]
+    hierearchy = get_hierarchy_from_lists(element_parsing_strings)
     
     # fix here. we accidentally did next, instead of previous
     count = 0
-    node_hierarchy = [root]
-    while count < len(elements):
+    while count < len(elements)-1:
         element = elements[count]
         next_element = elements[count+1]
 
         element_parsing_string = element.attrib['parsing']
-        next_element_parsing_string = next_element.attrib['parsing']
 
         # remove parent from parsing string
         element_parsing_string = re.sub('parent;','',element_parsing_string)
-        next_element_parsing_string = re.sub('parent;','',next_element_parsing_string)
 
         desc = get_all_text(element)
         title = re.sub(' ','',desc.strip().lower())
@@ -192,24 +189,18 @@ def construct_xml_tree(parsed_html):
             node_class = 'section'
 
         node = etree.Element(node_class, title = title, desc= desc, text = text, parsing = element_parsing_string)
+        rulers = get_preceding_elements(hierearchy, element_parsing_string)
 
-        node_hierachy_parsing_strings = [node.attrib['parsing'] for node in node_hierarchy]
 
-        # check if parsing string is in node hierarchy
-        if element_parsing_string not in node_hierachy_parsing_strings:
-            node_hierarchy.append(node)
-        elif element_parsing_string == node_hierachy_parsing_strings[-1]:
-            pass
+        tree = [node for node in root.iterdescendants()]
+        node_hierachy_parsing_strings = [node.attrib['parsing'] for node in tree]
+        # find the last element in the node_hierachy_parsing_strings which is in rulers
+        index = find_last_index(node_hierachy_parsing_strings, rulers)
+        if index == 0:
+            root.append(node)
         else:
-            # delete all elements after element_parsing_string
-            idx = node_hierachy_parsing_strings.index(element_parsing_string)
-            node_hierarchy = node_hierarchy[:idx+1]
-
-        if element_parsing_string == next_element_parsing_string:
-            # sibling
-            node_hierarchy[-2].append(node)
-        else:
-            # child
-            node_hierarchy[-1].append(node)
+            tree[index-1].append(node)
             
         count += 1
+
+    return root

@@ -1,52 +1,87 @@
-# Important colors (strong contrast, emphasis)
-headers_colors_dict = {'part;': '#B8860B',
-                       'item;': '#BDB76B',
-                       'bullet point;': '#FAFAD2', # LightGoldenRodYellow
-                       'table;': '#FAFAD2', # LightGoldenRodYellow
-                       'table of contents;': '#E0FFFF', # Light Cyan
-                       'link;': '#FFB6C1', # LightPink
-                          'image;': '#FFB6C1', # LightPink
-                          'signature;': '#E0FFFF', # Light Cyan
-                       }
+from collections import defaultdict
 
-# Less important colors (muted tones, background elements)
-headers_colors_list = [
-    "#f5f5f5",  # Very Light Gray
-    "#e0e0e0",  # Light Gray
-    "#d6d6d6",  # Light Gray
-    "#cccccc",  # Light Gray
-    "#d9d9d9",  # Very Light Gray
-    "#f0f0f0",  # Even Lighter Gray
-    "#e6e6e6",  # Very Light Gray
-    "#f2f2f2",  # Even Lighter Gray
+# Note: This module is highly WIP
+# Names are subject to change
+# Functions are subject to change
 
-    # Muted colors with lower saturation
-    "#d3d3d3",  # Muted Gray
-    "#d0cccc",  # Muted Blue
-    "#e0e0e6",  # Muted Lavender
-    "#e6e0e0",  # Muted Pink
-    "#d9e0e0",  # Muted Teal
-    "#e6dfd6",  # Muted Green
-    "#e0d6d6",  # Muted Peach
-    "#dcdcdc",  # Muted Silver
+# Highly WIP
+def get_hierarchy_from_list(parsing_list):
+    seen = set()
+    result = []
+    for parsing_string in parsing_list:
+        if parsing_string not in seen:
+            seen.add(parsing_string)
+            result.append(parsing_string)
+    return result
 
-    # Even more muted colors
-    "#e5e5e5",  # Very Light Gray (more muted)
-    "#cfcfcf",  # Light Gray (more muted)
-    "#bdbdbd",  # Light Gray (more muted)
-    "#bebebe",  # Light Gray (more muted)
-    "#cecece",  # Very Light Gray (more muted)
-    "#ebeb eb",  # Even Lighter Gray (more muted)
-    "#cfcfcf",  # Very Light Gray (more muted)
-    "#d7d7d7",  # Even Lighter Gray (more muted)
+def split_list(parsing_list):
+    lsts = []
+    lst = []
+    for parsing_string in parsing_list:
+        if ((parsing_string == 'item;') or (parsing_string == 'part;')):
+            if len(lst) > 0:
+                lsts.append(lst)
+            lst = []
+        else:
+            lst.append(parsing_string)
 
-    # Muted colors with even lower saturation (carefully consider contrast)
-    "#d9d9d9",  # Muted Gray (even lower saturation)
-    "#c2c2c2",  # Muted Blue (even lower saturation)
-    "#d6d6d9",  # Muted Lavender (even lower saturation)
-    "#d9d3d3",  # Muted Pink (even lower saturation)
-    "#d0d3d3",  # Muted Teal (even lower saturation)
-    "#dfd9d9",  # Muted Green (even lower saturation)
-    "#d3d6d6",  # Muted Peach (even lower saturation)
-    "#cacaca",  # Muted Silver (even lower saturation)
-]
+    return lsts
+
+def get_hierarchy_from_lists(lsts):
+    # Initialize the counter dictionary
+    pair_counts = defaultdict(int)
+
+    # Update counts for each pair
+    for lst in lsts:
+        for i in range(len(lst) - 1):
+            pair = (lst[i], lst[i + 1])
+            pair_counts[pair] += 1
+
+    # Convert pair counts to a list of tuples and sort by count
+    sorted_pairs = sorted(pair_counts.items(), key=lambda x: x[1], reverse=True)
+
+    # Initialize a set to keep track of visited elements
+    visited = set()
+    hierarchy = []
+
+    # Build the hierarchy based on sorted pairs
+    for (a, b), count in sorted_pairs:
+        if a not in visited:
+            hierarchy.append(a)
+            visited.add(a)
+        if b not in visited:
+            hierarchy.append(b)
+            visited.add(b)
+
+    return hierarchy
+
+# WIP
+def get_hierarchy(elements):
+    # get lists item --> item, item --> part
+    lsts = split_list(elements)
+    # get hiereachy lists
+    hierarchy_lists = [get_hierarchy_from_list(lst) for lst in lsts]
+    # use lists to get hierarchy
+    hierarchy = get_hierarchy_from_lists(hierarchy_lists)
+    # insert item at beginning
+    hierarchy.insert(0,'item;')
+    # insert part before item
+    hierarchy.insert(0,'part;')
+    return hierarchy
+
+
+def get_preceding_elements(element_list, element):
+    if element in element_list:
+        element_index = element_list.index(element)
+        return element_list[:element_index]
+    else:
+        return []
+
+def find_last_index(lst1, lst2):
+    len_lst1 = len(lst1)
+    len_lst2 = len(lst2)
+    
+    for i in range(len_lst1 - len_lst2, -1, -1):
+        if lst1[i:i + len_lst2] == lst2:
+            return i
+    return -1

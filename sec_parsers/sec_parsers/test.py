@@ -26,5 +26,7 @@ for file in files[0:1]:
     e1 = time()
     print(e1-s1)
     #visualize_tree(parsed_html)
-    #xml = construct_xml_tree(parsed_html)
-    
+    xml = construct_xml_tree(parsed_html)
+    # save xml to file
+    with open("test.xml","w") as f:
+        f.write(etree.tostring(xml, pretty_print=True).decode("utf-8"))
