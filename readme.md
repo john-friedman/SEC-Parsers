@@ -16,11 +16,11 @@ parsed_html = parse_10k(html)
 xml = construct_xml_tree(parsed_html)
 ```
 
-For more information look at [a link](Examples/quickstart.ipynb), or view a parsed Tesla 10-K [a link](Examples/tesla.xml).
+For more information look at the [quickstart](Examples/quickstart.ipynb), or view a parsed Tesla 10-K [here](Examples/tesla.xml).
 
 ### Links:
-* Project GitHub add link
-* Archive of Parsed XMLs - Note: This is often out of date, as package is being updated frequently. add link
+* [GitHub](https://github.com/john-friedman/SEC-Parsers/)
+* [Archive of Parsed XMLs](https://www.dropbox.com/scl/fo/np1lpow7r3bissz80ze3o/AKGM8skBrUfEGlSweofAUDU?rlkey=cz1r78jofntjeq4ax2vb2yd0u&e=1&st=mdcwgfcm&dl=0) - Note: This is often out of date, as package is being updated frequently.
 
 ### Problem:
 When you look at an SEC 10-K you can easily see the structure of the file, and what headers follow each other. Under the hood, these filings are non-standardized making it hard to convert into a well structured format suitable for NLP/RAG.
