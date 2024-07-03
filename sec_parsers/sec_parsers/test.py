@@ -5,8 +5,8 @@ from style_detection import *
 import os
 from time import time
 
-from xml_helper import find_by_text, get_all_text, get_text, print_tree,get_text_between_elements
-
+from xml_helper import get_all_text, get_text, print_tree,get_text_between_elements
+from useful_functions import get_node_tree,get_node_attributes
 
 dir_10k = "../../Data/10K"
 files = os.listdir(dir_10k)
@@ -25,8 +25,14 @@ for file in files[0:1]:
     recursive_parse(parsed_html)
     e1 = time()
     print(e1-s1)
-    #visualize_tree(parsed_html)
+    visualize_tree(parsed_html)
     xml = construct_xml_tree(parsed_html)
     # save xml to file
     with open("test.xml","w") as f:
         f.write(etree.tostring(xml, pretty_print=True).decode("utf-8"))
+
+    # close to getting this
+    #print(get_node_tree(xml))
+    print(get_node_attributes(xml,attribute='desc'))
+    # modify this to get titles
+    #print(file)

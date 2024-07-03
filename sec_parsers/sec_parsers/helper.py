@@ -78,10 +78,9 @@ def get_preceding_elements(element_list, element):
         return []
 
 def find_last_index(lst1, lst2):
-    len_lst1 = len(lst1)
-    len_lst2 = len(lst2)
-    
-    for i in range(len_lst1 - len_lst2, -1, -1):
-        if lst1[i:i + len_lst2] == lst2:
-            return i
-    return -1
+  last_index = -1
+  for i in range(len(lst1)):
+    if lst1[i] in lst2:
+      last_index = i
+  return last_index
+

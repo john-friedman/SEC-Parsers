@@ -4,8 +4,12 @@ from xml_helper import get_text, set_background_color, remove_background_color, 
 from lxml import etree
 import re
 from visualization_helper import headers_colors_dict, headers_colors_list
-from helper import get_hierarchy_from_lists, get_preceding_elements, find_last_index
+from helper import get_hierarchy, get_preceding_elements, find_last_index
 
+# The function for conversion to xml is the most recent and most WIP, will rewrite substantially.
+
+# Needs general code cleanup
+# removed parent for now, need to setup better attributes for error detection and parsing
 def recursive_parse(element):
     # check if visible
     style = element.attrib.get('style')
@@ -81,7 +85,7 @@ def recursive_parse(element):
                 parsing_string = 'signature;'
                 string_style = ''
 
-            #relative
+            # relative parsing
             previous_element = element.getprevious()
             if previous_element is not None:
                 if element_has_text(previous_element):
@@ -105,10 +109,10 @@ def recursive_parse(element):
 
             if ((get_all_text(element) == '') and (element.tail is not None)):
                 parent = element.getparent()
-                parent.attrib['parsing'] = parsing_string + 'parent;'
+                parent.attrib['parsing'] = parsing_string #+ 'parent;'
             elif ((parsing_string == 'item;') and (element.tail is not None)):
                 parent = element.getparent()
-                parent.attrib['parsing'] = parsing_string + 'parent;'
+                parent.attrib['parsing'] = parsing_string #+ 'parent;'
             else:
                 element.attrib['parsing'] = parsing_string
 
@@ -142,45 +146,54 @@ def visualize_tree(root):
 
     open_tree(root)
 
-
-# this is heavily WIP
+# Heavily WIP
 def construct_xml_tree(parsed_html):
-    """Constructs an xml tree from a parsed html file"""
-    # initializes root
     root = etree.Element('root')
-    root.attrib['parsing'] = 'root;'
-
+    
     # find all parsing elements
     elements = parsed_html.xpath('//*[@parsing]')
     # subset by elements where parsing is not empty
     elements = [element for element in elements if element.attrib['parsing'] != '']
     # find the first part parsing
     first_part_element = [element for element in elements if element.attrib['parsing'] == 'part;'][0]
-    # find signatures
+    # find signature
     signature = [element for element in elements if element.attrib['parsing'] == 'signature;'][0]
 
     # subset elements between first part and signature
     elements = elements[elements.index(first_part_element):elements.index(signature)]
-    # add the signature to the end of the elements
+    # add the signature to the end of the elements. we are not processing the signature right now, just adding it to the end as an anchor
     elements.append(signature)
 
     element_parsing_strings = [element.attrib['parsing'] for element in elements]
-    hierearchy = get_hierarchy_from_lists(element_parsing_strings)
-    
-    # fix here. we accidentally did next, instead of previous
+
+    # restrict certain headers
+    restricted_headers = ['table;','table of contents;','image;','link;','bullet point;']
+    element_parsing_strings = [element_parsing_string for element_parsing_string in element_parsing_strings if element_parsing_string not in restricted_headers]
+    # remove parent from parsing strings
+    element_parsing_strings = [re.sub('parent;','',element_parsing_string) for element_parsing_string in element_parsing_strings]
+
+    # get which headers are above which headers
+    hierearchy = get_hierarchy(element_parsing_strings)
+
+    # start parsing
+    node_list = []
     count = 0
     while count < len(elements)-1:
         element = elements[count]
         next_element = elements[count+1]
 
+        # check if element is a restricted header, if so, add to text of previous node
         element_parsing_string = element.attrib['parsing']
+        if element_parsing_string in restricted_headers:
+            node_list[-1].text += get_text_between_elements(parsed_html,element, next_element)
+            count += 1
+            continue
 
-        # remove parent from parsing string
-        element_parsing_string = re.sub('parent;','',element_parsing_string)
-
+        # construct node
         desc = get_all_text(element)
         title = re.sub(' ','',desc.strip().lower())
         text = get_text_between_elements(parsed_html,element, next_element)
+
         if element_parsing_string == 'part;':
             node_class = 'part'
         elif element_parsing_string == 'item;':
@@ -188,19 +201,42 @@ def construct_xml_tree(parsed_html):
         else:
             node_class = 'section'
 
-        node = etree.Element(node_class, title = title, desc= desc, text = text, parsing = element_parsing_string)
+        node = etree.Element(node_class, title = title, desc= desc, parsing = element_parsing_string)
+        node.text = text
+
+        # should return a list of headers that are above the current header
         rulers = get_preceding_elements(hierearchy, element_parsing_string)
 
+        # get the parsing strings of the nodes in the node_list
+        node_parsing_strings = [node.attrib['parsing'] for node in node_list]
 
-        tree = [node for node in root.iterdescendants()]
-        node_hierachy_parsing_strings = [node.attrib['parsing'] for node in tree]
-        # find the last element in the node_hierachy_parsing_strings which is in rulers
-        index = find_last_index(node_hierachy_parsing_strings, rulers)
-        if index == 0:
+
+
+
+        # find the last element in the node_parsing_strings which is in rulers
+        index = find_last_index(node_parsing_strings, rulers)
+        if element_parsing_string == 'part;':
             root.append(node)
+            node_list = [node]
+        elif len(node_list) == 0:
+            # add node to root 
+            root.append(node)
+            # add node to node_list
+            node_list = [node]
+        elif index == -1:
+            # add node to last node in node_list
+            node_list[-1].append(node)
+            # add node to node_list
+            node_list.append(node)
         else:
-            tree[index-1].append(node)
-            
+            # subset node_list to index
+            node_list = node_list[:index+1]
+            # add node to last node in node_list
+            node_list[-1].append(node)
+            # add node to node_list
+            node_list.append(node)
+
         count += 1
 
     return root
+

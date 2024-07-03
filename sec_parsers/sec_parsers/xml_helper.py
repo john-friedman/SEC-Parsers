@@ -18,6 +18,7 @@ def get_elements_between_elements(root, start_element, end_element):
             elements.append(element)
 
     return elements
+
 # WIP
 def get_text_between_elements(root, start_element, end_element):
     text = ""
@@ -34,19 +35,6 @@ def get_text_between_elements(root, start_element, end_element):
 
     return text
 
-  
-
-
-
-
-def find_by_text(node, text):
-    """Find a node by text."""
-    return node.xpath(f"//*[contains(text(), '{text}')]")
-
-# need to think logic here through
-# need opposite of tail
-
-# checks if parent has text before any element. if it has text after element that shows up in childs tail
 def element_has_text(element):
     text = element.text
     if text:
