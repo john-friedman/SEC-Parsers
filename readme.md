@@ -1,20 +1,26 @@
 # SEC Parsers
-Parses non-standardized SEC 10-K filings into well structured xml. This is a WIP. Not every file will parse correctly.
+Parses non-standardized SEC 10-K filings into well structured detailed xml. This is a WIP. Not every file will parse correctly.
 
+![Alt text](Assets/tesla_visualization.png "Visualization")
+![Alt text](Assets/tesla_tree.png "Tree")
 
-### Quickstart (add images/output)
+### Installation
+```pip install sec-parsers```
+
+### Quickstart
 ```
-download
-parse
-visualize
-convert to xml
-print structure by title, by desc (attributes)
-get text by node (this includes desc)
-save to xml
+from sec_parsers import *
+
+html = download_sec_filing('https://www.sec.gov/Archives/edgar/data/1318605/000162828024002390/tsla-20231231.htm')
+parsed_html = parse_10k(html)
+xml = construct_xml_tree(parsed_html)
 ```
 
-### Link to storage with sample parsed xmls 
+For more information look at [a link](Examples/quickstart.ipynb), or view a parsed Tesla 10-K [a link](Examples/tesla.xml).
 
+### Links:
+* Project GitHub add link
+* Archive of Parsed XMLs - Note: This is often out of date, as package is being updated frequently. add link
 
 ### Problem:
 When you look at an SEC 10-K you can easily see the structure of the file, and what headers follow each other. Under the hood, these filings are non-standardized making it hard to convert into a well structured format suitable for NLP/RAG.
@@ -44,24 +50,16 @@ When you look at an SEC 10-K you can easily see the structure of the file, and w
 * better descriptions of functions
 * better github and pypi pages
 
-### TODO
-* finish useful functions code
-* test on sample data
-* push to pip and github
-* check dependencies are fine and download works on other machines
-* update jupyter notebooks
-* update old stackoverflow answers
-* check user needs
-
 ### Statistics
+Not implemented yet.
 
 ### Some Other Packages that might be useful:
 * [edgartools](https://github.com/dgunning/edgartools) - good interface for interacting with SEC's EDGAR system
 
-### Alternative Approaches to Parsing SEC Filings
+### Alternative Approaches I've seen to parse SEC Filings
 * [sec-parser](https://github.com/alphanome-ai/sec-parser) - oops, we have similar names. They were first, my bad. They parse 10-Qs well.
 * [sec-api](https://sec-api.io/). Paid API to search / download SEC filings. Basically, SEC's EDGAR but setup in a much nicer format. I haven't used it since it costs money.
 * [Bill McDonald's 10-X Archive](https://sraf.nd.edu/data/stage-one-10-x-parse-data/)
-* OpenCV
+* Computer Vision using OpenCV
 * LLMs (I believe unstructured.io does something like this)
 * Transformers 
