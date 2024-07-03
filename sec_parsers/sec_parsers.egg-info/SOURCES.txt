@@ -2,10 +2,11 @@ setup.py
 sec_parsers/__init__.py
 sec_parsers/cleaning.py
 sec_parsers/download.py
-sec_parsers/experimental_parser.py
-sec_parsers/html_helper.py
+sec_parsers/helper.py
 sec_parsers/parsers.py
-sec_parsers/test_html.py
+sec_parsers/style_detection.py
+sec_parsers/useful_functions.py
+sec_parsers/visualization_helper.py
 sec_parsers/xml_helper.py
 sec_parsers.egg-info/PKG-INFO
 sec_parsers.egg-info/SOURCES.txt

@@ -1,10 +1,10 @@
 from lxml import etree
 import re
 
-from sec_parsers.style_detection import detect_style_from_string, detect_style_from_element, detect_table,detect_link, detect_image,detect_table_of_contents, get_all_text, is_paragraph
-from sec_parsers.xml_helper import get_text, set_background_color, remove_background_color, open_tree, element_has_text,get_text_between_elements,get_elements_between_elements
-from sec_parsers.visualization_helper import headers_colors_dict, headers_colors_list
-from sec_parsers.helper import get_hierarchy, get_preceding_elements, find_last_index
+from style_detection import detect_style_from_string, detect_style_from_element, detect_table,detect_link, detect_image,detect_table_of_contents, get_all_text, is_paragraph
+from xml_helper import get_text, set_background_color, remove_background_color, open_tree,check_if_is_first_child, element_has_text, element_has_tail,get_text_between_elements,get_elements_between_elements
+from visualization_helper import headers_colors_dict, headers_colors_list
+from helper import get_hierarchy, get_preceding_elements, find_last_index
 
 # The function for conversion to xml is the most recent and most WIP, will rewrite substantially.
 
@@ -118,15 +118,10 @@ def recursive_parse(element):
 
     return 
         
-def parse_10k(html):
-    parser = etree.HTMLParser(encoding='utf-8',remove_comments=True)
-    parsed_html = etree.fromstring(html, parser)
-    recursive_parse(parsed_html)
-    return parsed_html
 # need to add static colors at some point
 # palette for headings
 # palette for identified stuff
-def visualize_parsing(root):
+def visualize_tree(root):
     # remove style from all descendants so that background color can be set
     for descendant in root.iterdescendants():
         remove_background_color(descendant)

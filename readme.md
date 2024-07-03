@@ -1,7 +1,6 @@
 # SEC Parsers
 Parses non-standardized SEC 10-K filings into well structured xml. This is a WIP. Not every file will parse correctly.
 
-### Example screenshot of printed File Structure 
 
 ### Quickstart (add images/output)
 ```
@@ -30,6 +29,7 @@ When you look at an SEC 10-K you can easily see the structure of the file, and w
 
 
 ### Future
+* fix titles for xml (e.g. item 1 instead of item 1. business)
 * better hierarchy calculation
 * more supported filings: 10-Q, 8-K, etc
 * better rag integration
@@ -48,6 +48,7 @@ When you look at an SEC 10-K you can easily see the structure of the file, and w
 * finish useful functions code
 * test on sample data
 * push to pip and github
+* check dependencies are fine and download works on other machines
 * update jupyter notebooks
 * update old stackoverflow answers
 * check user needs

@@ -7,7 +7,7 @@ from lxml import etree as ET
 # think about style, how to differentiate user functions versus helper functions (e.g. _get_all_text)
 
 # search if node contains text
-def find_node_by_text(node, text):
+def find_by_text(node, text):
     """Find a node by text."""
     return node.xpath(f"//*[contains(text(), '{text}')]")
 

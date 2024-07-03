@@ -1,5 +1,5 @@
 import re
-from sec_parsers.xml_helper import get_all_text
+from xml_helper import get_all_text
 
 # simple for now
 def is_paragraph(text):

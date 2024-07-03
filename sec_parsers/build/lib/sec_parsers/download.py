@@ -22,7 +22,8 @@ def download_sec_filing(url):
 
     # nudge to set your own headers
     if 'Sample Company Name' in headers['User-Agent']:
-        print("Nudge: Please set your own headers using set_headers(name, email)")
+        print("Please set your own headers using set_headers(name, email)")
+        return None
     
     sec_response = requests.get(url, headers=headers)
     
