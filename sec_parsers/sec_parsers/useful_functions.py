@@ -22,6 +22,9 @@ def find_node_by_title():
 def find_node_by_desc():
     pass
 
+def save_xml():
+    pass
+
 def get_node_tree(node, level=0):
     tree_string = node.tag
     for child in node:
