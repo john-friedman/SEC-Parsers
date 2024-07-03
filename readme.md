@@ -27,8 +27,8 @@ When you look at an SEC 10-K you can easily see the structure of the file, and w
 
 ### How SEC Parsers works:
 1. Detects headers in filings using:
-* element tags, e.g. <b>Item 1</b>
-* element css, e.g. <p style="font-weight: bold;">Item 1.</p>
+* element tags, e.g. `<b>Item 1</b>`
+* element css, e.g. `<p style="font-weight: bold;">Item 1.</p>`
 * text style, e.g. emphasis style "Purchase of Significant Equipment"
 * relative location of above elements to each other
 2. Calculates hierarchy of headers, and converts to a tree structure
