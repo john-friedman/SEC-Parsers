@@ -1,8 +1,8 @@
 # SEC Parsers
 Parses non-standardized SEC 10-K filings into well structured detailed xml. This is a WIP. Not every file will parse correctly.
 
-![Alt text](Assets/tesla_visualization.png "Visualization")
-![Alt text](Assets/tesla_tree.png "Tree")
+![](https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualization.png)
+![](https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_tree.png)
 
 ### Installation
 ```pip install sec-parsers```
@@ -33,6 +33,10 @@ When you look at an SEC 10-K you can easily see the structure of the file, and w
 * relative location of above elements to each other
 2. Calculates hierarchy of headers, and converts to a tree structure
 
+### Priority TODO
+1. Test Parser + improve low hanging fruit
+2. Get Input on design, etc
+3. organize and clean code
 
 ### Future
 * fix titles for xml (e.g. item 1 instead of item 1. business)

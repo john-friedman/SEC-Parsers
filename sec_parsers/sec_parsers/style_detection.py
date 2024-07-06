@@ -43,6 +43,20 @@ def detect_style_from_string(string):
         if match:
             return True
         return False
+    
+    def detect_part(string):
+        """e.g. Part I"""
+        match = re.search(r"^Part\s+\w+",string, re.IGNORECASE)
+        if match:
+            return True
+        return False
+    
+    def detect_signatures(string):
+        """e.g. Signatures"""
+        match = re.search(r"^SIGNATURES$",string, re.IGNORECASE)
+        if match:
+            return True
+        return False
         
     # deprecated for now
     def level_detection(string):
@@ -77,20 +91,28 @@ def detect_style_from_string(string):
         else:
             return False
     
-    if detect_page_number(string):
+
+    # ORDER MATTERS
+    if detect_item(string):
+        return 'item;'
+    elif detect_part(string):
+        return 'part;'
+    elif detect_signatures(string):
+        return 'signatures;'
+    elif detect_page_number(string):
         return 'page number;'
     elif all_caps(string):
         return 'all caps;'
     elif detect_emphasis_capitalization(string):
         return 'emphasis;'
-    elif detect_item(string):
-        return 'item;'
     elif note_detection(string):
         return 'note;'
     elif detect_bullet_point(string):
         return 'bullet point;'
     else:
         return ''
+    
+
     
 # add multiple so italic and bold
 def detect_style_from_element(element):

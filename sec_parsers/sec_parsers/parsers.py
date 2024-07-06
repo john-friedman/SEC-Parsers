@@ -70,22 +70,17 @@ def recursive_parse(element):
                 string_style = ''
 
             # change this to functions
-            if re.search('^item',get_all_text(element).strip(), re.IGNORECASE):
+            if string_style == 'item;':
                 parsing_string = 'item;'
                 string_style = ''
-            elif string_style == 'item;':
-                parsing_string = 'item;'
-                string_style = ''
-            
-            if re.search('^part',get_all_text(element).strip(), re.IGNORECASE):
+            elif string_style == 'part;':
                 parsing_string = 'part;'
                 string_style = ''
-
-            if re.search('^SIGNATURES$',get_all_text(element).strip()):
+            elif string_style == 'signatures':
                 parsing_string = 'signature;'
                 string_style = ''
 
-            # relative parsing
+            # relative parsing - change parsing based on previous element
             previous_element = element.getprevious()
             if previous_element is not None:
                 if element_has_text(previous_element):
@@ -162,7 +157,7 @@ def construct_xml_tree(parsed_html):
     # find the first part parsing
     first_part_element = [element for element in elements if element.attrib['parsing'] == 'part;'][0]
     # find signature
-    signature = [element for element in elements if element.attrib['parsing'] == 'signature;'][0]
+    signature = [element for element in elements if 'signatures;' in element.attrib['parsing']][0]
 
     # subset elements between first part and signature
     elements = elements[elements.index(first_part_element):elements.index(signature)]
@@ -172,7 +167,7 @@ def construct_xml_tree(parsed_html):
     element_parsing_strings = [element.attrib['parsing'] for element in elements]
 
     # restrict certain headers
-    restricted_headers = ['table;','table of contents;','image;','link;','bullet point;']
+    restricted_headers = ['table;','table of contents;','image;','link;','bullet point;','page number;']
     element_parsing_strings = [element_parsing_string for element_parsing_string in element_parsing_strings if element_parsing_string not in restricted_headers]
     # remove parent from parsing strings
     element_parsing_strings = [re.sub('parent;','',element_parsing_string) for element_parsing_string in element_parsing_strings]
