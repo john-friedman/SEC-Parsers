@@ -1,0 +1,15 @@
+setup.py
+sec_parsers/__init__.py
+sec_parsers/cleaning.py
+sec_parsers/download.py
+sec_parsers/helper.py
+sec_parsers/parsers.py
+sec_parsers/style_detection.py
+sec_parsers/useful_functions.py
+sec_parsers/visualization_helper.py
+sec_parsers/xml_helper.py
+sec_parsers.egg-info/PKG-INFO
+sec_parsers.egg-info/SOURCES.txt
+sec_parsers.egg-info/dependency_links.txt
+sec_parsers.egg-info/requires.txt
+sec_parsers.egg-info/top_level.txt
