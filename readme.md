@@ -2,7 +2,7 @@
 Parses non-standardized SEC 10-K filings into well structured detailed xml. This is a WIP. Not every file will parse correctly.
 
 ![](https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualization.png)
-![](https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_tree.png)
+![](https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_tree_v2.png)
 
 ### Installation
 ```pip install sec-parsers```
