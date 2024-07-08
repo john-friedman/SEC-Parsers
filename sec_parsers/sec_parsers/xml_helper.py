@@ -3,6 +3,7 @@ import tempfile
 from lxml import html, etree
 import re
 
+# TODO: lookover and refactor
 
 #WIP
 def get_elements_between_elements(root, start_element, end_element):

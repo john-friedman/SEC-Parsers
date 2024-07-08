@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: sec-parsers
-Version: 0.511
+Version: 0.512
 Summary: A package to parse SEC filings
 Author: John Friedman
 Description-Content-Type: text/markdown
@@ -9,7 +9,7 @@ Description-Content-Type: text/markdown
 Parses non-standardized SEC 10-K filings into well structured detailed xml. This is a WIP. Not every file will parse correctly.
 
 ![](https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualization.png)
-![](https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_tree.png)
+![](https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_tree_v2.png)
 
 ### Installation
 ```pip install sec-parsers```
@@ -64,13 +64,13 @@ When you look at an SEC 10-K you can easily see the structure of the file, and w
 ### Statistics
 Not implemented yet.
 
-### Some Other Packages that might be useful:
+### Other people's SEC stuff
 * [edgartools](https://github.com/dgunning/edgartools) - good interface for interacting with SEC's EDGAR system
-
-### Alternative Approaches I've seen to parse SEC Filings
 * [sec-parser](https://github.com/alphanome-ai/sec-parser) - oops, we have similar names. They were first, my bad. They parse 10-Qs well.
 * [sec-api](https://sec-api.io/). Paid API to search / download SEC filings. Basically, SEC's EDGAR but setup in a much nicer format. I haven't used it since it costs money.
 * [Bill McDonald's 10-X Archive](https://sraf.nd.edu/data/stage-one-10-x-parse-data/)
+* [Eclect](https://eclect.us/) - "Save time reading SEC filings with the help of machine learning.". Paid.
+* [Textblocks.app](https://www.textblocks.app/) - Paid API to extract and analyze structured data from SEC filings. The approach seems to be similar to mine.
 * Computer Vision using OpenCV
 * LLMs (I believe unstructured.io does something like this)
 * Transformers 

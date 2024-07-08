@@ -1,5 +1,6 @@
 from lxml import etree as ET
 
+#TODO: rename this file, and figure out function names
 
 # Functions that are useful for the user
 # e.g. find all elements with a certain text

@@ -6,6 +6,9 @@ from sec_parsers.xml_helper import get_text, set_background_color, remove_backgr
 from sec_parsers.visualization_helper import headers_colors_dict, headers_colors_list
 from sec_parsers.helper import get_hierarchy, get_preceding_elements, find_last_index
 
+
+#TODO add better attributes, and a bunch of other stuff
+
 # The function for conversion to xml is the most recent and most WIP, will rewrite substantially.
 
 # Needs general code cleanup
