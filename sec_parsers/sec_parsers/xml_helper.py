@@ -5,8 +5,11 @@ import re
 
 # TODO: lookover and refactor
 
-#WIP
+ # Used for conversion to xml #
+
+# this probably slows down code a lot. if runtime affected, look here.
 def get_elements_between_elements(root, start_element, end_element):
+    """WIP"""
     elements = []
     in_between_bool = False
     for element in root.iter():
@@ -19,21 +22,18 @@ def get_elements_between_elements(root, start_element, end_element):
 
     return elements
 
-# WIP
 def get_text_between_elements(root, start_element, end_element):
+    """TODO: format text nicer"""
+    elements = get_elements_between_elements(root, start_element, end_element)
     text = ""
-    in_between_bool = False
-    for element in root.iter():
-        if element == start_element:
-            in_between_bool = True
-        elif element == end_element:
-            in_between_bool = False
-        elif in_between_bool:
-            element_text = get_text(element).strip()
-            if element_text != '':
-                text += element_text + '\n'
+    for element in elements:
+        element_text = get_text(element).strip()
+        if element_text != '':
+            text += element_text + '\n'
 
     return text
+
+# used for parsed html #
 
 def element_has_text(element):
     text = element.text
@@ -111,6 +111,8 @@ def set_background_color(element, color):
 def remove_background(element):
     return
 
+# Visualization #
+
 def open_tree(tree):
     """Opens a lxml tree in a web browser."""
     with tempfile.NamedTemporaryFile('w', delete=False, suffix='.html', encoding="utf-8-sig") as f:
@@ -119,7 +121,3 @@ def open_tree(tree):
 
     url = 'file://' + f.name
     webbrowser.open(url)
-
-def print_tree(root):
-    """Prints a lxml tree."""
-    print(etree.tostring(root, pretty_print=True))

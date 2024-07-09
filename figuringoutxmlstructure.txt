@@ -18,3 +18,12 @@ Maybe more attributes for meta analysis (e.g. once we have parsed a bunch of fil
 
 Visualization
 - skip color schemes for now
+
+Notes: new code
+filing = Parser(html)
+filing.Set_Filing_Type()
+filing.Parse()
+filing.Visualize
+filing.to_xml
+filing.to_csv
+filing.find

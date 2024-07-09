@@ -1,7 +1,8 @@
 from lxml import etree
 import re
 
-from sec_parsers.style_detection import detect_style_from_string, detect_style_from_element, detect_table,detect_link, detect_image,detect_table_of_contents, get_all_text, is_paragraph
+from sec_parsers.style_detection import detect_style_from_string, detect_style_from_element, detect_table,detect_link, detect_image,detect_table_of_contents, get_all_text, is_paragraph,\
+detect_hidden_element
 from sec_parsers.xml_helper import get_text, set_background_color, remove_background_color, open_tree, element_has_text,get_text_between_elements,get_elements_between_elements
 from sec_parsers.visualization_helper import headers_colors_dict, headers_colors_list
 from sec_parsers.hierarchy import get_hierarchy, get_preceding_elements, find_last_index
@@ -9,38 +10,25 @@ from sec_parsers.hierarchy import get_hierarchy, get_preceding_elements, find_la
 
 #TODO add better attributes, and a bunch of other stuff
 
-# The function for conversion to xml is the most recent and most WIP, will rewrite substantially.
-
-# Needs general code cleanup
-# removed parent for now, need to setup better attributes for error detection and parsing
+# html attributes, parsing_string, parsing_type
 def recursive_parse(element):
-    # check if visible
-    style = element.attrib.get('style')
-    if style is not None:
-        if 'display:none' in re.sub(' ','',style):
-            return
-
-    if element.attrib.get('parsing') == None:
-        element.attrib['parsing'] = ''
-
-    values = element.values()
-    if len(values) == 1:
-        if 'display:none' in values[0]:
-            return
+    """ Recursively parse elements to detect potential headers """
+    
+    # if element is invisible, skip
+    if detect_hidden_element(element):
+        return
 
     if detect_table(element):
         if detect_table_of_contents(element) == "toc":
-            element.attrib['parsing'] = 'table of contents;'
+            element.attrib['parsing_string'] = 'table of contents;'
         else:
-            element.attrib['parsing'] = 'table;'
+            element.attrib['parsing_string'] = 'table;'
         return
-
-    if detect_link(element):
-        element.attrib['parsing'] = 'link;'
+    elif detect_link(element):
+        element.attrib['parsing_string'] = 'link;'
         return
-    
-    if detect_image(element):
-        element.attrib['parsing'] = 'image;'
+    elif detect_image(element):
+        element.attrib['parsing_string'] = 'image;'
         return
 
     text = get_text(element).strip()
@@ -50,93 +38,92 @@ def recursive_parse(element):
     else:
         string_style = detect_style_from_string(text)
         element_style = detect_style_from_element(element)
+        parsing_string = string_style + element_style
 
-        parsing_string = ''
-
-        # if no style found / pruning / cleaning
-        if (string_style+element_style == ''):
-            element.attrib['parsing'] = ''
+        # determines whether to add parsing string to element or parent
+        if ((get_all_text(element) == '') and (element.tail is not None)):
+            parent = element.getparent()
+            parent.attrib['parsing_string'] = parsing_string + 'parent;'
         else:
-
-            if any(style in element_style for style in ['font-weight:bold','font-weight:700;','b-tag;','strong-tag;']):
-                parsing_string += 'bold-tag;'
-
-            if any(style in element_style for style in ['font-style:italic','em','i']):
-                parsing_string += 'italic-tag;'
-
-            if any(style in element_style for style in ['text-decoration:underline','u']):
-                parsing_string += 'underline-tag;'
-
-            # check for items after risk factor which are text, but in italics
-            if ((parsing_string == 'italic-tag;') and (is_paragraph(text))):
-                parsing_string = ''
-                string_style = ''
-
-            # change this to functions
-            if string_style == 'item;':
-                parsing_string = 'item;'
-                string_style = ''
-            elif string_style == 'part;':
-                parsing_string = 'part;'
-                string_style = ''
-            elif string_style == 'signatures':
-                parsing_string = 'signature;'
-                string_style = ''
-
-            # relative parsing - change parsing based on previous element
-            previous_element = element.getprevious()
-            if previous_element is not None:
-                if element_has_text(previous_element):
-                    # change to go back further if empty?
-                    previous_element_parsing_string = previous_element.attrib.get('parsing')
-                    if previous_element_parsing_string == 'bullet point;':
-                        string_style = ''
-                        parsing_string = ''
-                    elif previous_element_parsing_string == '':
-                        string_style = ''
-                        parsing_string = ''
-                    elif previous_element_parsing_string == 'item;':
-                        string_style = 'item;'
-                        parsing_string = ''
-                    elif previous_element_parsing_string == 'part;':
-                        string_style = 'part;'
-                        parsing_string = ''
-
-
-            parsing_string += string_style
-
-            if ((get_all_text(element) == '') and (element.tail is not None)):
-                parent = element.getparent()
-                parent.attrib['parsing'] = parsing_string #+ 'parent;'
-            elif ((parsing_string == 'item;') and (element.tail is not None)):
-                parent = element.getparent()
-                parent.attrib['parsing'] = parsing_string #+ 'parent;'
-            else:
-                element.attrib['parsing'] = parsing_string
+            element.attrib['parsing_string'] = parsing_string
 
     return 
+
+def relative_parsing(html):
+    """Looks at parsed html from recursive parsing and uses relative position to improve parsing."""
+    # header rules
+    # e.g. if has tail add to bold?
+    parsed_elements = html.xpath('//*[@parsing_string]')
+    for count, parsed_element in enumerate(parsed_elements):
+        # e.g. find bullet point look for right neighbors, allow for any number of spaces
+        if 'bullet point;' in parsed_element.get('parsing_string'):
+            if count < len(parsed_elements):
+                next_element = parsed_elements[count+1]
+                text_between = get_text_between_elements(html,parsed_element,next_element).strip()
+                if text_between == '':
+                    # delete attribute
+                    next_element.attrib.pop('parsing_string')
+                    # remove from parse_elements_list
+                    parsed_elements.remove(next_element)
+
+    return
+
+def cleanup_parsing(html):
+    # reads html and sets attributes
+    parsed_elements = html.xpath('//*[@parsing_string]')
+    for parsed_element in parsed_elements:
+        parsing_string = parsed_element.get('parsing_string')
+        parsing_type = parsing_string
+        if 'part;' in parsing_string:
+            parsing_type = 'part;'
+        elif 'item;' in parsing_string:
+            parsing_type = 'item;'
+        elif 'signatures;' in parsing_string:
+            parsing_type = 'signatures;'
+        elif 'bullet point;' in parsing_string:
+            parsing_type = None
+            
+        if parsing_type is not None:
+            parsed_element.attrib['parsing_type'] = parsing_type
+
+
+    #     elif ((parsing_string == 'item;') and (element.tail is not None)):
+    #         parent = element.getparent()
+    #         parent.attrib['parsing'] = parsing_string #+ 'parent;'
+
+                # checks for items after risk factor which are text, but in italics
+            # if ((parsing_string == 'italic-tag;') and (is_paragraph(text))):
+            #     parsing_string = ''
+            #     string_style = ''
+
+
+    return html
         
 def parse_10k(html):
-    parser = etree.HTMLParser(encoding='utf-8',remove_comments=True)
-    parsed_html = etree.fromstring(html, parser)
-    recursive_parse(parsed_html)
-    return parsed_html
+    # recursive parse for style detection
+    recursive_parse(html)
+
+    # pruning based on relative locations
+    relative_parsing(html)
+
+    # standardizing certain elements such as part, item, signatures
+    cleanup_parsing(html)
+
+    return html
 
 # 10q and 10k are the same for now
 parse_10q = parse_10k
 
-# need to add static colors at some point
-# palette for headings
-# palette for identified stuff
+# TODO: make visualization easier to read at an instance by differentiating colors etc
 def visualize(root):
     # remove style from all descendants so that background color can be set
     for descendant in root.iterdescendants():
         remove_background_color(descendant)
 
     # find all elements with parsing attribute
-    elements = root.xpath('//*[@parsing]')
+    elements = root.xpath('//*[@parsing_type]')
     # get all unique parsing values
-    parsing_values = list(set([element.attrib['parsing'] for element in elements]))
+    parsing_values = list(set([element.attrib['parsing_type'] for element in elements]))
     # create a color dict
     color_dict =dict(zip(parsing_values, headers_colors_list[:len(parsing_values)])) 
     # replace color dict values with values from headers_colors_dict
@@ -144,7 +131,7 @@ def visualize(root):
         color_dict[key] = headers_colors_dict[key]
     for element in elements:
         # get attribute parsing
-        parsing = element.attrib['parsing']
+        parsing = element.attrib['parsing_type']
         if parsing == '':
             pass
         else:
@@ -245,22 +232,26 @@ def construct_xml_tree(parsed_html):
     return root
 
 def detect_filing_type(html):
-    pass
-
+    """TODO"""
+    return "10K"
 
 # Think about inheritance
 class Parser:
     def __init__(self, html):
-        self.html = html
+        self._setup_html(html)
         self.parsed_html = None
         self.hierarchy = None # need to implement
         self.xml = None
         self.filing_type = None
 
+    def _setup_html(self,html):
+        parser = etree.HTMLParser(encoding='utf-8',remove_comments=True)
+        parsed_html = etree.fromstring(html, parser)
+        self.html = parsed_html
+
     # make util
     def _detect_filing_type(self):
-        # detect filing type from html
-        filing_type = "10K" #detect_filing_type(self.html)
+        filing_type = detect_filing_type(self.html)
         self.filing_type = filing_type
 
     def _parse_10k(self):
@@ -269,6 +260,8 @@ class Parser:
     def _parse_10q(self):
         self.parsed_html = parse_10q(self.html)
 
+    def set_filing_type(self, filing_type):
+        self.filing_type = filing_type
 
     def parse(self):
         if self.filing_type is None:
@@ -282,9 +275,7 @@ class Parser:
             raise ValueError('Filing type not detected')
 
     def visualize(self):
-        if self.parsed_html is None:
-            self.parse_10k()
-        visualize(self.parsed_html)
+        visualize(self.html)
 
     def to_xml(self):
         self.xml = construct_xml_tree(self.parsed_html)
@@ -310,6 +301,10 @@ class Parser:
             self.to_xml()
 
         return self.xml.xpath(f"//*[contains(text(), '{text}')]")
+    
+    def fuzzy_find_nodes_by_title(self,title):
+        # TODO: implement
+        pass
     # Interact with Node #
 
     # Note, needs refactor, also needs better spacing fix with text.

@@ -12,17 +12,19 @@ def is_paragraph(text):
     
     return False
 
+# TODO: improve this
 def detect_bullet_point(string):
     """e.g. •"""
-    if any(char in string.strip() for char in ['•','●','●','●','●','•']):
+    if any(char in string.strip() for char in ['•','●','●','●','●','•','·']):
         return True
     return False
-
 
 def detect_style_from_string(string):
     def detect_emphasis_capitalization(string):
         """Seen in amazon's 2024 10k e.g. We Have Foreign Exchange Risk"""
-        if string in ['None','None.','Omitted.']:
+
+        # TODO: FIX
+        if string.lower() in ['None','None.','Omitted.', 'Not Applicable.']:
             return False
         
         words = string.split()
@@ -115,6 +117,13 @@ def detect_style_from_string(string):
         return ''
     
 
+# New
+def detect_hidden_element(element):
+    if element.get('style'):
+        if 'display:none' in re.sub(' ','',element.get('style')):
+            return True
+    return False
+
     
 # add multiple so italic and bold
 def detect_style_from_element(element):
@@ -154,7 +163,7 @@ def detect_style_from_element(element):
             if 'font-style:italic' in element.get('style'):
                 return 'font-style:italic;'
         return ''
-    
+
     
     # check it or descendants have text
     text = get_all_text(element).strip()

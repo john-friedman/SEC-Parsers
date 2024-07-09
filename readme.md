@@ -58,6 +58,7 @@ When you look at an SEC 10-K you can easily see the structure of the file, and w
 * better parent handling
 * better descriptions of functions
 * better github and pypi pages
+* add xbrl information
 
 ### Statistics
 Not implemented yet.
