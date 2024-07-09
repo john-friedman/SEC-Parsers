@@ -1,6 +1,8 @@
 import re
 from sec_parsers.xml_helper import get_all_text
 
+#TODO happy with this file so far
+
 # simple for now
 def is_paragraph(text):
     periods = text.count('.')

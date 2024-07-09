@@ -1,6 +1,8 @@
 from lxml import etree
 import csv
 
+#TODO Need to implement the conversion functions
+
 def xml_to_dta(xml):
     """Convert XML to DTA format. Not implemented yet"""
     pass

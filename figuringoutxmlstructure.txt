@@ -1,0 +1,20 @@
+UPDATE: go with detailed version.
+<part1>
+<item1>
+<overview>
+<some_complicated_long_header>
+
+attributes
+<item1 title = "Business" class = item1 desc = Item 1. Business type
+
+tag: cleaned heading name lowercase space replaced with underscore, special chars removed (NOTE: print which ones removed for debugging)
+title: letters title (excludes e.g. item1, Note, etc)
+desc: unaltered string of heading
+class: parts, items, company_defined_heading
+cluster: meta analysis e.g. seasonality, business seasons, etc have cluster seasonality (TODO later)
+
+Maybe more attributes for meta analysis (e.g. once we have parsed a bunch of files and looked at their names, we can see interesting details)
+
+
+Visualization
+- skip color schemes for now

@@ -34,10 +34,10 @@ When you look at an SEC 10-K you can easily see the structure of the file, and w
 2. Calculates hierarchy of headers, and converts to a tree structure
 
 ### Priority TODO
-2. Get Input on design, etc
-1. fix title / rearrange classes, etc
-3. organize and clean code
-4. csv export option
+1. Readup on object oriented programming
+2. Refactor to oop
+3. Restructure XML files using detailed approach (and .text handling) with nice user functions
+
 
 ### Roadmap:
 1. Detailed parser with better than 99% success rate (currently hovering around 90).
