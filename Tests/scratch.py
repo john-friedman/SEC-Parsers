@@ -1,10 +1,13 @@
-from sec_parsers import download_sec_filing, parse_10k, construct_xml_tree, get_node_attributes, get_node_text, xml_to_csv, set_headers
+from sec_parsers import download_sec_filing, set_headers, Parser
 import pandas as pd
 
 
 set_headers("John Doe","Johndoe@anemail.com")
 html = download_sec_filing("https://www.sec.gov/Archives/edgar/data/1318605/000162828024017503/tsla-20240331.htm")
 
-parsed_html = parse_10k(html)
-xml = construct_xml_tree(parsed_html)
-print(get_node_attributes(xml,attribute='desc'))
+parser = Parser(html)
+parser.parse()
+#parser.visualize()
+elem1 = parser.find_nodes_by_desc('Energy Generation and Storage Segment')[0]
+
+print(parser.get_node_text(elem1))

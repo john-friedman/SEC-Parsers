@@ -1,8 +1,8 @@
 from collections import defaultdict
 
-# Note: This module is highly WIP
-# Names are subject to change
-# Functions are subject to change
+# TODO: Add more comments to the functions, refactor
+
+# Module to take parsed headers and determine the hierarchy of the headers
 
 # Highly WIP
 def get_hierarchy_from_list(parsing_list):
@@ -57,6 +57,7 @@ def get_hierarchy_from_lists(lsts):
 
 # WIP
 def get_hierarchy(elements):
+    """Calculates the hierarchy."""
     # get lists item --> item, item --> part
     lsts = split_list(elements)
     # get hiereachy lists
@@ -71,6 +72,7 @@ def get_hierarchy(elements):
 
 
 def get_preceding_elements(element_list, element):
+    """Get the elements that precede the given element in the list."""
     if element in element_list:
         element_index = element_list.index(element)
         return element_list[:element_index]
@@ -78,6 +80,7 @@ def get_preceding_elements(element_list, element):
         return []
 
 def find_last_index(lst1, lst2):
+  """Find the last index of lst1 in lst2."""
   last_index = -1
   for i in range(len(lst1)):
     if lst1[i] in lst2:

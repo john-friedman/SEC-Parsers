@@ -108,8 +108,6 @@ def set_background_color(element, color):
     else:
         element.set('style', f'background-color: {color}')
     
-
-
 def remove_background(element):
     return
 
