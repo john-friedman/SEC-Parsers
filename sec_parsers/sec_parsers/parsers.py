@@ -101,7 +101,14 @@ def relative_parsing(html):
             if parsed_elements:
                 next_element = parsed_elements[0]
                 elements_between = get_elements_between_elements(html, parsed_element, next_element)
-                if not elements_between: #  WIP struggles with some cases where whitespace between two elements. figure out how to fix w/o breaking other stuff
+                flag = False
+                if not elements_between:
+                    flag = True
+                # elif len(elements_between) == 1: # wip
+                #     if elements_between[0].tag in ['div','span']:
+                #         flag = True
+
+                if flag: #  WIP struggles with some cases where whitespace between two elements. figure out how to fix w/o breaking other stuff
                     parent = parsed_element.getparent()
                     parent.attrib['parsing_string'] = parsing_string + "parent;"
                     next_element.attrib.pop('parsing_string')
