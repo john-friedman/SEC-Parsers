@@ -10,8 +10,7 @@ import re
 def clean_title(text):
     # add detection for item / other sections
     text = text.strip()
-    if 'item' in text:
-        text = re.sub('\s+', ' ', text)
+    text = re.sub("[^\S \t\n\r\f\v]+",' ',text)
     return text
 
 # OLD

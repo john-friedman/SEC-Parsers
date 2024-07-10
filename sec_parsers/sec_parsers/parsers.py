@@ -9,6 +9,8 @@ from sec_parsers.hierarchy import get_hierarchy, get_preceding_elements, find_la
 from sec_parsers.cleaning import clean_title
 #TODO add better attributes, and a bunch of other stuff
 
+# dictionary parsing_type = ignore is e.g. images that we currently ignore, text is added to previous node
+
 # html attributes, parsing_string, parsing_type
 def recursive_parse(element):
     """ Recursively parse elements to detect potential headers """
@@ -42,12 +44,17 @@ def recursive_parse(element):
         # check if text element, e.g. not header.  WIP
         if parsing_string == '':
             return
+        
 
 
         # determines whether to add parsing string to element or parent
         if ((get_all_text(element) == '') and (element.tail is not None)):
             parent = element.getparent()
             parent.attrib['parsing_string'] = parsing_string + 'parent;'
+        # check if item has part of it in bold, rest as tail. e.g. 1606 Corp. 10K 2023 item 15
+        elif (('item;' in parsing_string) and (element.tail is not None)):
+            parent = element.getparent()
+            parent.attrib['parsing_string'] = parsing_string #+ 'parent;'
         else:
             element.attrib['parsing_string'] = parsing_string
 
@@ -79,21 +86,21 @@ def relative_parsing(html):
             # check if two elements should be combined into one header
             if count < len(parsed_elements) - 1:
                 # this is slow - could speed up function behind, or just subset to items for now
-                if 'item;' in parsing_string:
-                    next_element = parsed_elements[count+1]
+                # if 'item;' in parsing_string:
+                next_element = parsed_elements[count+1]
 
-                    elements_between = get_elements_between_elements(html,parsed_element,next_element)
-                    if len(elements_between) == 0:
-                        # I'm not sure how this will affect parsed_elements, so be careful
-                        parent = parsed_element.getparent()
-                        parent.attrib['parsing_string'] = parsing_string
-                        parsed_elements.append(parent)
+                elements_between = get_elements_between_elements(html,parsed_element,next_element)
+                if len(elements_between) == 0:
+                    # I'm not sure how this will affect parsed_elements, so be careful
+                    parent = parsed_element.getparent()
+                    parent.attrib['parsing_string'] = parsing_string
+                    parsed_elements.append(parent)
 
-                        parsed_element.attrib.pop('parsing_string')
-                        next_element.attrib.pop('parsing_string')
+                    parsed_element.attrib.pop('parsing_string')
+                    next_element.attrib.pop('parsing_string')
 
-                        parsed_elements.remove(parsed_element)
-                        parsed_elements.remove(next_element)
+                    parsed_elements.remove(parsed_element)
+                    parsed_elements.remove(next_element)
                 else:
                     # handle emphasized elements in middle of paragraphs
                     previous_element = parsed_element.getprevious()
@@ -113,7 +120,11 @@ def cleanup_parsing(html):
     for parsed_element in parsed_elements:
         parsing_string = parsed_element.get('parsing_string')
         parsing_type = parsing_string
-        if 'part;' in parsing_string:
+        if any([item in parsing_string for item in ['table of contents;','link;','image;','page number;']]):
+            parsing_type = 'ignore;'
+        elif any([item in parsing_string for item in ['table']]):
+            parsing_type = 'table;'
+        elif 'part;' in parsing_string:
             parsing_type = 'part;'
         elif 'item;' in parsing_string:
             parsing_type = 'item;'
@@ -121,25 +132,16 @@ def cleanup_parsing(html):
             parsing_type = 'signatures;'
         elif 'bullet point;' in parsing_string:
             parsing_type = None
-        elif any([item in parsing_string for item in ['table of contents;','link;','image;','page number;']]):
-            parsing_type = 'ignore;'
+        # elif any([item in parsing_string for item in ['font-style:italic;','em','i']]):
+        #     text = get_text(parsed_element)
+        #     if is_paragraph(text):
+        #         parsing_type = None
             
         if parsing_type is not None:
             # remove parent
             # WIP
             parsing_type = parsing_type.replace('parent;','')
             parsed_element.attrib['parsing_type'] = parsing_type
-
-
-    #     elif ((parsing_string == 'item;') and (element.tail is not None)):
-    #         parent = element.getparent()
-    #         parent.attrib['parsing'] = parsing_string #+ 'parent;'
-
-                # checks for items after risk factor which are text, but in italics
-            # if ((parsing_string == 'italic-tag;') and (is_paragraph(text))):
-            #     parsing_string = ''
-            #     string_style = ''
-
 
     return html
         
@@ -192,8 +194,9 @@ def construct_xml_tree(parsed_html):
     elements = parsed_html.xpath('//*[@parsing_type]')
 
     # find the first part parsing
-    first_part_element = [element for element in elements if element.attrib['parsing_type'] == 'part;'][0]
-
+    # WIP will be changed when introductory section parsing is added
+    parts_elements = parsed_html.xpath("//*[@parsing_type='part;']")
+    first_part_element = [element for element in parts_elements if re.match(r'^part i$',get_all_text(element).strip(),re.IGNORECASE)][0]
     # find signature
     signature = [element for element in elements if 'signatures;' in element.attrib['parsing_type']][0]
 
@@ -220,10 +223,15 @@ def construct_xml_tree(parsed_html):
         element = elements[count]
         next_element = elements[count+1]
 
-        # check if element is a restricted header, if so, add to text of previous node
+        # WIP
+        # check if element is a text, if so, add to text of previous node
         element_parsing_type = element.attrib['parsing_type']
-        if element_parsing_type in restricted_headers:
+        if element_parsing_type == 'table;':
             node_list[-1].text += get_text_between_elements(parsed_html,element, next_element)
+            count += 1
+            continue
+        # skip element
+        elif element_parsing_type == 'ignore;':
             count += 1
             continue
 
@@ -330,16 +338,17 @@ class Parser:
 
     # Find #
     def find_nodes_by_title(self,title):
+        title = title.strip().lower()
         if self.xml is None:
             self.to_xml()
 
-        return self.xml.xpath(f"//*[@title='{title}']")
-    
-    def find_nodes_by_desc(self,desc):
-        if self.xml is None:
-            self.to_xml()
-        return self.xml.xpath(f"//*[@desc='{desc}']")
-    
+        # select all nodes with title attribute
+        titles = self.xml.xpath(f"//*[@title]")
+        # find all nodes with title
+        nodes = [node for node in titles if title in node.attrib['title'].lower()]
+
+        return nodes
+
     def find_nodes_by_text(self, text):
         """Find a node by text."""
 

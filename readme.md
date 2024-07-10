@@ -18,6 +18,10 @@ xml = construct_xml_tree(parsed_html)
 
 For more information look at the [quickstart](Examples/quickstart.ipynb), or view a parsed Tesla 10-K [here](Examples/tesla.xml).
 
+# Urgent TODO:
+1. rewrite readme to be up to date with major package changes.
+2. identify bottlenecks - I think increased use of between elements slows down package by factor of 10
+
 ### Links:
 * [GitHub](https://github.com/john-friedman/SEC-Parsers/)
 * [Archive of Parsed XMLs](https://www.dropbox.com/scl/fo/np1lpow7r3bissz80ze3o/AKGM8skBrUfEGlSweofAUDU?rlkey=cz1r78jofntjeq4ax2vb2yd0u&e=1&st=mdcwgfcm&dl=0) - Note: This is often out of date, as package is being updated frequently.

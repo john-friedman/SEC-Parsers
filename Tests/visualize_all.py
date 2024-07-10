@@ -5,13 +5,15 @@ from global_vars import *
 import os
 import pandas as pd
 
-files = os.listdir(dir_10k)[3:4]
+#file 7 is interesting
+files = os.listdir(dir_10k)[20:30]
 for count,file in enumerate(files):
     with open(dir_10k + file, 'r', encoding='utf-8') as f:
         html = f.read()
         
     filing = Parser(html)
     filing.parse()
-    #filing.visualize()
+    filing.visualize()
     filing.to_xml()
     print(filing.get_node_tree_attributes())
+    #items = filing.find_nodes_by_title('item 1')
