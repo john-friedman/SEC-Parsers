@@ -19,6 +19,14 @@ def detect_bullet_point(string):
         return True
     return False
 
+def detect_signatures(string):
+    """e.g. Signatures"""
+    match = re.search(r"^SIGNATURES$",string, re.IGNORECASE)
+    if match:
+        return True
+    
+    return False
+
 def detect_style_from_string(string):
     def detect_emphasis_capitalization(string):
         """Seen in amazon's 2024 10k e.g. We Have Foreign Exchange Risk"""
@@ -51,13 +59,6 @@ def detect_style_from_string(string):
     def detect_part(string):
         """e.g. Part I"""
         match = re.search(r"^Part\s+\w+",string, re.IGNORECASE)
-        if match:
-            return True
-        return False
-    
-    def detect_signatures(string):
-        """e.g. Signatures"""
-        match = re.search(r"^SIGNATURES$",string, re.IGNORECASE)
         if match:
             return True
         return False

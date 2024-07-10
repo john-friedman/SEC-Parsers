@@ -1,5 +1,6 @@
 from lxml import etree
 import re
+import csv
 
 from sec_parsers.style_detection import detect_style_from_string, detect_style_from_element, detect_table,detect_link, detect_image,detect_table_of_contents, get_all_text, is_paragraph,\
 detect_hidden_element
@@ -44,8 +45,6 @@ def recursive_parse(element):
         # check if text element, e.g. not header.  WIP
         if parsing_string == '':
             return
-        
-
 
         # determines whether to add parsing string to element or parent
         if ((get_all_text(element) == '') and (element.tail is not None)):
@@ -67,40 +66,48 @@ def relative_parsing(html):
     # header rules
     # e.g. if has tail add to bold?
     parsed_elements = html.xpath('//*[@parsing_string]')
-    for count, parsed_element in enumerate(parsed_elements):
+    # WIP change to while loop
+    while len(parsed_elements) > 0:
+        parsed_element = parsed_elements[0]
+        
         # e.g. find bullet point look for right neighbors, allow for any number of spaces
         parsing_string = parsed_element.get('parsing_string')
+
+        if parsing_string is None:
+            print(parsed_elements)
         if 'bullet point;' in parsing_string:
-            if count < len(parsed_elements):
-                next_element = parsed_elements[count+1]
+            if len(parsed_elements) > 0:
+                next_element = parsed_elements[1]
                 text_between = get_text_between_elements(html,parsed_element,next_element).strip()
                 if text_between == '':
-                    # delete attribute
-                    next_element.attrib.pop('parsing_string')
                     # remove from parse_elements_list
                     parsed_elements.remove(next_element)
+                    # delete attribute
+                    next_element.attrib.pop('parsing_string')
         # ignore these tags
         elif parsing_string in ['table of contents;','table;','link;','image;']:
             pass
+        elif 'signatures;' in parsing_string:
+            pass # WIP
         else:
             # check if two elements should be combined into one header
-            if count < len(parsed_elements) - 1:
+            if len(parsed_elements) > 1:
                 # this is slow - could speed up function behind, or just subset to items for now
                 # if 'item;' in parsing_string:
-                next_element = parsed_elements[count+1]
+                next_element = parsed_elements[1]
 
                 elements_between = get_elements_between_elements(html,parsed_element,next_element)
                 if len(elements_between) == 0:
                     # I'm not sure how this will affect parsed_elements, so be careful
                     parent = parsed_element.getparent()
                     parent.attrib['parsing_string'] = parsing_string
-                    parsed_elements.append(parent)
-
-                    parsed_element.attrib.pop('parsing_string')
-                    next_element.attrib.pop('parsing_string')
+                    #parsed_elements.append(parent) # WIP
 
                     parsed_elements.remove(parsed_element)
                     parsed_elements.remove(next_element)
+
+                    parsed_element.attrib.pop('parsing_string')
+                    next_element.attrib.pop('parsing_string')
                 else:
                     # handle emphasized elements in middle of paragraphs
                     previous_element = parsed_element.getprevious()
@@ -108,11 +115,14 @@ def relative_parsing(html):
                         if previous_element.attrib.get('parsing_string') is not None:
                             pass
                         else:
-                            parsed_element.attrib.pop('parsing_string')
                             parsed_elements.remove(parsed_element)
+                            parsed_element.attrib.pop('parsing_string')
 
-
-    return
+        # Once element is processed, remove from list
+        # check is not already none due to previous processing
+        if parsed_element in parsed_elements:
+            parsed_elements.remove(parsed_element)
+    return html
 
 def cleanup_parsing(html):
     # reads html and sets attributes
@@ -196,15 +206,15 @@ def construct_xml_tree(parsed_html):
     # find the first part parsing
     # WIP will be changed when introductory section parsing is added
     parts_elements = parsed_html.xpath("//*[@parsing_type='part;']")
-    first_part_element = [element for element in parts_elements if re.match(r'^part i$',get_all_text(element).strip(),re.IGNORECASE)][0]
+    first_part_element = [element for element in parts_elements if re.match(r'^part\s+i$',get_all_text(element).strip(),re.IGNORECASE)][0]
     # find signature
-    signature = [element for element in elements if 'signatures;' in element.attrib['parsing_type']][0]
+    signatures = [element for element in elements if 'signatures;' in element.attrib['parsing_type']][0]
 
     # subset elements between first part and signature
-    elements = elements[elements.index(first_part_element):elements.index(signature)]
+    elements = elements[elements.index(first_part_element):elements.index(signatures)]
 
-    # add the signature to the end of the elements. we are not processing the signature right now, just adding it to the end as an anchor
-    elements.append(signature)
+    # add the signatures to the end of the elements. we are not processing the signature right now, just adding it to the end as an anchor
+    elements.append(signatures)
 
     element_parsing_types = [element.attrib['parsing_type'] for element in elements]
 
@@ -244,8 +254,8 @@ def construct_xml_tree(parsed_html):
             node_class = 'part'
         elif element_parsing_type == 'item;':
             node_class = 'item'
-        elif element_parsing_type == 'signature;':
-            node_class = 'signature'
+        elif element_parsing_type == 'signatures;':
+            node_class = 'signatures'
         else:
             node_class = 'company_defined_section'
 
@@ -293,7 +303,6 @@ def detect_filing_type(html):
 class Parser:
     def __init__(self, html):
         self._setup_html(html)
-        self.parsed_html = None
         self.hierarchy = None # need to implement
         self.xml = None
         self.filing_type = None
@@ -309,10 +318,10 @@ class Parser:
         self.filing_type = filing_type
 
     def _parse_10k(self):
-        self.parsed_html = parse_10k(self.html)
+        self.html = parse_10k(self.html)
 
     def _parse_10q(self):
-        self.parsed_html = parse_10q(self.html)
+        self.html = parse_10q(self.html)
 
     def set_filing_type(self, filing_type):
         self.filing_type = filing_type
@@ -332,7 +341,7 @@ class Parser:
         visualize(self.html)
 
     def to_xml(self):
-        self.xml = construct_xml_tree(self.parsed_html)
+        self.xml = construct_xml_tree(self.html)
 
     # functions to interact with xml
 
@@ -364,7 +373,7 @@ class Parser:
 
     # Note, needs refactor, also needs better spacing fix with text.
     def get_node_text(self,node):
-        """Gets all text from a node, including desc string."""
+        """Gets all text from a node, including title string."""
         text = ''
         text += node.attrib.get('title','') + '\n'
 
@@ -406,9 +415,32 @@ class Parser:
         with open(filename, 'wb') as f:
             f.write(etree.tostring(self.xml))
 
-    # TODO: Implement
+            
     def save_csv(self, filename):
-        pass
+        def get_rows(node,path):
+            path = path + "/" + node.attrib.get('title')
+
+            row_list = []
+
+            row = {}
+            row['path'] = path
+            row['text'] = self.get_node_text(node)
+            row_list.append(row)
+            for child in node:
+                row_list.extend(get_rows(child,path))
+
+            return row_list
+        
+        row_list = []
+        for child in self.xml.getchildren():
+            row_list.extend(get_rows(child,''))
+        
+        keys = row_list[0].keys()
+
+        with open(filename, 'w', newline='', encoding='utf-8') as output_file:
+            dict_writer = csv.DictWriter(output_file, keys)
+            dict_writer.writeheader()
+            dict_writer.writerows(row_list)
 
     # TODO: implement
     def save_dta(self, filename):

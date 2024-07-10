@@ -7,7 +7,7 @@ Parses non-standardized SEC 10-K filings into well structured detailed xml. This
 ### Installation
 ```pip install sec-parsers```
 
-### Quickstart
+### Quickstart - update this
 ```
 from sec_parsers import *
 
@@ -16,11 +16,15 @@ parsed_html = parse_10k(html)
 xml = construct_xml_tree(parsed_html)
 ```
 
+# update
 For more information look at the [quickstart](Examples/quickstart.ipynb), or view a parsed Tesla 10-K [here](Examples/tesla.xml).
 
-# Urgent TODO:
-1. rewrite readme to be up to date with major package changes.
-2. identify bottlenecks - I think increased use of between elements slows down package by factor of 10
+# TODOLIST:
+1. get parse error rate below 5%
+2. get to xml error rate below 10%
+3. check sample ten trees to make sure they look good
+4. update readme
+5. get input on design 
 
 ### Links:
 * [GitHub](https://github.com/john-friedman/SEC-Parsers/)
@@ -36,12 +40,6 @@ When you look at an SEC 10-K you can easily see the structure of the file, and w
 * text style, e.g. emphasis style "Purchase of Significant Equipment"
 * relative location of above elements to each other
 2. Calculates hierarchy of headers, and converts to a tree structure
-
-### Priority TODO
-1. Readup on object oriented programming
-2. Refactor to oop
-3. Restructure XML files using detailed approach (and .text handling) with nice user functions
-
 
 ### Roadmap:
 1. Detailed parser with better than 99% success rate (currently hovering around 90).
