@@ -8,9 +8,9 @@ from time import time
 
 #file 7 is interesting
 
-#for parsing - 87% parse without error - same error, probably can figure it out
-# for xml - 28% error rate
-files = os.listdir(dir_10k)[0:10]
+#for parsing - ~100% parse without error - this makes sense.
+# for xml - 28% error rate - should go way down, with parser fixed.
+files = os.listdir(dir_10k)[0:1]
 errors = []
 for count,file in enumerate(files):
     s = time()
@@ -19,7 +19,9 @@ for count,file in enumerate(files):
         
     filing = Parser(html)
     filing.parse()
+    filing.visualize()
     filing.to_xml()
-    print(filing.get_node_tree_attributes())
+    #filing.to_xml()
+    #print(filing.get_node_tree_attributes())
 
     print(f'File {count} took {time()-s} seconds')

@@ -92,9 +92,11 @@ def relative_parsing(html):
         else:
             # check if two elements should be combined into one header
             if len(parsed_elements) > 1:
-                # this is slow - could speed up function behind, or just subset to items for now
-                # if 'item;' in parsing_string:
+                # this is slow - could speed up function by modding between elements
                 next_element = parsed_elements[1]
+
+                # check if elements create breaks by themselves (e.g. p)
+                # WIP
 
                 elements_between = get_elements_between_elements(html,parsed_element,next_element)
                 if len(elements_between) == 0:
