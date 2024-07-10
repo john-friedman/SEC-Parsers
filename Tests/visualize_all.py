@@ -12,21 +12,25 @@ from time import time
 # for xml - 28% error rate - should go way down, with parser fixed.
 
 # 7-8 is weird check earlier to see if introduced wierd. seems fine. let's see if parsing issues remived
-start_dex = 27
+start_dex = 35
 files = os.listdir(dir_10k)[start_dex:]
 errors = []
 for count,file in enumerate(files):
-    s = time()
-    with open(dir_10k + file, 'r', encoding='utf-8') as f:
-        html = f.read()
-        
-    filing = Parser(html)
-    recursive_parse(filing.html)
-    relative_parsing(filing.html)
-    cleanup_parsing(filing.html)
-    #filing.visualize()
-    filing.to_xml()
-    print(filing.get_node_tree_attributes())
+    try:
+        s = time()
+        with open(dir_10k + file, 'r', encoding='utf-8') as f:
+            html = f.read()
+            
+        filing = Parser(html)
+        recursive_parse(filing.html)
+        relative_parsing(filing.html)
+        cleanup_parsing(filing.html)
+        filing.visualize()
+        filing.to_xml()
+        print(filing.get_node_tree_attributes())
 
-    print(f'File {count+start_dex} took {time()-s} seconds')
+        print(f'File {count+start_dex} took {time()-s} seconds')
+    except Exception as e:
+        errors.append((file,e))
+        print(f'Error in file {file}. Total errors: {len(errors)}')
 

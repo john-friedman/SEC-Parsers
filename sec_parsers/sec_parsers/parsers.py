@@ -101,7 +101,7 @@ def relative_parsing(html):
             if parsed_elements:
                 next_element = parsed_elements[0]
                 elements_between = get_elements_between_elements(html, parsed_element, next_element)
-                if not elements_between:
+                if not elements_between: #  WIP struggles with some cases where whitespace between two elements. figure out how to fix w/o breaking other stuff
                     parent = parsed_element.getparent()
                     parent.attrib['parsing_string'] = parsing_string + "parent;"
                     next_element.attrib.pop('parsing_string')
@@ -111,8 +111,8 @@ def relative_parsing(html):
                     parsed_elements.appendleft(parent)  # Add parent to be processed next
                 else:
                     previous_element = parsed_element.getprevious()
-                    if previous_element is not None:
-                        text = get_text(previous_element)
+                    if previous_element is not None: 
+                        text = get_text(previous_element).strip() # WIP: may introduce some issues
                         if previous_element.get('parsing_string') is None and text != '':
                             parsed_element.attrib.pop('parsing_string', None)
 
