@@ -15,7 +15,7 @@ def is_paragraph(text):
 # TODO: improve this
 def detect_bullet_point(string):
     """e.g. •"""
-    if any(char in string.strip() for char in ['•','●','●','●','●','•','·']):
+    if any(char in string.strip() for char in ['•','●','●','●','●','•','·','◦']):
         return True
     return False
 
