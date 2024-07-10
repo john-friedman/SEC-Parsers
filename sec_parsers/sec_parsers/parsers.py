@@ -73,9 +73,24 @@ def relative_parsing(html):
         # e.g. find bullet point look for right neighbors, allow for any number of spaces
         parsing_string = parsed_element.get('parsing_string')
 
-        if parsing_string is None:
-            print(parsed_elements)
-        if 'bullet point;' in parsing_string:
+        # if parsing_string is None:
+        #     print(parsed_elements)
+        
+        # check if parse element has children
+        children = parsed_element.xpath("child::*")
+        if len(children) > 0:
+            # check if parsed element has children with parsing strings of their own
+            children_with_parsing_string = parsed_element.xpath('child::*[@parsing_string]')
+            if len(children_with_parsing_string) > 0:
+                parsed_elements.remove(parsed_element)
+                parsed_element.attrib.pop('parsing_string')
+            else:
+                # WIP 
+                text = get_all_text(parsed_element)
+                parsed_element.attrib['parsing_string'] = parsing_string + detect_style_from_string(text)
+                parsed_elements.remove(parsed_element)
+                
+        elif 'bullet point;' in parsing_string:
             if len(parsed_elements) > 0:
                 next_element = parsed_elements[1]
                 text_between = get_text_between_elements(html,parsed_element,next_element).strip()
@@ -95,21 +110,24 @@ def relative_parsing(html):
                 # this is slow - could speed up function by modding between elements
                 next_element = parsed_elements[1]
 
-                # check if elements create breaks by themselves (e.g. p)
-                # WIP
-
                 elements_between = get_elements_between_elements(html,parsed_element,next_element)
                 if len(elements_between) == 0:
-                    # I'm not sure how this will affect parsed_elements, so be careful
+                    # WIP check if elements create breaks by themselves (e.g. p)
+                    # if ((parsed_element.tag=='p') & (next_element.tag=='p')):
+                    #     parsed_elements.remove(parsed_element)
+                    # else:
+
                     parent = parsed_element.getparent()
-                    parent.attrib['parsing_string'] = parsing_string
-                    #parsed_elements.append(parent) # WIP
+                    parent.attrib['parsing_string'] = parsing_string +"parent;"
+                    parsed_elements.remove(next_element)
+                    next_element.attrib.pop('parsing_string')
 
                     parsed_elements.remove(parsed_element)
-                    parsed_elements.remove(next_element)
-
                     parsed_element.attrib.pop('parsing_string')
-                    next_element.attrib.pop('parsing_string')
+
+                    # this breaks some parsers. figure out why. it;s supposed to add a newly parsed parent element to be reparsed
+                    #parsed_elements.append(parent) # WIP
+
                 else:
                     # handle emphasized elements in middle of paragraphs
                     previous_element = parsed_element.getprevious()
@@ -208,7 +226,7 @@ def construct_xml_tree(parsed_html):
     # find the first part parsing
     # WIP will be changed when introductory section parsing is added
     parts_elements = parsed_html.xpath("//*[@parsing_type='part;']")
-    first_part_element = [element for element in parts_elements if re.match(r'^part\s+i$',get_all_text(element).strip(),re.IGNORECASE)][0]
+    first_part_element = [element for element in parts_elements if re.match(r'^part\s+(i|1)$',get_all_text(element).strip(),re.IGNORECASE)][0]
     # find signature
     signatures = [element for element in elements if 'signatures;' in element.attrib['parsing_type']][0]
 

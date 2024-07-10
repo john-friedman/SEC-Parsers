@@ -1,5 +1,5 @@
 # SEC Parsers
-Parses non-standardized SEC 10-K filings into well structured detailed xml. This is a WIP. Not every file will parse correctly.
+Parses non-standardized SEC 10-K & 10-Q filings into well structured detailed xml. This is a WIP. Not every file will parse correctly.
 
 ![](https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualization.png)
 ![](https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_tree_v2.png)
@@ -20,8 +20,8 @@ xml = construct_xml_tree(parsed_html)
 For more information look at the [quickstart](Examples/quickstart.ipynb), or view a parsed Tesla 10-K [here](Examples/tesla.xml).
 
 # TODOLIST:
-1. get parse error rate below 5%
-2. get to xml error rate below 10%
+1. get parse error rate below 5% - Achieved 100% or so.
+2. get to xml error rate below 10% - seems to be p tags and others. do tmrw
 3. check sample ten trees to make sure they look good
 4. update readme
 5. get input on design 
@@ -42,28 +42,27 @@ When you look at an SEC 10-K you can easily see the structure of the file, and w
 2. Calculates hierarchy of headers, and converts to a tree structure
 
 ### Roadmap:
-1. Detailed parser with better than 99% success rate (currently hovering around 90).
+1. Parser that converts >95% of filings into nicely formatted xml trees. hierarchy mostly correct
 2. Clustering on cleaned xml files (e.g. many companies have a seasonality heading but its named differently), add an attribute to help sort by this
 
 ### Future
-* fix titles for xml (e.g. item 1 instead of item 1. business)
 * better hierarchy calculation
-* more supported filings: 10-Q, 8-K, etc
+* more filing supported
 * better rag integration
 * converting html tables to nice xml tables
 * metadata, e.g. cik / data from xbrl in html
 * hosting cleaned xml files online
-* better attributes (names / format)
 * better color scheme (color scheme for headers, ignored_elements - e.g. page numbers, text)
-* better function naming
-* better modules naming
-* better parent handling
 * better descriptions of functions
-* better github and pypi pages
 * add xbrl information
 
+### Feature request:
+* save_dta - save xml to dta. similar to csv function
+
 ### Statistics
-Not implemented yet.
+* 100% parsed html rate
+* 70% conversion to xml rate
+* between 0.2s-8s to parse a filing.
 
 ### Other people's SEC stuff
 * [edgartools](https://github.com/dgunning/edgartools) - good interface for interacting with SEC's EDGAR system

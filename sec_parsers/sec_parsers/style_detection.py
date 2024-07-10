@@ -96,12 +96,13 @@ def detect_style_from_string(string):
         else:
             return False
     
-
+    # PREPROCESSING WIP
+    string = string.strip()
     # ORDER MATTERS
-    if detect_item(string):
-        return 'item;'
-    elif detect_part(string):
+    if detect_part(string):
         return 'part;'
+    elif detect_item(string):
+        return 'item;'
     elif detect_signatures(string):
         return 'signatures;'
     elif detect_page_number(string):
