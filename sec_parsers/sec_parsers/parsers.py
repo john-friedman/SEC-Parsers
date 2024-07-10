@@ -1,6 +1,7 @@
 from lxml import etree
 import re
 import csv
+from collections import deque
 
 from sec_parsers.style_detection import detect_style_from_string, detect_style_from_element, detect_table,detect_link, detect_image,detect_table_of_contents, get_all_text, is_paragraph,\
 detect_hidden_element
@@ -59,89 +60,64 @@ def recursive_parse(element):
 
     return 
 
-# WIP, may rearrange code blocks
-# TODO add page number relative parsing, fix item parsing
+# WIP
+from collections import deque
+
 def relative_parsing(html):
     """Looks at parsed html from recursive parsing and uses relative position to improve parsing."""
-    # header rules
-    # e.g. if has tail add to bold?
-    parsed_elements = html.xpath('//*[@parsing_string]')
-    # WIP change to while loop
-    while len(parsed_elements) > 0:
-        parsed_element = parsed_elements[0]
+    parsed_elements = deque(html.xpath('//*[@parsing_string]'))
+    processed_elements = set()  # To keep track of processed elements
+
+    while parsed_elements:
+        parsed_element = parsed_elements.popleft()
         
-        # e.g. find bullet point look for right neighbors, allow for any number of spaces
+        # Skip if this element has already been processed
+        if parsed_element in processed_elements:
+            continue
+        
         parsing_string = parsed_element.get('parsing_string')
 
-        # if parsing_string is None:
-        #     print(parsed_elements)
-        
-        # check if parse element has children
+        # Process children
         children = parsed_element.xpath("child::*")
-        if len(children) > 0:
-            # check if parsed element has children with parsing strings of their own
+        if children:
             children_with_parsing_string = parsed_element.xpath('child::*[@parsing_string]')
-            if len(children_with_parsing_string) > 0:
-                parsed_elements.remove(parsed_element)
+            if children_with_parsing_string:
                 parsed_element.attrib.pop('parsing_string')
             else:
-                # WIP 
                 text = get_all_text(parsed_element)
                 parsed_element.attrib['parsing_string'] = parsing_string + detect_style_from_string(text)
-                parsed_elements.remove(parsed_element)
-                
+
+        # Process bullet points
         elif 'bullet point;' in parsing_string:
-            if len(parsed_elements) > 0:
-                next_element = parsed_elements[1]
-                text_between = get_text_between_elements(html,parsed_element,next_element).strip()
+            if parsed_elements:
+                next_element = parsed_elements[0]
+                text_between = get_text_between_elements(html, parsed_element, next_element).strip()
                 if text_between == '':
-                    # remove from parse_elements_list
-                    parsed_elements.remove(next_element)
-                    # delete attribute
                     next_element.attrib.pop('parsing_string')
-        # ignore these tags
-        elif parsing_string in ['table of contents;','table;','link;','image;']:
-            pass
-        elif 'signatures;' in parsing_string:
-            pass # WIP
-        else:
-            # check if two elements should be combined into one header
-            if len(parsed_elements) > 1:
-                # this is slow - could speed up function by modding between elements
-                next_element = parsed_elements[1]
+                    processed_elements.add(next_element)
 
-                elements_between = get_elements_between_elements(html,parsed_element,next_element)
-                if len(elements_between) == 0:
-                    # WIP check if elements create breaks by themselves (e.g. p)
-                    # if ((parsed_element.tag=='p') & (next_element.tag=='p')):
-                    #     parsed_elements.remove(parsed_element)
-                    # else:
-
+        # Process headers and other elements
+        elif parsing_string not in ['table of contents;', 'table;', 'link;', 'image;', 'signatures;']:
+            if parsed_elements:
+                next_element = parsed_elements[0]
+                elements_between = get_elements_between_elements(html, parsed_element, next_element)
+                if not elements_between:
                     parent = parsed_element.getparent()
-                    parent.attrib['parsing_string'] = parsing_string +"parent;"
-                    parsed_elements.remove(next_element)
+                    parent.attrib['parsing_string'] = parsing_string + "parent;"
                     next_element.attrib.pop('parsing_string')
-
-                    parsed_elements.remove(parsed_element)
                     parsed_element.attrib.pop('parsing_string')
-
-                    # this breaks some parsers. figure out why. it;s supposed to add a newly parsed parent element to be reparsed
-                    #parsed_elements.append(parent) # WIP
-
+                    processed_elements.add(next_element)
+                    processed_elements.add(parsed_element)
+                    parsed_elements.appendleft(parent)  # Add parent to be processed next
                 else:
-                    # handle emphasized elements in middle of paragraphs
                     previous_element = parsed_element.getprevious()
                     if previous_element is not None:
-                        if previous_element.attrib.get('parsing_string') is not None:
-                            pass
-                        else:
-                            parsed_elements.remove(parsed_element)
-                            parsed_element.attrib.pop('parsing_string')
+                        text = get_text(previous_element)
+                        if previous_element.get('parsing_string') is None and text != '':
+                            parsed_element.attrib.pop('parsing_string', None)
 
-        # Once element is processed, remove from list
-        # check is not already none due to previous processing
-        if parsed_element in parsed_elements:
-            parsed_elements.remove(parsed_element)
+        processed_elements.add(parsed_element)
+
     return html
 
 def cleanup_parsing(html):
