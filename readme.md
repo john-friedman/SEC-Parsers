@@ -28,7 +28,7 @@ filing.save_xml(file_name)
 filing.save_csv(file_name)
 ```
 
-For more information look at the [quickstart](Examples/quickstart.ipynb), or view a parsed Tesla 10-K [here](Examples/tesla_10k_2023.xml).
+For more information look at the [quickstart](Examples/quickstart.ipynb), or view a parsed Tesla 10-K [here](Examples/tesla_10k.xml). SEC Parsers also supports exporting to csv, see [here](Examples/tesla_10k.csv)
 
 ### Links: 
 * [GitHub](https://github.com/john-friedman/SEC-Parsers/)
