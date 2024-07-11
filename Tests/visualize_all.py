@@ -25,10 +25,12 @@ for count,file in enumerate(files):
             filing = Parser(html)
             filing.parse()
 
-            print(filing.get_title_tree())
+            #print(filing.get_title_tree())
 
             print(f'File {count+start_dex} took {time()-s} seconds')
         except Exception as e:
             errors.append((file,e))
             print(f'Error in {file}: num_errors = {len(errors)}')
             print(e)
+
+print(len(errors) / len(files))
