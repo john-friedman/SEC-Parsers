@@ -339,11 +339,13 @@ class Parser:
             self._parse_10q()
         else:
             raise ValueError('Filing type not detected')
+        
+        self._to_xml()
 
     def visualize(self):
         visualize(self.html)
 
-    def to_xml(self):
+    def _to_xml(self):
         self.xml = construct_xml_tree(self.html)
 
     # functions to interact with xml
@@ -391,22 +393,22 @@ class Parser:
     
     # Interact with tree #
 
-    # TODO: better names
-    def get_node_tree(self,node=None, level=0):
+    # TODO: user friendly - e.g. if parsed not called call parse
+    def get_tree(self,node=None, level=0):
         if node is None:
             node = self.xml
         tree_string = node.tag
         for child in node:
-            tree_string += '\n' + '|-' * level + self.get_node_tree(child, level + 1)
+            tree_string += '\n' + '|-' * level + self.get_tree(child, level + 1)
         return tree_string
     
-    def get_node_tree_attributes(self,node=None,level=0,attribute='title'):
+    def get_title_tree(self,node=None,level=0,attribute='title'):
         if node is None:
             node = self.xml
             
         tree_atrib = node.attrib.get(attribute,'')
         for child in node:
-            tree_atrib += '\n' + '|-' * level + self.get_node_tree_attributes(child, level + 1,attribute)
+            tree_atrib += '\n' + '|-' * level + self.get_title_tree(child, level + 1,attribute)
 
         return tree_atrib
     

@@ -1,37 +1,42 @@
 # SEC Parsers
-Parses non-standardized SEC 10-K & 10-Q filings into well structured detailed xml. This is a WIP. Not every file will parse correctly.
+Parses non-standardized SEC 10-K & 10-Q filings into well structured detailed xml. Use cases include LLMs, NLP, and textual analysis. This is a WIP. Not every file will parse correctly.
 
-![](https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualization.png)
-![](https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_tree_v2.png)
+<div align="center">
+  <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualization.png" width="300">
+</div>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_tree_v2.png" width="300">
+</div>
+
 
 ### Installation
 ```pip install sec-parsers```
 
 ### Quickstart - update this
 ```
-from sec_parsers import *
+from sec_parsers import Parser, download_sec_filing
 
 html = download_sec_filing('https://www.sec.gov/Archives/edgar/data/1318605/000162828024002390/tsla-20231231.htm')
-parsed_html = parse_10k(html)
-xml = construct_xml_tree(parsed_html)
+filing = Parser(html)
+filing.parse() # parses filing
+filing.visualize() # opens filing in webbrowser with highlighted section headers
+filing.find_nodes_by_title(title) # finds node by title, e.g. 'item 1a'
+filing.find_nodes_by_text(text) # finds nodes which contains your text
+filing.get_tree(node) # if no argument specified returns xml tree, if node specified, returns that nodes tree
+filing.get_title_tree() # returns xml tree using titles instead of tags. More descriptive than get_tree.
+filing.save_xml(file_name)
+filing.save_csv(file_name)
 ```
 
 # update
-For more information look at the [quickstart](Examples/quickstart.ipynb), or view a parsed Tesla 10-K [here](Examples/tesla.xml).
+For more information look at the [quickstart](Examples/quickstart.ipynb), or view a parsed Tesla 10-K [here](Examples/tesla_10k_2023.xml).
 
-# TODOLIST:
-1. get parse error rate below 5% - Achieved 100% or so.
-2. get to xml error rate below 10% - seems to be p tags and others. do tmrw
-3. check sample ten trees to make sure they look good
-4. update readme
-5. get input on design 
-
-### Links:
+### Links: 
 * [GitHub](https://github.com/john-friedman/SEC-Parsers/)
-* [Archive of Parsed XMLs](https://www.dropbox.com/scl/fo/np1lpow7r3bissz80ze3o/AKGM8skBrUfEGlSweofAUDU?rlkey=cz1r78jofntjeq4ax2vb2yd0u&e=1&st=mdcwgfcm&dl=0) - Note: This is often out of date, as package is being updated frequently.
+* [Archive of Parsed XMLs](https://www.dropbox.com/scl/fo/np1lpow7r3bissz80ze3o/AKGM8skBrUfEGlSweofAUDU?rlkey=cz1r78jofntjeq4ax2vb2yd0u&e=1&st=mdcwgfcm&dl=0) - Last updated 7/10/24.
 
 ### Problem:
-When you look at an SEC 10-K you can easily see the structure of the file, and what headers follow each other. Under the hood, these filings are non-standardized making it hard to convert into a well structured format suitable for NLP/RAG.
+SEC filings are human readable, but messy html makes it hard for machines to detect and read information by section. This is especially important for NLP / RAG using LLMs.
 
 ### How SEC Parsers works:
 1. Detects headers in filings using:
@@ -42,12 +47,12 @@ When you look at an SEC 10-K you can easily see the structure of the file, and w
 2. Calculates hierarchy of headers, and converts to a tree structure
 
 ### Roadmap:
-1. Parser that converts >95% of filings into nicely formatted xml trees. hierarchy mostly correct
-2. Clustering on cleaned xml files (e.g. many companies have a seasonality heading but its named differently), add an attribute to help sort by this
+1. Parser that converts >95% of filings into nicely formatted xml trees. 
+2. Apply data science on xml to cluster headers, e.g. seasonality, seasonal variation etc, to make xml easier to work with.
 
-### Future
+### Possible future features
 * better hierarchy calculation
-* more filing supported
+* more filings supported
 * better rag integration
 * converting html tables to nice xml tables
 * metadata, e.g. cik / data from xbrl in html
@@ -61,7 +66,7 @@ When you look at an SEC 10-K you can easily see the structure of the file, and w
 
 ### Statistics
 * 100% parsed html rate
-* 70% conversion to xml rate
+* 80% conversion to xml rate
 * between 0.2s-8s to parse a filing.
 
 ### Other people's SEC stuff

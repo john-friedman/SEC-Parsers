@@ -13,8 +13,8 @@ from time import time
 
 # 7-8 is weird check earlier to see if introduced wierd. seems fine. let's see if parsing issues remived
 #35
-start_dex = 16
-files = os.listdir(dir_10k)[start_dex:]
+start_dex = 0
+files = os.listdir(dir_10k)[35:36]
 errors = []
 for count,file in enumerate(files):
         s = time()
@@ -22,11 +22,9 @@ for count,file in enumerate(files):
             html = f.read()
             
         filing = Parser(html)
-        recursive_parse(filing.html)
-        relative_parsing(filing.html)
-        cleanup_parsing(filing.html)
-        #filing.visualize()
-        filing.to_xml()
-        #print(filing.get_node_tree_attributes())
+        filing.visualize()
+        filing.parse()
+
+        print(filing.get_tree())
 
         print(f'File {count+start_dex} took {time()-s} seconds')

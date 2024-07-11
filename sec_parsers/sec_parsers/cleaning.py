@@ -7,7 +7,7 @@ import re
 # NEW
 # e.g. ITEM 1. BUSINESS --> item1, overview --> overview, Our Products and Services --> our_products_and_services
 
-def clean_title(text):
+def clean_title(text): #  adjust to format items and parts into standardized format, e.g. no periods
     # add detection for item / other sections
     text = text.strip()
     text = re.sub("[^\S \t\n\r\f\v]+",' ',text)
