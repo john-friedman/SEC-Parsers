@@ -12,7 +12,7 @@ Parses non-standardized SEC 10-K & 10-Q filings into well structured detailed xm
 ### Installation
 ```pip install sec-parsers```
 
-### Quickstart - update this
+### Quickstart
 ```
 from sec_parsers import Parser, download_sec_filing
 
@@ -28,11 +28,11 @@ filing.save_xml(file_name)
 filing.save_csv(file_name)
 ```
 
-For more information look at the [quickstart](Examples/quickstart.ipynb), or view a parsed Tesla 10-K [here](Examples/tesla_10k.xml). SEC Parsers also supports exporting to csv, see [here](Examples/tesla_10k.csv)
+For more information look at the [quickstart](Examples/quickstart.ipynb), or view a parsed Tesla 10-K [here](Examples/tesla_10k.xml). SEC Parsers also supports exporting to csv, see [here](Examples/tesla_10k.csv).
 
 ### Links: 
 * [GitHub](https://github.com/john-friedman/SEC-Parsers/)
-* [Archive of Parsed XMLs](https://www.dropbox.com/scl/fo/np1lpow7r3bissz80ze3o/AKGM8skBrUfEGlSweofAUDU?rlkey=cz1r78jofntjeq4ax2vb2yd0u&e=1&st=mdcwgfcm&dl=0) - Last updated 7/10/24.
+* [Archive of Parsed XMLs / CSVs](https://www.dropbox.com/scl/fo/np1lpow7r3bissz80ze3o/AKGM8skBrUfEGlSweofAUDU?rlkey=cz1r78jofntjeq4ax2vb2yd0u&e=1&st=mdcwgfcm&dl=0) - Last updated 7/10/24.
 
 ### Problem:
 SEC filings are human readable, but messy html makes it hard for machines to detect and read information by section. This is especially important for NLP / RAG using LLMs.
