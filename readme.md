@@ -68,6 +68,9 @@ SEC filings are human readable, but messy html makes it hard for machines to det
 * 80% conversion to xml rate
 * between 0.2s-8s to parse a filing.
 
+### Issues
+1. It looks like the filings I downloaded using edgartools may be different than sec filings downloaded directly from sec archives. investigating...
+
 ### Other people's SEC stuff
 * [edgartools](https://github.com/dgunning/edgartools) - good interface for interacting with SEC's EDGAR system
 * [sec-parser](https://github.com/alphanome-ai/sec-parser) - oops, we have similar names. They were first, my bad. They parse 10-Qs well.

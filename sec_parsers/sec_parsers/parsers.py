@@ -3,9 +3,9 @@ import re
 import csv
 from collections import deque
 
-from sec_parsers.style_detection import detect_style_from_string, detect_style_from_element, detect_table,detect_link, detect_image,detect_table_of_contents, get_all_text, is_paragraph,\
-detect_hidden_element
-from sec_parsers.xml_helper import get_text, set_background_color, remove_background_color, open_tree, element_has_text,get_text_between_elements,get_elements_between_elements
+from sec_parsers.style_detection import detect_style_from_string, detect_style_from_element, detect_table, detect_image,detect_table_of_contents, get_all_text, is_paragraph,\
+detect_hidden_element, is_descendant_of_table
+from sec_parsers.xml_helper import get_text, set_background_color, remove_background_color, open_tree,get_text_between_elements,get_elements_between_elements
 from sec_parsers.visualization_helper import headers_colors_dict, headers_colors_list
 from sec_parsers.hierarchy import get_hierarchy, get_preceding_elements, find_last_index
 from sec_parsers.cleaning import clean_title
@@ -26,9 +26,6 @@ def recursive_parse(element):
             element.attrib['parsing_string'] = 'table of contents;'
         else:
             element.attrib['parsing_string'] = 'table;'
-        return
-    elif detect_link(element):
-        element.attrib['parsing_string'] = 'link;'
         return
     elif detect_image(element):
         element.attrib['parsing_string'] = 'image;'
@@ -54,7 +51,7 @@ def recursive_parse(element):
         # check if item has part of it in bold, rest as tail. e.g. 1606 Corp. 10K 2023 item 15
         elif (('item;' in parsing_string) and (element.tail is not None)):
             parent = element.getparent()
-            parent.attrib['parsing_string'] = parsing_string #+ 'parent;'
+            parent.attrib['parsing_string'] = parsing_string + 'parent;'
         else:
             element.attrib['parsing_string'] = parsing_string
 
@@ -80,8 +77,8 @@ def relative_parsing(html):
         # Process children
         children = parsed_element.xpath("child::*")
         if children:
-            children_with_parsing_string = parsed_element.xpath('child::*[@parsing_string]')
-            if children_with_parsing_string:
+            descendants_with_parsing_string = parsed_element.xpath('.//*[@parsing_string]') # changed WIP
+            if descendants_with_parsing_string:
                 parsed_element.attrib.pop('parsing_string')
             else:
                 text = get_all_text(parsed_element)
@@ -99,29 +96,41 @@ def relative_parsing(html):
         # Process headers and other elements
         elif parsing_string not in ['table of contents;', 'table;', 'link;', 'image;', 'signatures;']:
             if parsed_elements:
-                next_element = parsed_elements[0]
-                elements_between = get_elements_between_elements(html, parsed_element, next_element)
-                flag = False
-                if not elements_between:
-                    flag = True
-                # elif len(elements_between) == 1: # wip
-                #     if elements_between[0].tag in ['div','span']:
-                #         flag = True
+                # check if descendant of table
+                if is_descendant_of_table(parsed_element):
+                    parent = parsed_element.xpath("./ancestor::table")[0]
+                    parent.attrib['parsing_string'] = parsing_string + 'parent;'
+                    parsed_elements.appendleft(parent)
 
-                if flag: #  WIP struggles with some cases where whitespace between two elements. figure out how to fix w/o breaking other stuff
-                    parent = parsed_element.getparent()
-                    parent.attrib['parsing_string'] = parsing_string + "parent;"
-                    next_element.attrib.pop('parsing_string')
-                    parsed_element.attrib.pop('parsing_string')
-                    processed_elements.add(next_element)
-                    processed_elements.add(parsed_element)
-                    parsed_elements.appendleft(parent)  # Add parent to be processed next
+                    # remove descendants parsing strings
+                    descendants_with_parsing_string = parent.xpath('.//*[@parsing_string]')
+                    for descendant in descendants_with_parsing_string:
+                        descendant.attrib.pop('parsing_string')
+                        processed_elements.add(descendant)
                 else:
-                    previous_element = parsed_element.getprevious()
-                    if previous_element is not None: 
-                        text = get_text(previous_element).strip() # WIP: may introduce some issues
-                        if previous_element.get('parsing_string') is None and text != '':
-                            parsed_element.attrib.pop('parsing_string', None)
+                    next_element = parsed_elements[0]
+                    elements_between = get_elements_between_elements(html, parsed_element, next_element)
+                    flag = False
+                    if not elements_between:
+                        flag = True
+                    # elif len(elements_between) == 1: # wip
+                    #     if elements_between[0].tag in ['div','span']:
+                    #         flag = True
+
+                    if flag: #  WIP struggles with some cases where whitespace between two elements. figure out how to fix w/o breaking other stuff
+                        parent = parsed_element.getparent()
+                        parent.attrib['parsing_string'] = parsing_string + "parent;"
+                        next_element.attrib.pop('parsing_string')
+                        parsed_element.attrib.pop('parsing_string')
+                        processed_elements.add(next_element)
+                        processed_elements.add(parsed_element)
+                        parsed_elements.appendleft(parent)  # Add parent to be processed next
+                    else:
+                        previous_element = parsed_element.getprevious()
+                        if previous_element is not None: 
+                            text = get_text(previous_element).strip() # WIP: may introduce some issues
+                            if previous_element.get('parsing_string') is None and text != '':
+                                parsed_element.attrib.pop('parsing_string', None)
 
         processed_elements.add(parsed_element)
 
@@ -133,11 +142,7 @@ def cleanup_parsing(html):
     for parsed_element in parsed_elements:
         parsing_string = parsed_element.get('parsing_string')
         parsing_type = parsing_string
-        if any([item in parsing_string for item in ['table of contents;','link;','image;','page number;']]):
-            parsing_type = 'ignore;'
-        elif any([item in parsing_string for item in ['table']]):
-            parsing_type = 'table;'
-        elif 'part;' in parsing_string:
+        if 'part;' in parsing_string:
             parsing_type = 'part;'
         elif 'item;' in parsing_string:
             parsing_type = 'item;'
@@ -145,6 +150,10 @@ def cleanup_parsing(html):
             parsing_type = 'signatures;'
         elif 'bullet point;' in parsing_string:
             parsing_type = None
+        elif any([item in parsing_string for item in ['table']]):
+            parsing_type = 'table;'
+        elif any([item in parsing_string for item in ['table of contents;','link;','image;','page number;']]):
+            parsing_type = 'ignore;'
         # elif any([item in parsing_string for item in ['font-style:italic;','em','i']]):
         #     text = get_text(parsed_element)
         #     if is_paragraph(text):
