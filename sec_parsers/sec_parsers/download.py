@@ -33,5 +33,5 @@ def download_sec_filing(url):
     
     # important to encode the text as utf-8 as the lxml parser expects it
     html = sec_response.text.encode("utf-8")
-    return html
+    return html.decode("utf-8")
 

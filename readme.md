@@ -65,13 +65,14 @@ SEC filings are human readable, but messy html makes it hard for machines to det
 
 ### Statistics
 * 100% parsed html rate
-* 80% conversion to xml rate
+* 90% conversion to xml rate. This is better than it seems as there are a few companies like Honda owner trust which do not parse but have ~10 10ks per year. (e.g. trust 1, 2,...,)
 * between 0.2s-8s to parse a filing.
 
 ### Issues
 1. It looks like the filings I downloaded using edgartools may be different than sec filings downloaded directly from sec archives. investigating...
 
 ### TODO
+0. we fixed one table issue, now need to account for too much tables https://www.sec.gov/Archives/edgar/data/18255/000001825518000024/cato10k2017-jrs.htm
 1. add intro node and signatures node
 2. Code cleanup. Right now I'm tweaking code to increase parse rate, eventually need to incorporate lessons learned, and rewrite.
 

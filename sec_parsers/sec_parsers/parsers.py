@@ -260,8 +260,11 @@ def construct_xml_tree(parsed_html):
 
         # construct node
         title = get_all_text(element)
-        title = clean_title(title)
         text = get_text_between_elements(parsed_html,element, next_element)
+
+        # TODO replace title in text with empty string
+        title = clean_title(title)
+        
 
         if element_parsing_type == 'part;':
             node_class = 'part'
@@ -321,9 +324,20 @@ class Parser:
         self.filing_type = None
 
     def _setup_html(self,html):
+        # Find the start of the HTML content. This is necessary because the HTML content is not always at the beginning of the file.
+        html_start = html.find('<HTML>')
+        if html_start == -1:
+            html_start = html.find('<html>')
+
+        if html_start == -1:
+            raise ValueError("No HTML tag found in the file")
+
+        # Extract only the HTML part
+        html = html[html_start:]
         parser = etree.HTMLParser(encoding='utf-8',remove_comments=True)
-        parsed_html = etree.fromstring(html, parser)
-        self.html = parsed_html
+        html = etree.fromstring(html, parser)
+
+        self.html = html
 
     # make util
     def _detect_filing_type(self):
@@ -390,7 +404,8 @@ class Parser:
     def get_node_text(self,node):
         """Gets all text from a node, including title string."""
         text = ''
-        text += node.attrib.get('title','') + '\n'
+        # WIP removed this for now. need to add later
+        #text += node.attrib.get('title','') + '\n'
 
         node_text = node.text
         if node_text is not None:
