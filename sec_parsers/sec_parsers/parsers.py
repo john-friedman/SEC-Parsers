@@ -209,6 +209,7 @@ def visualize(root):
     open_tree(root)
 
 # Heavily WIP
+# add intro section, which is all text before part i dumped, and add signatures section
 def construct_xml_tree(parsed_html):
     root = etree.Element('root')
     

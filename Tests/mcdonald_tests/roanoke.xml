@@ -337,7 +337,7 @@ CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS
 PRINCIPAL ACCOUNTING FEES AND SERVICES
 The specific information required by this item, concerning the principal accounting fees paid by the Registrant and the Audit Committee&#146;s
 pre-approval policies and procedures, is incorporated by reference to the information under the heading &#147;Audit Committee and Other Audit Matters&#148; in the Proxy Statement dated December 29, 2003, as filed with the Commission.
-</item></part><part title="PART IV" parsing_type="part;">ITEM15&#160;.
+</item></part><part title="PART IV" parsing_type="part;"><company_defined_section title="ITEM15 .&#10;EXHIBITS, FINANCIAL STATEMENT SCHEDULES AND REPORTS ON FORM 8-K" parsing_type="all caps;b-tag;u-tag;all caps;">ITEM15&#160;.
 EXHIBITS, FINANCIAL STATEMENT SCHEDULES AND REPORTS ON FORM 8-K
 (a)
 The following documents are filed as a part of this report:
@@ -366,7 +366,7 @@ therein.
 Raleigh, North Carolina
 December 8,
 2003
-</company_defined_section></part><part title="PART IV" parsing_type="part;">(con&#146;d.)
+</company_defined_section></company_defined_section></part><part title="PART IV" parsing_type="part;">(con&#146;d.)
 The financial statement schedule should be read in conjunction with the consolidated financial
 statements. The financial statement schedules not included in this annual report on Form 10-K have been omitted because they are not applicable or the required information is shown in the financial statements or included in the notes thereto.
 Set forth below is &#147;Schedule II - Valuation and
@@ -533,6 +533,6 @@ and Chief Accounting Officer
 Reports on Form 8-K.
 Form 8-K dated September 2, 2003 and filed September 5, 2003, furnishing under Item 12 a news release announcing financial condition and results of
 operations for the quarter ended July 31, 2003.
-*
+</company_defined_section><company_defined_section title="*&#10;Management contract, or compensatory plan or agreement, required to be filed as an Exhibit to this Form 10-K pursuant to Item 15 (c)." parsing_type="emphasis;">*
 Management contract, or compensatory plan or agreement, required to be filed as an Exhibit to this Form 10-K pursuant to Item 15 (c).
 </company_defined_section></part></root>

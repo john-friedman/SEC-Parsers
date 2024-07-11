@@ -14,18 +14,21 @@ from time import time
 # 7-8 is weird check earlier to see if introduced wierd. seems fine. let's see if parsing issues remived
 #35
 start_dex = 0
-files = os.listdir(dir_10k)[35:36]
+files = os.listdir(dir_10k)[0:]
 errors = []
 for count,file in enumerate(files):
-        s = time()
-        with open(dir_10k + file, 'r', encoding='utf-8') as f:
-            html = f.read()
-            
-        filing = Parser(html)
-        filing.parse()
+        try:
+            s = time()
+            with open(dir_10k + file, 'r', encoding='utf-8') as f:
+                html = f.read()
+                
+            filing = Parser(html)
+            filing.parse()
 
-        print(filing.get_tree())
+            print(filing.get_title_tree())
 
-        print(f'File {count+start_dex} took {time()-s} seconds')
-
-filing.visualize()  
+            print(f'File {count+start_dex} took {time()-s} seconds')
+        except Exception as e:
+            errors.append((file,e))
+            print(f'Error in {file}: num_errors = {len(errors)}')
+            print(e)
