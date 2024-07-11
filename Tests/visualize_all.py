@@ -22,9 +22,10 @@ for count,file in enumerate(files):
             html = f.read()
             
         filing = Parser(html)
-        filing.visualize()
         filing.parse()
 
         print(filing.get_tree())
 
         print(f'File {count+start_dex} took {time()-s} seconds')
+
+filing.visualize()  

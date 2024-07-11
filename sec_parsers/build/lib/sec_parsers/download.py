@@ -2,6 +2,7 @@ import requests
 import random as rd
 
 # Module to download the SEC filings
+#TODO I'm happy with this file so far.
 
 def random_num():
     return rd.randint(1, 1000000)

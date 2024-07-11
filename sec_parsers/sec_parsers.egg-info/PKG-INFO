@@ -1,36 +1,48 @@
 Metadata-Version: 2.1
 Name: sec-parsers
-Version: 0.512
+Version: 0.513
 Summary: A package to parse SEC filings
 Author: John Friedman
 Description-Content-Type: text/markdown
 
 # SEC Parsers
-Parses non-standardized SEC 10-K filings into well structured detailed xml. This is a WIP. Not every file will parse correctly.
+Parses non-standardized SEC 10-K & 10-Q filings into well structured detailed xml. Use cases include LLMs, NLP, and textual analysis. This is a WIP. Not every file will parse correctly.
 
-![](https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualization.png)
-![](https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_tree_v2.png)
+<div align="center">
+  <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualization.png" width="500">
+</div>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_tree_v2.png" width="500">
+</div>
+
 
 ### Installation
 ```pip install sec-parsers```
 
-### Quickstart
+### Quickstart - update this
 ```
-from sec_parsers import *
+from sec_parsers import Parser, download_sec_filing
 
 html = download_sec_filing('https://www.sec.gov/Archives/edgar/data/1318605/000162828024002390/tsla-20231231.htm')
-parsed_html = parse_10k(html)
-xml = construct_xml_tree(parsed_html)
+filing = Parser(html)
+filing.parse() # parses filing
+filing.visualize() # opens filing in webbrowser with highlighted section headers
+filing.find_nodes_by_title(title) # finds node by title, e.g. 'item 1a'
+filing.find_nodes_by_text(text) # finds nodes which contains your text
+filing.get_tree(node) # if no argument specified returns xml tree, if node specified, returns that nodes tree
+filing.get_title_tree() # returns xml tree using titles instead of tags. More descriptive than get_tree.
+filing.save_xml(file_name)
+filing.save_csv(file_name)
 ```
 
-For more information look at the [quickstart](Examples/quickstart.ipynb), or view a parsed Tesla 10-K [here](Examples/tesla.xml).
+For more information look at the [quickstart](Examples/quickstart.ipynb), or view a parsed Tesla 10-K [here](Examples/tesla_10k_2023.xml).
 
-### Links:
+### Links: 
 * [GitHub](https://github.com/john-friedman/SEC-Parsers/)
-* [Archive of Parsed XMLs](https://www.dropbox.com/scl/fo/np1lpow7r3bissz80ze3o/AKGM8skBrUfEGlSweofAUDU?rlkey=cz1r78jofntjeq4ax2vb2yd0u&e=1&st=mdcwgfcm&dl=0) - Note: This is often out of date, as package is being updated frequently.
+* [Archive of Parsed XMLs](https://www.dropbox.com/scl/fo/np1lpow7r3bissz80ze3o/AKGM8skBrUfEGlSweofAUDU?rlkey=cz1r78jofntjeq4ax2vb2yd0u&e=1&st=mdcwgfcm&dl=0) - Last updated 7/10/24.
 
 ### Problem:
-When you look at an SEC 10-K you can easily see the structure of the file, and what headers follow each other. Under the hood, these filings are non-standardized making it hard to convert into a well structured format suitable for NLP/RAG.
+SEC filings are human readable, but messy html makes it hard for machines to detect and read information by section. This is especially important for NLP / RAG using LLMs.
 
 ### How SEC Parsers works:
 1. Detects headers in filings using:
@@ -40,29 +52,28 @@ When you look at an SEC 10-K you can easily see the structure of the file, and w
 * relative location of above elements to each other
 2. Calculates hierarchy of headers, and converts to a tree structure
 
-### Priority TODO
-1. Test Parser + improve low hanging fruit
-2. Get Input on design, etc
-3. organize and clean code
+### Roadmap:
+1. Parser that converts >95% of filings into nicely formatted xml trees. 
+2. Apply data science on xml to cluster headers, e.g. seasonality, seasonal variation etc, to make xml easier to work with.
 
-### Future
-* fix titles for xml (e.g. item 1 instead of item 1. business)
+### Possible future features
 * better hierarchy calculation
-* more supported filings: 10-Q, 8-K, etc
+* more filings supported
 * better rag integration
 * converting html tables to nice xml tables
 * metadata, e.g. cik / data from xbrl in html
 * hosting cleaned xml files online
-* better attributes (names / format)
 * better color scheme (color scheme for headers, ignored_elements - e.g. page numbers, text)
-* better function naming
-* better modules naming
-* better parent handling
 * better descriptions of functions
-* better github and pypi pages
+* add xbrl information
+
+### Feature request:
+* save_dta - save xml to dta. similar to csv function
 
 ### Statistics
-Not implemented yet.
+* 100% parsed html rate
+* 80% conversion to xml rate
+* between 0.2s-8s to parse a filing.
 
 ### Other people's SEC stuff
 * [edgartools](https://github.com/dgunning/edgartools) - good interface for interacting with SEC's EDGAR system
@@ -71,6 +82,9 @@ Not implemented yet.
 * [Bill McDonald's 10-X Archive](https://sraf.nd.edu/data/stage-one-10-x-parse-data/)
 * [Eclect](https://eclect.us/) - "Save time reading SEC filings with the help of machine learning.". Paid.
 * [Textblocks.app](https://www.textblocks.app/) - Paid API to extract and analyze structured data from SEC filings. The approach seems to be similar to mine.
+* [Yu Zhu](https://yuzhu.run/how-to-parse-10x/) - article with an approach to parse 10K filings using regex
+* [Wharton Research Data Services](https://wrds-www.wharton.upenn.edu/pages/grid-items/sec-analytics-suite/) - heard they have SEC stuff, looking into it
+* [Gist](https://gist.github.com/anshoomehra/ead8925ea291e233a5aa2dcaa2dc61b2) - using regex and beautifulsoup to parse 10Ks
 * Computer Vision using OpenCV
 * LLMs (I believe unstructured.io does something like this)
 * Transformers 

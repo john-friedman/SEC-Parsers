@@ -2,10 +2,10 @@
 Parses non-standardized SEC 10-K & 10-Q filings into well structured detailed xml. Use cases include LLMs, NLP, and textual analysis. This is a WIP. Not every file will parse correctly.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualization.png" width="300">
+  <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualization.png">
 </div>
 <div align="center">
-  <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_tree_v2.png" width="300">
+  <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_tree_v2.png" width="500">
 </div>
 
 
@@ -28,7 +28,6 @@ filing.save_xml(file_name)
 filing.save_csv(file_name)
 ```
 
-# update
 For more information look at the [quickstart](Examples/quickstart.ipynb), or view a parsed Tesla 10-K [here](Examples/tesla_10k_2023.xml).
 
 ### Links: 

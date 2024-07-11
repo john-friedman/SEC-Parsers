@@ -1,6 +1,8 @@
 import re
 from sec_parsers.xml_helper import get_all_text
 
+#TODO happy with this file so far
+
 # simple for now
 def is_paragraph(text):
     periods = text.count('.')
@@ -10,17 +12,27 @@ def is_paragraph(text):
     
     return False
 
+# TODO: improve this
 def detect_bullet_point(string):
     """e.g. •"""
-    if any(char in string.strip() for char in ['•','●','●','●','●','•']):
+    if any(char in string.strip() for char in ['•','●','●','●','●','•','·','◦']):
         return True
     return False
 
+def detect_signatures(string):
+    """e.g. Signatures"""
+    match = re.search(r"^SIGNATURES$",string, re.IGNORECASE)
+    if match:
+        return True
+    
+    return False
 
 def detect_style_from_string(string):
     def detect_emphasis_capitalization(string):
         """Seen in amazon's 2024 10k e.g. We Have Foreign Exchange Risk"""
-        if string in ['None','None.','Omitted.']:
+
+        # TODO: FIX
+        if string.lower() in ['None','None.','Omitted.', 'Not Applicable.']:
             return False
         
         words = string.split()
@@ -47,13 +59,6 @@ def detect_style_from_string(string):
     def detect_part(string):
         """e.g. Part I"""
         match = re.search(r"^Part\s+\w+",string, re.IGNORECASE)
-        if match:
-            return True
-        return False
-    
-    def detect_signatures(string):
-        """e.g. Signatures"""
-        match = re.search(r"^SIGNATURES$",string, re.IGNORECASE)
         if match:
             return True
         return False
@@ -91,12 +96,13 @@ def detect_style_from_string(string):
         else:
             return False
     
-
+    # PREPROCESSING WIP
+    string = string.strip()
     # ORDER MATTERS
-    if detect_item(string):
-        return 'item;'
-    elif detect_part(string):
+    if detect_part(string):
         return 'part;'
+    elif detect_item(string):
+        return 'item;'
     elif detect_signatures(string):
         return 'signatures;'
     elif detect_page_number(string):
@@ -112,6 +118,13 @@ def detect_style_from_string(string):
     else:
         return ''
     
+
+# New
+def detect_hidden_element(element):
+    if element.get('style'):
+        if 'display:none' in re.sub(' ','',element.get('style')):
+            return True
+    return False
 
     
 # add multiple so italic and bold
@@ -152,7 +165,7 @@ def detect_style_from_element(element):
             if 'font-style:italic' in element.get('style'):
                 return 'font-style:italic;'
         return ''
-    
+
     
     # check it or descendants have text
     text = get_all_text(element).strip()
