@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: sec-parsers
-Version: 0.522
+Version: 0.523
 Summary: A package to parse SEC filings
 Author: John Friedman
 Description-Content-Type: text/markdown
@@ -94,6 +94,12 @@ SEC filings are human readable, but messy html makes it hard for machines to det
 * [Yu Zhu](https://yuzhu.run/how-to-parse-10x/) - article with an approach to parse 10K filings using regex
 * [Wharton Research Data Services](https://wrds-www.wharton.upenn.edu/pages/grid-items/sec-analytics-suite/) - heard they have SEC stuff, looking into it
 * [Gist](https://gist.github.com/anshoomehra/ead8925ea291e233a5aa2dcaa2dc61b2) - using regex and beautifulsoup to parse 10Ks
+* [Victor Dahan](https://opencodecom.net/post/2021-08-18-sentiment-analysis-of-10-k-files/) - Sentiment Analysis of 10-K Files
+* [edgarWebR](https://mwaldstein.github.io/edgarWebR/) - edgarWebR provides an interface to access the SECâ€™s EDGAR system for company financial filings.
+* [NLP in the stock market](https://towardsdatascience.com/nlp-in-the-stock-market-8760d062eb92) - Leveraging sentiment analysis on 10-k fillings as an edge
+
+
+
 * Computer Vision using OpenCV
 * LLMs (I believe unstructured.io does something like this)
 * Transformers 

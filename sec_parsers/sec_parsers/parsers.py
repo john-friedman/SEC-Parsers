@@ -26,6 +26,7 @@ def recursive_parse(element):
             element.attrib['parsing_string'] = 'table of contents;'
         else:
             element.attrib['parsing_string'] = 'table;'
+
         return
     elif detect_image(element):
         element.attrib['parsing_string'] = 'image;'
@@ -71,8 +72,13 @@ def relative_parsing(html):
         # Skip if this element has already been processed
         if parsed_element in processed_elements:
             continue
-        
+     
         parsing_string = parsed_element.get('parsing_string')
+
+        # skip certain parsing strings WIP
+        skip_strings = ['table of contents;', 'table;', 'link;', 'image;', 'signatures;']
+        if parsing_string in skip_strings:
+            continue
 
         # Process children
         children = parsed_element.xpath("child::*")
@@ -94,7 +100,7 @@ def relative_parsing(html):
                     processed_elements.add(next_element)
 
         # Process headers and other elements
-        elif parsing_string not in ['table of contents;', 'table;', 'link;', 'image;', 'signatures;']:
+        elif parsing_string not in skip_strings:
             if parsed_elements:
                 # check if descendant of table
                 if is_descendant_of_table(parsed_element):
@@ -150,9 +156,9 @@ def cleanup_parsing(html):
             parsing_type = 'signatures;'
         elif 'bullet point;' in parsing_string:
             parsing_type = None
-        elif any([item in parsing_string for item in ['table']]):
+        elif any([parsing_string == item for item in ['table']]):
             parsing_type = 'table;'
-        elif any([item in parsing_string for item in ['table of contents;','link;','image;','page number;']]):
+        elif any([parsing_string == item for item in ['table of contents;','link;','image;','page number;']]):
             parsing_type = 'ignore;'
         # elif any([item in parsing_string for item in ['font-style:italic;','em','i']]):
         #     text = get_text(parsed_element)

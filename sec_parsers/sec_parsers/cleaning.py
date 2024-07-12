@@ -1,13 +1,8 @@
 import re
 # Module to clean the text
 
-# TODO
-
-# NEW
-# e.g. ITEM 1. BUSINESS --> item1, overview --> overview, Our Products and Services --> our_products_and_services
 
 def clean_title(text): #  adjust to format items and parts into standardized format, e.g. no periods
-    # add detection for item / other sections
     text = text.strip()
     text = re.sub("[^\S \t\n\r\f\v]+",' ',text)
 
@@ -19,14 +14,12 @@ def clean_title(text): #  adjust to format items and parts into standardized for
 
     return text
 
-# OLD
-# WIP
-def clean_text(text):
-    text = text.strip()
-    return text
+def clean_string_for_style_detection(text):
+    """WIP"""
+    chars_to_remove = ['-','_']
+    # remove chars_to_remove
+    for char in chars_to_remove:
+        text = re.sub(char,'',text)
 
-# WIP
-def clean_tag_name(text):
-    text = text.lower()
-    text = re.sub('\s+', '', text)
+    text = text.strip()
     return text

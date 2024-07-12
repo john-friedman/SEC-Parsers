@@ -14,7 +14,7 @@ from time import time
 # 7-8 is weird check earlier to see if introduced wierd. seems fine. let's see if parsing issues remived
 #35
 start_dex = 0
-files = os.listdir(dir_10k)[0:]
+files = os.listdir(dir_10k)[0:10]
 errors = []
 for count,file in enumerate(files):
         try:
@@ -23,7 +23,12 @@ for count,file in enumerate(files):
                 html = f.read()
                 
             filing = Parser(html)
+            # recursive_parse(filing.html)
+            # relative_parsing(filing.html)
+            # cleanup_parsing(filing.html)
+            #filing.visualize()  
             filing.parse()
+
 
             print(filing.get_title_tree())
 
