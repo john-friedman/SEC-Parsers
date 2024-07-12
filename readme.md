@@ -1,5 +1,5 @@
 # SEC Parsers
-Parses non-standardized SEC 10-K & 10-Q filings into well structured detailed xml. Use cases include LLMs, NLP, and textual analysis. This is a WIP. Not every file will parse correctly.
+Parses non-standardized SEC 10-K filings into well structured detailed xml. Use cases include LLMs, NLP, and textual analysis. This is a WIP. Not every file will parse correctly. Support for 10Q filings temporarily removed.
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualization.png">
@@ -60,7 +60,6 @@ SEC filings are human readable, but messy html makes it hard for machines to det
 
 ### Features
 * Parse 10K
-* Parse 10Q (Not tested much yet)
 * Export to XML, CSV
 * XBRL metadata
 
@@ -75,7 +74,7 @@ SEC filings are human readable, but messy html makes it hard for machines to det
 * On average ~1s to parse file (range .1s-3s)
 
 ### Issues
-1. handle if PART I appears multiple times as header
+1. handle if PART I appears multiple times as header, e.g. logic here item 1 continued. Develop logic to handle this. Probably in cleanup?
 
 ### TODO
 1. improve construct xml tree. add signatures, and intro (better name needed) sections

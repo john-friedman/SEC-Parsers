@@ -1,5 +1,6 @@
 import re
 from sec_parsers.xml_helper import get_all_text
+from sec_parsers.cleaning import clean_string_for_style_detection
 
 #TODO happy with this file so far
 
@@ -37,9 +38,8 @@ def detect_item(string):
 def detect_style_from_string(string):
     def detect_emphasis_capitalization(string):
         """Seen in amazon's 2024 10k e.g. We Have Foreign Exchange Risk"""
-
         # TODO: FIX
-        if string.lower() in ['None','None.','Omitted.', 'Not Applicable.']:
+        if string.lower() in [item.lower() for item in ['None','None.','Omitted.', 'Not Applicable.']]:
             return False
         
         words = string.split()
@@ -60,7 +60,7 @@ def detect_style_from_string(string):
     
     def detect_part(string):
         """e.g. Part I"""
-        match = re.search(r"^Part\s+\w+",string, re.IGNORECASE)
+        match = re.search(r"^part\s+([1234]|iv|i{1,4})$",string.lower()) # just modified may break things WIP #re.search(r"^Part\s+\w+",string, re.IGNORECASE)
         if match:
             return True
         return False
@@ -99,7 +99,7 @@ def detect_style_from_string(string):
             return False
     
     # PREPROCESSING WIP
-    string = string.strip()
+    string = clean_string_for_style_detection(string)
     # ORDER MATTERS
     if detect_part(string):
         return 'part;'

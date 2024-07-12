@@ -7,8 +7,9 @@ import re
 
  # Used for conversion to xml #
 
-# this probably slows down code a lot. if runtime affected, look here. 
-def get_elements_between_elements(root, start_element, end_element):
+# Tried xpath. was too slow, look at elementpath, but also looked slow. I think if we want to improve, we have to use cython.
+# TODO: increase speed
+def get_elements_between_elements(root, start_element=None, end_element=None):
     """WIP"""
     elements = []
     in_between_bool = False
@@ -16,13 +17,16 @@ def get_elements_between_elements(root, start_element, end_element):
         if element == start_element:
             in_between_bool = True
         elif element == end_element:
-            in_between_bool = False
+            return elements
         elif in_between_bool:
             elements.append(element)
 
     return elements
 
-def get_text_between_elements(root, start_element, end_element):
+
+    
+
+def get_text_between_elements(root, start_element=None, end_element=None):
     """TODO: format text nicer"""
     elements = get_elements_between_elements(root, start_element, end_element)
     text = ""

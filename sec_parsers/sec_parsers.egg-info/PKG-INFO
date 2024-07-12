@@ -1,12 +1,12 @@
 Metadata-Version: 2.1
 Name: sec-parsers
-Version: 0.523
+Version: 0.524
 Summary: A package to parse SEC filings
 Author: John Friedman
 Description-Content-Type: text/markdown
 
 # SEC Parsers
-Parses non-standardized SEC 10-K & 10-Q filings into well structured detailed xml. Use cases include LLMs, NLP, and textual analysis. This is a WIP. Not every file will parse correctly.
+Parses non-standardized SEC 10-K filings into well structured detailed xml. Use cases include LLMs, NLP, and textual analysis. This is a WIP. Not every file will parse correctly. Support for 10Q filings temporarily removed.
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualization.png">
@@ -21,10 +21,10 @@ Parses non-standardized SEC 10-K & 10-Q filings into well structured detailed xm
 
 ### Quickstart
 ```
-from sec_parsers import Parser, download_sec_filing
+from sec_parsers import Filing, download_sec_filing
 
 html = download_sec_filing('https://www.sec.gov/Archives/edgar/data/1318605/000162828024002390/tsla-20231231.htm')
-filing = Parser(html)
+filing = Filing(html)
 filing.parse() # parses filing
 filing.visualize() # opens filing in webbrowser with highlighted section headers
 filing.find_nodes_by_title(title) # finds node by title, e.g. 'item 1a'
@@ -53,7 +53,7 @@ SEC filings are human readable, but messy html makes it hard for machines to det
 2. Calculates hierarchy of headers, and converts to a tree structure
 
 ### Roadmap:
-1. Parser that converts >95% of filings into nicely formatted xml trees. 
+1. Parser that converts >95% of filings into nicely formatted xml trees. Currently at 90%.
 2. Apply data science on xml to cluster headers, e.g. seasonality, seasonal variation etc, to make xml easier to work with.
 
 ### Possible future features
@@ -61,27 +61,32 @@ SEC filings are human readable, but messy html makes it hard for machines to det
 * more filings supported
 * better rag integration
 * converting html tables to nice xml tables
-* metadata, e.g. cik / data from xbrl in html
 * hosting cleaned xml files online
 * better color scheme (color scheme for headers, ignored_elements - e.g. page numbers, text)
 * better descriptions of functions
-* add xbrl information
+
+### Features
+* Parse 10K
+* Export to XML, CSV
+* XBRL metadata
 
 ### Feature request:
 * save_dta - save xml to dta. similar to csv function
 * better selection by titles. e.g. selecting by item1, will also return item 1a,... not sure how to set this up in a nice way
+* More XBRL stuff
 
 ### Statistics
 * 100% parsed html rate
 * 90% conversion to xml rate. This is better than it seems as there are a few companies like Honda owner trust which do not parse but have ~10 10ks per year. (e.g. trust 1, 2,...,)
-* between 0.2s-8s to parse a filing.
+* On average ~1s to parse file (range .1s-3s)
 
 ### Issues
-1. handle if PART I appears multiple times as header
+1. handle if PART I appears multiple times as header, e.g. logic here item 1 continued. Develop logic to handle this. Probably in cleanup?
 
 ### TODO
+1. improve construct xml tree. add signatures, and intro (better name needed) sections
+2. metadata parsing
 0. we fixed one table issue, now need to account for too much tables https://www.sec.gov/Archives/edgar/data/18255/000001825518000024/cato10k2017-jrs.htm
-1. add intro node and signatures node
 2. Code cleanup. Right now I'm tweaking code to increase parse rate, eventually need to incorporate lessons learned, and rewrite.
 
 ### Other people's SEC stuff
@@ -97,9 +102,6 @@ SEC filings are human readable, but messy html makes it hard for machines to det
 * [Victor Dahan](https://opencodecom.net/post/2021-08-18-sentiment-analysis-of-10-k-files/) - Sentiment Analysis of 10-K Files
 * [edgarWebR](https://mwaldstein.github.io/edgarWebR/) - edgarWebR provides an interface to access the SECâ€™s EDGAR system for company financial filings.
 * [NLP in the stock market](https://towardsdatascience.com/nlp-in-the-stock-market-8760d062eb92) - Leveraging sentiment analysis on 10-k fillings as an edge
-
-
-
 * Computer Vision using OpenCV
 * LLMs (I believe unstructured.io does something like this)
 * Transformers 
