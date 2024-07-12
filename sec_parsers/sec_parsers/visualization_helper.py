@@ -6,7 +6,7 @@ headers_colors_dict = {'part;': '#B8860B',
                        'bullet point;': '#FAFAD2', # LightGoldenRodYellow
                        'table;': '#FAFAD2', # LightGoldenRodYellow
                        'ignore;': '#f2f2f2', # even lighter gray
-                          'signature;': '#E0FFFF', # Light Cyan
+                          'signatures;': '#cac635',
                        }
 headers_colors_list = gradient_colors = [
     "#78CCAB", "#7BCDAD", "#7ECEB9", "#80CFBA", "#83D1BC",

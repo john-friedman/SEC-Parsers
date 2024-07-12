@@ -67,7 +67,7 @@ SEC filings are human readable, but messy html makes it hard for machines to det
 ### Statistics
 * 100% parsed html rate
 * 90% conversion to xml rate. This is better than it seems as there are a few companies like Honda owner trust which do not parse but have ~10 10ks per year. (e.g. trust 1, 2,...,)
-* between 0.2s-8s to parse a filing.
+* On average ~1s to parse file (range .1s-3s)
 
 ### Issues
 1. handle if PART I appears multiple times as header
@@ -90,9 +90,6 @@ SEC filings are human readable, but messy html makes it hard for machines to det
 * [Victor Dahan](https://opencodecom.net/post/2021-08-18-sentiment-analysis-of-10-k-files/) - Sentiment Analysis of 10-K Files
 * [edgarWebR](https://mwaldstein.github.io/edgarWebR/) - edgarWebR provides an interface to access the SEC’s EDGAR system for company financial filings.
 * [NLP in the stock market](https://towardsdatascience.com/nlp-in-the-stock-market-8760d062eb92) - Leveraging sentiment analysis on 10-k fillings as an edge
-
-
-
 * Computer Vision using OpenCV
 * LLMs (I believe unstructured.io does something like this)
 * Transformers 

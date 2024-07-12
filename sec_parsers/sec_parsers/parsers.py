@@ -146,7 +146,10 @@ def cleanup_parsing(html):
     # reads html and sets attributes
     parsed_elements = html.xpath('//*[@parsing_string]')
     for parsed_element in parsed_elements:
-        parsing_string = parsed_element.get('parsing_string')
+
+        parsing_string = parsed_element.get('parsing_string')   
+        parsing_string = parsing_string.replace('parent;','')
+
         parsing_type = parsing_string
         if 'part;' in parsing_string:
             parsing_type = 'part;'
@@ -158,18 +161,17 @@ def cleanup_parsing(html):
             parsing_type = None
         elif any([parsing_string == item for item in ['table']]):
             parsing_type = 'table;'
-        elif any([parsing_string == item for item in ['table of contents;','link;','image;','page number;']]):
+        # be careful with this, may need to add more conditions
+        elif any([item in parsing_string for item in ['table of contents;','link;','image;','page number;']]):
             parsing_type = 'ignore;'
         # elif any([item in parsing_string for item in ['font-style:italic;','em','i']]):
         #     text = get_text(parsed_element)
         #     if is_paragraph(text):
         #         parsing_type = None
-            
+
         if parsing_type is not None:
-            # remove parent
-            # WIP
-            parsing_type = parsing_type.replace('parent;','')
             parsed_element.attrib['parsing_type'] = parsing_type
+
 
     return html
         

@@ -15,7 +15,7 @@ from time import time
 #35
 total_time = 0
 start_dex = 0
-files = os.listdir(dir_10k)[start_dex:]
+files = os.listdir(dir_10k)[101:105]
 errors = []
 for count,file in enumerate(files):
         try:
@@ -24,21 +24,21 @@ for count,file in enumerate(files):
                 html = f.read()
                 
             filing = Parser(html)
-            # recursive_parse(filing.html)
-            # relative_parsing(filing.html)
-            # cleanup_parsing(filing.html)
-            # filing.visualize()  
-            filing.parse()
+            recursive_parse(filing.html)
+            relative_parsing(filing.html)
+            cleanup_parsing(filing.html)
+            filing.visualize()  
+            #filing.parse()
 
 
             #print(filing.get_title_tree())
 
             print(f'File {count+start_dex} took {time()-s} seconds')
             total_time += time()-s
+            print(f'Average parsing time: {total_time/(count+1)} seconds')
         except Exception as e:
             errors.append((file,e))
             print(f'Error in {file}: num_errors = {len(errors)}')
             print(e)
 
 print(len(errors) / len(files))
-print(f'Total time: {total_time} seconds')
