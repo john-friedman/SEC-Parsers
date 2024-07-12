@@ -325,15 +325,12 @@ class Parser:
 
     def _setup_html(self,html):
         # Find the start of the HTML content. This is necessary because the HTML content is not always at the beginning of the file.
-        html_start = html.find('<HTML>')
+        html_start = html.find('<HTML')
         if html_start == -1:
-            html_start = html.find('<html>')
+            html_start = html.find('<html')
 
-        if html_start == -1:
-            raise ValueError("No HTML tag found in the file")
-
-        # Extract only the HTML part
-        html = html[html_start:]
+            # Extract only the HTML part
+            html = html[html_start:]
         parser = etree.HTMLParser(encoding='utf-8',remove_comments=True)
         html = etree.fromstring(html, parser)
 

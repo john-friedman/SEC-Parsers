@@ -19,8 +19,6 @@ parser.save_xml('gencorp10k.xml')
 #2.
 with open('ROANOKE ELECTRIC STEEL CORPORATION.html', 'r', encoding='utf-8') as f:
     html = f.read()
-    html = html.encode('ascii')
-
 parser = Parser(html)
 parser.parse()
 parser.visualize()
@@ -30,10 +28,9 @@ parser.save_xml('roanoke.xml')
 #4.
 with open('GALAXY NEXT GENERATION, INC..html', 'r', encoding='utf-8') as f:
     html = f.read()
-    html = html.encode('ascii')
 
 parser = Parser(html)
 parser.parse()
 parser.visualize()
-#parser.save_csv('galaxy_next_generation.csv')
+parser.save_csv('galaxy_next_generation.csv')
 parser.save_xml('galaxy_next_generation.xml')

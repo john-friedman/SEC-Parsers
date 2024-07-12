@@ -27,6 +27,13 @@ def detect_signatures(string):
     
     return False
 
+def detect_item(string):
+    """e.g. Item 1A. Risk Factors"""
+    match = re.search(r"^Item\s+\d+[A-Z]{0,}",string, re.IGNORECASE)
+    if match:
+        return True
+    return False
+
 def detect_style_from_string(string):
     def detect_emphasis_capitalization(string):
         """Seen in amazon's 2024 10k e.g. We Have Foreign Exchange Risk"""
@@ -49,12 +56,7 @@ def detect_style_from_string(string):
                 return False
         return True
     
-    def detect_item(string):
-        """e.g. Item 1A. Risk Factors"""
-        match = re.search(r"^Item\s+\d+[A-Z]{0,}",string, re.IGNORECASE)
-        if match:
-            return True
-        return False
+
     
     def detect_part(string):
         """e.g. Part I"""
@@ -129,6 +131,12 @@ def detect_hidden_element(element):
     
 # add multiple so italic and bold
 def detect_style_from_element(element):
+    def detect_link(node):
+        """Detects if a node is a link."""
+        if node.tag == 'a':
+            return 'link;'
+        return ''
+
     def detect_bold_from_css(element):
         """Detects bold from css"""
         if element.get('style'):
@@ -178,8 +186,11 @@ def detect_style_from_element(element):
     style += detect_from_html(element)
     style += detect_underline_from_css(element)
     style += detect_italic_from_css(element)
+    style += detect_link(element)
     return style
-    
+
+def is_descendant_of_table(element):
+    return bool(element.xpath("./ancestor::table"))
 
 # needs work 
 def detect_table(table):
@@ -187,7 +198,10 @@ def detect_table(table):
     if table.tag != 'table':
         return False
     
-    tr_list = table.xpath('//tr')
+    # this doesn't work
+    #tr_list = table.xpath('//tr')
+
+    tr_list = table.findall('tr')
     if len(tr_list) > 3:
         return True
     text = get_all_text(table)
@@ -227,12 +241,6 @@ def detect_toc_link(node):
         text = get_all_text(node)
         if text.lower() in ['table of contents','toc']:
             return True
-    return False
-
-def detect_link(node):
-    """Detects if a node is a link."""
-    if node.tag == 'a':
-        return True
     return False
 
 def detect_image(node):

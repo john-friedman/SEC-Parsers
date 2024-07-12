@@ -62,6 +62,7 @@ SEC filings are human readable, but messy html makes it hard for machines to det
 
 ### Feature request:
 * save_dta - save xml to dta. similar to csv function
+* better selection by titles. e.g. selecting by item1, will also return item 1a,... not sure how to set this up in a nice way
 
 ### Statistics
 * 100% parsed html rate
@@ -69,7 +70,7 @@ SEC filings are human readable, but messy html makes it hard for machines to det
 * between 0.2s-8s to parse a filing.
 
 ### Issues
-1. It looks like the filings I downloaded using edgartools may be different than sec filings downloaded directly from sec archives. investigating...
+1. handle if PART I appears multiple times as header
 
 ### TODO
 0. we fixed one table issue, now need to account for too much tables https://www.sec.gov/Archives/edgar/data/18255/000001825518000024/cato10k2017-jrs.htm

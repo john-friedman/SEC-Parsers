@@ -1,5 +1,4 @@
 import re
-
 # Module to clean the text
 
 # TODO
@@ -11,6 +10,13 @@ def clean_title(text): #  adjust to format items and parts into standardized for
     # add detection for item / other sections
     text = text.strip()
     text = re.sub("[^\S \t\n\r\f\v]+",' ',text)
+
+    # remove line breaks
+    text = re.sub('\n', ' ', text)
+
+    # replace multiple spaces with single space
+    text = re.sub('\s+', ' ', text)
+
     return text
 
 # OLD

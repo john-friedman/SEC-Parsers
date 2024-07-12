@@ -34,7 +34,7 @@ headers_colors_list = [
     "#bdbdbd",  # Light Gray (more muted)
     "#bebebe",  # Light Gray (more muted)
     "#cecece",  # Very Light Gray (more muted)
-    "#ebeb eb",  # Even Lighter Gray (more muted)
+    "#ebebeb",  # Even Lighter Gray (more muted)
     "#cfcfcf",  # Very Light Gray (more muted)
     "#d7d7d7",  # Even Lighter Gray (more muted)
 
