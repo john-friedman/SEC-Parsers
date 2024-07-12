@@ -14,10 +14,10 @@ Parses non-standardized SEC 10-K & 10-Q filings into well structured detailed xm
 
 ### Quickstart
 ```
-from sec_parsers import Parser, download_sec_filing
+from sec_parsers import Filing, download_sec_filing
 
 html = download_sec_filing('https://www.sec.gov/Archives/edgar/data/1318605/000162828024002390/tsla-20231231.htm')
-filing = Parser(html)
+filing = Filing(html)
 filing.parse() # parses filing
 filing.visualize() # opens filing in webbrowser with highlighted section headers
 filing.find_nodes_by_title(title) # finds node by title, e.g. 'item 1a'
@@ -54,15 +54,20 @@ SEC filings are human readable, but messy html makes it hard for machines to det
 * more filings supported
 * better rag integration
 * converting html tables to nice xml tables
-* metadata, e.g. cik / data from xbrl in html
 * hosting cleaned xml files online
 * better color scheme (color scheme for headers, ignored_elements - e.g. page numbers, text)
 * better descriptions of functions
-* add xbrl information
+
+### Features
+* Parse 10K
+* Parse 10Q (Not tested much yet)
+* Export to XML, CSV
+* XBRL metadata
 
 ### Feature request:
 * save_dta - save xml to dta. similar to csv function
 * better selection by titles. e.g. selecting by item1, will also return item 1a,... not sure how to set this up in a nice way
+* More XBRL stuff
 
 ### Statistics
 * 100% parsed html rate
