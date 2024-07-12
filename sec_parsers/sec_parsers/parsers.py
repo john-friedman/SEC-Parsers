@@ -371,8 +371,25 @@ class Filing:
         if html_start == -1:
             html_start = html.find('<html')
 
-            # Extract only the HTML part
+        if html_start != -1:
             html = html[html_start:]
+        
+        # check for text tag or body tag
+        text_start = html.find('<TEXT')
+        if html_start == -1:
+            text_start = html.find('<text')
+            html = html[text_start:]
+
+        if text_start != -1:
+            html = html[text_start:]
+        
+        body_start = html.find('<BODY')
+        if body_start == -1:
+            body_start = html.find('<body')
+            html = html[body_start:]
+
+        if body_start != -1:
+            html = html[body_start:]
 
         parser = etree.HTMLParser(encoding='utf-8',remove_comments=True)
         html = etree.fromstring(html, parser)
