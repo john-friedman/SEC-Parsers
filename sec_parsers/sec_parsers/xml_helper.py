@@ -7,7 +7,9 @@ import re
 
  # Used for conversion to xml #
 
-# this probably slows down code a lot. if runtime affected, look here. 
+# this probably slows down code a lot. if runtime affected, look here. # added minor optimization tweak performance improved from 30s to 10s
+# I think there is a way to speed this up using xpath and following, e.g. a la /*/p[count(preceding-sibling::divider)=1] using following
+# but it requires some attribute to be set. I'm thinking of altering the html to add an element_id attribute to each element
 def get_elements_between_elements(root, start_element, end_element):
     """WIP"""
     elements = []
@@ -16,11 +18,14 @@ def get_elements_between_elements(root, start_element, end_element):
         if element == start_element:
             in_between_bool = True
         elif element == end_element:
-            in_between_bool = False
+            return elements
         elif in_between_bool:
             elements.append(element)
 
     return elements
+
+
+    
 
 def get_text_between_elements(root, start_element, end_element):
     """TODO: format text nicer"""

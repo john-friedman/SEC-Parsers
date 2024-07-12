@@ -23,3 +23,4 @@ def clean_string_for_style_detection(text):
 
     text = text.strip()
     return text
+

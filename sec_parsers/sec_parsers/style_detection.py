@@ -60,7 +60,7 @@ def detect_style_from_string(string):
     
     def detect_part(string):
         """e.g. Part I"""
-        match = re.search(r"^Part\s+([1234]|[iv]|i{1,4})$",string, re.IGNORECASE) # just modified may break things WIP #re.search(r"^Part\s+\w+",string, re.IGNORECASE)
+        match = re.search(r"^part\s+([1234]|iv|i{1,4})$",string.lower()) # just modified may break things WIP #re.search(r"^Part\s+\w+",string, re.IGNORECASE)
         if match:
             return True
         return False
