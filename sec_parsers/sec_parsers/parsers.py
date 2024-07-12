@@ -185,6 +185,7 @@ def parse_10k(html):
     # standardizing certain elements such as part, item, signatures
     cleanup_parsing(html)
 
+
     return html
 
 # 10q and 10k are the same for now
@@ -220,6 +221,10 @@ def visualize(root):
 # add intro section, which is all text before part i dumped, and add signatures section
 def construct_xml_tree(parsed_html):
     root = etree.Element('root')
+
+    # add document node
+    document_node = etree.Element('document', title = 'Document')
+    root.append(document_node)
     
     # find all parsing elements
     elements = parsed_html.xpath('//*[@parsing_type]')
@@ -295,11 +300,11 @@ def construct_xml_tree(parsed_html):
         # find the last element in the node_parsing_strings which is in rulers
         index = find_last_index(node_parsing_types, rulers)
         if element_parsing_type == 'part;':
-            root.append(node)
+            document_node.append(node)
             node_list = [node]
         elif len(node_list) == 0:
             # add node to root 
-            root.append(node)
+            document_node.append(node)
             # add node to node_list
             node_list = [node]
         elif index == -1:
@@ -320,27 +325,45 @@ def construct_xml_tree(parsed_html):
     # add intro section (insert before first part)
     introduction_node = etree.Element('introduction', title = 'Introduction')
     introduction_node.text = get_text_between_elements(parsed_html,start_element=None,end_element=first_part_element)
-    root.insert(0,introduction_node)
+    document_node.insert(0,introduction_node)
 
     # add signatures section
     signatures_node = etree.Element('signatures', title = 'Signatures', parsing_type = 'signatures;')
     signatures_node.text = get_text_between_elements(parsed_html,start_element=signatures,end_element=None)
-    root.append(signatures_node)
+    document_node.append(signatures_node)
 
 
     return root
 
-def detect_filing_type(html):
-    """TODO"""
-    return "10K"
+# WIP: convert special checked boxes into True / False, etc
+def parse_metadata(html):
+    """WIP"""
+    metadata_dict = {}
+    # select all elements with attribute name and first part of attribute is 'dei'
+    elements = html.xpath('//*[@name]')
+    elements = [element for element in elements if element.attrib['name'].lower().startswith('dei')]
+    for element in elements:
+        name = element.attrib['name']
+        name = name.replace('dei:','')
+        metadata_dict[name] = get_all_text(element)
+    return metadata_dict
+
+def detect_filing_type(metadata):
+    """WIP"""
+    if 'DocumentType' in metadata.keys():
+        return metadata['DocumentType']
+    else:
+        print('DocumentType not found in metadata. Filing type set to 10K. If this is not correct, please set the filing type manually.')
+        return '10-K'
 
 # Think about inheritance
 class Filing:
     def __init__(self, html):
         self._setup_html(html)
+        self._parse_metadata()
         self.hierarchy = None # need to implement
         self.xml = None
-        self.filing_type = None
+        self._detect_filing_type()
 
     def _setup_html(self,html):
         # Find the start of the HTML content. This is necessary because the HTML content is not always at the beginning of the file.
@@ -350,14 +373,17 @@ class Filing:
 
             # Extract only the HTML part
             html = html[html_start:]
+
         parser = etree.HTMLParser(encoding='utf-8',remove_comments=True)
         html = etree.fromstring(html, parser)
 
         self.html = html
 
-    # make util
+    def _parse_metadata(self):
+        self.metadata = parse_metadata(self.html)
+
     def _detect_filing_type(self):
-        filing_type = detect_filing_type(self.html)
+        filing_type = detect_filing_type(self.metadata)
         self.filing_type = filing_type
 
     def _parse_10k(self):
@@ -373,9 +399,9 @@ class Filing:
         if self.filing_type is None:
             self._detect_filing_type()
 
-        if self.filing_type == '10K':
+        if self.filing_type == '10-K':
             self._parse_10k()
-        elif self.filing_type == '10Q':
+        elif self.filing_type == '10-Q':
             self._parse_10q()
         else:
             raise ValueError('Filing type not detected')
@@ -387,6 +413,7 @@ class Filing:
 
     def _to_xml(self):
         self.xml = construct_xml_tree(self.html)
+
 
     # functions to interact with xml
 

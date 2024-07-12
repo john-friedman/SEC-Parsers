@@ -15,7 +15,7 @@ from time import time
 #35
 total_time = 0
 start_dex = 0
-files = os.listdir(dir_10k)[0:50]
+files = os.listdir(dir_10k)[0:]
 errors = []
 for count,file in enumerate(files):
         try:
