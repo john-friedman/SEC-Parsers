@@ -317,6 +317,17 @@ def construct_xml_tree(parsed_html):
 
         count += 1
 
+    # add intro section (insert before first part)
+    introduction_node = etree.Element('introduction', title = 'Introduction')
+    introduction_node.text = get_text_between_elements(parsed_html,start_element=None,end_element=first_part_element)
+    root.insert(0,introduction_node)
+
+    # add signatures section
+    signatures_node = etree.Element('signatures', title = 'Signatures', parsing_type = 'signatures;')
+    signatures_node.text = get_text_between_elements(parsed_html,start_element=signatures,end_element=None)
+    root.append(signatures_node)
+
+
     return root
 
 def detect_filing_type(html):
@@ -324,7 +335,7 @@ def detect_filing_type(html):
     return "10K"
 
 # Think about inheritance
-class Parser:
+class Filing:
     def __init__(self, html):
         self._setup_html(html)
         self.hierarchy = None # need to implement

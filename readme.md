@@ -46,7 +46,7 @@ SEC filings are human readable, but messy html makes it hard for machines to det
 2. Calculates hierarchy of headers, and converts to a tree structure
 
 ### Roadmap:
-1. Parser that converts >95% of filings into nicely formatted xml trees. 
+1. Parser that converts >95% of filings into nicely formatted xml trees. Currently at 90%.
 2. Apply data science on xml to cluster headers, e.g. seasonality, seasonal variation etc, to make xml easier to work with.
 
 ### Possible future features
@@ -73,8 +73,9 @@ SEC filings are human readable, but messy html makes it hard for machines to det
 1. handle if PART I appears multiple times as header
 
 ### TODO
+1. improve construct xml tree. add signatures, and intro (better name needed) sections
+2. metadata parsing
 0. we fixed one table issue, now need to account for too much tables https://www.sec.gov/Archives/edgar/data/18255/000001825518000024/cato10k2017-jrs.htm
-1. add intro node and signatures node
 2. Code cleanup. Right now I'm tweaking code to increase parse rate, eventually need to incorporate lessons learned, and rewrite.
 
 ### Other people's SEC stuff

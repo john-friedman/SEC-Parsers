@@ -1,4 +1,4 @@
-from sec_parsers import Parser
+from sec_parsers import Filing
 from sec_parsers.parsers import recursive_parse, relative_parsing, cleanup_parsing
 from global_vars import *
 
@@ -15,7 +15,7 @@ from time import time
 #35
 total_time = 0
 start_dex = 0
-files = os.listdir(dir_10k)[101:105]
+files = os.listdir(dir_10k)[0:50]
 errors = []
 for count,file in enumerate(files):
         try:
@@ -23,15 +23,15 @@ for count,file in enumerate(files):
             with open(dir_10k + file, 'r', encoding='utf-8') as f:
                 html = f.read()
                 
-            filing = Parser(html)
-            recursive_parse(filing.html)
-            relative_parsing(filing.html)
-            cleanup_parsing(filing.html)
-            filing.visualize()  
-            #filing.parse()
+            filing = Filing(html)
+            # recursive_parse(filing.html)
+            # relative_parsing(filing.html)
+            # cleanup_parsing(filing.html)
+            # filing.visualize()  
+            filing.parse()
 
 
-            #print(filing.get_title_tree())
+            print(filing.get_title_tree())
 
             print(f'File {count+start_dex} took {time()-s} seconds')
             total_time += time()-s

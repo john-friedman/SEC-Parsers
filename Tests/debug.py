@@ -1,4 +1,4 @@
-from sec_parsers import Parser
+from sec_parsers import Filing
 from sec_parsers.parsers import recursive_parse, relative_parsing, cleanup_parsing
 from sec_parsers.xml_helper import get_elements_between_elements, get_text_between_elements
 from global_vars import *
@@ -12,7 +12,8 @@ for count,file in enumerate(files):
     with open(dir_10k + file, 'r', encoding='utf-8') as f:
         html = f.read()
 
-    filing = Parser(html)
+    filing = Filing(html)
+    filing.visualize()
 
 html = filing.html
 
