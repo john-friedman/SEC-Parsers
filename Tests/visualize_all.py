@@ -33,12 +33,13 @@ for count,file in enumerate(files):
 
             #print(filing.get_title_tree())
 
-            print(f'File {count+start_dex} took {time()-s} seconds')
+            #print(f'File {count+start_dex} took {time()-s} seconds')
             total_time += time()-s
-            print(f'Average parsing time: {total_time/(count+1)} seconds')
+            #print(f'Average parsing time: {total_time/(count+1)} seconds')
         except Exception as e:
             errors.append((file,e))
             print(f'Error in {file}: num_errors = {len(errors)}')
+            print(f"count: {count}")
             print(e)
 
 print(len(errors) / len(files))
