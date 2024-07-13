@@ -14,3 +14,4 @@ with open(dir_10k + file, 'r', encoding='utf-8') as f:
 
 filing = Filing(html)
 filing.parse()
+print(filing.get_title_tree())
