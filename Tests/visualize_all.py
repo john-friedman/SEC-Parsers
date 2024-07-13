@@ -14,9 +14,10 @@ from time import time
 # to focus on fixing tree issues (detect long headers, etc) as they are likely to be wrong
 
 
+
 total_time = 0
 start_dex = 0
-files = os.listdir(dir_10k)[51:]
+files = os.listdir(dir_10k)[0:1]
 errors = []
 for count,file in enumerate(files):
         try:

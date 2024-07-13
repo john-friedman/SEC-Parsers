@@ -7,15 +7,10 @@ import os
 import random
 from time import time
 
-file = 'ATLANTIC_AMERICAN_CORP-8177-0001140361-24-016971.html'
+file = '1606_CORP.-1877461-0001477932-24-002182.html'
 with open(dir_10k + file, 'r', encoding='utf-8') as f:
     html = f.read()
 
 
 filing = Filing(html)
-recursive_parse(filing.html)
-relative_parsing(filing.html)
-cleanup_parsing(filing.html)
-filing._to_xml()
-
-filing.visualize()
+filing.parse()
