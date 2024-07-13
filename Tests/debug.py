@@ -4,11 +4,16 @@ from sec_parsers.xml_helper import get_elements_between_elements, get_text_betwe
 from global_vars import *
 from lxml import etree
 import os
-
+import random
 from time import time
 
-html = download_sec_filing('https://www.sec.gov/Archives/edgar/data/1318605/000095017023033872/tsla-20230630.htm')
+file = 'WORLD_ACCEPTANCE_CORP-108385-0000108385-24-000024.html'
+with open(dir_10k + file, 'r', encoding='utf-8') as f:
+    html = f.read()
+
 
 filing = Filing(html)
+
+filing.parse()
 
 filing.visualize()

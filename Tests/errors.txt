@@ -1,234 +1,100 @@
-../Data/10K/4Front_Ventures_Corp.-1783875-0001628280-24-016208.html: Duplicate links detected in TOC. This is not supported yet.
-../Data/10K/Acutus_Medical,_Inc.-1522860-0001628280-24-014036.html: Item description not found
-../Data/10K/Agrify_Corp-1800637-0001213900-24-033048.html: Duplicate links detected in TOC. This is not supported yet.
-../Data/10K/Aimfinity_Investment_Corp._I-1903464-0001213900-24-032604.html: string indices must be integers, not 'str'
-../Data/10K/Airship_AI_Holdings,_Inc.-1842566-0001654954-24-004059.html: Item description not found
-../Data/10K/AI_Transportation_Acquisition_Corp-1966734-0001493152-24-013272.html: Table of contents parsing probably went wrong
-../Data/10K/Alaunos_Therapeutics,_Inc.-1107421-0000950170-24-038868.html: Item description not found
-../Data/10K/ALIXO-YOLLOO_CORP.-1977837-0001977837-24-000012.html: Table of contents without links not supported yet
-../Data/10K/American_Cannabis_Company,_Inc.-945617-0001903596-24-000282.html: Item description not found
-../Data/10K/Ameritek_Ventures,_Inc.-1530185-0001376474-24-000150.html: Table of contents parsing probably went wrong
-../Data/10K/Ameri_Metro,_Inc._(formerly_Yellowwood)-1534155-0001213900-24-035114.html: Duplicate links detected in TOC. This is not supported yet.
-../Data/10K/Ameri_Metro,_Inc._(formerly_Yellowwood)-1534155-0001213900-24-035125.html: Duplicate links detected in TOC. This is not supported yet.
-../Data/10K/Apple_iSports_Group,_Inc.-1134982-0001477932-24-002287.html: Item description not found
-../Data/10K/Appsoft_Technologies,_Inc.-1651992-0001477932-24-001977.html: Item description not found
-../Data/10K/AppTech_Payments_Corp.-1070050-0001683168-24-002017.html: 'NoneType' object has no attribute 'next'
-../Data/10K/ARVANA_INC-1113313-0001607062-24-000118.html: Table of contents without links not supported yet
-../Data/10K/ASCENT_INDUSTRIES_CO.-95953-0000095953-24-000018.html: Item description not found
-../Data/10K/Ault_Alliance,_Inc.-896493-0001214659-24-006963.html: Item description not found
-../Data/10K/Avenir_Wellness_Solutions,_Inc.-1643301-0001477932-24-003092.html: Item description not found
-../Data/10K/BALTIC_INTERNATIONAL_USA_INC-918545-0000918545-24-000002.html: Table of contents not detected
-../Data/10K/BIOADAPTIVES,_INC.-1575142-0001640334-24-000602.html: Item description not found
-../Data/10K/BioCorRx_Inc.-1443863-0001477932-24-001705.html: Item description not found
-../Data/10K/BIOETHICS_LTD-894560-0001096906-24-000792.html: Table of contents parsing probably went wrong
-../Data/10K/BLACKBERRY_Ltd-1070235-0001070235-24-000057.html: Item description not found
-../Data/10K/BLACKSTAR_ENTERPRISE_GROUP,_INC.-1483646-0001065949-24-000044.html: Item description not found
-../Data/10K/BM_Technologies,_Inc.-1725872-0001725872-24-000001.html: Item description not found
-../Data/10K/BRAINSTORM_CELL_THERAPEUTICS_INC.-1137883-0001410578-24-000385.html: list index out of range
-../Data/10K/Bukit_Jalil_Global_Acquisition_1_Ltd.-1956055-0001929980-24-000086.html: Item description not found
-../Data/10K/C3.ai,_Inc.-1577526-0001628280-24-028786.html: Duplicate links detected in TOC. This is not supported yet.
-../Data/10K/CANCER_CAPITAL_CORP-1130889-0001554795-24-000087.html: Table of contents without links not supported yet
-../Data/10K/Canna-Global_Acquisition_Corp-1867443-0001493152-24-014877.html: Item description not found
-../Data/10K/Cannabis_Sativa,_Inc.-1360442-0001096906-24-001118.html: Item description not found
-../Data/10K/Cano_Health,_Inc.-1800682-0001628280-24-014114.html: 'NoneType' object has no attribute 'next'
-../Data/10K/Can_B_Corp-1509957-0001493152-24-014686.html: list index out of range
-../Data/10K/CarMax_Auto_Owner_Trust_2020-3-1814294-0001814294-24-000028.html: Table of contents parsing probably went wrong
-../Data/10K/CarMax_Auto_Owner_Trust_2020-4-1825300-0001825300-24-000028.html: Table of contents parsing probably went wrong
-../Data/10K/CarMax_Auto_Owner_Trust_2021-1-1836214-0001836214-24-000028.html: Table of contents parsing probably went wrong
-../Data/10K/CarMax_Auto_Owner_Trust_2021-2-1851375-0001851375-24-000028.html: Table of contents parsing probably went wrong
-../Data/10K/CarMax_Auto_Owner_Trust_2021-3-1867436-0001867436-24-000030.html: Table of contents parsing probably went wrong
-../Data/10K/CarMax_Auto_Owner_Trust_2021-4-1879747-0001879747-24-000029.html: Table of contents parsing probably went wrong
-../Data/10K/CarMax_Auto_Owner_Trust_2022-1-1899236-0001899236-24-000028.html: Table of contents parsing probably went wrong
-../Data/10K/CarMax_Auto_Owner_Trust_2022-2-1921745-0001921745-24-000028.html: Table of contents parsing probably went wrong
-../Data/10K/CarMax_Auto_Owner_Trust_2022-3-1934479-0001934479-24-000028.html: Table of contents parsing probably went wrong
-../Data/10K/CarMax_Auto_Owner_Trust_2022-4-1946521-0001946521-24-000028.html: Table of contents parsing probably went wrong
-../Data/10K/CarMax_Auto_Owner_Trust_2023-1-1959426-0001959426-24-000028.html: Table of contents parsing probably went wrong
-../Data/10K/CarMax_Auto_Owner_Trust_2023-2-1969339-0001969339-24-000029.html: Table of contents parsing probably went wrong
-../Data/10K/CarMax_Auto_Owner_Trust_2023-3-1980857-0001980857-24-000028.html: Table of contents parsing probably went wrong
-../Data/10K/CarMax_Auto_Owner_Trust_2023-4-1995430-0001995430-24-000028.html: Table of contents parsing probably went wrong
-../Data/10K/CarMax_Auto_Owner_Trust_2024-1-2003263-0002003263-24-000024.html: Table of contents parsing probably went wrong
-../Data/10K/Carmell_Corp-1842939-0000950170-24-038992.html: Table of contents without links not supported yet
-../Data/10K/Cartica_Acquisition_Corp-1848437-0001410578-24-000374.html: string indices must be integers, not 'str'
-../Data/10K/Charlie's_Holdings,_Inc.-1134765-0001437749-24-012061.html: Table of contents without links not supported yet
-../Data/10K/CHASE_PACKAGING_CORP-1025771-0001477932-24-002131.html: Item description not found
-../Data/10K/CIRTRAN_CORP-813716-0001493152-24-015391.html: list index out of range
-../Data/10K/Citigroup_Commercial_Mortgage_Trust_2012-GC8-1556811-0000950170-24-038794.html: Table of contents parsing probably went wrong
-../Data/10K/CITIGROUP_COMMERCIAL_MORTGAGE_TRUST_2016-C3-1687605-0000950170-24-038790.html: Table of contents parsing probably went wrong
-../Data/10K/Clean_Vision_Corp-1391426-0001903596-24-000247.html: 'NoneType' object has no attribute 'next'
-../Data/10K/ClearSign_Technologies_Corp-1434524-0001558370-24-004441.html: Item description not found
-../Data/10K/Clever_Leaves_Holdings_Inc.-1819615-0001819615-24-000031.html: Item description not found
-../Data/10K/CMG_HOLDINGS_GROUP,_INC.-1346655-0001017386-24-000088.html: Table of contents without links not supported yet
-../Data/10K/COLUMBUS_MCKINNON_CORP-1005229-0001005229-24-000166.html: Item description not found
-../Data/10K/Conifer_Holdings,_Inc.-1502292-0000950170-24-039426.html: Item description not found
-../Data/10K/CONNS_INC-1223389-0001223389-24-000028.html: Duplicate links detected in TOC. This is not supported yet.
-../Data/10K/Crown_Equity_Holdings,_Inc.-1103833-0001477932-24-002238.html: Item description not found
-../Data/10K/Crucial_Innovations,_Corp.-1766016-0001712543-24-000017.html: Table of contents without links not supported yet
-../Data/10K/Cuentas_Inc.-1424657-0001213900-24-032958.html: 'NoneType' object has no attribute 'next'
-../Data/10K/CYANOTECH_CORP-768408-0001437749-24-021266.html: list index out of range
-../Data/10K/C_&_C_TOURS,_INC.-1430319-0001554795-24-000085.html: Table of contents without links not supported yet
-../Data/10K/Data_Call_Technologies-1321828-0001493152-24-017421.html: list index out of range
-../Data/10K/Denali_Capital_Acquisition_Corp.-1913577-0001213900-24-028809.html: string indices must be integers, not 'str'
-../Data/10K/DIGITAL_HEALTH_ACQUISITION_CORP.-1864531-0001104659-24-046607.html: Item description not found
-../Data/10K/DXC_Technology_Co-1688568-0001688568-24-000032.html: list index out of range
-../Data/10K/DYNARESOURCE_INC-1111741-0000950170-24-044527.html: 'NoneType' object has no attribute 'next'
-../Data/10K/Eiger_BioPharmaceuticals,_Inc.-1305253-0001628280-24-015297.html: Item description not found
-../Data/10K/Electromedical_Technologies,_Inc-1715819-0001410578-24-000581.html: Item description not found
-../Data/10K/EVOME_MEDICAL_TECHNOLOGIES_INC.-1617765-0001062993-24-008449.html: Item description not found
-../Data/10K/ExchangeRight_Income_Fund-1771514-0000950170-24-043546.html: Item description not found
-../Data/10K/EzFill_Holdings_Inc-1817004-0001493152-24-012378.html: string indices must be integers, not 'str'
-../Data/10K/Fathom_Digital_Manufacturing_Corp-1836176-0000950170-24-044851.html: Duplicate links detected in TOC. This is not supported yet.
-../Data/10K/FLEXIBLE_SOLUTIONS_INTERNATIONAL_INC-1069394-0001493152-24-012435.html: Table of contents parsing probably went wrong
-../Data/10K/FLEXPOINT_SENSOR_SYSTEMS_INC-925660-0001548123-24-000046.html: string indices must be integers, not 'str'
-../Data/10K/FLEX_LTD.-866374-0000866374-24-000021.html: Duplicate links detected in TOC. This is not supported yet.
-../Data/10K/Freedom_Holding_Corp.-924805-0000924805-24-000041.html: Duplicate links detected in TOC. This is not supported yet.
-../Data/10K/Free_Flow,_Inc.-1543652-0001096906-24-000682.html: Item description not found
-../Data/10K/FRIEDMAN_INDUSTRIES_INC-39092-0001437749-24-019948.html: Table of contents parsing probably went wrong
-../Data/10K/GENERAL_MILLS_INC-40704-0001193125-24-168943.html: Table of contents not detected
-../Data/10K/GENERATION_INCOME_PROPERTIES,_INC.-1651721-0000950170-24-042640.html: Duplicate links detected in TOC. This is not supported yet.
-../Data/10K/GIVEMEPOWER_CORP-1064722-0001493152-24-015016.html: list index out of range
-../Data/10K/Global_Warming_Solutions,_Inc.-1430300-0001477932-24-003836.html: Item description not found
-../Data/10K/Gofba,_Inc.-1735092-0001477932-24-002174.html: Item description not found
-../Data/10K/GOLDENWELL_BIOTECH,_INC.-1800373-0001477932-24-002028.html: Item description not found
-../Data/10K/Goodness_Growth_Holdings,_Inc.-1771706-0001558370-24-004519.html: Duplicate links detected in TOC. This is not supported yet.
-../Data/10K/GOOD_GAMING,_INC.-1454742-0001493152-24-012092.html: Table of contents parsing probably went wrong
-../Data/10K/Go_Go_Buyers,_Inc.-1842563-0001842563-24-000015.html: Table of contents without links not supported yet
-../Data/10K/GUESS_INC-912463-0000912463-24-000029.html: list index out of range
-../Data/10K/GUOCHUN_INTERNATIONAL_INC.-1765048-0001765048-24-000010.html: Table of contents without links not supported yet
-../Data/10K/HAEMONETICS_CORP-313143-0000313143-24-000020.html: string indices must be integers, not 'str'
-../Data/10K/Honda_Auto_Receivables_2021-1_Owner_Trust-1840882-0000950170-24-076194.html: Table of contents parsing probably went wrong
-../Data/10K/Honda_Auto_Receivables_2021-2_Owner_Trust-1857290-0000950170-24-076193.html: Table of contents parsing probably went wrong
-../Data/10K/Honda_Auto_Receivables_2021-3_Owner_Trust-1874803-0000950170-24-076190.html: Table of contents parsing probably went wrong
-../Data/10K/Honda_Auto_Receivables_2021-4_Owner_Trust-1889115-0000950170-24-076195.html: Table of contents parsing probably went wrong
-../Data/10K/Honda_Auto_Receivables_2022-1_Owner_Trust-1902266-0000950170-24-076184.html: Table of contents parsing probably went wrong
-../Data/10K/Honda_Auto_Receivables_2022-2_Owner_Trust-1937619-0000950170-24-076185.html: Table of contents parsing probably went wrong
-../Data/10K/Honda_Auto_Receivables_2023-1_Owner_Trust-1962487-0000950170-24-076197.html: Table of contents parsing probably went wrong
-../Data/10K/Honda_Auto_Receivables_2023-2_Owner_Trust-1976562-0000950170-24-076192.html: Table of contents parsing probably went wrong
-../Data/10K/Honda_Auto_Receivables_2023-3_Owner_Trust-1985449-0000950170-24-076198.html: Table of contents parsing probably went wrong
-../Data/10K/Honda_Auto_Receivables_2023-4_Owner_Trust-1996308-0000950170-24-076189.html: Table of contents parsing probably went wrong
-../Data/10K/Honda_Auto_Receivables_2024-1_Owner_Trust-2008953-0000950170-24-076196.html: Table of contents parsing probably went wrong
-../Data/10K/HOULIHAN_LOKEY,_INC.-1302215-0001302215-24-000028.html: list index out of range
-../Data/10K/HST_Global,_Inc.-797564-0001674796-24-000003.html: Table of contents not detected
-../Data/10K/iCoreConnect_Inc.-1906133-0001477932-24-002244.html: list index out of range
-../Data/10K/Ideal_Power_Inc.-1507957-0001437749-24-010360.html: Item description not found
-../Data/10K/INCEPTION_MINING_INC.-1416090-0001096906-24-001010.html: Item description not found
-../Data/10K/InfuSystem_Holdings,_Inc-1337013-0001628280-24-015511.html: Item description not found
-../Data/10K/INNSUITES_HOSPITALITY_TRUST-82473-0001493152-24-013409.html: Table of contents parsing probably went wrong
-../Data/10K/iQSTEL_Inc-1527702-0001663577-24-000092.html: Duplicate links detected in TOC. This is not supported yet.
-../Data/10K/Iveda_Solutions,_Inc.-1397183-0001493152-24-012417.html: Item description not found
-../Data/10K/Jacksam_Corp-860543-0001477932-24-002155.html: Item description not found
-../Data/10K/Jaguar_Health,_Inc.-1585608-0001558370-24-004439.html: list index out of range
-../Data/10K/James_Maritime_Holdings_Inc.-889353-0001096906-24-001296.html: Item description not found
-../Data/10K/Jubilant_Flame_International,_Ltd-1517389-0001477932-24-002544.html: Item description not found
-../Data/10K/J_M_SMUCKER_Co-91419-0000091419-24-000054.html: Duplicate links detected in TOC. This is not supported yet.
-../Data/10K/Kartoon_Studios,_Inc.-1355848-0001355848-24-000052.html: 'NoneType' object has no attribute 'next'
-../Data/10K/Knightscope,_Inc.-1600983-0001410578-24-000417.html: 'NoneType' object has no attribute 'next'
-../Data/10K/Kuber_Resources_Corp-1081834-0001214659-24-006961.html: Table of contents without links not supported yet
-../Data/10K/KULR_Technology_Group,_Inc.-1662684-0001410578-24-000454.html: Duplicate links detected in TOC. This is not supported yet.
-../Data/10K/LAKELAND_INDUSTRIES_INC-798081-0001654954-24-004465.html: Item description not found
-../Data/10K/Laser_Photonics_Corp-1807887-0001654954-24-004797.html: string indices must be integers, not 'str'
-../Data/10K/Learn_CW_Investment_Corp-1847577-0001140361-24-017987.html: string indices must be integers, not 'str'
-../Data/10K/LEGEND_SPICES,_INC.-1970129-0001640334-24-000686.html: Item description not found
-../Data/10K/LION_COPPER_&_GOLD_CORP.-1339688-0001062993-24-007468.html: Item description not found
-../Data/10K/Lithium_Corp-1415332-0001640334-24-000558.html: string indices must be integers, not 'str'
-../Data/10K/LiveRamp_Holdings,_Inc.-733269-0000733269-24-000018.html: 'NoneType' object has no attribute 'next'
-../Data/10K/LUDWIG_ENTERPRISES,_INC.-1960262-0001903596-24-000245.html: string indices must be integers, not 'str'
-../Data/10K/MANHATTAN_SCIENTIFICS_INC-1099132-0001477932-24-001766.html: Item description not found
-../Data/10K/MARKY_CORP.-1973047-0001973047-24-000012.html: Table of contents without links not supported yet
-../Data/10K/MCKESSON_CORP-927653-0000927653-24-000035.html: list index out of range
-../Data/10K/MCX_Technologies_Corp-1535079-0001437749-24-012072.html: Table of contents without links not supported yet
-../Data/10K/Medtronic_plc-1613103-0001613103-24-000072.html: list index out of range
-../Data/10K/micromobility.com_Inc.-1788841-0001079973-24-000555.html: Item description not found
-../Data/10K/MILLS_MUSIC_TRUST-66496-0001193125-24-082941.html: Item description not found
-../Data/10K/Mill_City_Ventures_III,_Ltd-1425355-0001654954-24-004122.html: Item description not found
-../Data/10K/MONRO,_INC.-876427-0001562762-24-000155.html: 'NoneType' object has no attribute 'next'
-../Data/10K/Morgan_Stanley_Bank_of_America_Merrill_Lynch_Trust_2012-C6-1558013-0001888524-24-005352.html: Table of contents without links not supported yet
-../Data/10K/MOUNTAIN_TOP_PROPERTIES,_INC.-1658521-0001017386-24-000056.html: Table of contents without links not supported yet
-../Data/10K/MULTI_SOFT_II,_INC-766404-0000766404-24-000004.html: Item description not found
-../Data/10K/Mycotopia_Therapies,_Inc.-1763329-0001096906-24-000907.html: Table of contents parsing probably went wrong
-../Data/10K/Namliong_SkyCosmos,_Inc.-1342219-0001683168-24-002763.html: list index out of range
-../Data/10K/NanoVibronix,_Inc.-1326706-0001493152-24-013966.html: Item description not found
-../Data/10K/NATHANS_FAMOUS,_INC.-69733-0001437749-24-020013.html: Table of contents without links not supported yet
-../Data/10K/NATURAL_GAS_SERVICES_GROUP_INC-1084991-0001084991-24-000017.html: list index out of range
-../Data/10K/NetApp,_Inc.-1002047-0000950170-24-071327.html: Item description not found
-../Data/10K/NewtekOne,_Inc.-1587987-0001587987-24-000054.html: list index out of range
-../Data/10K/New_Asia_Holdings,_Inc.-1485029-0001096906-24-001168.html: string indices must be integers, not 'str'
-../Data/10K/New_Concept_Energy,_Inc.-105744-0001214659-24-005800.html: Item description not found
-../Data/10K/NextPlat_Corp-1058307-0001437749-24-011806.html: Item description not found
-../Data/10K/NIKA_PHARMACEUTICALS,_INC-1145604-0001826466-24-000041.html: Duplicate links detected in TOC. This is not supported yet.
-../Data/10K/NOBLE_ROMANS_INC-709005-0001654954-24-006563.html: list index out of range
-../Data/10K/NOVA_STAR_INNOVATIONS_INC-1160945-0001554795-24-000099.html: Table of contents without links not supported yet
-../Data/10K/Ondas_Holdings_Inc.-1646188-0001213900-24-028244.html: Table of contents parsing probably went wrong
-../Data/10K/Orion_Bliss_Corp.-1854183-0001683168-24-003963.html: string indices must be integers, not 'str'
-../Data/10K/PAID_INC-1017655-0001437749-24-010365.html: Table of contents without links not supported yet
-../Data/10K/PARK_AEROSPACE_CORP-76267-0001437749-24-019951.html: Table of contents without links not supported yet
-../Data/10K/Perma-Pipe_International_Holdings,_Inc.-914122-0001437749-24-013321.html: list index out of range
-../Data/10K/PetroGas_Co-1609258-0001640334-24-001017.html: list index out of range
-../Data/10K/Pioneer_Green_Farms,_Inc.-1902700-0001185185-24-000363.html: list index out of range
-../Data/10K/Presidio_Property_Trust,_Inc.-1080657-0001437749-24-012113.html: 'NoneType' object has no attribute 'next'
-../Data/10K/PRESTIGE_CAPITAL_CORP-790179-0001554795-24-000096.html: Table of contents without links not supported yet
-../Data/10K/PRIMEENERGY_RESOURCES_CORP-56868-0001437749-24-011958.html: Table of contents without links not supported yet
-../Data/10K/Qrons_Inc.-1689084-0001477932-24-002100.html: list index out of range
-../Data/10K/REGENEREX_PHARMA,_INC.-1357878-0001472375-24-000045.html: string indices must be integers, not 'str'
-../Data/10K/RELIABILITY_INC-34285-0001493152-24-012490.html: 'NoneType' object has no attribute 'next'
-../Data/10K/Reservoir_Media,_Inc.-1824403-0001410578-24-000975.html: string indices must be integers, not 'str'
-../Data/10K/Saker_Aviation_Services,_Inc.-1128281-0001437749-24-010272.html: Table of contents without links not supported yet
-../Data/10K/SCANDIUM_INTERNATIONAL_MINING_CORP.-1408146-0001437749-24-010242.html: Table of contents without links not supported yet
-../Data/10K/SCIENTIFIC_ENERGY,_INC-1276531-0001376474-24-000170.html: list index out of range
-../Data/10K/Sculptor_Diversified_Real_Estate_Income_Trust,_Inc.-1914496-0001914496-24-000042.html: Duplicate links detected in TOC. This is not supported yet.
-../Data/10K/SeaStar_Medical_Holding_Corp-1831868-0000950170-24-044855.html: Duplicate links detected in TOC. This is not supported yet.
-../Data/10K/Securetech_Innovations,_Inc.-1703157-0001017386-24-000116.html: list index out of range
-../Data/10K/SEGUIN_NATURAL_HAIR_PRODUCTS_INC.-1642363-0001214659-24-007437.html: Table of contents without links not supported yet
-../Data/10K/Sequoia_Mortgage_Trust_2012-6-1561167-0000950170-24-039207.html: list index out of range
-../Data/10K/Sequoia_Mortgage_Trust_2013-2-1564968-0000950170-24-039206.html: list index out of range
-../Data/10K/Sequoia_Mortgage_Trust_2013-3-1567958-0000950170-24-039226.html: list index out of range
-../Data/10K/Sequoia_Mortgage_Trust_2013-4-1570440-0000950170-24-039213.html: list index out of range
-../Data/10K/Sequoia_Mortgage_Trust_2013-6-1574593-0000950170-24-039210.html: list index out of range
-../Data/10K/Sequoia_Mortgage_Trust_2013-7-1576709-0000950170-24-039215.html: string indices must be integers, not 'str'
-../Data/10K/Sequoia_Mortgage_Trust_2013-8-1577310-0000950170-24-039217.html: list index out of range
-../Data/10K/SKINOVATION_PHARMACEUTICAL_INC-1118072-0001554795-24-000101.html: Table of contents without links not supported yet
-../Data/10K/SKINVISIBLE,_INC.-1085277-0001663577-24-000119.html: Duplicate links detected in TOC. This is not supported yet.
-../Data/10K/SMITH_&_WESSON_BRANDS,_INC.-1092796-0000950170-24-075584.html: Item description not found
-../Data/10K/SMITH_MIDLAND_CORP-924719-0001654954-24-006855.html: Table of contents parsing probably went wrong
-../Data/10K/SOBR_Safe,_Inc.-1425627-0001477932-24-001629.html: Item description not found
-../Data/10K/SONO_TEK_CORP-806172-0001171520-24-000208.html: Item description not found
-../Data/10K/Southport_Acquisition_Corp-1865200-0001410578-24-000408.html: string indices must be integers, not 'str'
-../Data/10K/SPAR_Group,_Inc.-1004989-0001437749-24-010386.html: 'NoneType' object has no attribute 'next'
-../Data/10K/SPINDLETOP_OIL_&_GAS_CO-867038-0001017386-24-000085.html: Table of contents parsing probably went wrong
-../Data/10K/SPIRITS_TIME_INTERNATIONAL,_INC.-1434737-0001096906-24-000859.html: Table of contents without links not supported yet
-../Data/10K/SPRUCE_POWER_HOLDING_CORP-1772720-0001628280-24-015334.html: 'NoneType' object has no attribute 'next'
-../Data/10K/STARGUIDE_GROUP,_INC.-1803096-0001640334-24-000804.html: Item description not found
-../Data/10K/STERIS_plc-1757898-0001757898-24-000008.html: Item description not found
-../Data/10K/STREAMLINE_HEALTH_SOLUTIONS_INC.-1008586-0001493152-24-017297.html: Table of contents parsing probably went wrong
-../Data/10K/SUIC_Worldwide_Holdings_Ltd.-1394108-0001554795-24-000105.html: Table of contents without links not supported yet
-../Data/10K/Super_League_Enterprise,_Inc.-1621672-0001437749-24-011939.html: list index out of range
-../Data/10K/SusGlobal_Energy_Corp.-1652539-0001062993-24-010319.html: list index out of range
-../Data/10K/Sustainable_Projects_Group_Inc.-1500305-0001493152-24-013185.html: Table of contents parsing probably went wrong
-../Data/10K/Synaptogenix,_Inc.-1571934-0001410578-24-000410.html: list index out of range
-../Data/10K/SYPRIS_SOLUTIONS_INC-864240-0001437749-24-010216.html: Table of contents without links not supported yet
-../Data/10K/TOMI_Environmental_Solutions,_Inc.-314227-0001654954-24-004045.html: list index out of range
-../Data/10K/TPT_GLOBAL_TECH,_INC.-1661039-0001654954-24-005983.html: string indices must be integers, not 'str'
-../Data/10K/Tristar_Acquisition_I_Corp.-1852736-0001929980-24-000160.html: 'NoneType' object has no attribute 'next'
-../Data/10K/TRIUMPH_GROUP_INC-1021162-0000950170-24-067390.html: list index out of range
-../Data/10K/TRULEUM,_INC.-855787-0001437749-24-011131.html: Table of contents without links not supported yet
-../Data/10K/Two_Hands_Corp-1494413-0001262463-24-000041.html: Table of contents without links not supported yet
-../Data/10K/U.S._Lighting_Group,_Inc.-1536394-0001213900-24-033333.html: string indices must be integers, not 'str'
-../Data/10K/Unicoin_Inc.-1740742-0001829126-24-002120.html: list index out of range
-../Data/10K/United_Health_Products,_Inc.-1096938-0001477932-24-001671.html: Table of contents parsing probably went wrong
-../Data/10K/UpHealth,_Inc.-1770141-0001770141-24-000046.html: Duplicate links detected in TOC. This is not supported yet.
-../Data/10K/UTG_INC-832480-0001140361-24-016714.html: Table of contents without links not supported yet
-../Data/10K/Vericity,_Inc.-1575434-0000950170-24-039287.html: Duplicate links detected in TOC. This is not supported yet.
-../Data/10K/VICTORY_CLEAN_ENERGY,_INC.-700764-0001079973-24-000746.html: Item description not found
-../Data/10K/VINEBROOK_HOMES_TRUST,_INC.-1755755-0001755755-24-000022.html: Duplicate links detected in TOC. This is not supported yet.
-../Data/10K/VISION_SENSING_ACQUISITION_CORP.-1883983-0001493152-24-017302.html: Item description not found
-../Data/10K/Vistagen_Therapeutics,_Inc.-1411685-0001411685-24-000022.html: list index out of range
-../Data/10K/Vivakor,_Inc.-1450704-0001829126-24-002582.html: Item description not found
-../Data/10K/VOXX_International_Corp-807707-0000950170-24-059558.html: Duplicate links detected in TOC. This is not supported yet.
-../Data/10K/Vuzix_Corp-1463972-0001558370-24-005117.html: string indices must be integers, not 'str'
-../Data/10K/WinVest_Acquisition_Corp.-1854463-0001493152-24-014685.html: Item description not found
-../Data/10K/WORLD_ACCEPTANCE_CORP-108385-0000108385-24-000024.html: list index out of range
-../Data/10K/XCel_Brands,_Inc.-1083220-0001558370-24-005326.html: Item description not found
-../Data/10K/XTI_Aerospace,_Inc.-1529113-0001628280-24-016449.html: Item description not found
-../Data/10K/YIELD10_BIOSCIENCE,_INC.-1121702-0001121702-24-000021.html: Duplicate links detected in TOC. This is not supported yet.
-../Data/10K/YOUNEEQAI_TECHNICAL_SERVICES,_INC.-1976923-0001065949-24-000042.html: string indices must be integers, not 'str'
-../Data/10K/ZEVRA_THERAPEUTICS,_INC.-1434647-0001437749-24-010430.html: list index out of range
-../Data/10K/ZHEN_DING_RESOURCES_INC.-1594204-0001214659-24-006714.html: string indices must be integers, not 'str'
+('Alaunos_Therapeutics,_Inc.-1107421-0000950170-24-038868.html', IndexError('list index out of range'))
+('American_Cannabis_Company,_Inc.-945617-0001903596-24-000282.html', IndexError('list index out of range'))
+('American_Strategic_Investment_Co.-1595527-0001595527-24-000006.html', IndexError('list index out of range'))
+('Ameritek_Ventures,_Inc.-1530185-0001376474-24-000150.html', IndexError('list index out of range'))
+('Anterix_Inc.-1304492-0001304492-24-000077.html', IndexError('list index out of range'))
+('Apollo_Infrastructure_Co_LLC-1971381-0001193125-24-083600.html', IndexError('list index out of range'))
+('Avenir_Wellness_Solutions,_Inc.-1643301-0001477932-24-003092.html', IndexError('list index out of range'))
+('BALTIC_INTERNATIONAL_USA_INC-918545-0000918545-24-000002.html', AttributeError("'NoneType' object has no attribute 'xpath'"))
+('Bark,_Inc.-1819574-0001819574-24-000025.html', IndexError('list index out of range'))
+('BIOADAPTIVES,_INC.-1575142-0001640334-24-000602.html', IndexError('list index out of range'))
+('BioCorRx_Inc.-1443863-0001477932-24-001705.html', IndexError('list index out of range'))
+('BioNexus_Gene_Lab_Corp-1737523-0001477932-24-002151.html', IndexError('list index out of range'))
+('bleuacacia_ltd-1843370-0001140361-24-019913.html', IndexError('list index out of range'))
+('Blockchain_Coinvestors_Acquisition_Corp._I-1873441-0001213900-24-033049.html', IndexError('list index out of range'))
+('BRAINSTORM_CELL_THERAPEUTICS_INC.-1137883-0001410578-24-000385.html', IndexError('list index out of range'))
+('brooqLy,_Inc.-1854526-0001477932-24-001718.html', IndexError('list index out of range'))
+('CalEthos,_Inc.-1174891-0001493152-24-014061.html', IndexError('list index out of range'))
+('Cano_Health,_Inc.-1800682-0001628280-24-014114.html', IndexError('list index out of range'))
+('Cenntro_Inc.-1707919-0001140361-24-016853.html', IndexError('list index out of range'))
+('Clean_Energy_Technologies,_Inc.-1329606-0001493152-24-014897.html', IndexError('list index out of range'))
+('CMG_HOLDINGS_GROUP,_INC.-1346655-0001017386-24-000088.html', IndexError('list index out of range'))
+('CONSTELLATION_BRANDS,_INC.-16918-0000016918-24-000054.html', IndexError('list index out of range'))
+('CPI_AEROSTRUCTURES_INC-889348-0001999371-24-004537.html', IndexError('list index out of range'))
+('Crucial_Innovations,_Corp.-1766016-0001712543-24-000017.html', IndexError('list index out of range'))
+('CSLM_ACQUISITION_CORP.-1875493-0001193125-24-083559.html', IndexError('list index out of range'))
+('CXApp_Inc.-1820875-0001829126-24-003713.html', IndexError('list index out of range'))
+('CYANOTECH_CORP-768408-0001437749-24-021266.html', IndexError('list index out of range'))
+('Dynatrace,_Inc.-1773383-0001773383-24-000076.html', IndexError('list index out of range'))
+('Electromedical_Technologies,_Inc-1715819-0001410578-24-000581.html', IndexError('list index out of range'))
+('EOS_INC.-1651958-0001575872-24-000359.html', IndexError('list index out of range'))
+('EPLUS_INC-1022408-0001140361-24-027200.html', IndexError('list index out of range'))
+('EQUUS_TOTAL_RETURN,_INC.-878932-0001712543-24-000005.html', IndexError('list index out of range'))
+("Falcon's_Beyond_Global,_Inc.-1937987-0001213900-24-036854.html", IndexError('list index out of range'))
+('Fathom_Digital_Manufacturing_Corp-1836176-0000950170-24-044851.html', IndexError('list index out of range'))
+('Fintech_Scion_Ltd-1623590-0001753926-24-000688.html', IndexError('list index out of range'))
+('Focus_Impact_Acquisition_Corp.-1854480-0001140361-24-018430.html', IndexError('list index out of range'))
+('GameSquare_Holdings,_Inc.-1714562-0001493152-24-014809.html', IndexError('list index out of range'))
+('General_Enterprise_Ventures,_Inc.-894556-0001640334-24-000667.html', IndexError('list index out of range'))
+('GENERAL_MILLS_INC-40704-0001193125-24-168943.html', IndexError('list index out of range'))
+('GENERATION_INCOME_PROPERTIES,_INC.-1651721-0000950170-24-042640.html', IndexError('list index out of range'))
+('HAEMONETICS_CORP-313143-0000313143-24-000020.html', IndexError('list index out of range'))
+('HealthLynked_Corp-1680139-0001213900-24-028696.html', IndexError('list index out of range'))
+('Ideal_Power_Inc.-1507957-0001437749-24-010360.html', IndexError('list index out of range'))
+('JONES_SODA_CO-1083522-0001437749-24-010422.html', IndexError('list index out of range'))
+('Jubilant_Flame_International,_Ltd-1517389-0001477932-24-002544.html', IndexError('list index out of range'))
+('Laser_Photonics_Corp-1807887-0001654954-24-004797.html', IndexError('list index out of range'))
+('LENDWAY,_INC.-875355-0001654954-24-004013.html', IndexError('list index out of range'))
+('Lightstone_Value_Plus_REIT_I,_Inc.-1296884-0001829126-24-002092.html', IndexError('list index out of range'))
+('LOGIQ,_INC.-1335112-0001575872-24-000488.html', IndexError('list index out of range'))
+('Lovesac_Co-1701758-0001628280-24-015804.html', IndexError('list index out of range'))
+('Mediaco_Holding_Inc.-1784254-0001784254-24-000003.html', IndexError('list index out of range'))
+('Microvast_Holdings,_Inc.-1760689-0001760689-24-000007.html', IndexError('list index out of range'))
+('Mitesco,_Inc.-802257-0001185185-24-000401.html', IndexError('list index out of range'))
+('MODINE_MANUFACTURING_CO-67347-0001140361-24-027133.html', IndexError('list index out of range'))
+('Morgan_Stanley_Bank_of_America_Merrill_Lynch_Trust_2012-C6-1558013-0001888524-24-005352.html', IndexError('list index out of range'))
+('NewtekOne,_Inc.-1587987-0001587987-24-000054.html', IndexError('list index out of range'))
+('NEXGEL,_INC.-1468929-0001493152-24-014127.html', IndexError('list index out of range'))
+('Oak_Valley_Bancorp-1431567-0001437749-24-010372.html', IndexError('list index out of range'))
+('ODYSSEY_MARINE_EXPLORATION_INC-798528-0001193125-24-141624.html', IndexError('list index out of range'))
+('OMEROS_CORP-1285819-0001437749-24-010416.html', IndexError('list index out of range'))
+('Omnitek_Engineering_Corp-1404804-0001096906-24-000839.html', IndexError('list index out of range'))
+('Ondas_Holdings_Inc.-1646188-0001213900-24-028244.html', IndexError('list index out of range'))
+('ORION_ENERGY_SYSTEMS,_INC.-1409375-0000950170-24-072435.html', IndexError('list index out of range'))
+('Pearl_Holdings_Acquisition_Corp-1856161-0001829126-24-002578.html', IndexError('list index out of range'))
+('PHOENIX_MOTOR_INC.-1879848-0001410578-24-000471.html', IndexError('list index out of range'))
+('Pineapple_Energy_Inc.-22701-0000022701-24-000002.html', IndexError('list index out of range'))
+('POWERDYNE_INTERNATIONAL,_INC.-1435617-0001493152-24-018248.html', IndexError('list index out of range'))
+('Presidio_Property_Trust,_Inc.-1080657-0001437749-24-012113.html', IndexError('list index out of range'))
+('Prestige_Consumer_Healthcare_Inc.-1295947-0001295947-24-000017.html', IndexError('list index out of range'))
+('PYXUS_INTERNATIONAL,_INC.-939930-0000939930-24-000081.html', IndexError('list index out of range'))
+('REGIONAL_HEALTH_PROPERTIES,_INC-1004724-0000950170-24-039414.html', IndexError('list index out of range'))
+('ReShape_Lifesciences_Inc.-1427570-0001558370-24-004559.html', IndexError('list index out of range'))
+('Rocky_Mountain_Chocolate_Factory,_Inc.-1616262-0000950170-24-072997.html', IndexError('list index out of range'))
+('SAN_JUAN_BASIN_ROYALTY_TRUST-319655-0001193125-24-083035.html', IndexError('list index out of range'))
+('Sculptor_Diversified_Real_Estate_Income_Trust,_Inc.-1914496-0001914496-24-000042.html', IndexError('list index out of range'))
+('SDCL_EDGE_Acquisition_Corp-1846975-0001829126-24-002546.html', IndexError('list index out of range'))
+('SMC_Entertainment,_Inc.-1497230-0001654954-24-004626.html', IndexError('list index out of range'))
+('Snail,_Inc.-1886894-0001493152-24-012392.html', IndexError('list index out of range'))
+('SOUNDTHINKING,_INC.-1351636-0000950170-24-039479.html', IndexError('list index out of range'))
+('South_East_Asia_Development,_Corp.-1673431-0001683168-24-003931.html', IndexError('list index out of range'))
+('SPINDLETOP_OIL_&_GAS_CO-867038-0001017386-24-000085.html', IndexError('list index out of range'))
+('SPIRITS_TIME_INTERNATIONAL,_INC.-1434737-0001096906-24-000859.html', IndexError('list index out of range'))
+('Star_Mountain_Lower_Middle-Market_Capital_Corp-1786835-0001140361-24-016720.html', IndexError('list index out of range'))
+('Summit_Healthcare_REIT,_Inc-1310383-0001410578-24-000474.html', IndexError('list index out of range'))
+('Synaptogenix,_Inc.-1571934-0001410578-24-000410.html', IndexError('list index out of range'))
+('T2_Biosystems,_Inc.-1492674-0000950170-24-039310.html', IndexError('list index out of range'))
+('TCW_Direct_Lending_VII_LLC-1715933-0000950170-24-039058.html', IndexError('list index out of range'))
+('TenX_Keane_Acquisition-1851484-0001493152-24-014850.html', IndexError('list index out of range'))
+('THERAPEUTIC_SOLUTIONS_INTERNATIONAL,_INC.-1419051-0001493152-24-014975.html', IndexError('list index out of range'))
+('Thermon_Group_Holdings,_Inc.-1489096-0001489096-24-000099.html', IndexError('list index out of range'))
+('Titan_Machinery_Inc.-1409171-0001409171-24-000028.html', IndexError('list index out of range'))
+('TMT_Acquisition_Corp.-1879851-0001493152-24-014373.html', IndexError('list index out of range'))
+('T_Stamp_Inc-1718939-0001718939-24-000043.html', IndexError('list index out of range'))
+('Under_Armour,_Inc.-1336917-0001336917-24-000073.html', IndexError('list index out of range'))
+('Unicoin_Inc.-1740742-0001829126-24-002120.html', IndexError('list index out of range'))
+('Vistagen_Therapeutics,_Inc.-1411685-0001411685-24-000022.html', IndexError('list index out of range'))
+('VOXX_International_Corp-807707-0000950170-24-059558.html', IndexError('list index out of range'))
+('Welsbach_Technology_Metals_Acquisition_Corp.-1866226-0001213900-24-033414.html', IndexError('list index out of range'))
+('WORLD_ACCEPTANCE_CORP-108385-0000108385-24-000024.html', IndexError('list index out of range'))
+('XCel_Brands,_Inc.-1083220-0001558370-24-005326.html', IndexError('list index out of range'))

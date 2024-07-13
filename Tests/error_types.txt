@@ -1,7 +1,0 @@
-('Duplicate links detected in TOC. This is not supported yet.',): 29
-("'NoneType' object has no attribute 'group'",): 107 # fixed?
-("string indices must be integers, not 'str'",): 27
-('Table of contents parsing probably went wrong',): 43
-('Table of contents without links not supported yet',): 31
-("'NoneType' object has no attribute 'next'",): 28
-('Table of contents not detected',): 3

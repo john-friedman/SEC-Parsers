@@ -31,7 +31,7 @@ for count,file in enumerate(files):
             filing.parse()
 
 
-            print(filing.get_title_tree())
+            #print(filing.get_title_tree())
 
             print(f'File {count+start_dex} took {time()-s} seconds')
             total_time += time()-s
@@ -42,3 +42,7 @@ for count,file in enumerate(files):
             print(e)
 
 print(len(errors) / len(files))
+# save errors to text file
+with open('errors.txt', 'w') as f:
+    for error in errors:
+        f.write(str(error) + '\n')
