@@ -1,5 +1,7 @@
 # SEC Parsers
-Parses non-standardized SEC 10-K filings into well structured detailed xml. Use cases include LLMs, NLP, and textual analysis. This is a WIP. Not every file will parse correctly. Support for 10Q filings temporarily removed.
+Parses non-standardized SEC 10-K filings into well structured detailed xml. Use cases include LLMs, NLP, and textual analysis. This is a WIP. Not every file will parse correctly.
+
+Current supported file types: 10-K, 10-Q
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualization.png">
@@ -48,6 +50,8 @@ SEC filings are human readable, but messy html makes it hard for machines to det
 ### Roadmap:
 1. Parser that converts >95% of filings into nicely formatted xml trees. Currently at 90%.
 2. Apply data science on xml to cluster headers, e.g. seasonality, seasonal variation etc, to make xml easier to work with.
+3. LLMs on section text to create node metadata (e.g. is anything said in this section, or 2000 chars to say we are not required to fill out this section)
+4. Backwards compatability for text files. (extends historical reach back into early 1900s)
 
 ### Possible future features
 * better hierarchy calculation
@@ -57,6 +61,7 @@ SEC filings are human readable, but messy html makes it hard for machines to det
 * hosting cleaned xml files online
 * better color scheme (color scheme for headers, ignored_elements - e.g. page numbers, text)
 * better descriptions of functions
+* faster - not a priority, but kinda fun to program. Code cleanup + removing redundancies may help a lot.
 
 ### Features
 * Parse 10K
@@ -70,15 +75,14 @@ SEC filings are human readable, but messy html makes it hard for machines to det
 
 ### Statistics
 * 100% parsed html rate
-* 90% conversion to xml rate. This is better than it seems as there are a few companies like Honda owner trust which do not parse but have ~10 10ks per year. (e.g. trust 1, 2,...,)
-* On average ~1s to parse file (range .1s-3s)
+* 99.3% conversion to xml rate. 
+* On average ~1s to parse file (range .1s-3s).
 
 ### Issues
 1. handle if PART I appears multiple times as header, e.g. logic here item 1 continued. Develop logic to handle this. Probably in cleanup?
 
 ### TODO
-1. improve construct xml tree. add signatures, and intro (better name needed) sections
-2. metadata parsing
+1. Currently I've only focused on parts parsing. Signature node has been added, but tree is likely to be crazy. Focusing on reducing parts parsing tree crazyness first
 0. we fixed one table issue, now need to account for too much tables https://www.sec.gov/Archives/edgar/data/18255/000001825518000024/cato10k2017-jrs.htm
 2. Code cleanup. Right now I'm tweaking code to increase parse rate, eventually need to incorporate lessons learned, and rewrite.
 
@@ -98,3 +102,8 @@ SEC filings are human readable, but messy html makes it hard for machines to det
 * Computer Vision using OpenCV
 * LLMs (I believe unstructured.io does something like this)
 * Transformers 
+
+### Other people's papers related to SEC stuff
+* [Sentiment Analysis on 10-K Financial Reports using Machine Learning Approaches](https://ieeexplore.ieee.org/document/9612552)
+
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fhttps%2F%2Fgithub.com%2Fjohn-friedman%2FSEC-Parsers&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)

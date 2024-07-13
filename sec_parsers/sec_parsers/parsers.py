@@ -8,7 +8,7 @@ detect_hidden_element, is_descendant_of_table
 from sec_parsers.xml_helper import get_text, set_background_color, remove_background_color, open_tree,get_text_between_elements,get_elements_between_elements
 from sec_parsers.visualization_helper import headers_colors_dict, headers_colors_list
 from sec_parsers.hierarchy import get_hierarchy, get_preceding_elements, find_last_index
-from sec_parsers.cleaning import clean_title
+from sec_parsers.cleaning import clean_title, part_pattern
 #TODO add better attributes, and a bunch of other stuff
 
 # dictionary parsing_type = ignore is e.g. images that we currently ignore, text is added to previous node
@@ -59,8 +59,6 @@ def recursive_parse(element):
     return 
 
 # WIP
-from collections import deque
-
 def relative_parsing(html):
     """Looks at parsed html from recursive parsing and uses relative position to improve parsing."""
     parsed_elements = deque(html.xpath('//*[@parsing_string]'))
@@ -119,9 +117,21 @@ def relative_parsing(html):
                     flag = False
                     if not elements_between:
                         flag = True
-                    # elif len(elements_between) == 1: # wip
-                    #     if elements_between[0].tag in ['div','span']:
-                    #         flag = True
+                    # detect text style on parent
+                    else: # WIP
+                        parent = parsed_element.getparent()
+                        text = get_all_text(parent)
+                        string_style = detect_style_from_string(text)
+                        if any([string_style == item for item in ['part;','item;','signatures;']]):
+                            parent.attrib['parsing_string'] = string_style + 'parent;'
+                            # delete parsing string from children
+                            descendants_with_parsing_string = parent.xpath('.//*[@parsing_string]')
+                            for descendant in descendants_with_parsing_string:
+                                descendant.attrib.pop('parsing_string')
+                                processed_elements.add(descendant)
+                            
+                            parsed_elements.appendleft(parent)
+  
 
                     if flag: #  WIP struggles with some cases where whitespace between two elements. figure out how to fix w/o breaking other stuff
                         parent = parsed_element.getparent()
@@ -230,17 +240,12 @@ def construct_xml_tree(parsed_html):
     elements = parsed_html.xpath('//*[@parsing_type]')
 
     # find the first part parsing
-    # WIP will be changed when introductory section parsing is added
+    # WIP
     parts_elements = parsed_html.xpath("//*[@parsing_type='part;']")
-    first_part_element = [element for element in parts_elements if re.match(r'^part\s+(i|1)$',get_all_text(element).strip(),re.IGNORECASE)][0]
-    # find signature
-    signatures = [element for element in elements if 'signatures;' in element.attrib['parsing_type']][0]
+    first_part_element = [element for element in parts_elements if part_pattern.match(get_all_text(element).strip().lower())][0]
 
-    # subset elements between first part and signature
-    elements = elements[elements.index(first_part_element):elements.index(signatures)]
-
-    # add the signatures to the end of the elements. we are not processing the signature right now, just adding it to the end as an anchor
-    elements.append(signatures)
+    # subset elements after first part element
+    elements = elements[elements.index(first_part_element):]
 
     element_parsing_types = [element.attrib['parsing_type'] for element in elements]
 
@@ -255,9 +260,12 @@ def construct_xml_tree(parsed_html):
     # start parsing
     node_list = []
     count = 0
-    while count < len(elements)-1:
+    while count < len(elements):
         element = elements[count]
-        next_element = elements[count+1]
+        if count == len(elements) - 1:
+            next_element = None
+        else:
+            next_element = elements[count+1]
 
         # WIP
         # check if element is a text, if so, add to text of previous node
@@ -302,6 +310,9 @@ def construct_xml_tree(parsed_html):
         if element_parsing_type == 'part;':
             document_node.append(node)
             node_list = [node]
+        elif element_parsing_type == 'signatures;':
+            document_node.append(node)
+            node_list = [node]
         elif len(node_list) == 0:
             # add node to root 
             document_node.append(node)
@@ -328,9 +339,9 @@ def construct_xml_tree(parsed_html):
     document_node.insert(0,introduction_node)
 
     # add signatures section
-    signatures_node = etree.Element('signatures', title = 'Signatures', parsing_type = 'signatures;')
-    signatures_node.text = get_text_between_elements(parsed_html,start_element=signatures,end_element=None)
-    document_node.append(signatures_node)
+    # signatures_node = etree.Element('signatures', title = 'Signatures', parsing_type = 'signatures;')
+    # signatures_node.text = get_text_between_elements(parsed_html,start_element=signatures,end_element=None)
+    # document_node.append(signatures_node)
 
 
     return root
@@ -367,26 +378,9 @@ class Filing:
 
     def _setup_html(self,html):
         # Find the start of the HTML content. This is necessary because the HTML content is not always at the beginning of the file.
-        html_start = html.find('<HTML')
-        if html_start == -1:
-            html_start = html.find('<html')
-
-        if html_start != -1:
-            html = html[html_start:]
-        
-        # check for text tag or body tag
-        text_start = html.find('<TEXT')
-        if html_start == -1:
-            text_start = html.find('<text')
-            html = html[text_start:]
-
-        if text_start != -1:
-            html = html[text_start:]
-        
         body_start = html.find('<BODY')
         if body_start == -1:
             body_start = html.find('<body')
-            html = html[body_start:]
 
         if body_start != -1:
             html = html[body_start:]

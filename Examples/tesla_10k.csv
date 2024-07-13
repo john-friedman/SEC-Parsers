@@ -1,6 +1,8 @@
 path,text
 /Document,"
+PART I
 
+ITEM 1. BUSINESS
 
 We design, develop, manufacture, sell and lease high-performance fully electric vehicles and energy generation and storage systems, and offer services related to our products. We generally sell our products directly to customers, and continue to grow our customer-facing infrastructure through a global network of vehicle showrooms and service centers, Mobile Service, body shops, Supercharger stations and Destination Chargers to accelerate the widespread adoption of our products. We emphasize performance, attractive styling and the safety of our users and workforce in the design and manufacture of our products and are continuing to develop full self-driving technology for improved safety. We also strive to lower the cost of ownership for our customers through continuous efforts to reduce manufacturing costs and by offering financial and other services tailored to our products.
 Our mission is to accelerate the world’s transition to sustainable energy. We believe that this mission, along with our engineering expertise, vertically integrated business model and focus on user experience differentiate us from other companies.
@@ -170,6 +172,7 @@ www.tesla.com
 ir.tesla.com
 as soon as reasonably practicable after we electronically file or furnish such information with the SEC. The information posted on our website is not incorporated by reference into this Annual Report on Form 10-K.
 
+ITEM 1A. RISK FACTORS
 
 
 
@@ -296,8 +299,10 @@ Certain banking institutions have made extensions of credit to Elon Musk, our Ch
 
 Our certificate of incorporation and bylaws afford certain rights and powers to our board of directors that may facilitate the delay or prevention of an acquisition that it deems undesirable. We are also subject to Section 203 of the Delaware General Corporation Law and other provisions of Delaware law that limit the ability of stockholders in certain situations to effect certain business combinations. In addition, the terms of our convertible senior notes may require us to repurchase such notes in the event of a fundamental change, including a takeover of our company. Any of the foregoing provisions and terms that has the effect of delaying or deterring a change in control could limit the opportunity for our stockholders to receive a premium for their shares of our common stock, and could also affect the price that some investors are willing to pay for our common stock.
 
+ITEM 1B. UNRESOLVED STAFF COMMENTS
 None.
 
+ITEM 1C. CYBERSECURITY
 
 We recognize the importance of assessing, identifying, and managing material risks associated with cybersecurity threats, as such term is defined in Item 106(a) of Regulation S-K. These risks include, among other things: operational risks, intellectual property theft, fraud, extortion, harm to employees or customers and violation of data privacy or security laws.
 Identifying and assessing cybersecurity risk is integrated into our overall risk management systems and processes. Cybersecurity risks related to our business, technical operations, privacy and compliance issues are identified and addressed through a multi-faceted approach including third party assessments, internal IT Audit, IT security, governance, risk and compliance reviews. To defend, detect and respond to cybersecurity incidents, we, among other things: conduct proactive privacy and cybersecurity reviews of systems and applications, audit applicable data policies, perform penetration testing using external third-party tools and techniques to test security controls, operate a bug bounty program to encourage proactive vulnerability reporting, conduct employee training, monitor emerging laws and regulations related to data protection and information security (including our consumer products) and implement appropriate changes.
@@ -310,6 +315,7 @@ We describe whether and how risks from identified cybersecurity threats, includi
 
 Cybersecurity is an important part of our risk management processes and an area of focus for our Board and management. Our Audit Committee is responsible for the oversight of risks from cybersecurity threats. Members of the Audit Committee receive updates on a quarterly basis from senior management, including leaders from our Information Security, Product Security, Compliance and Legal teams regarding matters of cybersecurity. This includes existing and new cybersecurity risks, status on how management is addressing and/or mitigating those risks, cybersecurity and data privacy incidents (if any) and status on key information security initiatives. Our Board members also engage in ad hoc conversations with management on cybersecurity-related news events and discuss any updates to our cybersecurity risk management and strategy programs.
 
+ITEM 2. PROPERTIES
 We are headquartered in Austin, Texas. Our principal facilities include a large number of properties in North America, Europe and Asia utilized for manufacturing and assembly, warehousing, engineering, retail and service locations, Supercharger sites and administrative and sales offices. Our facilities are used to support both of our reporting segments, and are suitable and adequate for the conduct of our business. We generally lease such facilities with the primary exception of some manufacturing facilities. The following table sets forth the location of our primary owned and leased manufacturing facilities.
 Primary Manufacturing Facilities
 Location
@@ -338,15 +344,19 @@ Leased
 
 We own the building and the land use rights with an initial term of 50 years. The land use rights are treated as operating lease right-of-use assets.
 
+ITEM 3. LEGAL PROCEEDINGS
 For a description of our material pending legal proceedings, please see Note 15,
 Commitments and Contingencies
 , to the consolidated financial statements included elsewhere in this Annual Report on Form 10-K.
 In addition, each of the matters below is being disclosed pursuant to Item 103 of Regulation S-K because it relates to environmental regulations and aggregate civil penalties that we currently believe could potentially exceed $1 million. We believe that any proceeding that is material to our business or financial condition is likely to have potential penalties far in excess of such amount.
 District attorneys in certain California counties conducted an investigation into Tesla’s waste segregation practices pursuant to Cal. Health & Saf. Code § 25100 et seq. and Cal. Civil Code § 1798.80. Tesla has implemented various remedial measures, including conducting training and audits, and enhancements to its site waste management programs, and settlement discussions are ongoing. While the outcome of this matter cannot be determined at this time, it is not currently expected to have a material adverse impact on our business.
 
+ITEM 4. MINE SAFETY DISCLOSURES
 Not applicable.
 
+PART II
 
+ITEM 5. MARKET FOR REGISTRANT’S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES
 
 Our common stock has traded on The NASDAQ Global Select Market under the symbol “TSLA” since it began trading on June 29, 2010. Our initial public offering was priced at approximately $1.13 per share on June 28, 2010 as adjusted to give effect to the three-for-one stock split effected in the form of a stock dividend in August 2022 (the “2022 Stock Split”) and the five-for-one stock split effected in the form of a stock dividend in August 2020 (the “2020 Stock Split”).
 
@@ -361,7 +371,9 @@ None.
 
 None.
 
+ITEM 6. [RESERVED]
 
+ITEM 7. MANAGEMENT’S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS
 
 
 Our mission is to accelerate the world’s transition to sustainable energy. We design, develop, manufacture, lease and sell high-performance fully electric vehicles, solar energy generation systems and energy storage products. We also offer maintenance, installation, operation, charging, insurance, financial and other services related to our products. Additionally, we are increasingly focused on products and services based on artificial intelligence, robotics and automation.
@@ -961,11 +973,13 @@ See Note 2,
 Summary of Significant Accounting Policies
 , to the consolidated financial statements included elsewhere in this Annual Report on Form 10-K.
 
+ITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK
 
 We transact business globally in multiple currencies and hence have foreign currency risks related to our revenue, costs of revenue and operating expenses denominated in currencies other than the U.S. dollar (primarily the Chinese yuan and euro in relation to our current year operations). In general, we are a net receiver of currencies other than the U.S. dollar for our foreign subsidiaries. Accordingly, changes in exchange rates affect our operating results as expressed in U.S. dollars as we do not typically hedge foreign currency risk.
 We have also experienced, and will continue to experience, fluctuations in our net income as a result of gains (losses) on the settlement and the re-measurement of monetary assets and liabilities denominated in currencies that are not the local currency (primarily consisting of our intercompany and cash and cash equivalents balances).
 We considered the historical trends in foreign currency exchange rates and determined that it is reasonably possible that adverse changes in foreign currency exchange rates of 10% for all currencies could be experienced in the near-term. These changes were applied to our total monetary assets and liabilities denominated in currencies other than our local currencies at the balance sheet date to compute the impact these changes would have had on our net income before income taxes. These changes would have resulted in a gain or loss of $1.01 billion at December 31, 2023 and $473 million at December 31, 2022, assuming no foreign currency hedging.
 
+ITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA
 
 Page
 Report of Independent Registered Public Accounting Firm
@@ -4308,8 +4322,10 @@ recorded
 128  million, respectively, in connection with converting our holdings of digital assets into fiat currency. We also recorded other expenses of $
 36  million during the second quarter of the year ended December 31, 2022, related to employee terminations.
 
+ITEM 9. CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURE
 None.
 
+ITEM 9A. CONTROLS AND PROCEDURES
 
 Our management, with the participation of our Chief Executive Officer and our Chief Financial Officer, evaluated the effectiveness of our disclosure controls and procedures pursuant to Rule 13a-15 under the Securities Exchange Act of 1934, as amended (the “Exchange Act”). In designing and evaluating the disclosure controls and procedures, our management recognizes that any controls and procedures, no matter how well designed and operated, can provide only reasonable assurance of achieving the desired control objectives. In addition, the design of disclosure controls and procedures must reflect the fact that there are resource constraints and that our management is required to apply its judgment in evaluating the benefits of possible controls and procedures relative to their costs.
 Based on this evaluation, our Chief Executive Officer and our Chief Financial Officer concluded that, as of December 31, 2023, our disclosure controls and procedures were designed at a reasonable assurance level and were effective to provide reasonable assurance that the information we are required to disclose in reports that we file or submit under the Exchange Act is recorded, processed, summarized and reported within the time periods specified in the SEC rules and forms, and that such information is accumulated and communicated to our management, including our Chief Executive Officer and our Chief Financial Officer, as appropriate, to allow timely decisions regarding required disclosures.
@@ -4322,6 +4338,7 @@ Because of inherent limitations, internal control over financial reporting may n
 
 There was no change in our internal control over financial reporting that occurred during the quarter ended December 31, 2023, which has materially affected, or is reasonably likely to materially affect, our internal control over financial reporting.
 
+ITEM 9B. OTHER INFORMATION
 None of the Company’s directors or officers
 adopted , modified or
 a Rule 10b5-1 trading arrangement or a non-Rule 10b5-1 trading arrangement during the Company’s fiscal quarter ended December 31, 2023, as such terms are defined under Item 408(a) of Regulation S-K, except as follows:
@@ -4339,20 +4356,29 @@ Senior Vice President , Powertrain and Energy Engineering,
 adopted  a Rule 10b5-1 trading arrangement for the potential sale of up to
 115,500  shares of our common stock, subject to certain conditions. The arrangement's expiration date is December 31, 2024.
 
+ITEM 9C. DISCLOSURE REGARDING FOREIGN JURISDICTIONS THAT PREVENT INSPECTIONS
 Not applicable.
 
+PART III
 
+ITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE
 The information required by this Item 10 of Form 10-K will be included in our 2024 Proxy Statement to be filed with the Securities and Exchange Commission in connection with the solicitation of proxies for our 2024 Annual Meeting of Stockholders and is incorporated herein by reference. The 2024 Proxy Statement will be filed with the Securities and Exchange Commission within 120 days after the end of the fiscal year to which this report relates.
 
+ITEM 11. EXECUTIVE COMPENSATION
 The information required by this Item 11 of Form 10-K will be included in our 2024 Proxy Statement and is incorporated herein by reference.
 
+ITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS
 The information required by this Item 12 of Form 10-K will be included in our 2024 Proxy Statement and is incorporated herein by reference.
 
+ITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS AND DIRECTOR INDEPENDENCE
 The information required by this Item 13 of Form 10-K will be included in our 2024 Proxy Statement and is incorporated herein by reference.
 
+ITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES
 The information required by this Item 14 of Form 10-K will be included in our 2024 Proxy Statement and is incorporated herein by reference.
 
+PART IV
 
+ITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES
 
 Financial statements (see
 Index to Consolidated Financial Statements
@@ -5433,8 +5459,10 @@ Indicates a filing of SolarCity
 
 Indicates a filing of Maxwell Technologies, Inc.
 
+ITEM 16. SUMMARY
 None.
 
+SIGNATURES
 Pursuant to the requirements of Section 13 or 15(d) the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.
 Tesla, Inc.
 Date: January 26, 2024
@@ -5482,12 +5510,13 @@ JB Straubel
 Director
 January 26, 2024
 Kathleen Wilson-Thompson
-112
 
 "
 /Document/Introduction,"
 "
-/Document/PART I,"
+/Document/PART I,"PART I
+
+ITEM 1. BUSINESS
 
 We design, develop, manufacture, sell and lease high-performance fully electric vehicles and energy generation and storage systems, and offer services related to our products. We generally sell our products directly to customers, and continue to grow our customer-facing infrastructure through a global network of vehicle showrooms and service centers, Mobile Service, body shops, Supercharger stations and Destination Chargers to accelerate the widespread adoption of our products. We emphasize performance, attractive styling and the safety of our users and workforce in the design and manufacture of our products and are continuing to develop full self-driving technology for improved safety. We also strive to lower the cost of ownership for our customers through continuous efforts to reduce manufacturing costs and by offering financial and other services tailored to our products.
 Our mission is to accelerate the world’s transition to sustainable energy. We believe that this mission, along with our engineering expertise, vertically integrated business model and focus on user experience differentiate us from other companies.
@@ -5657,6 +5686,7 @@ www.tesla.com
 ir.tesla.com
 as soon as reasonably practicable after we electronically file or furnish such information with the SEC. The information posted on our website is not incorporated by reference into this Annual Report on Form 10-K.
 
+ITEM 1A. RISK FACTORS
 
 
 
@@ -5783,8 +5813,10 @@ Certain banking institutions have made extensions of credit to Elon Musk, our Ch
 
 Our certificate of incorporation and bylaws afford certain rights and powers to our board of directors that may facilitate the delay or prevention of an acquisition that it deems undesirable. We are also subject to Section 203 of the Delaware General Corporation Law and other provisions of Delaware law that limit the ability of stockholders in certain situations to effect certain business combinations. In addition, the terms of our convertible senior notes may require us to repurchase such notes in the event of a fundamental change, including a takeover of our company. Any of the foregoing provisions and terms that has the effect of delaying or deterring a change in control could limit the opportunity for our stockholders to receive a premium for their shares of our common stock, and could also affect the price that some investors are willing to pay for our common stock.
 
+ITEM 1B. UNRESOLVED STAFF COMMENTS
 None.
 
+ITEM 1C. CYBERSECURITY
 
 We recognize the importance of assessing, identifying, and managing material risks associated with cybersecurity threats, as such term is defined in Item 106(a) of Regulation S-K. These risks include, among other things: operational risks, intellectual property theft, fraud, extortion, harm to employees or customers and violation of data privacy or security laws.
 Identifying and assessing cybersecurity risk is integrated into our overall risk management systems and processes. Cybersecurity risks related to our business, technical operations, privacy and compliance issues are identified and addressed through a multi-faceted approach including third party assessments, internal IT Audit, IT security, governance, risk and compliance reviews. To defend, detect and respond to cybersecurity incidents, we, among other things: conduct proactive privacy and cybersecurity reviews of systems and applications, audit applicable data policies, perform penetration testing using external third-party tools and techniques to test security controls, operate a bug bounty program to encourage proactive vulnerability reporting, conduct employee training, monitor emerging laws and regulations related to data protection and information security (including our consumer products) and implement appropriate changes.
@@ -5797,6 +5829,7 @@ We describe whether and how risks from identified cybersecurity threats, includi
 
 Cybersecurity is an important part of our risk management processes and an area of focus for our Board and management. Our Audit Committee is responsible for the oversight of risks from cybersecurity threats. Members of the Audit Committee receive updates on a quarterly basis from senior management, including leaders from our Information Security, Product Security, Compliance and Legal teams regarding matters of cybersecurity. This includes existing and new cybersecurity risks, status on how management is addressing and/or mitigating those risks, cybersecurity and data privacy incidents (if any) and status on key information security initiatives. Our Board members also engage in ad hoc conversations with management on cybersecurity-related news events and discuss any updates to our cybersecurity risk management and strategy programs.
 
+ITEM 2. PROPERTIES
 We are headquartered in Austin, Texas. Our principal facilities include a large number of properties in North America, Europe and Asia utilized for manufacturing and assembly, warehousing, engineering, retail and service locations, Supercharger sites and administrative and sales offices. Our facilities are used to support both of our reporting segments, and are suitable and adequate for the conduct of our business. We generally lease such facilities with the primary exception of some manufacturing facilities. The following table sets forth the location of our primary owned and leased manufacturing facilities.
 Primary Manufacturing Facilities
 Location
@@ -5825,16 +5858,19 @@ Leased
 
 We own the building and the land use rights with an initial term of 50 years. The land use rights are treated as operating lease right-of-use assets.
 
+ITEM 3. LEGAL PROCEEDINGS
 For a description of our material pending legal proceedings, please see Note 15,
 Commitments and Contingencies
 , to the consolidated financial statements included elsewhere in this Annual Report on Form 10-K.
 In addition, each of the matters below is being disclosed pursuant to Item 103 of Regulation S-K because it relates to environmental regulations and aggregate civil penalties that we currently believe could potentially exceed $1 million. We believe that any proceeding that is material to our business or financial condition is likely to have potential penalties far in excess of such amount.
 District attorneys in certain California counties conducted an investigation into Tesla’s waste segregation practices pursuant to Cal. Health & Saf. Code § 25100 et seq. and Cal. Civil Code § 1798.80. Tesla has implemented various remedial measures, including conducting training and audits, and enhancements to its site waste management programs, and settlement discussions are ongoing. While the outcome of this matter cannot be determined at this time, it is not currently expected to have a material adverse impact on our business.
 
+ITEM 4. MINE SAFETY DISCLOSURES
 Not applicable.
 
 "
-/Document/PART I/ITEM 1. BUSINESS,"
+/Document/PART I/ITEM 1. BUSINESS,"ITEM 1. BUSINESS
+
 We design, develop, manufacture, sell and lease high-performance fully electric vehicles and energy generation and storage systems, and offer services related to our products. We generally sell our products directly to customers, and continue to grow our customer-facing infrastructure through a global network of vehicle showrooms and service centers, Mobile Service, body shops, Supercharger stations and Destination Chargers to accelerate the widespread adoption of our products. We emphasize performance, attractive styling and the safety of our users and workforce in the design and manufacture of our products and are continuing to develop full self-driving technology for improved safety. We also strive to lower the cost of ownership for our customers through continuous efforts to reduce manufacturing costs and by offering financial and other services tailored to our products.
 Our mission is to accelerate the world’s transition to sustainable energy. We believe that this mission, along with our engineering expertise, vertically integrated business model and focus on user experience differentiate us from other companies.
 
@@ -6344,7 +6380,8 @@ ir.tesla.com
 as soon as reasonably practicable after we electronically file or furnish such information with the SEC. The information posted on our website is not incorporated by reference into this Annual Report on Form 10-K.
 
 "
-/Document/PART I/ITEM 1A. RISK FACTORS,"
+/Document/PART I/ITEM 1A. RISK FACTORS,"ITEM 1A. RISK FACTORS
+
 
 
 We have previously experienced and may in the future experience launch and production ramp delays for new products and features. For example, we encountered unanticipated supplier issues that led to delays during the initial ramp of our first Model X and experienced challenges with a supplier and with ramping full automation for certain of our initial Model 3 manufacturing processes. In addition, we may introduce in the future new or unique manufacturing processes and design features for our products. As we expand our vehicle offerings and global footprint, there is no guarantee that we will be able to successfully and timely introduce and scale such processes or features.
@@ -6885,10 +6922,12 @@ Our certificate of incorporation and bylaws afford certain rights and powers to 
 "/Document/PART I/ITEM 1A. RISK FACTORS/You should carefully consider the risks described below together with the other information set forth in this report, which could materially affect our business, financial condition and future results. The risks described below are not the only risks facing our company. Risks and uncertainties not currently known to us or that we currently deem to be immaterial also may materially adversely affect our business, financial condition and operating results./Risks Related to the Ownership of Our Common Stock/Anti-takeover provisions contained in our governing documents, applicable laws and our convertible senior notes could impair a takeover attempt.","Our certificate of incorporation and bylaws afford certain rights and powers to our board of directors that may facilitate the delay or prevention of an acquisition that it deems undesirable. We are also subject to Section 203 of the Delaware General Corporation Law and other provisions of Delaware law that limit the ability of stockholders in certain situations to effect certain business combinations. In addition, the terms of our convertible senior notes may require us to repurchase such notes in the event of a fundamental change, including a takeover of our company. Any of the foregoing provisions and terms that has the effect of delaying or deterring a change in control could limit the opportunity for our stockholders to receive a premium for their shares of our common stock, and could also affect the price that some investors are willing to pay for our common stock.
 
 "
-/Document/PART I/ITEM 1B. UNRESOLVED STAFF COMMENTS,"None.
+/Document/PART I/ITEM 1B. UNRESOLVED STAFF COMMENTS,"ITEM 1B. UNRESOLVED STAFF COMMENTS
+None.
 
 "
-/Document/PART I/ITEM 1C. CYBERSECURITY,"
+/Document/PART I/ITEM 1C. CYBERSECURITY,"ITEM 1C. CYBERSECURITY
+
 We recognize the importance of assessing, identifying, and managing material risks associated with cybersecurity threats, as such term is defined in Item 106(a) of Regulation S-K. These risks include, among other things: operational risks, intellectual property theft, fraud, extortion, harm to employees or customers and violation of data privacy or security laws.
 Identifying and assessing cybersecurity risk is integrated into our overall risk management systems and processes. Cybersecurity risks related to our business, technical operations, privacy and compliance issues are identified and addressed through a multi-faceted approach including third party assessments, internal IT Audit, IT security, governance, risk and compliance reviews. To defend, detect and respond to cybersecurity incidents, we, among other things: conduct proactive privacy and cybersecurity reviews of systems and applications, audit applicable data policies, perform penetration testing using external third-party tools and techniques to test security controls, operate a bug bounty program to encourage proactive vulnerability reporting, conduct employee training, monitor emerging laws and regulations related to data protection and information security (including our consumer products) and implement appropriate changes.
 We have implemented incident response and breach management processes which have four overarching and interconnected stages: 1) preparation for a cybersecurity incident, 2) detection and analysis of a security incident, 3) containment, eradication and recovery, and 4) post-incident analysis. Such incident responses are overseen by leaders from our Information Security, Product Security, Compliance and Legal teams regarding matters of cybersecurity.
@@ -6914,7 +6953,8 @@ We describe whether and how risks from identified cybersecurity threats, includi
 /Document/PART I/ITEM 1C. CYBERSECURITY/Cybersecurity Governance,"Cybersecurity is an important part of our risk management processes and an area of focus for our Board and management. Our Audit Committee is responsible for the oversight of risks from cybersecurity threats. Members of the Audit Committee receive updates on a quarterly basis from senior management, including leaders from our Information Security, Product Security, Compliance and Legal teams regarding matters of cybersecurity. This includes existing and new cybersecurity risks, status on how management is addressing and/or mitigating those risks, cybersecurity and data privacy incidents (if any) and status on key information security initiatives. Our Board members also engage in ad hoc conversations with management on cybersecurity-related news events and discuss any updates to our cybersecurity risk management and strategy programs.
 
 "
-/Document/PART I/ITEM 2. PROPERTIES,"We are headquartered in Austin, Texas. Our principal facilities include a large number of properties in North America, Europe and Asia utilized for manufacturing and assembly, warehousing, engineering, retail and service locations, Supercharger sites and administrative and sales offices. Our facilities are used to support both of our reporting segments, and are suitable and adequate for the conduct of our business. We generally lease such facilities with the primary exception of some manufacturing facilities. The following table sets forth the location of our primary owned and leased manufacturing facilities.
+/Document/PART I/ITEM 2. PROPERTIES,"ITEM 2. PROPERTIES
+We are headquartered in Austin, Texas. Our principal facilities include a large number of properties in North America, Europe and Asia utilized for manufacturing and assembly, warehousing, engineering, retail and service locations, Supercharger sites and administrative and sales offices. Our facilities are used to support both of our reporting segments, and are suitable and adequate for the conduct of our business. We generally lease such facilities with the primary exception of some manufacturing facilities. The following table sets forth the location of our primary owned and leased manufacturing facilities.
 Primary Manufacturing Facilities
 Location
 Owned or Leased
@@ -6946,17 +6986,21 @@ We own the building and the land use rights with an initial term of 50 years. Th
 /Document/PART I/ITEM 2. PROPERTIES/*,"We own the building and the land use rights with an initial term of 50 years. The land use rights are treated as operating lease right-of-use assets.
 
 "
-/Document/PART I/ITEM 3. LEGAL PROCEEDINGS,"For a description of our material pending legal proceedings, please see Note 15,
+/Document/PART I/ITEM 3. LEGAL PROCEEDINGS,"ITEM 3. LEGAL PROCEEDINGS
+For a description of our material pending legal proceedings, please see Note 15,
 Commitments and Contingencies
 , to the consolidated financial statements included elsewhere in this Annual Report on Form 10-K.
 In addition, each of the matters below is being disclosed pursuant to Item 103 of Regulation S-K because it relates to environmental regulations and aggregate civil penalties that we currently believe could potentially exceed $1 million. We believe that any proceeding that is material to our business or financial condition is likely to have potential penalties far in excess of such amount.
 District attorneys in certain California counties conducted an investigation into Tesla’s waste segregation practices pursuant to Cal. Health & Saf. Code § 25100 et seq. and Cal. Civil Code § 1798.80. Tesla has implemented various remedial measures, including conducting training and audits, and enhancements to its site waste management programs, and settlement discussions are ongoing. While the outcome of this matter cannot be determined at this time, it is not currently expected to have a material adverse impact on our business.
 
 "
-/Document/PART I/ITEM 4. MINE SAFETY DISCLOSURES,"Not applicable.
+/Document/PART I/ITEM 4. MINE SAFETY DISCLOSURES,"ITEM 4. MINE SAFETY DISCLOSURES
+Not applicable.
 
 "
-/Document/PART II,"
+/Document/PART II,"PART II
+
+ITEM 5. MARKET FOR REGISTRANT’S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES
 
 Our common stock has traded on The NASDAQ Global Select Market under the symbol “TSLA” since it began trading on June 29, 2010. Our initial public offering was priced at approximately $1.13 per share on June 28, 2010 as adjusted to give effect to the three-for-one stock split effected in the form of a stock dividend in August 2022 (the “2022 Stock Split”) and the five-for-one stock split effected in the form of a stock dividend in August 2020 (the “2020 Stock Split”).
 
@@ -6971,7 +7015,9 @@ None.
 
 None.
 
+ITEM 6. [RESERVED]
 
+ITEM 7. MANAGEMENT’S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS
 
 
 Our mission is to accelerate the world’s transition to sustainable energy. We design, develop, manufacture, lease and sell high-performance fully electric vehicles, solar energy generation systems and energy storage products. We also offer maintenance, installation, operation, charging, insurance, financial and other services related to our products. Additionally, we are increasingly focused on products and services based on artificial intelligence, robotics and automation.
@@ -7571,11 +7617,13 @@ See Note 2,
 Summary of Significant Accounting Policies
 , to the consolidated financial statements included elsewhere in this Annual Report on Form 10-K.
 
+ITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK
 
 We transact business globally in multiple currencies and hence have foreign currency risks related to our revenue, costs of revenue and operating expenses denominated in currencies other than the U.S. dollar (primarily the Chinese yuan and euro in relation to our current year operations). In general, we are a net receiver of currencies other than the U.S. dollar for our foreign subsidiaries. Accordingly, changes in exchange rates affect our operating results as expressed in U.S. dollars as we do not typically hedge foreign currency risk.
 We have also experienced, and will continue to experience, fluctuations in our net income as a result of gains (losses) on the settlement and the re-measurement of monetary assets and liabilities denominated in currencies that are not the local currency (primarily consisting of our intercompany and cash and cash equivalents balances).
 We considered the historical trends in foreign currency exchange rates and determined that it is reasonably possible that adverse changes in foreign currency exchange rates of 10% for all currencies could be experienced in the near-term. These changes were applied to our total monetary assets and liabilities denominated in currencies other than our local currencies at the balance sheet date to compute the impact these changes would have had on our net income before income taxes. These changes would have resulted in a gain or loss of $1.01 billion at December 31, 2023 and $473 million at December 31, 2022, assuming no foreign currency hedging.
 
+ITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA
 
 Page
 Report of Independent Registered Public Accounting Firm
@@ -10918,8 +10966,10 @@ recorded
 128  million, respectively, in connection with converting our holdings of digital assets into fiat currency. We also recorded other expenses of $
 36  million during the second quarter of the year ended December 31, 2022, related to employee terminations.
 
+ITEM 9. CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURE
 None.
 
+ITEM 9A. CONTROLS AND PROCEDURES
 
 Our management, with the participation of our Chief Executive Officer and our Chief Financial Officer, evaluated the effectiveness of our disclosure controls and procedures pursuant to Rule 13a-15 under the Securities Exchange Act of 1934, as amended (the “Exchange Act”). In designing and evaluating the disclosure controls and procedures, our management recognizes that any controls and procedures, no matter how well designed and operated, can provide only reasonable assurance of achieving the desired control objectives. In addition, the design of disclosure controls and procedures must reflect the fact that there are resource constraints and that our management is required to apply its judgment in evaluating the benefits of possible controls and procedures relative to their costs.
 Based on this evaluation, our Chief Executive Officer and our Chief Financial Officer concluded that, as of December 31, 2023, our disclosure controls and procedures were designed at a reasonable assurance level and were effective to provide reasonable assurance that the information we are required to disclose in reports that we file or submit under the Exchange Act is recorded, processed, summarized and reported within the time periods specified in the SEC rules and forms, and that such information is accumulated and communicated to our management, including our Chief Executive Officer and our Chief Financial Officer, as appropriate, to allow timely decisions regarding required disclosures.
@@ -10932,6 +10982,7 @@ Because of inherent limitations, internal control over financial reporting may n
 
 There was no change in our internal control over financial reporting that occurred during the quarter ended December 31, 2023, which has materially affected, or is reasonably likely to materially affect, our internal control over financial reporting.
 
+ITEM 9B. OTHER INFORMATION
 None of the Company’s directors or officers
 adopted , modified or
 a Rule 10b5-1 trading arrangement or a non-Rule 10b5-1 trading arrangement during the Company’s fiscal quarter ended December 31, 2023, as such terms are defined under Item 408(a) of Regulation S-K, except as follows:
@@ -10949,10 +11000,12 @@ Senior Vice President , Powertrain and Energy Engineering,
 adopted  a Rule 10b5-1 trading arrangement for the potential sale of up to
 115,500  shares of our common stock, subject to certain conditions. The arrangement's expiration date is December 31, 2024.
 
+ITEM 9C. DISCLOSURE REGARDING FOREIGN JURISDICTIONS THAT PREVENT INSPECTIONS
 Not applicable.
 
 "
-"/Document/PART II/ITEM 5. MARKET FOR REGISTRANT’S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES","
+"/Document/PART II/ITEM 5. MARKET FOR REGISTRANT’S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES","ITEM 5. MARKET FOR REGISTRANT’S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES
+
 Our common stock has traded on The NASDAQ Global Select Market under the symbol “TSLA” since it began trading on June 29, 2010. Our initial public offering was priced at approximately $1.13 per share on June 28, 2010 as adjusted to give effect to the three-for-one stock split effected in the form of a stock dividend in August 2022 (the “2022 Stock Split”) and the five-for-one stock split effected in the form of a stock dividend in August 2020 (the “2020 Stock Split”).
 
 As of January 22, 2024, there were 9,300 holders of record of our common stock. A substantially greater number of holders of our common stock are “street name” or beneficial holders, whose shares are held by banks, brokers and other financial institutions.
@@ -10991,9 +11044,11 @@ None.
 "/Document/PART II/ITEM 5. MARKET FOR REGISTRANT’S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES/This performance graph shall not be deemed “filed” for purposes of Section 18 of the Securities Exchange Act of 1934, as amended (the “Exchange Act”), or incorporated by reference into any filing of Tesla, Inc. under the Securities Act of 1933, as amended (the “Securities Act”), or the Exchange Act, except as shall be expressly set forth by specific reference in such filing./Purchases of Equity Securities by the Issuer and Affiliated Purchasers","None.
 
 "
-/Document/PART II/ITEM 6. [RESERVED],"
+/Document/PART II/ITEM 6. [RESERVED],"ITEM 6. [RESERVED]
+
 "
-/Document/PART II/ITEM 7. MANAGEMENT’S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS,"
+/Document/PART II/ITEM 7. MANAGEMENT’S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS,"ITEM 7. MANAGEMENT’S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS
+
 
 Our mission is to accelerate the world’s transition to sustainable energy. We design, develop, manufacture, lease and sell high-performance fully electric vehicles, solar energy generation systems and energy storage products. We also offer maintenance, installation, operation, charging, insurance, financial and other services related to our products. Additionally, we are increasingly focused on products and services based on artificial intelligence, robotics and automation.
 In 2023, we produced 1,845,985 consumer vehicles and delivered 1,808,581 consumer vehicles. We are currently focused on increasing vehicle production, capacity and delivery capabilities, reducing costs, improving and developing our vehicles and battery technologies, vertically integrating and localizing our supply chain, improving and further deploying our FSD capabilities, increasing the affordability and efficiency of our vehicles, bringing new products to market and expanding our global infrastructure, including our service and charging infrastructure.
@@ -13496,7 +13551,8 @@ Summary of Significant Accounting Policies
 , to the consolidated financial statements included elsewhere in this Annual Report on Form 10-K.
 
 "
-/Document/PART II/ITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK,"
+/Document/PART II/ITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK,"ITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK
+
 We transact business globally in multiple currencies and hence have foreign currency risks related to our revenue, costs of revenue and operating expenses denominated in currencies other than the U.S. dollar (primarily the Chinese yuan and euro in relation to our current year operations). In general, we are a net receiver of currencies other than the U.S. dollar for our foreign subsidiaries. Accordingly, changes in exchange rates affect our operating results as expressed in U.S. dollars as we do not typically hedge foreign currency risk.
 We have also experienced, and will continue to experience, fluctuations in our net income as a result of gains (losses) on the settlement and the re-measurement of monetary assets and liabilities denominated in currencies that are not the local currency (primarily consisting of our intercompany and cash and cash equivalents balances).
 We considered the historical trends in foreign currency exchange rates and determined that it is reasonably possible that adverse changes in foreign currency exchange rates of 10% for all currencies could be experienced in the near-term. These changes were applied to our total monetary assets and liabilities denominated in currencies other than our local currencies at the balance sheet date to compute the impact these changes would have had on our net income before income taxes. These changes would have resulted in a gain or loss of $1.01 billion at December 31, 2023 and $473 million at December 31, 2022, assuming no foreign currency hedging.
@@ -13507,7 +13563,8 @@ We have also experienced, and will continue to experience, fluctuations in our n
 We considered the historical trends in foreign currency exchange rates and determined that it is reasonably possible that adverse changes in foreign currency exchange rates of 10% for all currencies could be experienced in the near-term. These changes were applied to our total monetary assets and liabilities denominated in currencies other than our local currencies at the balance sheet date to compute the impact these changes would have had on our net income before income taxes. These changes would have resulted in a gain or loss of $1.01 billion at December 31, 2023 and $473 million at December 31, 2022, assuming no foreign currency hedging.
 
 "
-/Document/PART II/ITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA,"
+/Document/PART II/ITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA,"ITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA
+
 Page
 Report of Independent Registered Public Accounting Firm
 (PCAOB ID:
@@ -25846,10 +25903,12 @@ recorded
 36  million during the second quarter of the year ended December 31, 2022, related to employee terminations.
 
 "
-/Document/PART II/ITEM 9. CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURE,"None.
+/Document/PART II/ITEM 9. CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURE,"ITEM 9. CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURE
+None.
 
 "
-/Document/PART II/ITEM 9A. CONTROLS AND PROCEDURES,"
+/Document/PART II/ITEM 9A. CONTROLS AND PROCEDURES,"ITEM 9A. CONTROLS AND PROCEDURES
+
 Our management, with the participation of our Chief Executive Officer and our Chief Financial Officer, evaluated the effectiveness of our disclosure controls and procedures pursuant to Rule 13a-15 under the Securities Exchange Act of 1934, as amended (the “Exchange Act”). In designing and evaluating the disclosure controls and procedures, our management recognizes that any controls and procedures, no matter how well designed and operated, can provide only reasonable assurance of achieving the desired control objectives. In addition, the design of disclosure controls and procedures must reflect the fact that there are resource constraints and that our management is required to apply its judgment in evaluating the benefits of possible controls and procedures relative to their costs.
 Based on this evaluation, our Chief Executive Officer and our Chief Financial Officer concluded that, as of December 31, 2023, our disclosure controls and procedures were designed at a reasonable assurance level and were effective to provide reasonable assurance that the information we are required to disclose in reports that we file or submit under the Exchange Act is recorded, processed, summarized and reported within the time periods specified in the SEC rules and forms, and that such information is accumulated and communicated to our management, including our Chief Executive Officer and our Chief Financial Officer, as appropriate, to allow timely decisions regarding required disclosures.
 
@@ -25879,7 +25938,8 @@ Because of inherent limitations, internal control over financial reporting may n
 /Document/PART II/ITEM 9A. CONTROLS AND PROCEDURES/Changes in Internal Control over Financial Reporting,"There was no change in our internal control over financial reporting that occurred during the quarter ended December 31, 2023, which has materially affected, or is reasonably likely to materially affect, our internal control over financial reporting.
 
 "
-/Document/PART II/ITEM 9B. OTHER INFORMATION,"None of the Company’s directors or officers
+/Document/PART II/ITEM 9B. OTHER INFORMATION,"ITEM 9B. OTHER INFORMATION
+None of the Company’s directors or officers
 adopted , modified or
 a Rule 10b5-1 trading arrangement or a non-Rule 10b5-1 trading arrangement during the Company’s fiscal quarter ended December 31, 2023, as such terms are defined under Item 408(a) of Regulation S-K, except as follows:
 terminated
@@ -25911,37 +25971,51 @@ adopted  a Rule 10b5-1 trading arrangement for the potential sale of up to
 115,500  shares of our common stock, subject to certain conditions. The arrangement's expiration date is December 31, 2024.
 
 "
-/Document/PART II/ITEM 9C. DISCLOSURE REGARDING FOREIGN JURISDICTIONS THAT PREVENT INSPECTIONS,"Not applicable.
+/Document/PART II/ITEM 9C. DISCLOSURE REGARDING FOREIGN JURISDICTIONS THAT PREVENT INSPECTIONS,"ITEM 9C. DISCLOSURE REGARDING FOREIGN JURISDICTIONS THAT PREVENT INSPECTIONS
+Not applicable.
 
 "
-/Document/PART III,"
+/Document/PART III,"PART III
+
+ITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE
 The information required by this Item 10 of Form 10-K will be included in our 2024 Proxy Statement to be filed with the Securities and Exchange Commission in connection with the solicitation of proxies for our 2024 Annual Meeting of Stockholders and is incorporated herein by reference. The 2024 Proxy Statement will be filed with the Securities and Exchange Commission within 120 days after the end of the fiscal year to which this report relates.
 
+ITEM 11. EXECUTIVE COMPENSATION
 The information required by this Item 11 of Form 10-K will be included in our 2024 Proxy Statement and is incorporated herein by reference.
 
+ITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS
 The information required by this Item 12 of Form 10-K will be included in our 2024 Proxy Statement and is incorporated herein by reference.
 
+ITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS AND DIRECTOR INDEPENDENCE
 The information required by this Item 13 of Form 10-K will be included in our 2024 Proxy Statement and is incorporated herein by reference.
 
+ITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES
 The information required by this Item 14 of Form 10-K will be included in our 2024 Proxy Statement and is incorporated herein by reference.
 
 "
-"/Document/PART III/ITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE","The information required by this Item 10 of Form 10-K will be included in our 2024 Proxy Statement to be filed with the Securities and Exchange Commission in connection with the solicitation of proxies for our 2024 Annual Meeting of Stockholders and is incorporated herein by reference. The 2024 Proxy Statement will be filed with the Securities and Exchange Commission within 120 days after the end of the fiscal year to which this report relates.
+"/Document/PART III/ITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE","ITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE
+The information required by this Item 10 of Form 10-K will be included in our 2024 Proxy Statement to be filed with the Securities and Exchange Commission in connection with the solicitation of proxies for our 2024 Annual Meeting of Stockholders and is incorporated herein by reference. The 2024 Proxy Statement will be filed with the Securities and Exchange Commission within 120 days after the end of the fiscal year to which this report relates.
 
 "
-/Document/PART III/ITEM 11. EXECUTIVE COMPENSATION,"The information required by this Item 11 of Form 10-K will be included in our 2024 Proxy Statement and is incorporated herein by reference.
+/Document/PART III/ITEM 11. EXECUTIVE COMPENSATION,"ITEM 11. EXECUTIVE COMPENSATION
+The information required by this Item 11 of Form 10-K will be included in our 2024 Proxy Statement and is incorporated herein by reference.
 
 "
-/Document/PART III/ITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS,"The information required by this Item 12 of Form 10-K will be included in our 2024 Proxy Statement and is incorporated herein by reference.
+/Document/PART III/ITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS,"ITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS
+The information required by this Item 12 of Form 10-K will be included in our 2024 Proxy Statement and is incorporated herein by reference.
 
 "
-/Document/PART III/ITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS AND DIRECTOR INDEPENDENCE,"The information required by this Item 13 of Form 10-K will be included in our 2024 Proxy Statement and is incorporated herein by reference.
+/Document/PART III/ITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS AND DIRECTOR INDEPENDENCE,"ITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS AND DIRECTOR INDEPENDENCE
+The information required by this Item 13 of Form 10-K will be included in our 2024 Proxy Statement and is incorporated herein by reference.
 
 "
-/Document/PART III/ITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES,"The information required by this Item 14 of Form 10-K will be included in our 2024 Proxy Statement and is incorporated herein by reference.
+/Document/PART III/ITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES,"ITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES
+The information required by this Item 14 of Form 10-K will be included in our 2024 Proxy Statement and is incorporated herein by reference.
 
 "
-/Document/PART IV,"
+/Document/PART IV,"PART IV
+
+ITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES
 
 Financial statements (see
 Index to Consolidated Financial Statements
@@ -27022,10 +27096,12 @@ Indicates a filing of SolarCity
 
 Indicates a filing of Maxwell Technologies, Inc.
 
+ITEM 16. SUMMARY
 None.
 
 "
-/Document/PART IV/ITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES,"
+/Document/PART IV/ITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES,"ITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES
+
 Financial statements (see
 Index to Consolidated Financial Statements
 in Part II, Item 8 of this report)
@@ -30252,10 +30328,12 @@ Cover Page Interactive Data File (formatted as inline XBRL with applicable taxon
 /Document/PART IV/ITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES/(2),"Indicates a filing of Maxwell Technologies, Inc.
 
 "
-/Document/PART IV/ITEM 16. SUMMARY,"None.
+/Document/PART IV/ITEM 16. SUMMARY,"ITEM 16. SUMMARY
+None.
 
 "
-/Document/Signatures,"Pursuant to the requirements of Section 13 or 15(d) the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.
+/Document/SIGNATURES,"SIGNATURES
+Pursuant to the requirements of Section 13 or 15(d) the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.
 Tesla, Inc.
 Date: January 26, 2024
 /s/ Elon Musk
@@ -30302,6 +30380,5 @@ JB Straubel
 Director
 January 26, 2024
 Kathleen Wilson-Thompson
-112
 
 "

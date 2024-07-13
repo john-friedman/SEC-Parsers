@@ -5,10 +5,17 @@ import re
 
 # TODO: lookover and refactor
 
- # Used for conversion to xml #
+# unused
+def get_highest_level_parent(element):
+    """get ancestor before body"""
+    ancestor = element
+    while ancestor.getparent().tag != 'body':
+        ancestor = ancestor.getparent()
+    return ancestor
 
-# Tried xpath. was too slow, look at elementpath, but also looked slow. I think if we want to improve, we have to use cython.
-# TODO: increase speed
+
+# cause of speed issues. Not sure if there is a better way to do this. Tried xpath, preprocessing, etc. preprocessing sometimes won, but usually was slower.
+# may have to ask for help.
 def get_elements_between_elements(root, start_element=None, end_element=None):
     """WIP"""
     elements = []
@@ -22,9 +29,6 @@ def get_elements_between_elements(root, start_element=None, end_element=None):
             elements.append(element)
 
     return elements
-
-
-    
 
 def get_text_between_elements(root, start_element=None, end_element=None):
     """TODO: format text nicer"""
