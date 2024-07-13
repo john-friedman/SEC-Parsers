@@ -6,16 +6,17 @@ import os
 import pandas as pd
 from time import time
 
-#file 7 is interesting
+# American_Strategic_Investment_Co.-1595527-0001595527-24-000006.html - has no signature so does not parse. this will fix automatically\
+# when we update xml construct tree
+# good example of big page bloc, 'ATLANTIC_AMERICAN_CORP-8177-0001140361-24-016971.html' need to fix this
 
-#for parsing - ~100% parse without error - this makes sense.
-# for xml - 28% error rate - should go way down, with parser fixed.
+# I think we updatte the xml construct, and then parse rate will get to 99% or so, but then we will need
+# to focus on fixing tree issues (detect long headers, etc) as they are likely to be wrong
 
-# 7-8 is weird check earlier to see if introduced wierd. seems fine. let's see if parsing issues remived
-#35
+
 total_time = 0
 start_dex = 0
-files = os.listdir(dir_10k)[0:]
+files = os.listdir(dir_10k)[51:]
 errors = []
 for count,file in enumerate(files):
         try:
@@ -41,7 +42,6 @@ for count,file in enumerate(files):
             print(f'Error in {file}: num_errors = {len(errors)}')
             print(f"count: {count}")
             print(e)
-
 print(len(errors) / len(files))
 # save errors to text file
 with open('errors.txt', 'w') as f:
