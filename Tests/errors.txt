@@ -1,8 +1,0 @@
-('BALTIC_INTERNATIONAL_USA_INC-918545-0000918545-24-000002.html', IndexError('list index out of range'))
-('BioCorRx_Inc.-1443863-0001477932-24-001705.html', IndexError('list index out of range'))
-('bleuacacia_ltd-1843370-0001140361-24-019913.html', IndexError('list index out of range'))
-('Cano_Health,_Inc.-1800682-0001628280-24-014114.html', IndexError('list index out of range'))
-('CONSTELLATION_BRANDS,_INC.-16918-0000016918-24-000054.html', IndexError('list index out of range'))
-('EOS_INC.-1651958-0001575872-24-000359.html', IndexError('list index out of range'))
-('LOGIQ,_INC.-1335112-0001575872-24-000488.html', IndexError('list index out of range'))
-('POWERDYNE_INTERNATIONAL,_INC.-1435617-0001493152-24-018248.html', IndexError('list index out of range'))

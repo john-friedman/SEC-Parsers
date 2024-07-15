@@ -229,7 +229,7 @@ def visualize(root):
 
 # Heavily WIP
 # add intro section, which is all text before part i dumped, and add signatures section
-def construct_xml_tree(parsed_html):
+def construct_xml_tree(parsed_html,start_title):
     root = etree.Element('root')
 
     # add document node
@@ -241,11 +241,11 @@ def construct_xml_tree(parsed_html):
 
     # find the first part parsing
     # WIP
-    parts_elements = parsed_html.xpath("//*[@parsing_type='part;']")
-    first_part_element = [element for element in parts_elements if part_pattern.match(get_all_text(element).strip().lower())][0]
+    element_after_intro = parsed_html.xpath(f"//*[@parsing_type='{start_title}']")[0]
+    #first_part_element = [element for element in parts_elements if part_pattern.match(get_all_text(element).strip().lower())][0]
 
     # subset elements after first part element
-    elements = elements[elements.index(first_part_element):]
+    elements = elements[elements.index(element_after_intro):]
 
     element_parsing_types = [element.attrib['parsing_type'] for element in elements]
 
@@ -307,7 +307,7 @@ def construct_xml_tree(parsed_html):
 
         # find the last element in the node_parsing_strings which is in rulers
         index = find_last_index(node_parsing_types, rulers)
-        if element_parsing_type == 'part;':
+        if element_parsing_type == start_title:
             document_node.append(node)
             node_list = [node]
         elif element_parsing_type == 'signatures;':
@@ -335,7 +335,7 @@ def construct_xml_tree(parsed_html):
 
     # add intro section (insert before first part)
     introduction_node = etree.Element('introduction', title = 'Introduction')
-    introduction_node.text = get_text_between_elements(parsed_html,start_element=None,end_element=first_part_element)
+    introduction_node.text = get_text_between_elements(parsed_html,start_element=None,end_element=element_after_intro)
     document_node.insert(0,introduction_node)
 
     # add signatures section
@@ -412,18 +412,23 @@ class Filing:
 
         if self.filing_type == '10-K':
             self._parse_10k()
+            self._to_xml('part;')
         elif self.filing_type == '10-Q':
             self._parse_10q()
+            self._to_xml('part;')
+        elif self.filing_type == '8-K':
+            self._parse_10k()
+            self._to_xml('item;')
         else:
             raise ValueError('Filing type not detected')
         
-        self._to_xml()
+
 
     def visualize(self):
         visualize(self.html)
 
-    def _to_xml(self):
-        self.xml = construct_xml_tree(self.html)
+    def _to_xml(self,start_title):
+        self.xml = construct_xml_tree(self.html,start_title)
 
 
     # functions to interact with xml
@@ -455,18 +460,21 @@ class Filing:
     # Interact with Node #
 
     # Note, needs refactor, also needs better spacing fix with text.
-    def get_node_text(self,node):
-        """Gets all text from a node, including title string."""
+    def get_node_text(self, node, is_parent=True):
+        """Gets all text from a node, including title string for child nodes."""
         text = ''
-        # WIP removed this for now. need to add later
-        #text += node.attrib.get('title','') + '\n'
+
+        # Add title for child nodes only
+        if not is_parent:
+            text += node.attrib.get('title', '') + '\n'
 
         node_text = node.text
         if node_text is not None:
             text += node.text + '\n'
-            
+        
         for child in node:
-            text += self.get_node_text(child)
+            # Pass False to indicate this is a child node
+            text += self.get_node_text(child, is_parent=False)
         
         return text
     
@@ -486,8 +494,11 @@ class Filing:
             node = self.xml
             
         tree_atrib = node.attrib.get(attribute,'')
-        for child in node:
-            tree_atrib += '\n' + '|-' * level + self.get_title_tree(child, level + 1,attribute)
+        if 'signatures' in tree_atrib.lower(): #workaround for adding signatures section but not signature parsing
+            pass
+        else:
+            for child in node:
+                tree_atrib += '\n' + '|-' * level + self.get_title_tree(child, level + 1,attribute)
 
         return tree_atrib
     

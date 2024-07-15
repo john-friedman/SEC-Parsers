@@ -1,7 +1,8 @@
 # SEC Parsers
-Parses non-standardized SEC 10-K filings into well structured detailed xml. Use cases include LLMs, NLP, and textual analysis. This is a WIP. Not every file will parse correctly.
+Parses non-standardized SEC 10-K filings into well structured detailed xml. Use cases include LLMs, NLP, and textual analysis. Current supported file types: 10-K, 10-Q, 8-K. 
 
-Current supported file types: 10-K, 10-Q
+<b>Note:</b> This is a WIP. Not every file will parse correctly.
+<b>Important Update: I'm adding a lot more supported files, which may introduce some bugs.</b> 
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualization.png">
@@ -81,8 +82,12 @@ SEC filings are human readable, but messy html makes it hard for machines to det
 ### Issues
 1. handle if PART I appears multiple times as header, e.g. logic here item 1 continued. Develop logic to handle this. Probably in cleanup?
 
+
+### Priority TODO
+1. rewrite parsing to be more flexible for multiple document types. rewrite xml tree construction as well. This should make 8ks, and several other documents parseable.
 ### TODO
-1. Currently I've only focused on parts parsing. Signature node has been added, but tree is likely to be crazy. Focusing on reducing parts parsing tree crazyness first
+1. Look into support for more filing types - think about general html parser with inheritance
+1. Hierarchical interactive debugger - maybe in flask or custom pyqt chromebrowser? - not sure, look around.
 0. we fixed one table issue, now need to account for too much tables https://www.sec.gov/Archives/edgar/data/18255/000001825518000024/cato10k2017-jrs.htm
 2. Code cleanup. Right now I'm tweaking code to increase parse rate, eventually need to incorporate lessons learned, and rewrite.
 
