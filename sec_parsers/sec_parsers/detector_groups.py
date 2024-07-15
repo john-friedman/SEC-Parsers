@@ -1,9 +1,10 @@
 from sec_parsers.detectors import AllCapsStringDetector, EmphasisCapStringDetector, PartStringDetector, ItemStringDetector, SignaturesStringDetector, PageNumberStringDetector, BulletPointStringDetector, NoteStringDetector
 from sec_parsers.cleaning import clean_string_for_style_detection
+
 class HeaderStringDetectorGroup:
     def __init__(self):
         self.string_detectors = []
-        self.add_string_detector(AllCapsStringDetector)
+        self.add_string_detector(AllCapsStringDetector())
         self.add_string_detector(EmphasisCapStringDetector())
 
     def add_string_detector(self, string_detector):
@@ -27,9 +28,9 @@ class FilingStringDetectorGroup(HeaderStringDetectorGroup):
         
         # Add part, item, and signatures detectors at the beginning
         new_detectors = [
-            PartStringDetector(),
-            ItemStringDetector(),
-            SignaturesStringDetector()
+            PartStringDetector(parsing_rule='return'),
+            ItemStringDetector(parsing_rule='return'),
+            SignaturesStringDetector(parsing_rule='return')
         ]
         self.insert_string_detectors(new_detectors)
         

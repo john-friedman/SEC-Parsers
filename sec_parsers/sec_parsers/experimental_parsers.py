@@ -5,9 +5,9 @@ from sec_parsers.xml_helper import get_text
 class HTMLParser:
     def __init__(self):
         self.detectors = []
-        self.add_detector(HiddenElementDetector())
-        self.add_detector(TableElementDetector())
-        self.add_detector(ImageElementDetector())
+        self.add_detector(HiddenElementDetector(parsing_rule='return'))
+        self.add_detector(TableElementDetector(parsing_rule='return'))
+        self.add_detector(ImageElementDetector(parsing_rule='return'))
 
         self.string_detector = HeaderStringDetectorGroup()
 
@@ -19,21 +19,32 @@ class HTMLParser:
         for detector in self.detectors:
             result = detector.detect(element)
             if result != '':
-                element.attrib['parsing_string'] = result
-                return
+                if parsing_rule == 'return':
+                    element.attrib['parsing_string'] = result
+                    return
             
         text = get_text(element).strip()
         if text == '':
             for child in element.iterchildren():
                 self.recursive_parse(child)
         else:
-            # handle string detection
-            # some strings when found should trigger return
-            # other should continue to element detection
+            for string_detector in self.string_detector.string_detectors:
+                parsing_string = string_detector.detect(text)
+                parsing_rule = string_detector.parsing_rule
 
-            # handle element detection
-            # logic for adding to element or parent element
-            pass
+                if parsing_string != '':
+                    if parsing_rule == 'return':
+                        element.attrib['parsing_string'] = parsing_string
+                        return
+                    elif parsing_rule == 'continue':
+                        pass
+
+            
+                # other should continue to element detection
+
+                # handle element detection
+
+                # logic for adding to element or parent element
 
 
 

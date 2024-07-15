@@ -7,9 +7,10 @@ class Detector:
 
 # Element Detectors
 
+
 class HiddenElementDetector(Detector):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
     def detect(self,element):
         if detect_hidden_element(element):
@@ -18,8 +19,8 @@ class HiddenElementDetector(Detector):
             return ''
         
 class TableElementDetector(Detector):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
     def detect(self,element):
         if detect_table(element):
@@ -31,8 +32,8 @@ class TableElementDetector(Detector):
             return ''
         
 class ImageElementDetector(Detector):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
     def detect(self,element):
         if detect_image(element):
@@ -43,8 +44,8 @@ class ImageElementDetector(Detector):
 # String Detectors
         
 class PartStringDetector(Detector):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
     def detect(self,string):
         if detect_part(string):
@@ -53,8 +54,8 @@ class PartStringDetector(Detector):
             return ''
         
 class ItemStringDetector(Detector):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
     def detect(self,string):
         if detect_item(string):
@@ -63,8 +64,8 @@ class ItemStringDetector(Detector):
             return ''
     
 class SignaturesStringDetector(Detector):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
     def detect(self,string):
         if detect_signatures(string):
@@ -73,8 +74,8 @@ class SignaturesStringDetector(Detector):
             return ''
         
 class PageNumberStringDetector(Detector):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
     def detect(self,string): 
         if detect_page_number(string):
@@ -83,8 +84,8 @@ class PageNumberStringDetector(Detector):
             return ''
 
 class BulletPointStringDetector(Detector):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
     def detect(self,string):
         if detect_bullet_point(string):
@@ -93,8 +94,8 @@ class BulletPointStringDetector(Detector):
             return ''
 
 class AllCapsStringDetector(Detector):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
     def detect(self,string):
         if detect_all_caps(string):
@@ -103,8 +104,8 @@ class AllCapsStringDetector(Detector):
             return ''
 
 class NoteStringDetector(Detector):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
     def detect(self,string):
         if detect_note(string):
@@ -114,8 +115,8 @@ class NoteStringDetector(Detector):
               
 
 class EmphasisCapStringDetector(Detector):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
     def detect(self,string):
         if detect_emphasis_capitalization(string):
