@@ -35,68 +35,67 @@ def detect_item(string):
         return True
     return False
 
-def detect_style_from_string(string):
-    def detect_emphasis_capitalization(string):
-        """Seen in amazon's 2024 10k e.g. We Have Foreign Exchange Risk"""
-        # TODO: FIX
-        if string.lower() in [item.lower() for item in ['None','None.','Omitted.', 'Not Applicable.']]:
-            return False
-        
-        words = string.split()
-        if not words:
-            return False
-        for word in words:
-            if word.lower() in ["of",'to','a','and','by','in','the','or','on','for','as','with','that','but','not','so','yet','an','at','off','per','up','via']:
-                continue
-            # check for numbers, e.g. 2021, but not ITEM2021. ITEM2021 counts as upper
-            elif not any(char.isalpha() for char in word):
-                continue
+def detect_emphasis_capitalization(string):
+    """Seen in amazon's 2024 10k e.g. We Have Foreign Exchange Risk"""
+    # TODO: FIX
+    if string.lower() in [item.lower() for item in ['None','None.','Omitted.', 'Not Applicable.']]:
+        return False
+    
+    words = string.split()
+    if not words:
+        return False
+    for word in words:
+        if word.lower() in ["of",'to','a','and','by','in','the','or','on','for','as','with','that','but','not','so','yet','an','at','off','per','up','via']:
+            continue
+        # check for numbers, e.g. 2021, but not ITEM2021. ITEM2021 counts as upper
+        elif not any(char.isalpha() for char in word):
+            continue
 
-            if not word[0].isupper():
-                return False
+        if not word[0].isupper():
+            return False
+    return True
+    
+def detect_part(string):
+    """e.g. Part I"""
+    match = part_pattern.match(string.lower().strip())
+    if match:
         return True
+    return False
+    
+# deprecated for now
+def level_detection(string):
+    """e.g. amazon Level 1"""
+    match = re.search(r"^Level\s+\d+",string)
+    if match:
+        return True
+    return False
     
 
-    
-    def detect_part(string):
-        """e.g. Part I"""
-        match = part_pattern.match(string.lower().strip())
-        if match:
-            return True
-        return False
-        
-    # deprecated for now
-    def level_detection(string):
-        """e.g. amazon Level 1"""
-        match = re.search(r"^Level\s+\d+",string)
-        if match:
-            return True
-        return False
-        
+def detect_note(string):
+    """e.g. Note 1"""
+    match = re.search(r"^Note\s+\d+",string, re.IGNORECASE)
+    if match:
+        return True
+    return False
 
-    def note_detection(string):
-        """e.g. Note 1"""
-        match = re.search(r"^Note\s+\d+",string, re.IGNORECASE)
-        if match:
-            return True
+def detect_all_caps(string):
+    """e.g. FORM 10-K SUMMARY"""
+    if string.isupper():
+        return True
+    # may cause issue
+    elif string.isdigit():
+        return True
+    return False
+
+def detect_page_number(string):
+    if re.search(r"^\d+$",string, re.IGNORECASE):
+        return True
+    elif re.search(r'F-\d+$',string, re.IGNORECASE):
+        return True
+    else:
         return False
-    
-    def all_caps(string):
-        """e.g. FORM 10-K SUMMARY"""
-        if string.isupper():
-            return True
-        # may cause issue
-        elif string.isdigit():
-            return True
-        return False
-    
-    def detect_page_number(string):
-        if re.search(r"^\d+$",string, re.IGNORECASE):
-            return True
-        elif re.search(r'F-\d+$',string, re.IGNORECASE):
-            return True
-        else:
-            return False
+
+def detect_style_from_string(string):
     
     # PREPROCESSING WIP
     string = clean_string_for_style_detection(string)
@@ -111,11 +110,11 @@ def detect_style_from_string(string):
         return 'page number;'
     elif detect_bullet_point(string):
         return 'bullet point;'
-    elif all_caps(string):
+    elif detect_all_caps(string):
         return 'all caps;'
     elif detect_emphasis_capitalization(string):
         return 'emphasis;'
-    elif note_detection(string):
+    elif detect_note(string):
         return 'note;'
     else:
         return ''

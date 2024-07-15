@@ -1,0 +1,18 @@
+It's time to rewrite code incorporating past lessons.
+Idea is parser object with inheritance for parse10k,q,8k,s-1, etc
+
+
+recursiveparser = parser.recursiveparse()
+
+class recursiveparse10k:
+inherit recursiveparser
+
+add partparser
+add itemparser
+add base_elems (what elems count as just under root)
+
+
+hmmm
+
+class parser
+add (recursive, relative, cleanup)

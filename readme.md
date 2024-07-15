@@ -8,6 +8,7 @@ Parses non-standardized SEC 10-K filings into well structured detailed xml. Use 
 <b>Note:</b> Currently looking into adding Proxy statement,Foreign Investment Disclosures:,N-SAR,14A,14C,15G,F-6,40-F
 <b>Note:</b> Will add S1, S3, S4 (minor tweaks to parser)
 <b>Note:</b> Need to add image tags - link to original 
+<b>Note:</b> Need to add warnings for set headers and automatic type detection
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualization.png">
