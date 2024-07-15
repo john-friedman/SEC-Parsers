@@ -2,6 +2,7 @@
 Parses non-standardized SEC 10-K filings into well structured detailed xml. Use cases include LLMs, NLP, and textual analysis. Current supported file types: 10-K, 10-Q, 8-K. 
 
 <b>Note:</b> This is a WIP. Not every file will parse correctly.
+
 <b>Important Update: I'm adding a lot more supported files, which may introduce some bugs.</b> 
 
 <div align="center">
