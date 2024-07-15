@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: sec-parsers
-Version: 0.528
+Version: 0.529
 Summary: A package to parse SEC filings
 Author: John Friedman
 Description-Content-Type: text/markdown
