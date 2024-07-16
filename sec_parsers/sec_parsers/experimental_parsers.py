@@ -9,9 +9,9 @@ from sec_parsers.xml_helper import get_text, get_all_text
 class HTMLParser:
     def __init__(self):
         self.element_detectors = [] # e.g. table image link etc
-        self.add_element_detector(HiddenCSSDetector(parsing_rule='return'))
-        self.add_element_detector(TableTagDetector(parsing_rule='return'))
-        self.add_element_detector(ImageTagDetector(parsing_rule='return'))
+        self.add_element_detector(HiddenCSSDetector(recursive_rule='return'))
+        self.add_element_detector(TableTagDetector(recursive_rule='return'))
+        self.add_element_detector(ImageTagDetector(recursive_rule='return'))
 
         self.string_detector = HeaderStringDetectorGroup() # strings that should be detected
         self.tag_detectors = [LinkTagDetector(),BoldTagDetector(),StrongTagDetector(),EmphasisTagDetector(),ItalicTagDetector(),UnderlineTagDetector()]
@@ -48,12 +48,12 @@ class HTMLParser:
             for detector in self.string_detector.string_detectors:
                 result = detector.detect(text)
                 if result != '':
-                    if detector.parsing_rule == 'return':
+                    if detector.recursive_rule == 'return':
                         # e.g. for items, parts, etc
                         parsing_string = result
                         parsing_string_found = True
                         break  # Break the loop instead of returning
-                    elif detector.parsing_rule == 'continue':
+                    elif detector.recursive_rule == 'continue':
                         parsing_string += result # WIP, not sure what to think about this?
                         parsing_string_found = True
 

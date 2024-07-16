@@ -31,10 +31,10 @@ class SEC10KStringDetectorGroup(HeaderStringDetectorGroup):
         
         # Add part, item, and signatures detectors at the beginning
         new_detectors = [
-            PartStringDetector(parsing_rule='return'),
-            ItemStringDetector(parsing_rule='return'),
-            SignaturesStringDetector(parsing_rule='return'),
-            NoteStringDetector(parsing_rule='return'),
+            PartStringDetector(recursive_rule='return'),
+            ItemStringDetector(recursive_rule='return'),
+            SignaturesStringDetector(recursive_rule='return'),
+            NoteStringDetector(recursive_rule='return'),
             PageNumberStringDetector(),
             BulletPointStringDetector()
         ]
