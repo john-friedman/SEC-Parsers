@@ -1,6 +1,6 @@
 from sec_parsers import set_headers, download_sec_filing
 from sec_parsers.experimental_parsers import HTMLParser, SEC10KParser
-from sec_parsers.parsers import setup_html, visualize
+from sec_parsers.parsers import setup_html, visualize, cleanup_parsing
 
 set_headers('John Smith','example@example.com')
 
@@ -14,5 +14,7 @@ parser = SEC10KParser()
 html = setup_html(html)
 
 parser.recursive_parse(html)
+parser.relative_parse(html)
+cleanup_parsing(html)
 
 visualize(html)

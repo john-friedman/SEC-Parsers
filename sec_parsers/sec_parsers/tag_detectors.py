@@ -7,7 +7,7 @@ from sec_parsers.style_detection import detect_link,detect_bold_from_html,detect
 
 class LinkTagDetector(StyleTagDetector):
     def __init__(self, **kwargs):
-        super().__init__(style='link', **kwargs)
+        super().__init__(style='link;', **kwargs)
 
     def detect(self,element):
         if detect_link(element):
@@ -17,7 +17,7 @@ class LinkTagDetector(StyleTagDetector):
         
 class BoldTagDetector(StyleTagDetector):
     def __init__(self, **kwargs):
-        super().__init__(style='bold', **kwargs)
+        super().__init__(style='bold;', **kwargs)
 
     def detect(self,element):
         if detect_bold_from_html(element):
@@ -27,7 +27,7 @@ class BoldTagDetector(StyleTagDetector):
 
 class StrongTagDetector(StyleTagDetector):
     def __init__(self, **kwargs):
-        super().__init__(style ='strong', **kwargs)
+        super().__init__(style ='strong;', **kwargs)
 
     def detect(self,element):
         if detect_strong_from_html(element):
@@ -37,7 +37,7 @@ class StrongTagDetector(StyleTagDetector):
         
 class EmphasisTagDetector(StyleTagDetector):
     def __init__(self, **kwargs):
-        super().__init__(style='emphasis',**kwargs)
+        super().__init__(style='emphasis;',**kwargs)
 
     def detect(self,element):
         if detect_emphasis_from_html(element):
@@ -47,7 +47,7 @@ class EmphasisTagDetector(StyleTagDetector):
         
 class ItalicTagDetector(StyleTagDetector):
     def __init__(self, **kwargs):
-        super().__init__(style='italic',**kwargs)
+        super().__init__(style='italic;',**kwargs)
 
     def detect(self,element):
         if detect_italic_from_html(element):
@@ -57,7 +57,7 @@ class ItalicTagDetector(StyleTagDetector):
 
 class UnderlineTagDetector(StyleTagDetector):
     def __init__(self, **kwargs):
-        super().__init__(style='underline',**kwargs)
+        super().__init__(style='underline;',**kwargs)
 
     def detect(self,element):
         if detect_underline_from_html(element):
@@ -69,7 +69,7 @@ class UnderlineTagDetector(StyleTagDetector):
         
 class TableTagDetector(StyleTagDetector):
     def __init__(self, **kwargs):
-        super().__init__(style='table',**kwargs)
+        super().__init__(style='table;',**kwargs)
 
     def detect(self,element):
         if detect_table(element):
@@ -79,7 +79,7 @@ class TableTagDetector(StyleTagDetector):
         
 class TableOfContentsTagDetector(StyleTagDetector):
     def __init__(self, **kwargs):
-        super().__init__(style='table',**kwargs)
+        super().__init__(style='table of contents;',**kwargs)
 
     def detect(self,element):
         if detect_table(element):
@@ -90,7 +90,7 @@ class TableOfContentsTagDetector(StyleTagDetector):
         
 class ImageTagDetector(StyleTagDetector):
     def __init__(self, **kwargs):
-        super().__init__(style='image', **kwargs)
+        super().__init__(style='image;', **kwargs)
 
     def detect(self,element):
         if detect_image(element):

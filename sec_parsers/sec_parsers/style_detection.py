@@ -191,7 +191,7 @@ def detect_bold_from_css(element):
         # change to be any font weight greater than 400
         elif 'font-weight:700' in element.get('style'):
             return True
-    return True
+    return False
 
 
 

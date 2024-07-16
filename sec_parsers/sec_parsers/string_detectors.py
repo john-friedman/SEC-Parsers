@@ -5,7 +5,7 @@ from sec_parsers.style_detection import detect_part,detect_item,detect_signature
 
 class PartStringDetector(Detector):
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__(style='part;',**kwargs)
 
     def detect(self,string):
         if detect_part(string):
@@ -15,7 +15,7 @@ class PartStringDetector(Detector):
         
 class ItemStringDetector(Detector):
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__(style='item;',**kwargs)
 
     def detect(self,string):
         if detect_item(string):
@@ -25,7 +25,7 @@ class ItemStringDetector(Detector):
     
 class SignaturesStringDetector(Detector):
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__(style='signatures;',**kwargs)
 
     def detect(self,string):
         if detect_signatures(string):
@@ -35,7 +35,7 @@ class SignaturesStringDetector(Detector):
         
 class PageNumberStringDetector(Detector):
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__(style='page number;',**kwargs)
 
     def detect(self,string): 
         if detect_page_number(string):
@@ -45,7 +45,7 @@ class PageNumberStringDetector(Detector):
 
 class BulletPointStringDetector(Detector):
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__(style='bullet point;',**kwargs)
 
     def detect(self,string):
         if detect_bullet_point(string):
@@ -55,7 +55,7 @@ class BulletPointStringDetector(Detector):
 
 class AllCapsStringDetector(Detector):
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__(style='all caps;',**kwargs)
 
     def detect(self,string):
         if detect_all_caps(string):
@@ -65,7 +65,7 @@ class AllCapsStringDetector(Detector):
 
 class NoteStringDetector(Detector):
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__(style='note;',**kwargs)
 
     def detect(self,string):
         if detect_note(string):
