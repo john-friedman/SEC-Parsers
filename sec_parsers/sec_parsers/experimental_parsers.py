@@ -9,9 +9,9 @@ from sec_parsers.xml_helper import get_text, get_all_text
 class HTMLParser:
     def __init__(self):
         self.element_detectors = [] # e.g. table image link etc
-        self.add_element_detector(HiddenCSSDetector(recursive_rule='return'))
-        self.add_element_detector(TableTagDetector(recursive_rule='return'))
-        self.add_element_detector(ImageTagDetector(recursive_rule='return'))
+        self.add_element_detector(HiddenCSSDetector(recursive_rule='return', relative_rule='skip'))
+        self.add_element_detector(TableTagDetector(recursive_rule='return', relative_rule='skip'))
+        self.add_element_detector(ImageTagDetector(recursive_rule='return',relative_rule='skip'))
 
         self.string_detector = HeaderStringDetectorGroup() # strings that should be detected
         self.tag_detectors = [LinkTagDetector(),BoldTagDetector(),StrongTagDetector(),EmphasisTagDetector(),ItalicTagDetector(),UnderlineTagDetector()]
@@ -71,13 +71,14 @@ class HTMLParser:
             # logic for adding to element or parent element, may want to move later
             if element.tail is not None: # WIP think about this
                 parent = element.getparent()
-                parent.attrib['parsing_string'] = parsing_string + 'parent;'
+                parent.attrib['parsing_string'] = parsing_string + 'parent;' #probably do style detect here on get all text, and remove parent;
             else:
                 element.attrib['parsing_string'] = parsing_string
         return
     
     def relative_parse(self,html):
         # WIP
+        # grab skip parsing strings
         pass
 
 
@@ -85,7 +86,8 @@ class SEC10KParser(HTMLParser):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.insert_element_detector(TableOfContentsTagDetector(),0) # change to right before table detector 
+        self.insert_element_detector(TableOfContentsTagDetector(recursive_rule ='return',
+                                                                 relative_rule='skip'),0) # change to right before table detector 
         self.string_detector = SEC10KStringDetectorGroup() #WIP
 
  
