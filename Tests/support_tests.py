@@ -1,6 +1,6 @@
 from sec_parsers import set_headers, download_sec_filing
-from sec_parsers.experimental_parsers import HTMLParser
-from sec_parsers.parsers import setup_html
+from sec_parsers.experimental_parsers import HTMLParser, SEC10KParser
+from sec_parsers.parsers import setup_html, visualize
 
 set_headers('John Smith','example@example.com')
 
@@ -10,4 +10,9 @@ urls_10k = ['https://www.sec.gov/Archives/edgar/data/1318605/000095017022000796/
 
 html = download_sec_filing(urls_10k[0])
 
-parser = HTMLParser(html)
+parser = SEC10KParser()
+html = setup_html(html)
+
+parser.recursive_parse(html)
+
+visualize(html)

@@ -1,11 +1,8 @@
-from sec_parsers.detectors import Detector
+from sec_parsers.detectors import Detector, StyleTagDetector
 from sec_parsers.style_detection import detect_link,detect_bold_from_html,detect_strong_from_html,detect_emphasis_from_html,\
     detect_italic_from_html,detect_underline_from_html,detect_table,detect_table_of_contents,detect_image
 
-class StyleTagDetector(Detector):
-    def __init__(self, style=None, **kwargs):
-        super().__init__(**kwargs)
-        self.style = style
+
 
 
 class LinkTagDetector(StyleTagDetector):
@@ -68,7 +65,19 @@ class UnderlineTagDetector(StyleTagDetector):
         else:
             return ''
         
+
+        
 class TableTagDetector(StyleTagDetector):
+    def __init__(self, **kwargs):
+        super().__init__(style='table',**kwargs)
+
+    def detect(self,element):
+        if detect_table(element):
+            return 'table;'
+        
+        return ''
+        
+class TableOfContentsTagDetector(StyleTagDetector):
     def __init__(self, **kwargs):
         super().__init__(style='table',**kwargs)
 
@@ -76,10 +85,8 @@ class TableTagDetector(StyleTagDetector):
         if detect_table(element):
             if detect_table_of_contents(element) == "toc":
                 return 'table of contents;'
-            else:
-                return 'table;'
-        else:
-            return ''
+            
+        return ''
         
 class ImageTagDetector(StyleTagDetector):
     def __init__(self, **kwargs):

@@ -1,8 +1,10 @@
-from sec_parsers.tag_detectors import TableTagDetector, ImageTagDetector
-from sec_parsers.css_detectors import HiddenCSSDetector
-from sec_parsers.detector_groups import HeaderStringDetectorGroup
+from sec_parsers.tag_detectors import LinkTagDetector, BoldTagDetector, StrongTagDetector, EmphasisTagDetector, ItalicTagDetector,\
+      UnderlineTagDetector, TableTagDetector, ImageTagDetector, TableOfContentsTagDetector
+from sec_parsers.css_detectors import HiddenCSSDetector, BoldCSSDetector,UnderlineCSSDetector,ItalicCSSDetector
+from sec_parsers.detector_groups import HeaderStringDetectorGroup, SEC10KStringDetectorGroup
 from sec_parsers.xml_helper import get_text, get_all_text
 
+# need to remember to ignore hidden css in relative parsing
 
 class HTMLParser:
     def __init__(self):
@@ -12,12 +14,21 @@ class HTMLParser:
         self.add_element_detector(ImageTagDetector(parsing_rule='return'))
 
         self.string_detector = HeaderStringDetectorGroup() # strings that should be detected
-        self.tag_dectectors = []
-        self.css_detectors = []
-        self.style_detectors = self.css_detectors + self.tag_dectectors # e.g. strong, emphasis, italic, underline, etc
-    
+        self.tag_detectors = [LinkTagDetector(),BoldTagDetector(),StrongTagDetector(),EmphasisTagDetector(),ItalicTagDetector(),UnderlineTagDetector()]
+        self.css_detectors = [HiddenCSSDetector(),BoldCSSDetector(),UnderlineCSSDetector(),ItalicCSSDetector()]
+        self.style_detectors = self.css_detectors + self.tag_detectors # e.g. strong, emphasis, italic, underline, etc
+
+    def insert_element_detector(self, element_detector,index):
+        self.element_detectors.insert(index,element_detector)
+
+    def insert_element_detectors(self, element_detectors):
+        self.element_detectors = element_detectors + self.element_detectors
+
     def add_element_detector(self, element_detector):
         self.element_detectors.append(element_detector)
+
+    def remove_element_detector(self, element_detector):
+        self.element_detectors.remove(element_detector)
 
     def recursive_parse(self, element):
         # think about return rules here
@@ -64,14 +75,20 @@ class HTMLParser:
             else:
                 element.attrib['parsing_string'] = parsing_string
         return
+    
+    def relative_parse(self,html):
+        # WIP
+        pass
 
 
+class SEC10KParser(HTMLParser):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
+        self.insert_element_detector(TableOfContentsTagDetector(),0) # change to right before table detector 
+        self.string_detector = SEC10KStringDetectorGroup() #WIP
 
-
-class SEC10KParser():
-    pass
-
+ 
 class SEC10QParser():
     pass
 

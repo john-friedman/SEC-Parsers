@@ -1,6 +1,7 @@
 from sec_parsers.css_detectors import HiddenCSSDetector
 from sec_parsers.tag_detectors import TableTagDetector, ImageTagDetector
-from sec_parsers.string_detectors import AllCapsStringDetector, EmphasisCapStringDetector, PageNumberStringDetector, BulletPointStringDetector, NoteStringDetector, PartStringDetector, ItemStringDetector, SignaturesStringDetector
+from sec_parsers.string_detectors import AllCapsStringDetector, EmphasisCapStringDetector, PageNumberStringDetector, BulletPointStringDetector, NoteStringDetector,\
+      PartStringDetector, ItemStringDetector, SignaturesStringDetector, NoteStringDetector
 from sec_parsers.cleaning import clean_string_for_style_detection
 
 class HeaderStringDetectorGroup:
@@ -24,7 +25,7 @@ class HeaderStringDetectorGroup:
                 return result
         return ''
     
-class FilingStringDetectorGroup(HeaderStringDetectorGroup):
+class SEC10KStringDetectorGroup(HeaderStringDetectorGroup):
     def __init__(self):
         super().__init__()
         
@@ -32,11 +33,10 @@ class FilingStringDetectorGroup(HeaderStringDetectorGroup):
         new_detectors = [
             PartStringDetector(parsing_rule='return'),
             ItemStringDetector(parsing_rule='return'),
-            SignaturesStringDetector(parsing_rule='return')
+            SignaturesStringDetector(parsing_rule='return'),
+            NoteStringDetector(parsing_rule='return'),
+            PageNumberStringDetector(),
+            BulletPointStringDetector()
         ]
         self.insert_string_detectors(new_detectors)
         
-        # Add page number, bullet point, and note detectors at the end
-        self.add_string_detector(PageNumberStringDetector())
-        self.add_string_detector(BulletPointStringDetector())
-        self.add_string_detector(NoteStringDetector())
