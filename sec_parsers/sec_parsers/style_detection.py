@@ -120,60 +120,97 @@ def detect_style_from_string(string):
         return ''
     
 
-# New
 def detect_hidden_element(element):
     if element.get('style'):
         if 'display:none' in re.sub(' ','',element.get('style')):
             return True
     return False
 
-    
+def detect_link(node):
+    """Detects if a node is a link."""
+    if node.tag == 'a':
+        return True
+    return False
+
+def detect_bold_from_html(element):
+    """Detects bold from html tags"""
+    tag_list = 'b'
+    if element.tag in tag_list:
+        return True
+    return False
+
+def detect_strong_from_html(element):
+    """Detects strong from html tags"""
+    tag_list = 'strong'
+    if element.tag in tag_list:
+        return True
+    return False
+
+def detect_emphasis_from_html(element):
+    """Detects emphasis from html tags"""
+    tag_list = 'em'
+    if element.tag in tag_list:
+        return True
+    return False
+
+def detect_italic_from_html(element):
+    """Detects italic from html tags"""
+    tag_list = 'i'
+    if element.tag in tag_list:
+        return True
+    return False
+
+def detect_underline_from_html(element):
+    """Detects underline from html tags"""
+    tag_list = 'u'
+    if element.tag in tag_list:
+        return True
+    return False
+
+# deprecated
+def detect_from_html(element):
+    element_style = ''
+    ancestors = list(element.iterancestors())
+    # include self
+    ancestors = ancestors + [element]
+    # detect bold from ancestors
+    for ancestor in ancestors:
+        tag_list = ['b','strong','em','i','u']
+        if ancestor.tag in tag_list:
+            element_style += f'{ancestor.tag}-tag;'
+        
+    return element_style
+
+
+# WIP, may need modification for different font weights
+def detect_bold_from_css(element):
+    """Detects bold from css"""
+    if element.get('style'):
+        if 'font-weight:bold' in element.get('style'):
+            return True
+        # change to be any font weight greater than 400
+        elif 'font-weight:700' in element.get('style'):
+            return True
+    return True
+
+
+
+def detect_underline_from_css(element):
+    """Detects underline from css"""
+    if element.get('style'):
+        if 'text-decoration:underline' in element.get('style'):
+            return True
+    return False
+
+def detect_italic_from_css(element):
+    """Detects italic from css"""
+    if element.get('style'):
+        if 'font-style:italic' in element.get('style'):
+            return True
+    return False
+
 # add multiple so italic and bold
 def detect_style_from_element(element):
-    def detect_link(node):
-        """Detects if a node is a link."""
-        if node.tag == 'a':
-            return 'link;'
-        return ''
-
-    def detect_bold_from_css(element):
-        """Detects bold from css"""
-        if element.get('style'):
-            if 'font-weight:bold' in element.get('style'):
-                return 'font-weight:bold;'
-            # change to be any font weight greater than 400
-            elif 'font-weight:700' in element.get('style'):
-                return 'font-weight:700;'
-        return ''
-    
-    def detect_from_html(element):
-        element_style = ''
-        ancestors = list(element.iterancestors())
-        # include self
-        ancestors = ancestors + [element]
-        # detect bold from ancestors
-        for ancestor in ancestors:
-            tag_list = ['b','strong','em','i','u']
-            if ancestor.tag in tag_list:
-                element_style += f'{ancestor.tag}-tag;'
-            
-        return element_style
-    
-    def detect_underline_from_css(element):
-        """Detects underline from css"""
-        if element.get('style'):
-            if 'text-decoration:underline' in element.get('style'):
-                return 'text-decoration:underline;'
-        return ''
-    
-    def detect_italic_from_css(element):
-        """Detects italic from css"""
-        if element.get('style'):
-            if 'font-style:italic' in element.get('style'):
-                return 'font-style:italic;'
-        return ''
-
-    
     # check it or descendants have text
     text = get_all_text(element).strip()
     if len(text) == 0:

@@ -1,43 +1,47 @@
-from sec_parsers.detectors import HiddenElementDetector, TableElementDetector, ImageElementDetector
+from sec_parsers.tag_detectors import TableTagDetector, ImageTagDetector
+from sec_parsers.css_detectors import HiddenCSSDetector
 from sec_parsers.detector_groups import HeaderStringDetectorGroup
 from sec_parsers.xml_helper import get_text
 
 class HTMLParser:
     def __init__(self):
-        self.detectors = []
-        self.add_detector(HiddenElementDetector(parsing_rule='return'))
-        self.add_detector(TableElementDetector(parsing_rule='return'))
-        self.add_detector(ImageElementDetector(parsing_rule='return'))
+        self.element_detectors = []
+        self.add_element_detector(HiddenCSSDetector(parsing_rule='return'))
+        self.add_element_detector(TableTagDetector(parsing_rule='return'))
+        self.add_element_detector(ImageTagDetector(parsing_rule='return'))
 
         self.string_detector = HeaderStringDetectorGroup()
+        self.html_dectectors = []
+        self.css_detectors = []
+        self.style_detectors = self.css_detectors + self.html_detectors
 
     
-    def add_detector(self, detector):
-        self.detectors.append(detector)
+    def add_element_detector(self, element_detector):
+        self.element_detectors.append(element_detector)
 
     def recursive_parse(self, element):
-        for detector in self.detectors:
+        # think about return rules here
+        for detector in self.element_detectors:
             result = detector.detect(element)
             if result != '':
-                if parsing_rule == 'return':
-                    element.attrib['parsing_string'] = result
-                    return
+                element.attrib['parsing_string'] = result
+                return
             
         text = get_text(element).strip()
         if text == '':
             for child in element.iterchildren():
                 self.recursive_parse(child)
         else:
-            for string_detector in self.string_detector.string_detectors:
-                parsing_string = string_detector.detect(text)
-                parsing_rule = string_detector.parsing_rule
-
-                if parsing_string != '':
-                    if parsing_rule == 'return':
-                        element.attrib['parsing_string'] = parsing_string
+            parsing_string = ''
+            for detector in self.string_detector.string_detectors:
+                result = detector.detect(text)
+                if result != '':
+                    if detector.parsing_rule == 'return':
+                        # e.g. for items, parts, etc
+                        element.attrib['parsing_string'] = result
                         return
-                    elif parsing_rule == 'continue':
-                        pass
+                    elif detector.parsing_rule == 'continue':
+                        parsing_string += result
 
             
                 # other should continue to element detection
