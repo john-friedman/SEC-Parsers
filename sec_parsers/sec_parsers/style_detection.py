@@ -209,10 +209,10 @@ def detect_italic_from_css(element):
             return True
     return False
 
-# add multiple so italic and bold
+
 def detect_style_from_element(element):
     # check it or descendants have text
-    text = get_all_text(element).strip()
+    text = get_all_text(element).strip() # WIP DOES THIS MATTER? WE WILL SEE
     if len(text) == 0:
         return ''
 

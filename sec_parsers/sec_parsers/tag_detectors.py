@@ -2,9 +2,15 @@ from detectors import Detector
 from style_detection import detect_link,detect_bold_from_html,detect_strong_from_html,detect_emphasis_from_html,\
     detect_italic_from_html,detect_underline_from_html,detect_table,detect_table_of_contents,detect_image
 
-class LinkTagDetector(Detector):
-    def __init__(self, **kwargs):
+class StyleTagDetector(Detector):
+    def __init__(self, style=None, **kwargs):
         super().__init__(**kwargs)
+        self.style = style
+
+
+class LinkTagDetector(StyleTagDetector):
+    def __init__(self, **kwargs):
+        super().__init__(style='link', **kwargs)
 
     def detect(self,element):
         if detect_link(element):
@@ -12,9 +18,9 @@ class LinkTagDetector(Detector):
         else:
             return ''
         
-class BoldTagDetector(Detector):
+class BoldTagDetector(StyleTagDetector):
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__(style='bold', **kwargs)
 
     def detect(self,element):
         if detect_bold_from_html(element):
@@ -22,9 +28,9 @@ class BoldTagDetector(Detector):
         else:
             return ''
 
-class StrongTagDetector(Detector):
+class StrongTagDetector(StyleTagDetector):
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__(style ='strong', **kwargs)
 
     def detect(self,element):
         if detect_strong_from_html(element):
@@ -34,7 +40,7 @@ class StrongTagDetector(Detector):
         
 class EmphasisTagDetector(Detector):
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__(style='emphasis',**kwargs)
 
     def detect(self,element):
         if detect_emphasis_from_html(element):
@@ -44,7 +50,7 @@ class EmphasisTagDetector(Detector):
         
 class ItalicTagDetector(Detector):
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__(style='italic',**kwargs)
 
     def detect(self,element):
         if detect_italic_from_html(element):
@@ -54,7 +60,7 @@ class ItalicTagDetector(Detector):
 
 class UnderlineTagDetector(Detector):
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__(style='underline',**kwargs)
 
     def detect(self,element):
         if detect_underline_from_html(element):
@@ -64,7 +70,7 @@ class UnderlineTagDetector(Detector):
         
 class TableTagDetector(Detector):
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__(style='table',**kwargs)
 
     def detect(self,element):
         if detect_table(element):
@@ -77,7 +83,7 @@ class TableTagDetector(Detector):
         
 class ImageTagDetector(Detector):
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__(style='image', **kwargs)
 
     def detect(self,element):
         if detect_image(element):
