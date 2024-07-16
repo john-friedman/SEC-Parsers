@@ -1,4 +1,4 @@
-from sec_parsers import Filing
+from sec_parsers import Filing,download_sec_filing,set_headers
 from sec_parsers.parsers import recursive_parse, relative_parsing, cleanup_parsing
 from global_vars import *
 
@@ -6,6 +6,7 @@ import os
 import pandas as pd
 from time import time
 
+set_headers('John Smith','example@example.com')
 # delete everything in dir_10k_parsed
 file_list = os.listdir(dir_10k_parsed)
 for file in file_list:
@@ -34,7 +35,7 @@ for count,file in enumerate(files):
 
             print(filing.get_title_tree())
 
-            #print(f'File {count+start_dex} took {time()-s} seconds')
+            print(f'File {count+start_dex} took {time()-s} seconds')
             total_time += time()-s
             #print(f'Average parsing time: {total_time/(count+1)} seconds')
             filing.save_xml(dir_10k_parsed + file[:-5] + '.xml')

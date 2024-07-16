@@ -34,7 +34,7 @@ class SEC10KStringDetectorGroup(HeaderStringDetectorGroup):
             PartStringDetector(recursive_rule='return'),
             ItemStringDetector(recursive_rule='return'),
             SignaturesStringDetector(recursive_rule='return'),
-            NoteStringDetector(recursive_rule='return'),
+            NoteStringDetector(),
             PageNumberStringDetector(),
             BulletPointStringDetector()
         ]

@@ -35,25 +35,35 @@ def detect_item(string):
         return True
     return False
 
-def detect_emphasis_capitalization(string):
+def detect_emphasis_capitalization(string): # WIP
     """Seen in amazon's 2024 10k e.g. We Have Foreign Exchange Risk"""
-    # TODO: FIX
+    # Check for None, None., Omitted., Not Applicable.
     if string.lower() in [item.lower() for item in ['None','None.','Omitted.', 'Not Applicable.']]:
+        return False
+    
+    # Check if string is all digits
+    if string.isdigit():
         return False
     
     words = string.split()
     if not words:
         return False
+
+    has_capitalized_word = False
     for word in words:
+        # Skip prepositions, articles, and conjunctions
         if word.lower() in ["of",'to','a','and','by','in','the','or','on','for','as','with','that','but','not','so','yet','an','at','off','per','up','via']:
             continue
-        # check for numbers, e.g. 2021, but not ITEM2021. ITEM2021 counts as upper
-        elif not any(char.isalpha() for char in word):
-            continue
+        
+        # Check if the word contains any alphabetic characters
+        if any(char.isalpha() for char in word):
+            if word[0].isupper():
+                has_capitalized_word = True
+            else:
+                return False
+        # If the word is just digits or punctuation, ignore it
 
-        if not word[0].isupper():
-            return False
-    return True
+    return has_capitalized_word
     
 def detect_part(string):
     """e.g. Part I"""

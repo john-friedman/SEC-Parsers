@@ -1,10 +1,17 @@
 setup.py
 sec_parsers/__init__.py
 sec_parsers/cleaning.py
+sec_parsers/css_detectors.py
+sec_parsers/detector_groups.py
+sec_parsers/detectors.py
 sec_parsers/download.py
+sec_parsers/experimental_parsers.py
+sec_parsers/filing.py
 sec_parsers/hierarchy.py
 sec_parsers/parsers.py
+sec_parsers/string_detectors.py
 sec_parsers/style_detection.py
+sec_parsers/tag_detectors.py
 sec_parsers/visualization_helper.py
 sec_parsers/xml_helper.py
 sec_parsers.egg-info/PKG-INFO
