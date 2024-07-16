@@ -51,11 +51,14 @@ class HTMLParser:
 
 
     def recursive_parse(self, element):
+        # initialize parsing log
+        element.attrib['parsing_log'] = ''
         # think about return rules here
         for detector in self.element_detectors:
             result = detector.detect(element)
             if result != '':
                 element.attrib['parsing_string'] = result
+                element.attrib['parsing_log'] += f'recursive-{result}'
                 return
             
         text = get_text(element).strip()
@@ -85,15 +88,22 @@ class HTMLParser:
             if element.tail is not None: # WIP think about this
                 parent = element.getparent()
                 parent_text = get_all_text(parent)
+
+                # initialize parent parsing log
+                parent.attrib['parsing_log'] = ''
+                
                 parent_string_style,parent_recursive_rule = self.detect_style_from_string(parent_text,recursive_rule_list=['return'])
                 if parent_recursive_rule == 'return':
                     parent.attrib['parsing_string'] = parent_string_style
+                    parent.attrib['parsing_log'] += f'recursive-{parent_string_style}'
                 elif parent_recursive_rule == 'continue':
                     parent.attrib['parsing_string'] = parsing_string + parent_string_style
+                    parent.attrib['parsing_log'] += f'recursive-{parsing_string + parent_string_style}'
                 else:
                     pass
             else:
                 element.attrib['parsing_string'] = parsing_string
+                element.attrib['parsing_log'] += f'recursive-{parsing_string}'
         return
     
     
@@ -106,25 +116,15 @@ class HTMLParser:
                 skip_strings.append(detector.style)
         
         parsed_elements = deque([element for element in parsed_elements if element.get('parsing_string') not in skip_strings])
-        print(skip_strings)
 
         while parsed_elements:
             parsed_element = parsed_elements.popleft()
-            parsing_string = parsed_element.get('parsing_string')
 
-            # Checks if children have parsing strings
-            # check that this is actacully used
-            children = parsed_element.xpath("child::*")
-            if children:
-                descendants_with_parsing_string = parsed_element.xpath('.//*[@parsing_string]') # changed WIP
-                if descendants_with_parsing_string:
-                    parsed_element.attrib.pop('parsing_string')
-                    parsed_elements.remove(parsed_element)
-                    continue
+            parsing_string = parsed_element.get('parsing_string')
             
             # WIP process bullet points
 
-            # check if descendant of table
+            # check if descendant of table, maybe move order
             if is_descendant_of_table(parsed_element):
                 parent = parsed_element.xpath("./ancestor::table")[0]
                 parent.attrib['parsing_string'] = parsing_string
@@ -134,45 +134,80 @@ class HTMLParser:
                 descendants_with_parsing_string = parent.xpath('.//*[@parsing_string]')
                 for descendant in descendants_with_parsing_string:
                     descendant.attrib.pop('parsing_string')
-                    parsed_elements.remove(descendant)
+
+                    if descendant in parsed_elements: # makes sure parsed_element is not removed twice
+                        parsed_elements.remove(descendant)
+
+                    descendant.attrib['parsing_log'] += f'relative-ancestor is table so removed parsing string;'
+                
+                continue
+
+            # Checks if children have parsing strings
+            # check that this is actacully used
+            children = parsed_element.xpath("child::*")
+            if children:
+                descendants_with_parsing_string = parsed_element.xpath('.//*[@parsing_string]') # changed WIP
+                if descendants_with_parsing_string:
+                    parsed_element.attrib.pop('parsing_string')
+
+                    parsed_element.attrib['parsing_log'] += f'relative-element parsing string removed due to children having parsing strings;'
+                    continue
+
+            if len(parsed_elements) == 0:
+                next_element = None
             else:
                 next_element = parsed_elements[0]
-                elements_between = get_elements_between_elements(html, parsed_element, next_element)
+                
+            elements_between = get_elements_between_elements(html, parsed_element, next_element)
 
-                # Logic for e.g. item1 then new element BUSINESS bold emphasis to merge with item1
-                if elements_between:
-                    parent = parsed_element.getparent()
-                    parent_text = get_all_text(parent)
-                    parent_string_style,parent_recursive_rule = self.detect_style_from_string(parent_text,recursive_rule_list=['return'])
-                    if parent_recursive_rule == 'return':
-                        parent.attrib['parsing_string'] = parent_string_style
+            # Logic for e.g. item1 then new element BUSINESS bold emphasis to merge with item1
+            if elements_between:
+                parent = parsed_element.getparent()
+                parent_text = get_all_text(parent)
+                parent_string_style,parent_recursive_rule = self.detect_style_from_string(parent_text,recursive_rule_list=['return'])
+                if parent_recursive_rule == 'return':
+                    parent.attrib['parsing_string'] = parent_string_style
+                    parent.attrib['parsing_log'] += f'relative-{parent_string_style} added due to elements between; '
+                    
 
-                        # remove descendants parsing strings
-                        descendants_with_parsing_string = parent.xpath('.//*[@parsing_string]')
-                        for descendant in descendants_with_parsing_string:
-                            descendant.attrib.pop('parsing_string')
+                    # remove descendants parsing strings
+                    descendants_with_parsing_string = parent.xpath('.//*[@parsing_string]')
+                    for descendant in descendants_with_parsing_string:
+                        descendant.attrib.pop('parsing_string')
+                        if descendant in parsed_elements: # makes sure parsed_element is not removed twice
+                            parsed_elements.remove(descendant)
+                        descendant.attrib['parsing_log'] += f'relative-removed parsing string due to elements between; '
+                    
+                    parsed_elements.appendleft(parent)
+
+                elif parent_recursive_rule == 'continue':
+                    parent.attrib['parsing_string'] = parsing_string + parent_string_style
+                    parent.attrib['parsing_log'] += f'relative-{parsing_string + parent_string_style} added due to elements between; '
+
+                    # remove descendants parsing strings
+                    descendants_with_parsing_string = parent.xpath('.//*[@parsing_string]')
+                    for descendant in descendants_with_parsing_string:
+                        descendant.attrib.pop('parsing_string')
+
+                        if descendant in parsed_elements: # makes sure parsed_element is not removed twice
                             parsed_elements.remove(descendant)
 
-                    elif parent_recursive_rule == 'continue':
-                        parent.attrib['parsing_string'] = parsing_string + parent_string_style
-
-                        # remove descendants parsing strings
-                        descendants_with_parsing_string = parent.xpath('.//*[@parsing_string]')
-                        for descendant in descendants_with_parsing_string:
-                            descendant.attrib.pop('parsing_string')
-                            parsed_elements.remove(descendant)
-                    else:
-                        pass
+                        descendant.attrib['parsing_log'] += f'relative-removed parsing string due to elements between; '
 
                     parsed_elements.appendleft(parent)
 
-                if elements_between: # handles bold elements in paragraphs
-                    previous_element = parsed_element.getprevious()
-                    if previous_element is not None: 
-                        text = get_text(previous_element).strip() # WIP: may introduce some issues
-                        if previous_element.get('parsing_string') is None and text != '':
-                            parsed_element.attrib.pop('parsing_string', None)
-                            parsed_elements.remove(parsed_element)
+                else:
+                    pass
+
+                
+
+            if elements_between: # handles bold elements in paragraphs
+                previous_element = parsed_element.getprevious()
+                if previous_element is not None: 
+                    text = get_text(previous_element).strip() # WIP: may introduce some issues
+                    if previous_element.get('parsing_string') is None and text != '':
+                        parsed_element.attrib.pop('parsing_string', None)
+                        parsed_element.attrib['parsing_log'] += f'relative-removed parsing string due to previous element not having parsing string; '
 
                 
 

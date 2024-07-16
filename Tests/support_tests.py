@@ -1,6 +1,7 @@
 from sec_parsers import set_headers, download_sec_filing
 from sec_parsers.experimental_parsers import HTMLParser, SEC10KParser
 from sec_parsers.parsers import setup_html, visualize, cleanup_parsing
+from time import time
 
 set_headers('John Smith','example@example.com')
 
@@ -13,8 +14,11 @@ html = download_sec_filing(urls_10k[0])
 parser = SEC10KParser()
 html = setup_html(html)
 
+s= time()
 parser.recursive_parse(html)
+print('Time taken:', time()-s)
 parser.relative_parse(html)
+print('Time taken:', time()-s)
 cleanup_parsing(html)
 
 visualize(html)
