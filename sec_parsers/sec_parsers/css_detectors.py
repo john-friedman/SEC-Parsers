@@ -1,4 +1,4 @@
-from detectors import Detector
+from sec_parsers.detectors import Detector
 from sec_parsers.style_detection import detect_hidden_element, detect_bold_from_css, detect_underline_from_css, detect_italic_from_css
 
 class HiddenCSSDetector(Detector):

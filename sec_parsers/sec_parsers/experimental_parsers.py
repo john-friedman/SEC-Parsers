@@ -3,6 +3,7 @@ from sec_parsers.css_detectors import HiddenCSSDetector
 from sec_parsers.detector_groups import HeaderStringDetectorGroup
 from sec_parsers.xml_helper import get_text, get_all_text
 
+
 class HTMLParser:
     def __init__(self):
         self.element_detectors = [] # e.g. table image link etc
@@ -14,7 +15,6 @@ class HTMLParser:
         self.tag_dectectors = []
         self.css_detectors = []
         self.style_detectors = self.css_detectors + self.tag_dectectors # e.g. strong, emphasis, italic, underline, etc
-
     
     def add_element_detector(self, element_detector):
         self.element_detectors.append(element_detector)
@@ -63,17 +63,17 @@ class HTMLParser:
                 parent.attrib['parsing_string'] = parsing_string + 'parent;'
             else:
                 element.attrib['parsing_string'] = parsing_string
+        return
 
 
 
 
 
-class SEC10KStringDetector:
+class SEC10KParser():
     pass
 
-# should inherit htmlparser and add filing stuff
-class FilingParser:
+class SEC10QParser():
     pass
 
-class SEC10KParser:
+class SEC8KParser():
     pass

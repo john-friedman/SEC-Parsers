@@ -1,4 +1,6 @@
-from sec_parsers.detectors import AllCapsStringDetector, EmphasisCapStringDetector, PartStringDetector, ItemStringDetector, SignaturesStringDetector, PageNumberStringDetector, BulletPointStringDetector, NoteStringDetector
+from sec_parsers.css_detectors import HiddenCSSDetector
+from sec_parsers.tag_detectors import TableTagDetector, ImageTagDetector
+from sec_parsers.string_detectors import AllCapsStringDetector, EmphasisCapStringDetector, PageNumberStringDetector, BulletPointStringDetector, NoteStringDetector, PartStringDetector, ItemStringDetector, SignaturesStringDetector
 from sec_parsers.cleaning import clean_string_for_style_detection
 
 class HeaderStringDetectorGroup:
