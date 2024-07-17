@@ -18,5 +18,8 @@ parent = filing.html.xpath("//span[text() = 'ART I']")[0].getparent()
 
 s = time()
 filing.parse()
+#filing.visualize()
+print(filing.get_title_tree())
+filing.save_xml('test.xml')
 print('Parsing time:',time()-s)
 

@@ -108,6 +108,7 @@ class HTMLParser:
                 element.attrib['parsing_log'] += f'recursive-{parsing_string}'
         return
     
+    # I think this is fine for now
     def relative_parse(self,html):
         parsed_elements = deque(html.xpath('//*[@parsing_string]'))
 
@@ -117,7 +118,7 @@ class HTMLParser:
             parsing_string = parsed_element.get('parsing_string')
             element_text = get_text(parsed_element).strip()
 
-            # get ancestor whose text is not the same after trimming #WIP
+            # WIP - gets ancestor whose text is not equal to element text
             flag = True
             while flag:
                 parent = parsed_element.getparent()
@@ -128,8 +129,22 @@ class HTMLParser:
 
             
             #WIP
-            # code to merge elements
-        
+            # code to merge elements - e.g. item 1 and business
+            parent_string_style, _ = self.detect_style_from_string(parent_text,attribute='recursive_rule',rule_list=['return']) 
+            if parent_string_style != '':
+                parsed_element.attrib['parsing_string'] = parent_string_style
+                parsed_element.attrib['parsing_log'] += f'relative-merged with parent;'
+
+                # remove descendants parsing string
+                for descendant in parsed_element.iterdescendants():
+                    descendant.attrib.pop('parsing_string', None)
+                    descendant.attrib['parsing_log'] += 'relative-removed as merged with parent;'
+                    # remove from queue
+                    if descendant in parsed_elements:
+                        parsed_elements.remove(descendant)
+
+                continue
+            
 
             # remove parsing string if in the middle of text - I like this
             if is_string_in_middle(parent_text, element_text):
@@ -146,7 +161,6 @@ class HTMLParser:
         ignore_strings = [item.style for item in self.all_detectors if item.xml_rule == 'ignore']
         text_strings = [item for item in self.element_detectors if item.xml_rule == 'text']
         for parsed_element in parsed_elements:
-
             parsing_string = parsed_element.get('parsing_string')   
             # check if ignore
             if parsing_string in ignore_strings:
@@ -184,13 +198,16 @@ class HTMLParser:
 
         open_tree(html)
 
-
     def construct_xml_tree(self, html):
         root = etree.Element('root')
         document_node = etree.Element('document', title='Document')
         root.append(document_node)
 
         parsed_elements = html.xpath('//*[@parsing_type]')
+
+        # WIP
+        parsed_elements = [element for element in parsed_elements if element.get('parsing_type') != 'ignore;']
+
         parsed_types = [element.attrib['parsing_type'] for element in parsed_elements]
         hierarchy_dict = {'part;': 0, 'item;': 1,'signatures;': 0}
         levels = assign_header_levels(parsed_types,hierarchy_dict=hierarchy_dict)
@@ -206,15 +223,15 @@ class HTMLParser:
 
         for i, (level, parsed_element) in enumerate(zip(levels[first_index:], parsed_elements[first_index:]), start=first_index):
             node = etree.Element('header', title=parsed_element.get('parsing_type'))
-            
+
             # Get the next element (if any)
             next_element = parsed_elements[i + 1] if i + 1 < len(parsed_elements) else None
-            
+
             # Extract text between current element and next element
             node.text = get_text_between_elements(html,start_element=parsed_element, end_element=next_element)
 
             # Find the appropriate parent node
-            while stack and level <= stack[-1][0]:
+            while stack and level <= stack[-1][0]: # WIP
                 stack.pop()
 
             # Append to the appropriate parent
