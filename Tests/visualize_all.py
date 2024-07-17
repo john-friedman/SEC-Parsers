@@ -1,5 +1,4 @@
 from sec_parsers import Filing,download_sec_filing,set_headers
-from sec_parsers.parsers import recursive_parse, relative_parsing, cleanup_parsing
 from global_vars import *
 
 import os
@@ -34,8 +33,8 @@ for count,file in enumerate(files):
 
             print(f'File {count+start_dex} took {time()-s} seconds')
             total_time += time()-s
-            #print(f'Average parsing time: {total_time/(count+1)} seconds')
-            filing.save_xml(dir_10k_parsed + file[:-5] + '.xml')
+            print(f'Average parsing time: {total_time/(count+1)} seconds')
+            #filing.save_xml(dir_10k_parsed + file[:-5] + '.xml')
         except Exception as e:
             errors.append((file,e))
             print(f'Error in {file}: num_errors = {len(errors)}')

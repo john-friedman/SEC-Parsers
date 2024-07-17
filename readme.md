@@ -1,113 +1,53 @@
 # SEC Parsers
-Parses non-standardized SEC 10-K filings into well structured detailed xml. Use cases include LLMs, NLP, and textual analysis. Current supported file types: 10-K, 10-Q, 8-K. 
+Parses non-standardized SEC 10-K filings into well structured detailed xml. Use cases include LLMs, NLP, and textual analysis. 
 
-<b>Note:</b> This is a WIP. Not every file will parse correctly.
+TODO:
+* reduce number of variables and rename for detectors
+* add dynamic handling of xml construction based on object
+* reduce error rate back to normal levels (less than 1 pct)
+* Add more supported filings: S1 first
+* add warnings for set headers and automatic type detection
 
-<b>Important Update:</b>  I'm adding a lot more supported files, which may introduce some bugs.
+GitHub TODO
+* Readme readability revamp
+* file supported
+* speed - less than a second avg, code not optimized, will be reduced
+* how to install
+* quickstart
+* export to csv, xml etc
+* how to define custom parsers
+* Links github dropbox
+* Problem clearly stated
+* How SEC Parsers works
+* Roadmap
+* statistics
 
-<b>Note:</b> Currently looking into adding Proxy statement,Foreign Investment Disclosures:,N-SAR,14A,14C,15G,F-6,40-F
-<b>Note:</b> Will add S1, S3, S4 (minor tweaks to parser)
-<b>Note:</b> Need to add image tags - link to original 
-<b>Note:</b> Need to add warnings for set headers and automatic type detection
-<b>Note:</b> OCR on image urls, using api to link back to parser? much later
-change to parserelement?
+Future:
+* image OCR / hosting (FAR)
+* visualizer rewrite - e.g. pdf viewer but for headers
+* table handling (I think can probably get to 95% table handling relatively easily)
 
-TODO make readme readable to people who are not me.
-double check if bullet point parsing is needed
-rewrite construct xml tree
-rewrite cleanup
-think about visualizer rewrite
+Package Roadmap
+* Stage 1: Support a lot of filing types with >99% parse rate, and very detailed trees without errors
+* Stage 2: cluster headers e.g. season seasonal variation
+* Stage 3: LLMS + OCR on filings, e.g. to see if section just says nothing here, or e.g. to describe image
+* Stage 4: backwards compatability for text files
 
-add 10Q, add 8K
-add S1
-
-<div align="center">
-  <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualization.png">
-</div>
-<div align="center">
-  <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_tree_v2.png" width="500">
-</div>
+How people can help:
+* Better color scheme suggestion for visualizer
+* Hosting for parsed files (future)
+* suggestions for better RAG for LLMS
+* suggestions for other metadata
+* qol improvements, e.g. for finding titles etc within parsed xml
 
 
-### Installation
-```pip install sec-parsers```
-
-### Quickstart
-```
-from sec_parsers import Filing, download_sec_filing
-
-html = download_sec_filing('https://www.sec.gov/Archives/edgar/data/1318605/000162828024002390/tsla-20231231.htm')
-filing = Filing(html)
-filing.parse() # parses filing
-filing.visualize() # opens filing in webbrowser with highlighted section headers
-filing.find_nodes_by_title(title) # finds node by title, e.g. 'item 1a'
-filing.find_nodes_by_text(text) # finds nodes which contains your text
-filing.get_tree(node) # if no argument specified returns xml tree, if node specified, returns that nodes tree
-filing.get_title_tree() # returns xml tree using titles instead of tags. More descriptive than get_tree.
-filing.save_xml(file_name)
-filing.save_csv(file_name)
-```
-
-For more information look at the [quickstart](Examples/quickstart.ipynb), or view a parsed Tesla 10-K [here](Examples/tesla_10k.xml). SEC Parsers also supports exporting to csv, see [here](Examples/tesla_10k.csv).
-
-### Links: 
-* [GitHub](https://github.com/john-friedman/SEC-Parsers/)
-* [Archive of Parsed XMLs / CSVs](https://www.dropbox.com/scl/fo/np1lpow7r3bissz80ze3o/AKGM8skBrUfEGlSweofAUDU?rlkey=cz1r78jofntjeq4ax2vb2yd0u&e=1&st=mdcwgfcm&dl=0) - Last updated 7/10/24.
-
-### Problem:
-SEC filings are human readable, but messy html makes it hard for machines to detect and read information by section. This is especially important for NLP / RAG using LLMs.
-
-### How SEC Parsers works:
-1. Detects headers in filings using:
-* element tags, e.g. `<b>Item 1</b>`
-* element css, e.g. `<p style="font-weight: bold;">Item 1.</p>`
-* text style, e.g. emphasis style "Purchase of Significant Equipment"
-* relative location of above elements to each other
-2. Calculates hierarchy of headers, and converts to a tree structure
-
-### Roadmap:
-1. Parser that converts >95% of filings into nicely formatted xml trees. Currently at 90%.
-2. Apply data science on xml to cluster headers, e.g. seasonality, seasonal variation etc, to make xml easier to work with.
-3. LLMs on section text to create node metadata (e.g. is anything said in this section, or 2000 chars to say we are not required to fill out this section)
-4. Backwards compatability for text files. (extends historical reach back into early 1900s)
-
-### Possible future features
-* better hierarchy calculation
-* more filings supported
-* better rag integration
-* converting html tables to nice xml tables
-* hosting cleaned xml files online
-* better color scheme (color scheme for headers, ignored_elements - e.g. page numbers, text)
-* better descriptions of functions
-* faster - not a priority, but kinda fun to program. Code cleanup + removing redundancies may help a lot.
-
-### Features
-* Parse 10K
-* Export to XML, CSV
-* XBRL metadata
-
-### Feature request:
+Feature request:
 * save_dta - save xml to dta. similar to csv function
-* better selection by titles. e.g. selecting by item1, will also return item 1a,... not sure how to set this up in a nice way
-* More XBRL stuff
 
-### Statistics
-* 100% parsed html rate
-* 99.3% conversion to xml rate. 
-* On average ~1s to parse file (range .1s-3s).
+Issues
+1. handle if PART I appears multiple times as header, e.g. logic here item 1 continued.
 
-### Issues
-1. handle if PART I appears multiple times as header, e.g. logic here item 1 continued. Develop logic to handle this. Probably in cleanup?
-
-
-### Priority TODO
-1. rewrite parsing to be more flexible for multiple document types. rewrite xml tree construction as well. This should make 8ks, and several other documents parseable.
-### TODO
-1. Look into support for more filing types - think about general html parser with inheritance
-1. Hierarchical interactive debugger - maybe in flask or custom pyqt chromebrowser? - not sure, look around.
-0. we fixed one table issue, now need to account for too much tables https://www.sec.gov/Archives/edgar/data/18255/000001825518000024/cato10k2017-jrs.htm
-2. Code cleanup. Right now I'm tweaking code to increase parse rate, eventually need to incorporate lessons learned, and rewrite.
-
+Better format below, and add more:
 ### Other people's SEC stuff
 * [edgartools](https://github.com/dgunning/edgartools) - good interface for interacting with SEC's EDGAR system
 * [sec-parser](https://github.com/alphanome-ai/sec-parser) - oops, we have similar names. They were first, my bad. They parse 10-Qs well.
