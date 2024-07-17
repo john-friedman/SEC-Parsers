@@ -29,12 +29,12 @@ class SEC10KStringDetectorGroup(HeaderStringDetectorGroup):
         
         # Add part, item, and signatures detectors at the beginning
         new_detectors = [
-            PartStringDetector(recursive_rule='return',hierarchy=0,title_tag='part'),
-            ItemStringDetector(recursive_rule='return',hierarchy=1, title_tag='item'),
-            SignaturesStringDetector(recursive_rule='return',hierarchy=0,title_tag='signatures'),
+            PartStringDetector(recursive_rule='return',hierarchy=0,title_tag='part',relative_rule='ignore'),
+            ItemStringDetector(recursive_rule='return',hierarchy=1, title_tag='item',relative_rule='ignore'),
+            SignaturesStringDetector(recursive_rule='return',hierarchy=0,title_tag='signatures',relative_rule='ignore'),
             NoteStringDetector(),
             PageNumberStringDetector(xml_rule='ignore'),
-            BulletPointStringDetector()
+            BulletPointStringDetector(relative_rule='ignore')
         ]
         self.insert_string_detectors(new_detectors)
         
@@ -44,8 +44,8 @@ class SEC8KStringDetectorGroup(HeaderStringDetectorGroup):
         
         # Add part, item, and signatures detectors at the beginning
         new_detectors = [
-            ItemStringDetector(recursive_rule='return',hierarchy=0, title_tag='item'),
-            SignaturesStringDetector(recursive_rule='return',hierarchy=0,title_tag='signatures'),
+            ItemStringDetector(recursive_rule='return',hierarchy=0, title_tag='item',relative_rule='ignore'),
+            SignaturesStringDetector(recursive_rule='return',hierarchy=0,title_tag='signatures',relative_rule='ignore'),
             NoteStringDetector(),
             PageNumberStringDetector(),
             BulletPointStringDetector()

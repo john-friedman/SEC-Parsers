@@ -46,13 +46,13 @@ class Filing:
         self.parser.relative_parse(self.html)
         self.parser.clean_parse(self.html)
         # convert to xml
+        self._to_xml()
 
     def visualize(self):
         self.parser.visualize(self.html)
 
-    def _to_xml(self,start_title):
-        pass
-        self.xml#WIP
+    def _to_xml(self):
+        self.xml = self.parser.construct_xml_tree(self.html)
 
 
     # functions to interact with xml

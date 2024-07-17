@@ -5,9 +5,9 @@ from sec_parsers.detector_groups import HeaderStringDetectorGroup, SEC10KStringD
 from sec_parsers.xml_helper import get_text, get_all_text, get_elements_between_elements, get_text_between_elements,\
         set_background_color, remove_background_color, open_tree
 from sec_parsers.style_detection import is_descendant_of_table
-from sec_parsers.cleaning import clean_title
+from sec_parsers.cleaning import clean_title, is_string_in_middle
 from sec_parsers.visualization_helper import headers_colors_list
-
+from sec_parsers.hierachy import assign_header_levels
 from collections import deque
 from lxml import etree
 
@@ -16,9 +16,9 @@ from lxml import etree
 class HTMLParser:
     def __init__(self, **kwargs):
         self.element_detectors = [] # e.g. table image link etc
-        self.add_element_detector(HiddenCSSDetector(recursive_rule='return', xml_rule='ignore'))
-        self.add_element_detector(TableTagDetector(recursive_rule='return', xml_rule='text'))
-        self.add_element_detector(ImageTagDetector(recursive_rule='return', xml_rule='ignore'))
+        self.add_element_detector(HiddenCSSDetector(recursive_rule='return', xml_rule='ignore',relative_rule='ignore'))
+        self.add_element_detector(TableTagDetector(recursive_rule='return', xml_rule='text',relative_rule='ignore'))
+        self.add_element_detector(ImageTagDetector(recursive_rule='return', xml_rule='ignore',relative_rule='ignore'))
 
         self.string_detector = HeaderStringDetectorGroup() # strings that should be detected
 
@@ -51,21 +51,21 @@ class HTMLParser:
         self.element_detectors.remove(element_detector)
 
 
-    def detect_style_from_string(self,string,recursive_rule_list=[]):
+    def detect_style_from_string(self,string,attribute,rule_list=[]):
         string_detectors = self.string_detector.string_detectors
         # subset
-        if recursive_rule_list:
-            string_detectors = [detector for detector in string_detectors if detector.recursive_rule in recursive_rule_list]
+        if rule_list:
+            string_detectors = [detector for detector in string_detectors if getattr(detector, attribute) in rule_list]
         
         for detector in string_detectors:
             result = detector.detect(string)
             if result != '':
-                return (result,detector.recursive_rule)
+                return (result,getattr(detector, 'recursive_rule'))
         
         return ('','')
     
 
-
+    # i think we can modify this to make relative parser mostly useless.
     def recursive_parse(self, element):
         # initialize parsing log
         element.attrib['parsing_log'] = ''
@@ -83,9 +83,13 @@ class HTMLParser:
                 self.recursive_parse(child)
         else:
             parsing_string = ''
-            string_style, recursive_rule = self.detect_style_from_string(text) 
+            string_style, recursive_rule = self.detect_style_from_string(text,attribute='recursive_rule') 
             if string_style != '':
                 parsing_string = string_style
+                if recursive_rule == 'return':
+                    element.attrib['parsing_string'] = parsing_string
+                    element.attrib['parsing_log'] += f'recursive- 2nd run detect {parsing_string}'
+                    return
             else:
                 recursive_rule = 'continue'
 
@@ -100,137 +104,46 @@ class HTMLParser:
                 if parsing_string == '':
                     return
 
-            # logic for adding to element or parent element, may want to move later
-            if element.tail is not None: # WIP think about this
-                parent = element.getparent()
-                parent_text = get_all_text(parent)
-
-                # initialize parent parsing log
-                parent.attrib['parsing_log'] = ''
-                
-                parent_string_style,parent_recursive_rule = self.detect_style_from_string(parent_text,recursive_rule_list=['return'])
-                if parent_recursive_rule == 'return':
-                    parent.attrib['parsing_string'] = parent_string_style
-                    parent.attrib['parsing_log'] += f'recursive-{parent_string_style}'
-                elif parent_recursive_rule == 'continue':
-                    parent.attrib['parsing_string'] = parsing_string + parent_string_style
-                    parent.attrib['parsing_log'] += f'recursive-{parsing_string + parent_string_style}'
-                else:
-                    pass
-            else:
                 element.attrib['parsing_string'] = parsing_string
                 element.attrib['parsing_log'] += f'recursive-{parsing_string}'
         return
     
-    
     def relative_parse(self,html):
         parsed_elements = deque(html.xpath('//*[@parsing_string]'))
 
-        skip_strings = [] # Strings not to be processed by relative parsing
-        for detector in self.element_detectors + self.string_detector.string_detectors:
-            if detector.recursive_rule == 'return':
-                skip_strings.append(detector.style)
-        
-        parsed_elements = deque([element for element in parsed_elements if element.get('parsing_string') not in skip_strings])
 
         while parsed_elements:
             parsed_element = parsed_elements.popleft()
-
             parsing_string = parsed_element.get('parsing_string')
+            element_text = get_text(parsed_element).strip()
+
+            # get ancestor whose text is not the same after trimming #WIP
+            flag = True
+            while flag:
+                parent = parsed_element.getparent()
+                parent_text = get_all_text(parent).strip()
+                if parent_text != element_text:
+                    flag = False
+                flag = False
+
             
-            # WIP process bullet points
+            #WIP
+            # code to merge elements
+        
 
-            # check if descendant of table, maybe move order
-            if is_descendant_of_table(parsed_element):
-                parent = parsed_element.xpath("./ancestor::table")[0]
-                parent.attrib['parsing_string'] = parsing_string
-                parsed_elements.appendleft(parent)
-
-                # remove descendants parsing strings
-                descendants_with_parsing_string = parent.xpath('.//*[@parsing_string]')
-                for descendant in descendants_with_parsing_string:
-                    descendant.attrib.pop('parsing_string')
-
-                    if descendant in parsed_elements: # makes sure parsed_element is not removed twice
-                        parsed_elements.remove(descendant)
-
-                    descendant.attrib['parsing_log'] += f'relative-ancestor is table so removed parsing string;'
-                
+            # remove parsing string if in the middle of text - I like this
+            if is_string_in_middle(parent_text, element_text):
+                parsed_element.attrib.pop('parsing_string')
+                parsed_element.attrib['parsing_log'] += f'relative-popped as it was in middle;'
                 continue
 
-            # Checks if children have parsing strings
-            # check that this is actacully used
-            children = parsed_element.xpath("child::*")
-            if children:
-                descendants_with_parsing_string = parsed_element.xpath('.//*[@parsing_string]') # changed WIP
-                if descendants_with_parsing_string:
-                    parsed_element.attrib.pop('parsing_string')
 
-                    parsed_element.attrib['parsing_log'] += f'relative-element parsing string removed due to children having parsing strings;'
-                    continue
-
-            if len(parsed_elements) == 0:
-                next_element = None
-            else:
-                next_element = parsed_elements[0]
-                
-            elements_between = get_elements_between_elements(html, parsed_element, next_element)
-
-            # Logic for e.g. item1 then new element BUSINESS bold emphasis to merge with item1
-            if elements_between:
-                parent = parsed_element.getparent()
-                parent_text = get_all_text(parent)
-                parent_string_style,parent_recursive_rule = self.detect_style_from_string(parent_text,recursive_rule_list=['return'])
-                if parent_recursive_rule == 'return':
-                    parent.attrib['parsing_string'] = parent_string_style
-                    parent.attrib['parsing_log'] += f'relative-{parent_string_style} added due to elements between; '
-                    
-
-                    # remove descendants parsing strings
-                    descendants_with_parsing_string = parent.xpath('.//*[@parsing_string]')
-                    for descendant in descendants_with_parsing_string:
-                        descendant.attrib.pop('parsing_string')
-                        if descendant in parsed_elements: # makes sure parsed_element is not removed twice
-                            parsed_elements.remove(descendant)
-                        descendant.attrib['parsing_log'] += f'relative-removed parsing string due to elements between; '
-                    
-                    parsed_elements.appendleft(parent)
-
-                elif parent_recursive_rule == 'continue':
-                    parent.attrib['parsing_string'] = parsing_string + parent_string_style
-                    parent.attrib['parsing_log'] += f'relative-{parsing_string + parent_string_style} added due to elements between; '
-
-                    # remove descendants parsing strings
-                    descendants_with_parsing_string = parent.xpath('.//*[@parsing_string]')
-                    for descendant in descendants_with_parsing_string:
-                        descendant.attrib.pop('parsing_string')
-
-                        if descendant in parsed_elements: # makes sure parsed_element is not removed twice
-                            parsed_elements.remove(descendant)
-
-                        descendant.attrib['parsing_log'] += f'relative-removed parsing string due to elements between; '
-
-                    parsed_elements.appendleft(parent)
-
-                else:
-                    pass
-
-                
-
-            if elements_between: # handles bold elements in paragraphs
-                previous_element = parsed_element.getprevious()
-                if previous_element is not None: 
-                    text = get_text(previous_element).strip() # WIP: may introduce some issues
-                    if previous_element.get('parsing_string') is None and text != '':
-                        parsed_element.attrib.pop('parsing_string', None)
-                        parsed_element.attrib['parsing_log'] += f'relative-removed parsing string due to previous element not having parsing string; '
-
+    
     def clean_parse(self,html):
         """set ignore items etc"""
         parsed_elements = html.xpath('//*[@parsing_string]')
 
         ignore_strings = [item.style for item in self.all_detectors if item.xml_rule == 'ignore']
-        print(ignore_strings)
         text_strings = [item for item in self.element_detectors if item.xml_rule == 'text']
         for parsed_element in parsed_elements:
 
@@ -272,19 +185,51 @@ class HTMLParser:
         open_tree(html)
 
 
-    def construct_xml_tree(self,html):
+    def construct_xml_tree(self, html):
         root = etree.Element('root')
-
-        # add document node
-        document_node = etree.Element('document', title = 'Document')
+        document_node = etree.Element('document', title='Document')
         root.append(document_node)
+
+        parsed_elements = html.xpath('//*[@parsing_type]')
+        parsed_types = [element.attrib['parsing_type'] for element in parsed_elements]
+        hierarchy_dict = {'part;': 0, 'item;': 1,'signatures;': 0}
+        levels = assign_header_levels(parsed_types,hierarchy_dict=hierarchy_dict)
+
+        # Handle introduction (elements before first 0 level header)
+        first_index = next((i for i, level in enumerate(levels) if level == 0), len(levels))
+        introduction_node = etree.Element('introduction', title='Introduction')
+        introduction_node.text = get_text_between_elements(html,start_element=None, end_element=parsed_elements[first_index])
+        document_node.append(introduction_node)
+
+        # Parse hierarchical structure
+        stack = [(- 1, document_node)]  # (level, node) pairs
+
+        for i, (level, parsed_element) in enumerate(zip(levels[first_index:], parsed_elements[first_index:]), start=first_index):
+            node = etree.Element('header', title=parsed_element.get('parsing_type'))
+            
+            # Get the next element (if any)
+            next_element = parsed_elements[i + 1] if i + 1 < len(parsed_elements) else None
+            
+            # Extract text between current element and next element
+            node.text = get_text_between_elements(html,start_element=parsed_element, end_element=next_element)
+
+            # Find the appropriate parent node
+            while stack and level <= stack[-1][0]:
+                stack.pop()
+
+            # Append to the appropriate parent
+            stack[-1][1].append(node)
+            stack.append((level, node))
+
+        return root
+
         
 # WIP FIX numbers inside pagraphs sometimes parsing as page numbers
 class SEC10KParser(HTMLParser):
     def _init(self, **kwargs):
         super()._init(**kwargs)  # Call the parent's _init method
 
-        self.insert_element_detector(TableOfContentsTagDetector(recursive_rule ='return',xml_rule ='text'),0)
+        self.insert_element_detector(TableOfContentsTagDetector(recursive_rule ='return',xml_rule ='text',relative_rule='ignore'),0)
         self.string_detector = SEC10KStringDetectorGroup()
 
         self.color_dict.update({'part;': '#B8860B',
@@ -303,7 +248,7 @@ class SEC8KParser(HTMLParser):
     def _init(self, **kwargs):
         super()._init(**kwargs)
 
-        self.insert_element_detector(TableOfContentsTagDetector(recursive_rule ='return',xml_rule ='text'),0)
+        self.insert_element_detector(TableOfContentsTagDetector(recursive_rule ='return',xml_rule ='text',relative_rule='ignore'),0)
         self.string_detector = SEC8KStringDetectorGroup()
 
         self.color_dict.update({
