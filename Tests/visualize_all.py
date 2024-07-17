@@ -16,8 +16,8 @@ for file in file_list:
 
 
 total_time = 0
-start_dex = 100
-files = os.listdir(dir_10k)[0:1]
+start_dex = 0
+files = os.listdir(dir_10k)
 errors = []
 for count,file in enumerate(files):
         try:
@@ -26,11 +26,8 @@ for count,file in enumerate(files):
                 html = f.read()
                 
             filing = Filing(html)
-            # recursive_parse(filing.html)
-            # relative_parsing(filing.html)
-            # cleanup_parsing(filing.html)
-            # filing.visualize()  
             filing.parse()
+            #filing.visualize()  
 
 
             print(filing.get_title_tree())
@@ -44,7 +41,7 @@ for count,file in enumerate(files):
             print(f'Error in {file}: num_errors = {len(errors)}')
             print(f"count: {count}")
             print(e)
-print(len(errors) / len(files))
+print(f"Error percentage: {len(errors)/len(files)}")
 # save errors to text file
 with open('errors.txt', 'w') as f:
     for error in errors:

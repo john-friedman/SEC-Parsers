@@ -22,6 +22,7 @@ def clean_title(text): #  adjust to format items and parts into standardized for
     # replace multiple spaces with single space
     text = re.sub('\s+', ' ', text)
 
+
     return text
 
 def clean_string_for_style_detection(text):

@@ -12,6 +12,15 @@ Parses non-standardized SEC 10-K filings into well structured detailed xml. Use 
 <b>Note:</b> OCR on image urls, using api to link back to parser? much later
 change to parserelement?
 
+TODO make readme readable to people who are not me.
+double check if bullet point parsing is needed
+rewrite construct xml tree
+rewrite cleanup
+think about visualizer rewrite
+
+add 10Q, add 8K
+add S1
+
 <div align="center">
   <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualization.png">
 </div>

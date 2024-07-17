@@ -1,5 +1,5 @@
 from lxml import etree
-from sec_parsers.parsers import parse_metadata, detect_filing_type, parse_10k, parse_10q, visualize, construct_xml_tree, setup_html
+from sec_parsers.parsers import parse_metadata, detect_filing_type, visualize, setup_html
 from sec_parsers.experimental_parsers import HTMLParser, SEC10KParser, SEC10QParser, SEC8KParser
 
 class Filing:
@@ -8,7 +8,9 @@ class Filing:
         self._parse_metadata()
         self.hierarchy = None # need to implement
         self.xml = None
+        self.parser = None # this will be updated by detect_filing_type
         self._detect_filing_type()
+
 
     # keep
     def _setup_html(self,html):
@@ -22,7 +24,15 @@ class Filing:
     # keep
     def _detect_filing_type(self):
         filing_type = detect_filing_type(self.metadata)
+
+        if filing_type == '10-K':
+            self.parser = SEC10KParser()
+        elif filing_type == '10-Q':
+            self.parser = SEC10QParser()
+        elif filing_type == '8-K':
+            self.parser = SEC8KParser()
         self.filing_type = filing_type
+
 
     # keep
     def set_filing_type(self, filing_type):
@@ -32,25 +42,17 @@ class Filing:
         if self.filing_type is None:
             self._detect_filing_type()
 
-        if self.filing_type == '10-K':
-            parser = SEC10KParser()
-            self._to_xml('part;')
-        elif self.filing_type == '10-Q':
-            self._parse_10q()
-            self._to_xml('part;')
-        elif self.filing_type == '8-K':
-            self._parse_10k()
-            self._to_xml('item;')
-        else:
-            raise ValueError('Filing type not detected')
-        
-
+        self.parser.recursive_parse(self.html)
+        self.parser.relative_parse(self.html)
+        self.parser.clean_parse(self.html)
+        # convert to xml
 
     def visualize(self):
-        visualize(self.html)
+        self.parser.visualize(self.html)
 
     def _to_xml(self,start_title):
-        self.xml = construct_xml_tree(self.html,start_title)
+        pass
+        self.xml#WIP
 
 
     # functions to interact with xml

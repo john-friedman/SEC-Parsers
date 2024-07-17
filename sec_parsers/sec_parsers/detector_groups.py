@@ -1,5 +1,3 @@
-from sec_parsers.css_detectors import HiddenCSSDetector
-from sec_parsers.tag_detectors import TableTagDetector, ImageTagDetector
 from sec_parsers.string_detectors import AllCapsStringDetector, EmphasisCapStringDetector, PageNumberStringDetector, BulletPointStringDetector, NoteStringDetector,\
       PartStringDetector, ItemStringDetector, SignaturesStringDetector, NoteStringDetector
 from sec_parsers.cleaning import clean_string_for_style_detection
@@ -31,9 +29,9 @@ class SEC10KStringDetectorGroup(HeaderStringDetectorGroup):
         
         # Add part, item, and signatures detectors at the beginning
         new_detectors = [
-            PartStringDetector(recursive_rule='return'),
-            ItemStringDetector(recursive_rule='return'),
-            SignaturesStringDetector(recursive_rule='return'),
+            PartStringDetector(recursive_rule='return',hierarchy=0,title_tag='part'),
+            ItemStringDetector(recursive_rule='return',hierarchy=0, title_tag='item'),
+            SignaturesStringDetector(recursive_rule='return',hierarchy=0,title_tag='signatures'),
             NoteStringDetector(),
             PageNumberStringDetector(),
             BulletPointStringDetector()

@@ -2,25 +2,31 @@ from sec_parsers.tag_detectors import LinkTagDetector, BoldTagDetector, StrongTa
       UnderlineTagDetector, TableTagDetector, ImageTagDetector, TableOfContentsTagDetector
 from sec_parsers.css_detectors import HiddenCSSDetector, BoldCSSDetector,UnderlineCSSDetector,ItalicCSSDetector
 from sec_parsers.detector_groups import HeaderStringDetectorGroup, SEC10KStringDetectorGroup
-from sec_parsers.xml_helper import get_text, get_all_text, get_elements_between_elements
+from sec_parsers.xml_helper import get_text, get_all_text, get_elements_between_elements, get_text_between_elements,\
+        set_background_color, remove_background_color, open_tree
 from sec_parsers.style_detection import is_descendant_of_table
+from sec_parsers.cleaning import clean_title
+from sec_parsers.visualization_helper import headers_colors_list
+
 from collections import deque
+from lxml import etree
 
 # need to remember to ignore hidden css in relative parsing
-
+# TODO: refactor to reduce code duplication / annoying stuff like detectors all over the place
 class HTMLParser:
     def __init__(self):
         self.element_detectors = [] # e.g. table image link etc
-        self.add_element_detector(HiddenCSSDetector(recursive_rule='return', relative_rule='skip'))
-        self.add_element_detector(TableTagDetector(recursive_rule='return', relative_rule='skip'))
-        self.add_element_detector(ImageTagDetector(recursive_rule='return',relative_rule='skip'))
+        self.add_element_detector(HiddenCSSDetector(recursive_rule='return', xml_rule='ignore'))
+        self.add_element_detector(TableTagDetector(recursive_rule='return', xml_rule='text'))
+        self.add_element_detector(ImageTagDetector(recursive_rule='return', xml_rule='ignore'))
 
         self.string_detector = HeaderStringDetectorGroup() # strings that should be detected
 
         self.tag_detectors = [LinkTagDetector(),BoldTagDetector(),StrongTagDetector(),EmphasisTagDetector(),ItalicTagDetector(),UnderlineTagDetector()]
-        self.css_detectors = [HiddenCSSDetector(),BoldCSSDetector(),UnderlineCSSDetector(),ItalicCSSDetector()]
+        self.css_detectors = [BoldCSSDetector(),UnderlineCSSDetector(),ItalicCSSDetector()]
         self.style_detectors = self.css_detectors + self.tag_detectors # e.g. strong, emphasis, italic, underline, etc
 
+        self.color_dict = {'ignore;': '#f2f2f2'} # If you want certain parsing types to have certain colors
 
     def insert_element_detector(self, element_detector,index):
         self.element_detectors.insert(index,element_detector)
@@ -47,7 +53,7 @@ class HTMLParser:
                 return (result,detector.recursive_rule)
         
         return ('','')
-
+    
 
 
     def recursive_parse(self, element):
@@ -209,7 +215,59 @@ class HTMLParser:
                         parsed_element.attrib.pop('parsing_string', None)
                         parsed_element.attrib['parsing_log'] += f'relative-removed parsing string due to previous element not having parsing string; '
 
+    def clean_parse(self,html):
+        """set ignore items etc"""
+        parsed_elements = html.xpath('//*[@parsing_string]')
+
+        ignore_strings = [item for item in self.element_detectors if item.xml_rule == 'ignore']
+        text_strings = [item for item in self.element_detectors if item.xml_rule == 'text']
+        for parsed_element in parsed_elements:
+
+            parsing_string = parsed_element.get('parsing_string')   
+            # check if ignore
+            if parsing_string in ignore_strings:
+                parsed_element.attrib['parsing_type'] = 'ignore;'
+                parsed_element.attrib['parsing_log'] += 'clean-parse-ignored;'
                 
+            # check if text
+            elif parsing_string in text_strings:
+                parsed_element.attrib['parsing_log'] += 'clean-parse-text;'
+            else:
+                parsed_element.attrib['parsing_type'] = parsing_string
+                parsed_element.attrib['parsing_log'] += 'clean-parse-header;'
+
+    def visualize(self,html):
+        # remove style from all descendants so that background color can be set
+        for descendant in html.iterdescendants():
+            remove_background_color(descendant)
+
+        # find all elements with parsing attribute
+        elements = html.xpath('//*[@parsing_type]')
+        # get all unique parsing values
+        parsing_values = list(set([element.attrib['parsing_type'] for element in elements]))
+        color_dict =dict(zip(parsing_values, headers_colors_list[:len(parsing_values)]))
+        color_dict.update(self.color_dict)
+        # we want header scale, ignore color
+
+        for element in elements:
+            # get attribute parsing
+            parsing = element.attrib['parsing_type']
+            if parsing == '':
+                pass
+            else:
+                color = color_dict[parsing]
+                set_background_color(element, color)
+
+        open_tree(html)
+
+
+    def construct_xml_tree(self,html):
+        root = etree.Element('root')
+
+        # add document node
+        document_node = etree.Element('document', title = 'Document')
+        root.append(document_node)
+        
 
         
 
@@ -218,9 +276,15 @@ class SEC10KParser(HTMLParser):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.insert_element_detector(TableOfContentsTagDetector(recursive_rule ='return',
-                                                                 relative_rule='skip'),0) # change to right before table detector 
-        self.string_detector = SEC10KStringDetectorGroup() #WIP
+        self.insert_element_detector(TableOfContentsTagDetector(recursive_rule ='return',xml_rule ='text'),0)
+        self.string_detector = SEC10KStringDetectorGroup()
+
+        self.color_dict.update({'part;': '#B8860B',
+                       'item;': '#BDB76B',
+                       'bullet point;': '#FAFAD2',
+                       'table;': '#FAFAD2',
+                          'signatures;': '#B8860B',
+                       })
 
  
 class SEC10QParser():
