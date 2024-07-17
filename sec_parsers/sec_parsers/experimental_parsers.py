@@ -17,7 +17,7 @@ class HTMLParser:
     def __init__(self, **kwargs):
         self.element_detectors = [] # e.g. table image link etc
         self.add_element_detector(HiddenCSSDetector(recursive_rule='return', xml_rule='ignore',relative_rule='ignore'))
-        self.add_element_detector(TableTagDetector(recursive_rule='return', xml_rule='text',relative_rule='ignore'))
+        self.add_element_detector(TableTagDetector(recursive_rule='return', xml_rule='ignore',relative_rule='ignore'))
         self.add_element_detector(ImageTagDetector(recursive_rule='return', xml_rule='ignore',relative_rule='ignore'))
 
         self.string_detector = HeaderStringDetectorGroup() # strings that should be detected
@@ -132,11 +132,11 @@ class HTMLParser:
             # code to merge elements - e.g. item 1 and business
             parent_string_style, _ = self.detect_style_from_string(parent_text,attribute='recursive_rule',rule_list=['return']) 
             if parent_string_style != '':
-                parsed_element.attrib['parsing_string'] = parent_string_style
-                parsed_element.attrib['parsing_log'] += f'relative-merged with parent;'
+                parent.attrib['parsing_string'] = parent_string_style
+                parent.attrib['parsing_log'] += f'relative-merged with parent;'
 
                 # remove descendants parsing string
-                for descendant in parsed_element.iterdescendants():
+                for descendant in parent.iterdescendants():
                     descendant.attrib.pop('parsing_string', None)
                     descendant.attrib['parsing_log'] += 'relative-removed as merged with parent;'
                     # remove from queue
@@ -208,21 +208,27 @@ class HTMLParser:
         # WIP
         parsed_elements = [element for element in parsed_elements if element.get('parsing_type') != 'ignore;']
 
-        parsed_types = [element.attrib['parsing_type'] for element in parsed_elements]
-        hierarchy_dict = {'part;': 0, 'item;': 1,'signatures;': 0}
-        levels = assign_header_levels(parsed_types,hierarchy_dict=hierarchy_dict)
-
         # Handle introduction (elements before first 0 level header)
-        first_index = next((i for i, level in enumerate(levels) if level == 0), len(levels))
+        base_headers = ['part;', 'item;,' 'signatures;'] # FIX
+        first_header = [item for item in parsed_elements if item.attrib['parsing_type'] in base_headers][0]
+
+        first_index = parsed_elements.index(first_header)
         introduction_node = etree.Element('introduction', title='Introduction')
         introduction_node.text = get_text_between_elements(html,start_element=None, end_element=parsed_elements[first_index])
         document_node.append(introduction_node)
 
+        # subset by first_index
+        parsed_elements = parsed_elements[first_index:]
+        parsed_types = [element.attrib['parsing_type'] for element in parsed_elements]
+
+        hierarchy_dict = {'part;': 0, 'item;': 1,'signatures;': 0}
+        levels = assign_header_levels(parsed_types,hierarchy_dict=hierarchy_dict)
+
         # Parse hierarchical structure
         stack = [(- 1, document_node)]  # (level, node) pairs
 
-        for i, (level, parsed_element) in enumerate(zip(levels[first_index:], parsed_elements[first_index:]), start=first_index):
-            node = etree.Element('header', title=parsed_element.get('parsing_type'))
+        for i, (level, parsed_element) in enumerate(zip(levels, parsed_elements), start=0):
+            node = etree.Element('header', title=clean_title(get_all_text(parsed_element)))
 
             # Get the next element (if any)
             next_element = parsed_elements[i + 1] if i + 1 < len(parsed_elements) else None
@@ -246,7 +252,7 @@ class SEC10KParser(HTMLParser):
     def _init(self, **kwargs):
         super()._init(**kwargs)  # Call the parent's _init method
 
-        self.insert_element_detector(TableOfContentsTagDetector(recursive_rule ='return',xml_rule ='text',relative_rule='ignore'),0)
+        self.insert_element_detector(TableOfContentsTagDetector(recursive_rule ='return',xml_rule ='ignore',relative_rule='ignore'),0)
         self.string_detector = SEC10KStringDetectorGroup()
 
         self.color_dict.update({'part;': '#B8860B',
@@ -265,7 +271,7 @@ class SEC8KParser(HTMLParser):
     def _init(self, **kwargs):
         super()._init(**kwargs)
 
-        self.insert_element_detector(TableOfContentsTagDetector(recursive_rule ='return',xml_rule ='text',relative_rule='ignore'),0)
+        self.insert_element_detector(TableOfContentsTagDetector(recursive_rule ='return',xml_rule ='ignore',relative_rule='ignore'),0)
         self.string_detector = SEC8KStringDetectorGroup()
 
         self.color_dict.update({

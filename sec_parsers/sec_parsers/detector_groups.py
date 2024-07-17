@@ -34,7 +34,7 @@ class SEC10KStringDetectorGroup(HeaderStringDetectorGroup):
             SignaturesStringDetector(recursive_rule='return',hierarchy=0,title_tag='signatures',relative_rule='ignore'),
             NoteStringDetector(),
             PageNumberStringDetector(xml_rule='ignore'),
-            BulletPointStringDetector(relative_rule='ignore')
+            BulletPointStringDetector(relative_rule='ignore',xml_rule='ignore')
         ]
         self.insert_string_detectors(new_detectors)
         

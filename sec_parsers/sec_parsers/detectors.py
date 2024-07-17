@@ -7,7 +7,7 @@ class Detector:
         self.hierarchy = hierarchy # level added for hierarchy
         self.style = style
         self.title_tag = title_tag 
-        self.xml_rule = xml_rule # header, text, ignore
+        self.xml_rule = xml_rule # ignore or text or header - need to work on this, for now set all text elements to ignore
 
 class StyleTagDetector(Detector):
     def __init__(self, style=None, **kwargs):
