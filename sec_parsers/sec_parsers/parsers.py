@@ -1,16 +1,5 @@
 from lxml import etree
-import re
-import csv
-from collections import deque
-
-from sec_parsers.style_detection import detect_style_from_string, detect_style_from_element, detect_table, detect_image,detect_table_of_contents, get_all_text, is_paragraph,\
-detect_hidden_element, is_descendant_of_table
-from sec_parsers.xml_helper import get_text, set_background_color, remove_background_color, open_tree,get_text_between_elements,get_elements_between_elements
-from sec_parsers.visualization_helper import headers_colors_dict, headers_colors_list
-from sec_parsers.cleaning import clean_title, part_pattern
-#TODO add better attributes, and a bunch of other stuff
-
-        
+from sec_parsers.style_detection import get_all_text
 
 # WIP: convert special checked boxes into True / False, etc
 def parse_metadata(html):

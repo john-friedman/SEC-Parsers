@@ -1,7 +1,7 @@
 from sec_parsers.tag_detectors import LinkTagDetector, BoldTagDetector, StrongTagDetector, EmphasisTagDetector, ItalicTagDetector,\
       UnderlineTagDetector, TableTagDetector, ImageTagDetector, TableOfContentsTagDetector
 from sec_parsers.css_detectors import HiddenCSSDetector, BoldCSSDetector,UnderlineCSSDetector,ItalicCSSDetector
-from sec_parsers.detector_groups import HeaderStringDetectorGroup, SEC10KStringDetectorGroup
+from sec_parsers.detector_groups import HeaderStringDetectorGroup, SEC10KStringDetectorGroup,SEC8KStringDetectorGroup
 from sec_parsers.xml_helper import get_text, get_all_text, get_elements_between_elements, get_text_between_elements,\
         set_background_color, remove_background_color, open_tree
 from sec_parsers.style_detection import is_descendant_of_table
@@ -14,7 +14,7 @@ from lxml import etree
 # need to remember to ignore hidden css in relative parsing
 # TODO: refactor to reduce code duplication / annoying stuff like detectors all over the place
 class HTMLParser:
-    def __init__(self):
+    def __init__(self, **kwargs):
         self.element_detectors = [] # e.g. table image link etc
         self.add_element_detector(HiddenCSSDetector(recursive_rule='return', xml_rule='ignore'))
         self.add_element_detector(TableTagDetector(recursive_rule='return', xml_rule='text'))
@@ -28,6 +28,16 @@ class HTMLParser:
 
         self.color_dict = {'ignore;': '#f2f2f2'} # If you want certain parsing types to have certain colors
 
+        self._init(**kwargs)
+        self.update_all_detectors()
+
+    def _init(self, **kwargs):
+        # This method is meant to be overridden by subclasses
+        pass
+
+
+    def update_all_detectors(self):
+        self.all_detectors = self.element_detectors + self.style_detectors + self.string_detector.string_detectors
     def insert_element_detector(self, element_detector,index):
         self.element_detectors.insert(index,element_detector)
 
@@ -219,7 +229,8 @@ class HTMLParser:
         """set ignore items etc"""
         parsed_elements = html.xpath('//*[@parsing_string]')
 
-        ignore_strings = [item for item in self.element_detectors if item.xml_rule == 'ignore']
+        ignore_strings = [item.style for item in self.all_detectors if item.xml_rule == 'ignore']
+        print(ignore_strings)
         text_strings = [item for item in self.element_detectors if item.xml_rule == 'text']
         for parsed_element in parsed_elements:
 
@@ -268,13 +279,10 @@ class HTMLParser:
         document_node = etree.Element('document', title = 'Document')
         root.append(document_node)
         
-
-        
-
-
+# WIP FIX numbers inside pagraphs sometimes parsing as page numbers
 class SEC10KParser(HTMLParser):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+    def _init(self, **kwargs):
+        super()._init(**kwargs)  # Call the parent's _init method
 
         self.insert_element_detector(TableOfContentsTagDetector(recursive_rule ='return',xml_rule ='text'),0)
         self.string_detector = SEC10KStringDetectorGroup()
@@ -286,9 +294,21 @@ class SEC10KParser(HTMLParser):
                           'signatures;': '#B8860B',
                        })
 
- 
-class SEC10QParser():
+
+# 10Q and 10K are the same for now
+class SEC10QParser(SEC10KParser):
     pass
 
-class SEC8KParser():
-    pass
+class SEC8KParser(HTMLParser):
+    def _init(self, **kwargs):
+        super()._init(**kwargs)
+
+        self.insert_element_detector(TableOfContentsTagDetector(recursive_rule ='return',xml_rule ='text'),0)
+        self.string_detector = SEC8KStringDetectorGroup()
+
+        self.color_dict.update({
+                       'item;': '#B8860B',
+                       'bullet point;': '#FAFAD2',
+                       'table;': '#FAFAD2',
+                          'signatures;': '#B8860B',
+                       })

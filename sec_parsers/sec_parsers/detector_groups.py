@@ -30,6 +30,20 @@ class SEC10KStringDetectorGroup(HeaderStringDetectorGroup):
         # Add part, item, and signatures detectors at the beginning
         new_detectors = [
             PartStringDetector(recursive_rule='return',hierarchy=0,title_tag='part'),
+            ItemStringDetector(recursive_rule='return',hierarchy=1, title_tag='item'),
+            SignaturesStringDetector(recursive_rule='return',hierarchy=0,title_tag='signatures'),
+            NoteStringDetector(),
+            PageNumberStringDetector(xml_rule='ignore'),
+            BulletPointStringDetector()
+        ]
+        self.insert_string_detectors(new_detectors)
+        
+class SEC8KStringDetectorGroup(HeaderStringDetectorGroup):
+    def __init__(self):
+        super().__init__()
+        
+        # Add part, item, and signatures detectors at the beginning
+        new_detectors = [
             ItemStringDetector(recursive_rule='return',hierarchy=0, title_tag='item'),
             SignaturesStringDetector(recursive_rule='return',hierarchy=0,title_tag='signatures'),
             NoteStringDetector(),
