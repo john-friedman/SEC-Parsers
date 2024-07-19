@@ -15,8 +15,9 @@ for file in file_list:
 
 
 total_time = 0
-start_dex = 0
+start_dex = 2
 files = os.listdir(dir_10k)
+file = files[start_dex:]
 errors = []
 for count,file in enumerate(files):
         try:

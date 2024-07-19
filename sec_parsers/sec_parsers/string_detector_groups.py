@@ -29,12 +29,12 @@ class SEC10KStringDetectorGroup(HeaderStringDetectorGroup):
         
         # Add part, item, and signatures detectors at the beginning
         new_detectors = [
-            PartStringDetector(parsing_rule='return',level=0,cleaning_rule='header'),
-            ItemStringDetector(parsing_rule='return',level=1,cleaning_rule='header'),
-            SignaturesStringDetector(parsing_rule='return',level=0,cleaning_rule='header'),
-            NoteStringDetector(parsing_rule='continue',cleaning_rule='header'),
-            PageNumberStringDetector(parsing_rule='return',cleaning_rule='remove'),
-            BulletPointStringDetector(parsing_rule='continue',cleaning_rule='skip')
+            PartStringDetector(parsing_rule='return',level=0,cleaning_rule='header;'),
+            ItemStringDetector(parsing_rule='return',level=1,cleaning_rule='header;'),
+            SignaturesStringDetector(parsing_rule='return',level=0,cleaning_rule='header;'),
+            NoteStringDetector(parsing_rule='continue',cleaning_rule='header;'),
+            PageNumberStringDetector(parsing_rule='continue',cleaning_rule='remove;'),
+            BulletPointStringDetector(parsing_rule='continue',cleaning_rule='skip;')
         ]
         self.insert_string_detectors(new_detectors)
         
@@ -44,11 +44,11 @@ class SEC8KStringDetectorGroup(HeaderStringDetectorGroup):
         
         # Add part, item, and signatures detectors at the beginning
         new_detectors = [
-            ItemStringDetector(parsing_rule='return',level=0,cleaning_rule='header'),
-            SignaturesStringDetector(parsing_rule='return',level=0,cleaning_rule='header'),
-            NoteStringDetector(parsing_rule='continue',cleaning_rule='header'),
-            PageNumberStringDetector(parsing_rule='return',cleaning_rule='remove'),
-            BulletPointStringDetector(parsing_rule='continue',cleaning_rule='skip')
+            ItemStringDetector(parsing_rule='return',level=0,cleaning_rule='header;'),
+            SignaturesStringDetector(parsing_rule='return',level=0,cleaning_rule='header;'),
+            NoteStringDetector(parsing_rule='continue',cleaning_rule='header;'),
+            PageNumberStringDetector(parsing_rule='continue',cleaning_rule='remove;'),
+            BulletPointStringDetector(parsing_rule='continue',cleaning_rule='skip;')
         ]
         self.insert_string_detectors(new_detectors)
         

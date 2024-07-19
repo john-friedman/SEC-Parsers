@@ -13,7 +13,6 @@ urls_8k =['https://www.sec.gov/Archives/edgar/data/1318605/000095017023038779/ts
 html = download_sec_filing(urls_10k[0])
 
 filing = Filing(html)
-SEC10KParser().recursive_parse(filing.html)
-SEC10KParser().relative_parse(filing.html)
-SEC10KParser().clean_parse(filing.html)
-filing.visualize()
+filing.parse()
+#filing.visualize()
+print(filing.get_title_tree())

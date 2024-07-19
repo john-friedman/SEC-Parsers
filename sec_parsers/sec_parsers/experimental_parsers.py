@@ -18,7 +18,7 @@ class HTMLParser:
     def __init__(self, **kwargs):
         self.element_detector_group = HeaderElementDetectorGroup() # parses elements
         self.string_detector_group = HeaderStringDetectorGroup() # parses strings
-        self.color_dict = {'ignore;': '#f2f2f2'} # If you want certain parsing types to have certain colors
+        self.color_dict = {'remove;': '#f2f2f2','skip;':'#FAFAD2'} # If you want certain parsing types to have certain colors
 
         self._init(**kwargs)
         self.all_detectors = self.element_detector_group.element_detectors + self.string_detector_group.string_detectors
@@ -133,6 +133,10 @@ class HTMLParser:
 
                 # remove descendants parsing string
                 for descendant in parent.iterdescendants():
+                    # check if descendant has parsing string
+                    if 'parsing_string' not in descendant.attrib:
+                        continue
+
                     descendant.attrib.pop('parsing_string', None)
                     descendant.attrib['parsing_log'] += 'relative-removed as merged with parent;'
                     # remove from queue
@@ -155,16 +159,17 @@ class HTMLParser:
         parsed_elements = html.xpath('//*[@parsing_string]')
 
         # figure out how to manage remove, skip, and header strigns here
-        remove_strings = [item.style for item in self.all_detectors if item.cleaning_rule == 'remove']
-        skip_strings = [item for item in self.all_detectors if item.cleaning_rule == 'skip']
+        remove_strings = [item.style for item in self.all_detectors if item.cleaning_rule == 'remove;']
+        skip_strings = [item.style for item in self.all_detectors if item.cleaning_rule == 'skip;']
         for parsed_element in parsed_elements:
             parsing_string = parsed_element.get('parsing_string')   
             # check if ignore
             if parsing_string in remove_strings:
-                parsed_element.attrib['parsing_type'] = 'ignore;'
+                parsed_element.attrib['parsing_type'] = 'remove;'
                 parsed_element.attrib['parsing_log'] += 'clean-parse-ignored;'
             # check if text
             elif parsing_string in skip_strings:
+                parsed_element.attrib['parsing_type'] = 'skip;'
                 parsed_element.attrib['parsing_log'] += 'clean-parse-text;'
             else:
                 parsed_element.attrib['parsing_type'] = parsing_string
@@ -196,19 +201,21 @@ class HTMLParser:
 
         open_tree(html)
 
-    # WIP
+    # WIP todo find empty parsing types, and add parsing logs
     def construct_xml_tree(self, html):
         root = etree.Element('root')
         document_node = etree.Element('document', title='Document')
         root.append(document_node)
 
         parsed_elements = html.xpath('//*[@parsing_type]')
+        parsed_elements = [element for element in parsed_elements if element.attrib['parsing_type'] != 'skip;']
+        parsed_elements = [element for element in parsed_elements if element.attrib['parsing_type'] != 'remove;']
 
-        # WIP
-        parsed_elements = [element for element in parsed_elements if element.get('parsing_type') != 'ignore;']
 
+        # construct levels_dict
+        levels_dict = {item.style: item.level for item in self.all_detectors if item.level != -1}
         # Handle introduction (elements before first 0 level header)
-        base_headers = ['part;', 'item;,' 'signatures;'] # FIX
+        base_headers = [key for key in levels_dict.keys()]
         first_header = [item for item in parsed_elements if item.attrib['parsing_type'] in base_headers][0]
 
         first_index = parsed_elements.index(first_header)
@@ -220,8 +227,7 @@ class HTMLParser:
         parsed_elements = parsed_elements[first_index:]
         parsed_types = [element.attrib['parsing_type'] for element in parsed_elements]
 
-        hierarchy_dict = {'part;': 0, 'item;': 1,'signatures;': 0}
-        levels = assign_header_levels(parsed_types,hierarchy_dict=hierarchy_dict)
+        levels = assign_header_levels(parsed_types,hierarchy_dict=levels_dict)
 
         # Parse hierarchical structure
         stack = [(- 1, document_node)]  # (level, node) pairs
@@ -257,7 +263,6 @@ class SEC10KParser(HTMLParser):
         self.color_dict.update({'part;': '#B8860B',
                        'item;': '#BDB76B',
                        'bullet point;': '#FAFAD2',
-                       'table;': '#FAFAD2',
                           'signatures;': '#B8860B',
                        })
 
@@ -275,6 +280,5 @@ class SEC8KParser(HTMLParser):
         self.color_dict.update({
                        'item;': '#B8860B',
                        'bullet point;': '#FAFAD2',
-                       'table;': '#FAFAD2',
                           'signatures;': '#B8860B',
                        })
