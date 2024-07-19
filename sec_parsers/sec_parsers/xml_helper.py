@@ -21,6 +21,9 @@ def get_elements_between_elements(root, start_element=None, end_element=None):
     elements = []
     in_between_bool = False
     for element in root.iter():
+        if element.get('parsing_type','') == 'remove':
+            continue
+        
         if element == start_element:
             in_between_bool = True
         elif element == end_element:

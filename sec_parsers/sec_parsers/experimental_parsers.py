@@ -1,5 +1,5 @@
 from sec_parsers.string_detector_groups import HeaderStringDetectorGroup, SEC10KStringDetectorGroup,SEC8KStringDetectorGroup
-from sec_parsers.xml_helper import get_text, get_all_text, get_elements_between_elements, get_text_between_elements,\
+from sec_parsers.xml_helper import get_text, get_all_text, get_text_between_elements,\
         set_background_color, remove_background_color, open_tree
 from sec_parsers.style_detection import is_descendant_of_table
 from sec_parsers.cleaning import clean_title, is_string_in_middle
@@ -108,7 +108,6 @@ class HTMLParser:
     def relative_parse(self,html):
         parsed_elements = deque(html.xpath('//*[@parsing_string]'))
 
-
         while parsed_elements:
             parsed_element = parsed_elements.popleft()
             parsing_string = parsed_element.get('parsing_string')
@@ -118,10 +117,14 @@ class HTMLParser:
             flag = True
             while flag:
                 parent = parsed_element.getparent()
+
                 parent_text = get_all_text(parent).strip()
                 if parent_text != element_text:
                     flag = False
                 flag = False
+
+            if parent.tag == 'body':
+                continue
 
             
             #WIP
@@ -156,6 +159,10 @@ class HTMLParser:
     # Works
     def clean_parse(self,html):
         """set ignore items etc"""
+        parsed_elements_to_pop = html.xpath("//*[@parsing_string='']")
+        for element in parsed_elements_to_pop:
+            element.attrib.pop('parsing_string', None)
+
         parsed_elements = html.xpath('//*[@parsing_string]')
 
         # figure out how to manage remove, skip, and header strigns here
