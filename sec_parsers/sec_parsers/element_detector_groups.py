@@ -38,7 +38,7 @@ class SEC10KElementGroup(HeaderElementDetectorGroup):
     def __init__(self):
         super().__init__()
         # Table of contents detector needs to go before table detector
-        self.insert_element_detector(TableOfContentsTagDetector(recursive_rule ='return',xml_rule ='ignore',relative_rule='ignore'),0)
+        self.insert_element_detector(TableOfContentsTagDetector(parsing_rule ='return',cleaning_rule ='skip'),0)
 
 class SEC8KElementGroup(SEC10KElementGroup):
     pass

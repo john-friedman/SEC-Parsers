@@ -20,6 +20,9 @@ class HTMLParser:
         self.string_detector_group = HeaderStringDetectorGroup() # parses strings
         self.color_dict = {'ignore;': '#f2f2f2'} # If you want certain parsing types to have certain colors
 
+        self._init(**kwargs)
+        self.all_detectors = self.element_detector_group.element_detectors + self.string_detector_group.string_detectors
+
     def _init(self, **kwargs):
         # This method is meant to be overridden by subclasses
         pass
@@ -96,7 +99,9 @@ class HTMLParser:
             else:
                 parsing_string += result
                 element.attrib['parsing_log'] += f'recursive-{result}'
-        
+
+            element.attrib['parsing_string'] = parsing_string
+                
         return
     
     # I think this is fine for now
@@ -121,7 +126,7 @@ class HTMLParser:
             
             #WIP
             # code to merge elements - e.g. item 1 and business
-            parent_string_style, _ = self.detect_style_from_string(parent_text,attribute='recursive_rule',rule_list=['return']) 
+            parent_string_style, _ = self.detect_style_from_string(parent_text,rule_list=['return']) 
             if parent_string_style != '':
                 parent.attrib['parsing_string'] = parent_string_style
                 parent.attrib['parsing_log'] += f'relative-merged with parent;'
@@ -144,27 +149,29 @@ class HTMLParser:
                 continue
 
 
-    
+    # Works
     def clean_parse(self,html):
         """set ignore items etc"""
         parsed_elements = html.xpath('//*[@parsing_string]')
 
-        ignore_strings = [item.style for item in self.all_detectors if item.xml_rule == 'ignore']
-        text_strings = [item for item in self.element_detectors if item.xml_rule == 'text']
+        # figure out how to manage remove, skip, and header strigns here
+        remove_strings = [item.style for item in self.all_detectors if item.cleaning_rule == 'remove']
+        skip_strings = [item for item in self.all_detectors if item.cleaning_rule == 'skip']
         for parsed_element in parsed_elements:
             parsing_string = parsed_element.get('parsing_string')   
             # check if ignore
-            if parsing_string in ignore_strings:
+            if parsing_string in remove_strings:
                 parsed_element.attrib['parsing_type'] = 'ignore;'
                 parsed_element.attrib['parsing_log'] += 'clean-parse-ignored;'
-                
             # check if text
-            elif parsing_string in text_strings:
+            elif parsing_string in skip_strings:
                 parsed_element.attrib['parsing_log'] += 'clean-parse-text;'
             else:
                 parsed_element.attrib['parsing_type'] = parsing_string
                 parsed_element.attrib['parsing_log'] += 'clean-parse-header;'
 
+
+    # works
     def visualize(self,html):
         # remove style from all descendants so that background color can be set
         for descendant in html.iterdescendants():
@@ -189,6 +196,7 @@ class HTMLParser:
 
         open_tree(html)
 
+    # WIP
     def construct_xml_tree(self, html):
         root = etree.Element('root')
         document_node = etree.Element('document', title='Document')

@@ -1,9 +1,6 @@
-from sec_parsers.detectors import Detector, StyleTagDetector
+from sec_parsers.detectors import StyleTagDetector
 from sec_parsers.style_detection import detect_link,detect_bold_from_html,detect_strong_from_html,detect_emphasis_from_html,\
     detect_italic_from_html,detect_underline_from_html,detect_table,detect_table_of_contents,detect_image
-
-
-
 
 class LinkTagDetector(StyleTagDetector):
     def __init__(self, **kwargs):

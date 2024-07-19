@@ -1,9 +1,9 @@
-from sec_parsers.detectors import Detector
+from sec_parsers.detectors import StyleTagDetector
 from sec_parsers.style_detection import detect_part,detect_item,detect_signatures,detect_page_number,detect_bullet_point,\
     detect_all_caps,detect_note,detect_emphasis_capitalization
 
 
-class PartStringDetector(Detector):
+class PartStringDetector(StyleTagDetector):
     def __init__(self, **kwargs):
         super().__init__(style='part;',**kwargs)
 
@@ -13,7 +13,7 @@ class PartStringDetector(Detector):
         else:
             return ''
         
-class ItemStringDetector(Detector):
+class ItemStringDetector(StyleTagDetector):
     def __init__(self, **kwargs):
         super().__init__(style='item;',**kwargs)
 
@@ -23,7 +23,7 @@ class ItemStringDetector(Detector):
         else:
             return ''
     
-class SignaturesStringDetector(Detector):
+class SignaturesStringDetector(StyleTagDetector):
     def __init__(self, **kwargs):
         super().__init__(style='signatures;',**kwargs)
 
@@ -33,7 +33,7 @@ class SignaturesStringDetector(Detector):
         else:
             return ''
         
-class PageNumberStringDetector(Detector):
+class PageNumberStringDetector(StyleTagDetector):
     def __init__(self, **kwargs):
         super().__init__(style='page number;',**kwargs)
 
@@ -43,7 +43,7 @@ class PageNumberStringDetector(Detector):
         else:
             return ''
 
-class BulletPointStringDetector(Detector):
+class BulletPointStringDetector(StyleTagDetector):
     def __init__(self, **kwargs):
         super().__init__(style='bullet point;',**kwargs)
 
@@ -53,7 +53,7 @@ class BulletPointStringDetector(Detector):
         else:
             return ''
 
-class AllCapsStringDetector(Detector):
+class AllCapsStringDetector(StyleTagDetector):
     def __init__(self, **kwargs):
         super().__init__(style='all caps;',**kwargs)
 
@@ -63,7 +63,7 @@ class AllCapsStringDetector(Detector):
         else:
             return ''
 
-class NoteStringDetector(Detector):
+class NoteStringDetector(StyleTagDetector):
     def __init__(self, **kwargs):
         super().__init__(style='note;',**kwargs)
 
@@ -74,9 +74,9 @@ class NoteStringDetector(Detector):
             return ''
               
 
-class EmphasisCapStringDetector(Detector):
+class EmphasisCapStringDetector(StyleTagDetector):
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super().__init__(style='emphasis capitalization;',**kwargs)
 
     def detect(self,string):
         if detect_emphasis_capitalization(string):
