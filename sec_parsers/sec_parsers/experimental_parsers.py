@@ -1,7 +1,4 @@
-from sec_parsers.tag_detectors import LinkTagDetector, BoldTagDetector, StrongTagDetector, EmphasisTagDetector, ItalicTagDetector,\
-      UnderlineTagDetector, TableTagDetector, ImageTagDetector, TableOfContentsTagDetector
-from sec_parsers.css_detectors import HiddenCSSDetector, BoldCSSDetector,UnderlineCSSDetector,ItalicCSSDetector
-from sec_parsers.detector_groups import HeaderStringDetectorGroup, SEC10KStringDetectorGroup,SEC8KStringDetectorGroup
+from sec_parsers.string_detector_groups import HeaderStringDetectorGroup, SEC10KStringDetectorGroup,SEC8KStringDetectorGroup
 from sec_parsers.xml_helper import get_text, get_all_text, get_elements_between_elements, get_text_between_elements,\
         set_background_color, remove_background_color, open_tree
 from sec_parsers.style_detection import is_descendant_of_table
@@ -11,101 +8,95 @@ from sec_parsers.hierachy import assign_header_levels
 from collections import deque
 from lxml import etree
 
+from sec_parsers.element_detector_groups import HeaderElementDetectorGroup, SEC10KElementGroup, SEC8KElementGroup
+
 # need to remember to ignore hidden css in relative parsing
 # TODO: refactor to reduce code duplication / annoying stuff like detectors all over the place
+
+# TODO, probably add autosort later
 class HTMLParser:
     def __init__(self, **kwargs):
-        self.element_detectors = [] # e.g. table image link etc
-        self.add_element_detector(HiddenCSSDetector(recursive_rule='return', xml_rule='ignore',relative_rule='ignore'))
-        self.add_element_detector(TableTagDetector(recursive_rule='return', xml_rule='ignore',relative_rule='ignore'))
-        self.add_element_detector(ImageTagDetector(recursive_rule='return', xml_rule='ignore',relative_rule='ignore'))
-
-        self.string_detector = HeaderStringDetectorGroup() # strings that should be detected
-
-        self.tag_detectors = [LinkTagDetector(),BoldTagDetector(),StrongTagDetector(),EmphasisTagDetector(),ItalicTagDetector(),UnderlineTagDetector()]
-        self.css_detectors = [BoldCSSDetector(),UnderlineCSSDetector(),ItalicCSSDetector()]
-        self.style_detectors = self.css_detectors + self.tag_detectors # e.g. strong, emphasis, italic, underline, etc
-
+        self.element_detector_group = HeaderElementDetectorGroup() # parses elements
+        self.string_detector_group = HeaderStringDetectorGroup() # parses strings
         self.color_dict = {'ignore;': '#f2f2f2'} # If you want certain parsing types to have certain colors
-
-        self._init(**kwargs)
-        self.update_all_detectors()
 
     def _init(self, **kwargs):
         # This method is meant to be overridden by subclasses
         pass
 
 
-    def update_all_detectors(self):
-        self.all_detectors = self.element_detectors + self.style_detectors + self.string_detector.string_detectors
-    def insert_element_detector(self, element_detector,index):
-        self.element_detectors.insert(index,element_detector)
-
-    def insert_element_detectors(self, element_detectors):
-        self.element_detectors = element_detectors + self.element_detectors
-
-    def add_element_detector(self, element_detector):
-        self.element_detectors.append(element_detector)
-
-    def remove_element_detector(self, element_detector):
-        self.element_detectors.remove(element_detector)
-
-
-    def detect_style_from_string(self,string,attribute,rule_list=[]):
-        string_detectors = self.string_detector.string_detectors
+    def detect_style_from_string(self,string,rule_list=[]):
+        string_detectors = self.string_detector_group.string_detectors
         # subset
-        if rule_list:
-            string_detectors = [detector for detector in string_detectors if getattr(detector, attribute) in rule_list]
+        if rule_list: # WIP
+            string_detectors = [detector for detector in string_detectors if detector.parsing_rule in rule_list]
         
+        result = ''
         for detector in string_detectors:
-            result = detector.detect(string)
-            if result != '':
-                return (result,getattr(detector, 'recursive_rule'))
+            string_style = detector.detect(string)
+            if string_style != '':
+                parsing_rule = detector.parsing_rule
+                if parsing_rule == 'return':
+                    return string_style, parsing_rule
+                else:
+                    result += string_style
         
-        return ('','')
+        return (result,'continue')
+    
+    
+    def detect_style_from_element(self,element,rule_list=[]):
+        element_detectors = self.element_detector_group.element_detectors
+        # subset
+        if rule_list: # WIP
+            element_detectors = [detector for detector in element_detectors if detector.parsing_rule in rule_list]
+        
+        result = ''
+        for detector in element_detectors:
+            element_style = detector.detect(element)
+            if element_style != '':
+                parsing_rule = detector.parsing_rule
+                if parsing_rule == 'return':
+                    return element_style, parsing_rule
+                else:
+                    result += element_style
+        
+        return (result,'continue')
     
 
     # i think we can modify this to make relative parser mostly useless.
     def recursive_parse(self, element):
         # initialize parsing log
         element.attrib['parsing_log'] = ''
-        # think about return rules here
-        for detector in self.element_detectors:
-            result = detector.detect(element)
-            if result != '':
-                element.attrib['parsing_string'] = result
-                element.attrib['parsing_log'] += f'recursive-{result}'
-                return
-            
-        text = get_text(element).strip()
-        if text == '':
+        parsing_string = ''
+
+        # detect style from elements
+        result, parsing_rule = self.detect_style_from_element(element)
+        if parsing_rule == 'return':
+            parsing_string = result
+            element.attrib['parsing_string'] = parsing_string
+            element.attrib['parsing_log'] += f'recursive-{parsing_string}'
+            return
+        else:
+            parsing_string += result
+            element.attrib['parsing_log'] += f'recursive-{result}'
+
+
+        string = get_text(element).strip()
+        if string == '':# recursion
             for child in element.iterchildren():
                 self.recursive_parse(child)
         else:
-            parsing_string = ''
-            string_style, recursive_rule = self.detect_style_from_string(text,attribute='recursive_rule') 
-            if string_style != '':
-                parsing_string = string_style
-                if recursive_rule == 'return':
-                    element.attrib['parsing_string'] = parsing_string
-                    element.attrib['parsing_log'] += f'recursive- 2nd run detect {parsing_string}'
-                    return
-            else:
-                recursive_rule = 'continue'
-
-            if recursive_rule=='continue':
-                # other should continue to style detectors
-                for detector in self.style_detectors:
-                    result = detector.detect(element)
-                    if result != '':
-                        parsing_string += detector.style
-
-                # check parsing string is not empty
-                if parsing_string == '':
-                    return
-
+            # detect style from strings
+            result, parsing_rule = self.detect_style_from_string(string)
+            if parsing_rule == 'return':
+                parsing_string = result
                 element.attrib['parsing_string'] = parsing_string
                 element.attrib['parsing_log'] += f'recursive-{parsing_string}'
+                return
+            else:
+                parsing_string += result
+                element.attrib['parsing_log'] += f'recursive-{result}'
+        
         return
     
     # I think this is fine for now
@@ -252,8 +243,8 @@ class SEC10KParser(HTMLParser):
     def _init(self, **kwargs):
         super()._init(**kwargs)  # Call the parent's _init method
 
-        self.insert_element_detector(TableOfContentsTagDetector(recursive_rule ='return',xml_rule ='ignore',relative_rule='ignore'),0)
-        self.string_detector = SEC10KStringDetectorGroup()
+        self.element_detector_group = SEC10KElementGroup()
+        self.string_detector_group = SEC10KStringDetectorGroup()
 
         self.color_dict.update({'part;': '#B8860B',
                        'item;': '#BDB76B',
@@ -271,9 +262,8 @@ class SEC8KParser(HTMLParser):
     def _init(self, **kwargs):
         super()._init(**kwargs)
 
-        self.insert_element_detector(TableOfContentsTagDetector(recursive_rule ='return',xml_rule ='ignore',relative_rule='ignore'),0)
-        self.string_detector = SEC8KStringDetectorGroup()
-
+        self.element_detector_group = SEC8KElementGroup()
+        self.string_detector_group = SEC8KStringDetectorGroup()
         self.color_dict.update({
                        'item;': '#B8860B',
                        'bullet point;': '#FAFAD2',

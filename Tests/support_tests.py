@@ -2,7 +2,7 @@ from sec_parsers import set_headers, download_sec_filing
 from sec_parsers import Filing
 from sec_parsers.xml_helper import get_all_text
 from sec_parsers.style_detection import detect_part
-from sec_parsers.experimental_parsers import SEC10QParser
+from sec_parsers.experimental_parsers import SEC10KParser
 from time import time
 set_headers('John Smith','example@example.com')
 
@@ -13,12 +13,4 @@ urls_8k =['https://www.sec.gov/Archives/edgar/data/1318605/000095017023038779/ts
 html = download_sec_filing(urls_10k[0])
 
 filing = Filing(html)
-
-parent = filing.html.xpath("//span[text() = 'ART I']")[0].getparent()
-
-s = time()
-filing.parse()
-print(filing.get_title_tree())
-filing.save_xml('test.xml')
-print('Parsing time:',time()-s)
-
+SEC10KParser.recursive_parse(filing.html)
