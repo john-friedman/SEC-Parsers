@@ -22,10 +22,21 @@ class HTMLParser:
 
         self._init(**kwargs)
         self.all_detectors = self.element_detector_group.element_detectors + self.string_detector_group.string_detectors
+        self.sort_detectors()
 
     def _init(self, **kwargs):
         # This method is meant to be overridden by subclasses
         pass
+
+    def sort_detectors(self):
+        """sorts detector by parsing rule. Return first"""
+
+        # Separate detectors into 'return' and 'continue' groups
+        return_detectors = [detector for detector in self.all_detectors if detector.parsing_rule == "return"]
+        continue_detectors = [detector for detector in self.all_detectors if detector.parsing_rule == "continue"]
+
+        # Combine the groups, with 'return' detectors first
+        self.all_detectors = return_detectors + continue_detectors
 
 
     def detect_style_from_string(self,string,rule_list=[]):
@@ -66,7 +77,7 @@ class HTMLParser:
         return (result,'continue')
     
 
-    # i think we can modify this to make relative parser mostly useless.
+    # i think we can modify this to make relative parser mostly useless. Currently about .1s overhead
     def recursive_parse(self, element):
         # initialize parsing log
         element.attrib['parsing_log'] = ''
@@ -100,11 +111,34 @@ class HTMLParser:
                 parsing_string += result
                 element.attrib['parsing_log'] += f'recursive-{result}'
 
-            element.attrib['parsing_string'] = parsing_string
+            if parsing_string != '':
+                element.attrib['parsing_string'] = parsing_string
                 
         return
+
+    # Code to find top level parent with same text
+    # WIP currently doesn't work
+    def parse_top_level(self,html): # looks like this adds overhead .14s overhead
+        parsed_elements = deque(html.xpath('//*[@parsing_string]'))
+        while parsed_elements:
+            parsed_element = parsed_elements.popleft()
+
+            ancestor = parsed_element
+            while ancestor.getparent().tag != 'body':
+                if get_all_text(ancestor) == get_all_text(parsed_element):
+                    ancestor = ancestor.getparent()
+                else:
+                    break
+
+            if ancestor != parsed_element:
+                ancestor.attrib['parsing_string'] = parsed_element.get('parsing_string')
+                ancestor.attrib['parsing_log'] += f'top-level-{parsed_element.get("parsing_string")}'
+                # remove parsed_elements parsing string
+                parsed_element.attrib.pop('parsing_string', None)
+                
+
     
-    # I think this is fine for now
+    # Rewrite. use iter once, no elements between
     def relative_parse(self,html):
         parsed_elements = deque(html.xpath('//*[@parsing_string]'))
 
@@ -159,7 +193,7 @@ class HTMLParser:
     # Works
     def clean_parse(self,html):
         """set ignore items etc"""
-        parsed_elements_to_pop = html.xpath("//*[@parsing_string='']")
+        parsed_elements_to_pop = html.xpath("//*[@parsing_string='']") # should be able to delete this now
         for element in parsed_elements_to_pop:
             element.attrib.pop('parsing_string', None)
 

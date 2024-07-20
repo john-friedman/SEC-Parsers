@@ -1,18 +1,5 @@
-It's time to rewrite code incorporating past lessons.
-Idea is parser object with inheritance for parse10k,q,8k,s-1, etc
-
-
-recursiveparser = parser.recursiveparse()
-
-class recursiveparse10k:
-inherit recursiveparser
-
-add partparser
-add itemparser
-add base_elems (what elems count as just under root)
-
-
-hmmm
-
-class parser
-add (recursive, relative, cleanup)
+Layout
+1. Recursive parse (find suspected headers, etc quickly) (usually under .2s)
+2. get top level elements (e.g. we've narrowed down the possible elements, now we apply slower get all text method to find top level))
+3. Relative parse, that uses 1 root.iter method.
+4. clean_parse that assigns clean parsing types

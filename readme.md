@@ -2,11 +2,9 @@
 Parses non-standardized SEC 10-K filings into well structured detailed xml. Use cases include LLMs, NLP, and textual analysis. 
 
 TODO:
-* reduce number of variables and rename for detectors
-* add dynamic handling of xml construction based on object
-* reduce error rate back to normal levels (less than 1 pct)
 * Add more supported filings: S1 first
 * add warnings for set headers and automatic type detection
+* I think I figured out how to do performance boost. Look at .iter() cross out between elements
 
 GitHub TODO
 * Readme readability revamp

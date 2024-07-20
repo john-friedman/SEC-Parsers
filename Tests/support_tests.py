@@ -4,6 +4,7 @@ from sec_parsers.xml_helper import get_all_text
 from sec_parsers.style_detection import detect_part
 from sec_parsers.experimental_parsers import SEC10KParser
 from time import time
+from lxml import etree
 set_headers('John Smith','example@example.com')
 
 # looks like S-1 filings can be supported with minor tweaks, same for s3
@@ -13,6 +14,18 @@ urls_8k =['https://www.sec.gov/Archives/edgar/data/1318605/000095017023038779/ts
 html = download_sec_filing(urls_10k[0])
 
 filing = Filing(html)
-filing.parse()
-#filing.visualize()
-print(filing.get_title_tree())
+parser = SEC10KParser()
+s= time()
+parser.recursive_parse(filing.html)
+print(f'Recursive Parsing took {time()-s} seconds')
+# s = time()
+# parser.parse_top_level(filing.html)
+# print(f'Top Level Parsing took {time()-s} seconds')
+# s = time()
+# parser.relative_parse(filing.html)
+# print(f'Relative Parsing took {time()-s} seconds')
+s= time()
+parser.clean_parse(filing.html)
+print(f'Clean Parsing took {time()-s} seconds')
+
+filing.visualize()

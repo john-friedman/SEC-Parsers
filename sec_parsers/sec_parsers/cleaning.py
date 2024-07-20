@@ -39,7 +39,7 @@ def clean_string_for_style_detection(text):
     return text
 
 # common regex patterns
-part_pattern = re.compile(r"^part\s+([1234]|iv|i{1,4})(?:$|\b)",re.IGNORECASE)
+part_pattern = re.compile(r"^part\s+([1234]|iv|i{1,4})(?:$)",re.IGNORECASE)
 
 def is_string_in_middle(parent_text, search_string):
     index = parent_text.find(search_string)
