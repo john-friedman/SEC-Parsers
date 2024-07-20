@@ -7,6 +7,7 @@ from sec_parsers.visualization_helper import headers_colors_list
 from sec_parsers.hierachy import assign_header_levels
 from collections import deque
 from lxml import etree
+from copy import deepcopy
 
 from sec_parsers.element_detector_groups import HeaderElementDetectorGroup, SEC10KElementGroup, SEC8KElementGroup
 
@@ -116,26 +117,28 @@ class HTMLParser:
                 
         return
 
-    # Code to find top level parent with same text
-    # WIP currently doesn't work
-    def parse_top_level(self,html): # looks like this adds overhead .14s overhead
-        parsed_elements = deque(html.xpath('//*[@parsing_string]'))
-        while parsed_elements:
-            parsed_element = parsed_elements.popleft()
+    # Code to find top level parent with same text .3s overhead
+    def parse_top_level(self, html):
+        parsed_elements = html.xpath('//*[@parsing_string]')
+        for parsed_element in parsed_elements:
+            original_parsing_string = parsed_element.get('parsing_string')
+            original_text = get_all_text(parsed_element)
 
-            ancestor = parsed_element
-            while ancestor.getparent().tag != 'body':
-                if get_all_text(ancestor) == get_all_text(parsed_element):
-                    ancestor = ancestor.getparent()
-                else:
-                    break
-
-            if ancestor != parsed_element:
-                ancestor.attrib['parsing_string'] = parsed_element.get('parsing_string')
-                ancestor.attrib['parsing_log'] += f'top-level-{parsed_element.get("parsing_string")}'
-                # remove parsed_elements parsing string
-                parsed_element.attrib.pop('parsing_string', None)
+            ancestor = parsed_element.getparent()
+            while ancestor is not None and ancestor.tag != 'body':
+                if get_all_text(ancestor) == original_text:
+                    # Found an ancestor with the same text
+                    ancestor.attrib['parsing_string'] = original_parsing_string
+                    ancestor.attrib['parsing_log'] = ancestor.get('parsing_log', '') + f'top-level-{original_parsing_string};'
+                    
+                    # Remove parsing_string from the original element
+                    parsed_element.attrib['parsing_log'] = parsed_element.get('parsing_log', '') + 'removed top level;'
+                    parsed_element.attrib.pop('parsing_string', None)
+                    
+                    break  # Stop searching, we found the closest ancestor with same text
+                ancestor = ancestor.getparent()
                 
+        return
 
     
     # Rewrite. use iter once, no elements between
