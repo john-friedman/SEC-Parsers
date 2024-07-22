@@ -3,6 +3,16 @@ from sec_parsers.style_detection import detect_part,detect_item,detect_signature
     detect_all_caps,detect_note,detect_emphasis_capitalization
 
 
+class EmptyStringDetector(StyleTagDetector):
+    def __init__(self, **kwargs):
+        super().__init__(style='empty;',**kwargs)
+
+    def detect(self,string):
+        if string.strip() == '':
+            return 'empty;'
+        else:
+            return ''
+
 class PartStringDetector(StyleTagDetector):
     def __init__(self, **kwargs):
         super().__init__(style='part;',**kwargs)

@@ -1,5 +1,5 @@
 from sec_parsers.string_detectors import AllCapsStringDetector, EmphasisCapStringDetector, PageNumberStringDetector, BulletPointStringDetector, NoteStringDetector,\
-      PartStringDetector, ItemStringDetector, SignaturesStringDetector, NoteStringDetector
+      PartStringDetector, ItemStringDetector, SignaturesStringDetector, NoteStringDetector, EmptyStringDetector
 from sec_parsers.cleaning import clean_string_for_style_detection
 
 class HeaderStringDetectorGroup:

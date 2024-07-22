@@ -210,14 +210,14 @@ class HTMLParser:
             # check if ignore
             if parsing_string in remove_strings:
                 parsed_element.attrib['parsing_type'] = 'remove;'
-                parsed_element.attrib['parsing_log'] += 'clean-parse-ignored;'
+                #parsed_element.attrib['parsing_log'] += 'clean-parse-ignored;'
             # check if text
             elif parsing_string in skip_strings:
                 parsed_element.attrib['parsing_type'] = 'skip;'
-                parsed_element.attrib['parsing_log'] += 'clean-parse-text;'
+                #parsed_element.attrib['parsing_log'] += 'clean-parse-text;'
             else:
                 parsed_element.attrib['parsing_type'] = parsing_string
-                parsed_element.attrib['parsing_log'] += 'clean-parse-header;'
+                #parsed_element.attrib['parsing_log'] += 'clean-parse-header;'
 
 
     # works

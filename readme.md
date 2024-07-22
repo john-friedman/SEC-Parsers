@@ -1,10 +1,18 @@
 # SEC Parsers
 Parses non-standardized SEC 10-K filings into well structured detailed xml. Use cases include LLMs, NLP, and textual analysis. 
 
+New TODO:
+* write custom iterator that keeps track of ancestors
+
+* Switch to .iter() rewrite. Should make everything parse very fast. e.g. file that was parsing in 7s under production version, should be less than .5s. Looks like about factor of ten increase. So we could parse about 10 10ks/s, or about a years worth in 5 minutes.
+
+Approach is reverse of previous. We start from parent, keeping track of style on way down. once we get to parent text or tail we stop?
+
 TODO:
 * Add more supported filings: S1 first
 * add warnings for set headers and automatic type detection
 * I think I figured out how to do performance boost. Look at .iter() cross out between elements
+* add feature request form
 
 GitHub TODO
 * Readme readability revamp
@@ -41,6 +49,7 @@ How people can help:
 
 Feature request:
 * save_dta - save xml to dta. similar to csv function
+* bill mcdonald suggested removing special chars from document, will add option to export
 
 Issues
 1. handle if PART I appears multiple times as header, e.g. logic here item 1 continued.
