@@ -1,5 +1,7 @@
 import requests
 import random as rd
+import warnings
+
 
 # Module to download the SEC filings
 #TODO I'm happy with this file so far.
@@ -23,8 +25,8 @@ def download_sec_filing(url):
 
     # nudge to set your own headers
     if 'Sample Company Name' in headers['User-Agent']:
-        print("Nudge: Please set your own headers using set_headers(name, email)")
-    
+        warnings.warn("Warning: Please set your own headers using set_headers(name, email).")
+
     sec_response = requests.get(url, headers=headers)
     
     if sec_response.status_code != 200:

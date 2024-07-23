@@ -1,5 +1,6 @@
 from lxml import etree
 from sec_parsers.style_detection import get_all_text
+import warnings
 
 # WIP: convert special checked boxes into True / False, etc
 def parse_metadata(html):
@@ -19,7 +20,7 @@ def detect_filing_type(metadata):
     if 'DocumentType' in metadata.keys():
         return metadata['DocumentType']
     else:
-        print('DocumentType not found in metadata. Filing type set to 10K. If this is not correct, please set the filing type manually.')
+        warnings.warn('DocumentType not found in metadata. Filing type set to 10K. If this is not correct, please set the filing type manually.')
         return '10-K'
 
 def setup_html(html):
