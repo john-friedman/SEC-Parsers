@@ -18,7 +18,7 @@ for file in file_list:
 
 total_time = 0
 start_dex = 0
-files = os.listdir(dir_10k)[0:]
+files = os.listdir(dir_10k)[1:2]
 errors = []
 for count,file in enumerate(files):
         try:
@@ -36,7 +36,7 @@ for count,file in enumerate(files):
             #filing.visualize()  
 
 
-            #print(filing.get_title_tree())
+            print(filing.get_title_tree())
 
             print(f'File {count+start_dex} took {time()-s} seconds')
 

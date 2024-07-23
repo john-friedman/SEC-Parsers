@@ -162,13 +162,18 @@ class HTMLParser:
         remove_strings = [item.style for item in self.all_detectors if item.cleaning_rule == 'remove;']
         skip_strings = [item.style for item in self.all_detectors if item.cleaning_rule == 'skip;']
         for parsed_element in parsed_elements:
-            parsing_string = parsed_element.get('parsing_string')   
+            parsing_string = parsed_element.get('parsing_string')  
+
+            parsing_list = parsing_string.split(';') 
+            parsing_list = [parsing for parsing in parsing_list if parsing != '']
+            parsing_list = [parsing +';' for parsing in parsing_list]
+            
             # check if ignore
-            if parsing_string in remove_strings:
+            if any([parsing in remove_strings for parsing in parsing_list]):
                 parsed_element.attrib['parsing_type'] = 'remove;'
                 #parsed_element.attrib['parsing_log'] += 'clean-parse-ignored;'
             # check if text
-            elif parsing_string in skip_strings:
+            elif any([parsing in skip_strings for parsing in parsing_list]):
                 parsed_element.attrib['parsing_type'] = 'skip;'
                 #parsed_element.attrib['parsing_log'] += 'clean-parse-text;'
             else:

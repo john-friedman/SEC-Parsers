@@ -41,7 +41,7 @@ Some of these updates require significant compute resources / file hosting, whic
 
 ## Feature Request:
 To request features or suggest a way to improve the package please use the form below.
-![Google Form](https://forms.gle/cCh7VT93v4tV4ekp8)
+[Google Form](https://forms.gle/cCh7VT93v4tV4ekp8)
 * Extract title of section along with its text (sharif)
 * Extract subsections from section (sharif)
 * Export to dta (Denis)
