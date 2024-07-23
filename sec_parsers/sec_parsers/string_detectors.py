@@ -90,6 +90,6 @@ class EmphasisCapStringDetector(StyleTagDetector):
 
     def detect(self,string):
         if detect_emphasis_capitalization(string):
-            return 'emphasis;'
+            return 'emphasis capitalization;'
         else:
             return ''

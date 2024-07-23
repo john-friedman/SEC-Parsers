@@ -2,7 +2,8 @@ from sec_parsers.xml_helper import get_text, get_all_text
 from sec_parsers.experimental_parsers import SEC10KParser
 from sec_parsers import Filing
 from time import time
-
+from lxml import etree
+from xml_helper import open_tree
 
 # Rewriting parser with iterative approach for better performance
 # Should parse and convert to XML tree in one go
@@ -19,6 +20,7 @@ from time import time
 # need correct way to handle original elem
 
 # I think we have to go with recursion.
+# select children, process children 1x1
 
 with open('../../Data/10K/1606_CORP.-1877461-0001477932-24-002182.html', 'r') as f:
     html = f.read()
@@ -28,61 +30,58 @@ parser = SEC10KParser()
 
 
 s = time()
-parsing_string = '' # keep track of parsing string
+element_style = ''
+string_style = ''
+
 flag = True
 orig_elem = None
 
-for elem in filing.html.iter():
-    if elem.tag in ['html', 'head', 'body']:
-        continue
-
-    if flag:
-        # element detection
-        result, parsing_rule = parser.detect_style_from_element(elem)
-        if parsing_rule == 'return':
-            parsing_string = result
-            flag = False
-            orig_elem = elem
-            continue
-
-        else:
-            if orig_elem is None:
+# fix ix nonumeric issue with assigning elements - WEIRD parsing string returns
+# add relative parsing
+# add xml tree construction
+s = time()
+for event, elem in etree.iterwalk(filing.html, events=('start', 'end')):
+    if event == 'start':
+        if flag:
+            result, parsing_rule = parser.detect_style_from_element(elem)
+            if parsing_rule == 'return':
+                element_style = result
                 orig_elem = elem
+                flag = False
+                continue
+            elif result != '':
+                if orig_elem is None:
+                    orig_elem = elem
 
-            parsing_string += result
+                element_style += result
 
-        # string detection
-        string = get_all_text(elem)
-        result, parsing_rule = parser.detect_style_from_string(string)
-        if parsing_rule == 'return':
-            parsing_string = result
-            flag = False
-            orig_elem = elem
-            continue
+            if string_style == '':
+                string = get_all_text(elem) # need something to check if string already ran...., e.g. emphasis capitalization should happen once.
+                result, parsing_rule = parser.detect_style_from_string(string)
+                if parsing_rule == 'return':
+                    string_style = result
+                    orig_elem = elem
+                    flag = False
+                    continue
+                elif result != '':
+                    if orig_elem is None:
+                        orig_elem = elem
 
+                    string_style += result
         else:
-            if orig_elem is None:
-                orig_elem = elem
+            pass # iterate through file without parsing
 
-            parsing_string += result
+    elif event == 'end':
+        if orig_elem is not None:
+            if elem == orig_elem:
+                parsing_string = element_style + string_style
+                orig_elem.attrib['parsing_string'] = parsing_string
 
+                flag = True
+                orig_elem = None
+                string_style = ''
+                element_style = ''
 
-    if elem.getnext() is None:
-        if parsing_string != '':
-            parsing_list = list(set(parsing_string.split(';')))
-            parsing_list = [x for x in parsing_list if x != '']
-            parsing_string = ';'.join(parsing_list) +';'
-            orig_elem.attrib['parsing_string'] = parsing_string
-
-            parsing_string = ''
-            flag = True
-            orig_elem = None
-
-    # use has text / tail to determine if we are at end? or maybe has children? to reset parsing string
-    # how to skip e.g. display none - bypass with removal, remember to only subset body elem
-
-# HMMM
-# we may want custom elem iter, aka recursion again....
-print(f"Time taken: {time() - s}")
 parser.clean_parse(filing.html)
+print(f"Parsed in {time()-s:.2f}s")
 filing.visualize()
