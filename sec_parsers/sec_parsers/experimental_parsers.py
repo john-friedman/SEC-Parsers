@@ -77,122 +77,70 @@ class HTMLParser:
         
         return (result,'continue')
     
-
-    # i think we can modify this to make relative parser mostly useless. Currently about .1s overhead
-    def recursive_parse(self, element):
-        # initialize parsing log
-        element.attrib['parsing_log'] = ''
-        parsing_string = ''
-
-        # detect style from elements
-        result, parsing_rule = self.detect_style_from_element(element)
-        if parsing_rule == 'return':
-            parsing_string = result
-            element.attrib['parsing_string'] = parsing_string
-            element.attrib['parsing_log'] += f'recursive-{parsing_string}'
-            return
-        else:
-            parsing_string += result
-            element.attrib['parsing_log'] += f'recursive-{result}'
-
-
-        string = get_text(element).strip()
-        if string == '':# recursion
-            for child in element.iterchildren():
-                self.recursive_parse(child)
-        else:
-            # detect style from strings
-            result, parsing_rule = self.detect_style_from_string(string)
-            if parsing_rule == 'return':
-                parsing_string = result
-                element.attrib['parsing_string'] = parsing_string
-                element.attrib['parsing_log'] += f'recursive-{parsing_string}'
-                return
-            else:
-                parsing_string += result
-                element.attrib['parsing_log'] += f'recursive-{result}'
-
-            if parsing_string != '':
-                element.attrib['parsing_string'] = parsing_string
-                
-        return
-
-    # Code to find top level parent with same text .3s overhead
-    def parse_top_level(self, html):
-        parsed_elements = html.xpath('//*[@parsing_string]')
-        for parsed_element in parsed_elements:
-            original_parsing_string = parsed_element.get('parsing_string')
-            original_text = get_all_text(parsed_element)
-
-            ancestor = parsed_element.getparent()
-            while ancestor is not None and ancestor.tag != 'body':
-                if get_all_text(ancestor) == original_text:
-                    # Found an ancestor with the same text
-                    ancestor.attrib['parsing_string'] = original_parsing_string
-                    ancestor.attrib['parsing_log'] = ancestor.get('parsing_log', '') + f'top-level-{original_parsing_string};'
-                    
-                    # Remove parsing_string from the original element
-                    parsed_element.attrib['parsing_log'] = parsed_element.get('parsing_log', '') + 'removed top level;'
-                    parsed_element.attrib.pop('parsing_string', None)
-                    
-                    break  # Stop searching, we found the closest ancestor with same text
-                ancestor = ancestor.getparent()
-                
-        return
-
-    
-    # Rewrite. use iter once, no elements between
-    def relative_parse(self,html):
-        parsed_elements = deque(html.xpath('//*[@parsing_string]'))
-
-        while parsed_elements:
-            parsed_element = parsed_elements.popleft()
-            parsing_string = parsed_element.get('parsing_string')
-            element_text = get_text(parsed_element).strip()
-
-            # WIP - gets ancestor whose text is not equal to element text
-            flag = True
-            while flag:
-                parent = parsed_element.getparent()
-
-                parent_text = get_all_text(parent).strip()
-                if parent_text != element_text:
-                    flag = False
-                flag = False
-
-            if parent.tag == 'body':
-                continue
-
-            
-            #WIP
-            # code to merge elements - e.g. item 1 and business
-            parent_string_style, _ = self.detect_style_from_string(parent_text,rule_list=['return']) 
-            if parent_string_style != '':
-                parent.attrib['parsing_string'] = parent_string_style
-                parent.attrib['parsing_log'] += f'relative-merged with parent;'
-
-                # remove descendants parsing string
-                for descendant in parent.iterdescendants():
-                    # check if descendant has parsing string
-                    if 'parsing_string' not in descendant.attrib:
+    def iterative_parse(self,html):
+        flag = True
+        orig_elem = None
+        element_style = ''
+        string_style = ''
+        parser = self
+        # add xml construction later?
+        for event, elem in etree.iterwalk(html, events=('start', 'end')): # fast, .7s
+            if event == 'start':
+                if flag:
+                    # refactor to seperate function
+                    result, parsing_rule = parser.detect_style_from_element(elem)
+                    if parsing_rule == 'return':
+                        element_style = result
+                        orig_elem = elem
+                        flag = False
                         continue
+                    elif result != '':
+                        if orig_elem is None:
+                            orig_elem = elem
 
-                    descendant.attrib.pop('parsing_string', None)
-                    descendant.attrib['parsing_log'] += 'relative-removed as merged with parent;'
-                    # remove from queue
-                    if descendant in parsed_elements:
-                        parsed_elements.remove(descendant)
+                        element_style += result
 
-                continue
-            
+                    if string_style == '':
+                        string = get_all_text(elem)
+                        result, parsing_rule = parser.detect_style_from_string(string)
+                        if parsing_rule == 'return':
+                            string_style = result
+                            orig_elem = elem
+                            flag = False
+                            continue
+                        elif result != '':
+                            if orig_elem is None:
+                                orig_elem = elem
 
-            # remove parsing string if in the middle of text - I like this
-            if is_string_in_middle(parent_text, element_text):
-                parsed_element.attrib.pop('parsing_string')
-                parsed_element.attrib['parsing_log'] += f'relative-popped as it was in middle;'
-                continue
+                            string_style += result
 
+                    # code to check if elem is in middle
+                    if element_style + string_style != '': # slows runtime, .4s
+                        parent = elem.getparent()
+                        if parent is not None:
+                            parent_string = get_all_text(parent)
+                            if string is None:
+                                string = get_all_text(elem)
 
+                            if is_string_in_middle(parent_string, string):
+                                element_style =''
+                                string_style = ''
+                                orig_elem = None
+
+                else:
+                    pass # iterate through file without parsing
+
+            elif event == 'end':
+                if orig_elem is not None:
+                    if elem == orig_elem:
+                        parsing_string = element_style + string_style
+                        orig_elem.attrib['parsing_string'] = parsing_string
+
+                        flag = True
+                        orig_elem = None
+                        string_style = ''
+                        element_style = ''
+                        
     # Works
     def clean_parse(self,html):
         """set ignore items etc"""

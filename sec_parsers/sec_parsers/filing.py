@@ -42,8 +42,7 @@ class Filing:
         if self.filing_type is None:
             self._detect_filing_type()
 
-        self.parser.recursive_parse(self.html)
-        self.parser.relative_parse(self.html)
+        self.parser.iterative_parse(self.html)
         self.parser.clean_parse(self.html)
         # convert to xml
         self._to_xml()

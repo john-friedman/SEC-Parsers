@@ -32,7 +32,6 @@ class SEC10KStringDetectorGroup(HeaderStringDetectorGroup):
             PartStringDetector(parsing_rule='return',level=0,cleaning_rule='header;'),
             ItemStringDetector(parsing_rule='return',level=1,cleaning_rule='header;'),
             SignaturesStringDetector(parsing_rule='return',level=0,cleaning_rule='header;'),
-            NoteStringDetector(parsing_rule='continue',cleaning_rule='header;'),
             PageNumberStringDetector(parsing_rule='return',cleaning_rule='remove;'),
             BulletPointStringDetector(parsing_rule='continue',cleaning_rule='skip;')
         ]
@@ -46,7 +45,6 @@ class SEC8KStringDetectorGroup(HeaderStringDetectorGroup):
         new_detectors = [
             ItemStringDetector(parsing_rule='return',level=0,cleaning_rule='header;'),
             SignaturesStringDetector(parsing_rule='return',level=0,cleaning_rule='header;'),
-            NoteStringDetector(parsing_rule='continue',cleaning_rule='header;'),
             PageNumberStringDetector(parsing_rule='continue',cleaning_rule='remove;'),
             BulletPointStringDetector(parsing_rule='continue',cleaning_rule='skip;')
         ]

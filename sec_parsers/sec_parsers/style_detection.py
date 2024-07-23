@@ -144,35 +144,35 @@ def detect_link(node):
 
 def detect_bold_from_html(element):
     """Detects bold from html tags"""
-    tag_list = 'b'
+    tag_list = ['b']
     if element.tag in tag_list:
         return True
     return False
 
 def detect_strong_from_html(element):
     """Detects strong from html tags"""
-    tag_list = 'strong'
+    tag_list = ['strong']
     if element.tag in tag_list:
         return True
     return False
 
 def detect_emphasis_from_html(element):
     """Detects emphasis from html tags"""
-    tag_list = 'em'
+    tag_list = ['em']
     if element.tag in tag_list:
         return True
     return False
 
 def detect_italic_from_html(element):
     """Detects italic from html tags"""
-    tag_list = 'i'
+    tag_list = ['i']
     if element.tag in tag_list:
         return True
     return False
 
 def detect_underline_from_html(element):
     """Detects underline from html tags"""
-    tag_list = 'u'
+    tag_list = ['u']
     if element.tag in tag_list:
         return True
     return False
