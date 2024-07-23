@@ -1,6 +1,7 @@
 from sec_parsers import Filing,download_sec_filing,set_headers
 from global_vars import *
 from sec_parsers.xml_helper import get_all_text
+from sec_parsers.experimental_parsers import SEC10KParser
 
 import os
 import pandas as pd
@@ -17,7 +18,7 @@ for file in file_list:
 
 total_time = 0
 start_dex = 0
-files = os.listdir(dir_10k)[1:2]
+files = os.listdir(dir_10k)[0:]
 errors = []
 for count,file in enumerate(files):
         try:
@@ -27,14 +28,20 @@ for count,file in enumerate(files):
                 
             nt = time()
             filing = Filing(html)
-            for elem in filing.html.iter():
-                get_all_text(elem)
-            print(f'Getting all text took {time()-nt} seconds')
-            filing.parse()
-            #filing.visualize()  
+            parser = SEC10KParser()
+            s= time()
+            parser.iterative_parse(filing.html)
+            print(f'Iterative parse took {time()-s} seconds')
+            s= time()
+            parser.clean_parse(filing.html)
+            print(f'Clean parse took {time()-s} seconds')
+            s= time()
+            filing._to_xml()
+            print(f'XML conversion took {time()-s} seconds')
+            filing.visualize()  
 
 
-            print(filing.get_title_tree())
+            #print(filing.get_title_tree())
 
             print(f'File {count+start_dex} took {time()-s} seconds')
             total_time += time()-s

@@ -1,17 +1,7 @@
 from sec_parsers.detectors import StyleTagDetector
 from sec_parsers.style_detection import detect_part,detect_item,detect_signatures,detect_page_number,detect_bullet_point,\
-    detect_all_caps,detect_note,detect_emphasis_capitalization
+    detect_all_caps,detect_note,detect_emphasis_capitalization, detect_empty_string
 
-
-class EmptyStringDetector(StyleTagDetector):
-    def __init__(self, **kwargs):
-        super().__init__(style='empty;',**kwargs)
-
-    def detect(self,string):
-        if string.strip() == '':
-            return 'empty;'
-        else:
-            return ''
 
 class PartStringDetector(StyleTagDetector):
     def __init__(self, **kwargs):
@@ -91,5 +81,15 @@ class EmphasisCapStringDetector(StyleTagDetector):
     def detect(self,string):
         if detect_emphasis_capitalization(string):
             return 'emphasis capitalization;'
+        else:
+            return ''
+        
+class EmptyStringDetector(StyleTagDetector):
+    def __init__(self, **kwargs):
+        super().__init__(style='empty string;',**kwargs)
+
+    def detect(self,string):
+        if detect_empty_string(string):
+            return 'empty string;'
         else:
             return ''

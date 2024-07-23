@@ -13,6 +13,18 @@ def get_highest_level_parent(element):
         ancestor = ancestor.getparent()
     return ancestor
 
+#
+def is_middle_element(elem):
+    parent = elem.getparent()
+    if parent is None:
+        return False
+    
+    parent_text = parent.text.strip() if parent.text else ''
+    parent_tail = parent.tail.strip() if parent.tail else ''
+    if (parent_text == ''):
+        return False
+    else:
+        return True
 
 # cause of speed issues. Not sure if there is a better way to do this. Tried xpath, preprocessing, etc. preprocessing sometimes won, but usually was slower.
 # may have to ask for help.

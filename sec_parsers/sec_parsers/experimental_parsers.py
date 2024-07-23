@@ -1,8 +1,8 @@
 from sec_parsers.string_detector_groups import HeaderStringDetectorGroup, SEC10KStringDetectorGroup,SEC8KStringDetectorGroup
 from sec_parsers.xml_helper import get_text, get_all_text, get_text_between_elements,\
-        set_background_color, remove_background_color, open_tree
+        set_background_color, remove_background_color, open_tree, is_middle_element
 from sec_parsers.style_detection import is_descendant_of_table
-from sec_parsers.cleaning import clean_title, is_string_in_middle
+from sec_parsers.cleaning import clean_title
 from sec_parsers.visualization_helper import headers_colors_list
 from sec_parsers.hierachy import assign_header_levels
 from collections import deque
@@ -77,6 +77,7 @@ class HTMLParser:
         
         return (result,'continue')
     
+    # possible performance increases - move which detector triggers first
     def iterative_parse(self,html):
         flag = True
         orig_elem = None
@@ -114,18 +115,25 @@ class HTMLParser:
 
                             string_style += result
 
-                    # code to check if elem is in middle
-                    if element_style + string_style != '': # slows runtime, .4s
-                        parent = elem.getparent()
-                        if parent is not None:
-                            parent_string = get_all_text(parent)
-                            if string is None:
-                                string = get_all_text(elem)
+                    # code to check if elem is in middle 
+                    if (element_style + string_style) != '':
+    
+                        if is_middle_element(orig_elem):
+                            element_style =''
+                            string_style = ''
+                            orig_elem = None
+                        
 
-                            if is_string_in_middle(parent_string, string):
-                                element_style =''
-                                string_style = ''
-                                orig_elem = None
+                        # parent = elem.getparent()
+                        # if parent is not None:
+                        #     parent_string = get_all_text(parent)
+                        #     if string is None:
+                        #         string = get_all_text(elem)
+
+                        #     if is_string_in_middle(parent_string, string):
+                        #         element_style =''
+                        #         string_style = ''
+                        #         orig_elem = None
 
                 else:
                     pass # iterate through file without parsing
@@ -140,7 +148,7 @@ class HTMLParser:
                         orig_elem = None
                         string_style = ''
                         element_style = ''
-                        
+
     # Works
     def clean_parse(self,html):
         """set ignore items etc"""

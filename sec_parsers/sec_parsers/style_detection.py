@@ -294,3 +294,6 @@ def detect_image(node):
     if node.tag == 'img':
         return True
     return False
+
+def detect_empty_string(string):
+    return bool(re.match(r'^\s*$', string))

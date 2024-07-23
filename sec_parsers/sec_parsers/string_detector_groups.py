@@ -7,6 +7,7 @@ class HeaderStringDetectorGroup:
         self.string_detectors = []
         self.add_string_detector(AllCapsStringDetector())
         self.add_string_detector(EmphasisCapStringDetector())
+        self.add_string_detector(EmptyStringDetector(parsing_rule='return',cleaning_rule='remove;'))
 
     def add_string_detector(self, string_detector):
         self.string_detectors.append(string_detector)
