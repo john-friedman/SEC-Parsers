@@ -36,7 +36,7 @@ filing.save_csv(file_name)
 ```
 ### Additional Resources:
 * [quickstart](Examples/quickstart.ipynb)
-* medium article to define custom parsers
+* \[In Progress\] Article explaining how to write custom filing parsers.
 * [Archive of Parsed XMLs / CSVs](https://www.dropbox.com/scl/fo/np1lpow7r3bissz80ze3o/AKGM8skBrUfEGlSweofAUDU?rlkey=cz1r78jofntjeq4ax2vb2yd0u&e=1&st=mdcwgfcm&dl=0) - Last updated 7/10/24.
 * [example parsed filing](Examples/tesla_10k.xml)
 * [example parsed filing exported to csv](Examples/tesla_10k.csv).
@@ -76,7 +76,7 @@ Other
 * Parsing non-html filings
 
 ### Current Priority list:
-* Add S-1 filing
+* fix layering issue
 * fix all caps and emphasis issue
 * clean text
 * Better historical conversion: handle if PART I appears multiple times as header, e.g. logic here item 1 continued.

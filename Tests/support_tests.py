@@ -1,10 +1,6 @@
 from sec_parsers import set_headers, download_sec_filing
 from sec_parsers import Filing
-from sec_parsers.xml_helper import get_all_text
-from sec_parsers.style_detection import detect_part
-from sec_parsers.experimental_parsers import SEC10KParser
-from time import time
-from lxml import etree
+from sec_parsers import SEC_10K_Parser
 set_headers('John Smith','example@example.com')
 
 # looks like S-1 filings can be supported with minor tweaks, same for s3

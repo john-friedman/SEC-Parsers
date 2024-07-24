@@ -34,11 +34,11 @@ class HeaderElementDetectorGroup:
                 return result
         return ''
 
-class SEC10KElementGroup(HeaderElementDetectorGroup):
+class SEC_10K_ElementGroup(HeaderElementDetectorGroup):
     def __init__(self):
         super().__init__()
         # Table of contents detector needs to go before table detector
         self.insert_element_detector(TableOfContentsTagDetector(parsing_rule ='return',cleaning_rule ='skip;'),0)
 
-class SEC8KElementGroup(SEC10KElementGroup):
+class SEC_8K_ElementGroup(SEC_10K_ElementGroup):
     pass

@@ -24,7 +24,7 @@ class HeaderStringDetectorGroup:
                 return result
         return ''
     
-class SEC10KStringDetectorGroup(HeaderStringDetectorGroup):
+class SEC_10K_StringDetectorGroup(HeaderStringDetectorGroup):
     def __init__(self):
         super().__init__()
         
@@ -38,7 +38,7 @@ class SEC10KStringDetectorGroup(HeaderStringDetectorGroup):
         ]
         self.insert_string_detectors(new_detectors)
         
-class SEC8KStringDetectorGroup(HeaderStringDetectorGroup):
+class SEC_8K_StringDetectorGroup(HeaderStringDetectorGroup):
     def __init__(self):
         super().__init__()
         
@@ -51,7 +51,7 @@ class SEC8KStringDetectorGroup(HeaderStringDetectorGroup):
         ]
         self.insert_string_detectors(new_detectors)
 
-class SECS1StringDetectorGroup(HeaderStringDetectorGroup):
+class SEC_S1_StringDetectorGroup(HeaderStringDetectorGroup):
     def __init__(self):
         super().__init__()
         
