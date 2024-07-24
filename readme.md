@@ -56,6 +56,7 @@ filing.save_csv(file_name,encoding='ascii')
 * Extract subsections from section (sharif)
 * Export to dta (Denis)
 * DEF 14A, DEFM14A (Denis)
+* Export to markdown (Astarag)
 
 ### Statistics
 * Speed: On average, 10-K filings parse in 0.25 seconds. There were 7,118 10-K annual reports filed in 2023, so to parse all 10-Ks from 2023 should take about half an hour.
