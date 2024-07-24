@@ -49,6 +49,7 @@ To request features or suggest a way to improve the package please use the form 
 * Extract subsections from section (sharif)
 * Export to dta (Denis)
 * option to remove special chars from document in export (bill)
+* DEF 14A, DEFM14A
 
 ### Statistics
 * Speed: On average, 10-K filings parse in 0.25 seconds. There were 7,118 10-K annual reports filed in 2023, so to parse all 10-Ks from 2023 should take about half an hour.
@@ -77,7 +78,11 @@ Other
 * Parsing non-html filings
 
 ### Current Priority list:
+* add 20-F,
+* consider adding table of contents, forward looking information, etc
 * fix layering issue
+* make trees nicer
+* add more filing types
 * fix all caps and emphasis issue
 * clean text
 * Better historical conversion: handle if PART I appears multiple times as header, e.g. logic here item 1 continued.

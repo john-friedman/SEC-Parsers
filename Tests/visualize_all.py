@@ -1,7 +1,6 @@
 from sec_parsers import Filing,download_sec_filing,set_headers
 from global_vars import *
 from sec_parsers.xml_helper import get_all_text
-from sec_parsers.experimental_parsers import SEC10KParser
 
 import os
 import pandas as pd
@@ -18,7 +17,7 @@ for file in file_list:
 
 total_time = 0
 start_dex = 0
-files = os.listdir(dir_10k)
+files = os.listdir(dir_10k)[6:9]
 errors = []
 for count,file in enumerate(files):
         try:
@@ -28,7 +27,7 @@ for count,file in enumerate(files):
                 
             filing = Filing(html)
             filing.parse()
-            #filing.visualize()
+            filing.visualize()
             #print(filing.get_title_tree())
 
             total_time += time()-s

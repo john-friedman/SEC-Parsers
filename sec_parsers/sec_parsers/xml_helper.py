@@ -13,18 +13,36 @@ def get_highest_level_parent(element):
         ancestor = ancestor.getparent()
     return ancestor
 
-#
+# need to rewrite considerable
+# how about, if same parent, and next to each other, but parsing type prev is not there, then it is a middle element. done
+# need to account for span inside p, etc.
 def is_middle_element(elem):
     parent = elem.getparent()
     if parent is None:
         return False
     
     parent_text = parent.text.strip() if parent.text else ''
-    parent_tail = parent.tail.strip() if parent.tail else ''
-    if (parent_text == ''):
-        return False
-    else:
+    if parent_text != '':
         return True
+    
+    previous_element = elem.getprevious()
+    if previous_element is None:
+        return False
+    
+    if previous_element.attrib.get('parsing_type','') == '':
+        return True
+    
+    return False
+    # parent = elem.getparent()
+    # if parent is None:
+    #     return False
+    
+    # parent_text = parent.text.strip() if parent.text else ''
+    # parent_tail = parent.tail.strip() if parent.tail else ''
+    # if (parent_text == ''):
+    #     return False
+    # else:
+    #     return True
 
 # cause of speed issues. Not sure if there is a better way to do this. Tried xpath, preprocessing, etc. preprocessing sometimes won, but usually was slower.
 # may have to ask for help.

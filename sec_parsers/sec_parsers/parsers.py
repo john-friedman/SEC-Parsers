@@ -117,18 +117,6 @@ class HTMLParser:
                             element_style =''
                             string_style = ''
                             orig_elem = None
-                        
-
-                        # parent = elem.getparent()
-                        # if parent is not None:
-                        #     parent_string = get_all_text(parent)
-                        #     if string is None:
-                        #         string = get_all_text(elem)
-
-                        #     if is_string_in_middle(parent_string, string):
-                        #         element_style =''
-                        #         string_style = ''
-                        #         orig_elem = None
 
                 else:
                     pass # iterate through file without parsing
@@ -350,3 +338,6 @@ class SEC_S1_Parser(HTMLParser):
                        'signatures;': '#B8860B',
                        'bullet point;': '#FAFAD2',
                        })
+        
+class SEC_20F_Parser(SEC_10K_Parser):
+    pass
