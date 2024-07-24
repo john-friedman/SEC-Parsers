@@ -1,6 +1,6 @@
 from lxml import etree
 from sec_parsers.parsers import parse_metadata, detect_filing_type, setup_html
-from sec_parsers.experimental_parsers import SEC10KParser, SEC10QParser, SEC8KParser
+from sec_parsers.experimental_parsers import SEC10KParser, SEC10QParser, SEC8KParser, SECS1Parser
 
 class Filing:
     def __init__(self, html):
@@ -9,7 +9,9 @@ class Filing:
         self.hierarchy = None # need to implement
         self.xml = None
         self.parser = None # this will be updated by detect_filing_type
+        self.filing_type = None
         self._detect_filing_type()
+        self._update_parser()
 
 
     # keep
@@ -24,6 +26,12 @@ class Filing:
     # keep
     def _detect_filing_type(self):
         filing_type = detect_filing_type(self.metadata)
+        self.filing_type = filing_type
+
+    def _update_parser(self):
+        if self.parser is None:
+            self._detect_filing_type()
+        filing_type = self.filing_type
 
         if filing_type == '10-K':
             self.parser = SEC10KParser()
@@ -31,12 +39,15 @@ class Filing:
             self.parser = SEC10QParser()
         elif filing_type == '8-K':
             self.parser = SEC8KParser()
-        self.filing_type = filing_type
+        elif filing_type == 'S-1':
+            self.parser = SECS1Parser()
+
 
 
     # keep
     def set_filing_type(self, filing_type):
         self.filing_type = filing_type
+        self._update_parser()
 
     def parse(self):
         if self.filing_type is None:

@@ -75,9 +75,10 @@ Other
 * Image OCR
 * Parsing non-html filings
 
-### Current Prioritylist:
+### Current Priority list:
 * Add S-1 filing
-* fix all caps emphasis issue
+* fix all caps and emphasis issue
+* clean text
 * Better historical conversion: handle if PART I appears multiple times as header, e.g. logic here item 1 continued.
 
 

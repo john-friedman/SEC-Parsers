@@ -1,4 +1,4 @@
-from sec_parsers.string_detector_groups import HeaderStringDetectorGroup, SEC10KStringDetectorGroup,SEC8KStringDetectorGroup
+from sec_parsers.string_detector_groups import HeaderStringDetectorGroup, SEC10KStringDetectorGroup,SEC8KStringDetectorGroup, SECS1StringDetectorGroup
 from sec_parsers.xml_helper import get_text, get_all_text,\
         set_background_color, remove_background_color, open_tree, is_middle_element
 from sec_parsers.cleaning import clean_title
@@ -335,4 +335,19 @@ class SEC8KParser(HTMLParser):
                        'item;': '#B8860B',
                        'bullet point;': '#FAFAD2',
                           'signatures;': '#B8860B',
+                       })
+        
+class SECS1Parser(HTMLParser):
+    def _init(self, **kwargs):
+        super()._init(**kwargs)
+
+        self.element_detector_group = SEC10KElementGroup()
+        self.string_detector_group = SECS1StringDetectorGroup()
+
+
+        self.color_dict.update({
+                       'prospectus;': '#B8860B',
+                       'item;': '#BDB76B',
+                       'signatures;': '#B8860B',
+                       'bullet point;': '#FAFAD2',
                        })

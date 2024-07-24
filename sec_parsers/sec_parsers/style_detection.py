@@ -65,6 +65,13 @@ def detect_emphasis_capitalization(string): # WIP
 
     return has_capitalized_word
     
+def detect_prospectus(string):
+    """e.g. PROSPECTUS SUMMARY"""
+    match = re.search(r"^PROSPECTUS SUMMARY$",string, re.IGNORECASE)
+    if match:
+        return True
+    return False    
+
 def detect_part(string):
     """e.g. Part I"""
     match = part_pattern.match(string.lower().strip())
@@ -297,3 +304,4 @@ def detect_image(node):
 
 def detect_empty_string(string):
     return bool(re.match(r'^\s*$', string))
+
