@@ -63,7 +63,7 @@ filing.save_csv(file_name,encoding='ascii')
 ### Updates
 #### Towards Version 1:
 * Most/All SEC text filings supported
-* Few errrors
+* Few errors
 * xml 
 
 Might be done along the way:
