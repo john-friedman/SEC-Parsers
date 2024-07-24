@@ -49,7 +49,7 @@ To request features or suggest a way to improve the package please use the form 
 * Export to dta (Denis)
 * option to remove special chars from document in export (bill)
 
-Statistics
+### Statistics
 * Speed: On average, 10-K filings parse in 0.25 seconds. There were 7,118 10-K annual reports filed in 2023, so to parse all 10-Ks from 2023 should take about half an hour.
 
 ### Updates

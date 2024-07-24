@@ -1,6 +1,6 @@
 from lxml import etree
 from sec_parsers.parsers import parse_metadata, detect_filing_type, setup_html
-from sec_parsers.experimental_parsers import HTMLParser, SEC10KParser, SEC10QParser, SEC8KParser
+from sec_parsers.experimental_parsers import SEC10KParser, SEC10QParser, SEC8KParser
 
 class Filing:
     def __init__(self, html):

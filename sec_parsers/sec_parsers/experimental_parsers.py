@@ -1,13 +1,9 @@
 from sec_parsers.string_detector_groups import HeaderStringDetectorGroup, SEC10KStringDetectorGroup,SEC8KStringDetectorGroup
-from sec_parsers.xml_helper import get_text, get_all_text, get_text_between_elements,\
+from sec_parsers.xml_helper import get_text, get_all_text,\
         set_background_color, remove_background_color, open_tree, is_middle_element
-from sec_parsers.style_detection import is_descendant_of_table
 from sec_parsers.cleaning import clean_title
 from sec_parsers.visualization_helper import headers_colors_list
-from sec_parsers.hierachy import assign_header_levels
-from collections import deque
 from lxml import etree
-from copy import deepcopy
 
 from sec_parsers.element_detector_groups import HeaderElementDetectorGroup, SEC10KElementGroup, SEC8KElementGroup
 
@@ -206,7 +202,10 @@ class HTMLParser:
 
         open_tree(html)
 
-    # rewrite using iter or iterwalk # broke lol
+    # rewrite using iterwalk to remove things properly
+    # check output is correct
+    # might make sense to make tests now, maybe a website?
+    # better text handling
     def construct_xml_tree(self, html):
         root = etree.Element('root')
         document_node = etree.Element('document', title='Document')
@@ -217,73 +216,91 @@ class HTMLParser:
         base_headers = [key for key in levels_dict.keys() if levels_dict[key] == 0]
 
         text = ''
-        title = 'Introduction'
+        title = 'introduction'
         stack = [document_node]
         level = None
+        node_tag = None
 
         flag = True
+        remove_elem = None
 
-        for elem in html.iter():
-            parsing_type = elem.attrib.get('parsing_type', '')
-            if flag: # handle introduction
-                if parsing_type in base_headers:
-                    flag = False
-
-                    node = etree.Element('Introduction', title=title)
-                    document_node.append(node)
-                    node.text = text
-                    node.attrib['parsing_type'] = 'added in tree construction;'
-
-                    text = ''
-                    title = clean_title(get_all_text(elem))
-                    if parsing_type in [key for key in levels_dict.keys()]:
-                        level = levels_dict[parsing_type]
-                    else:
-                        level = None
-                    stack.append(node)
+        for event, elem in etree.iterwalk(html, events=('start', 'end')): # change to iterwalk to skip certain elements
+            if event == 'start':
+                if remove_elem is not None:
                     continue
-                else:
-                    text += get_text(elem)
-            else:
 
-                if parsing_type == 'remove;':
-                    continue
-                elif parsing_type == 'skip;':
-                    text += get_text(elem)
-                elif parsing_type == '':
-                    text += get_text(elem)
-                else:
-                    node = etree.Element('company_designated_header', title = title)
-                    node.text = text
-                    node.attrib['parsing_type'] = parsing_type
+                parsing_type = elem.attrib.get('parsing_type', '')
+                if flag: # handle introduction
+                    if parsing_type == 'remove;': # WIP
+                        remove_elem = elem
+                        continue
+                    elif parsing_type in base_headers:
+                        flag = False
 
-                    text = ''
-                    title = clean_title(get_all_text(elem))
-                    # handle where to append to
+                        node = etree.Element('Introduction', title=title)
+                        document_node.append(node)
+                        node.text = text
+                        node.attrib['parsing_type'] = 'added in tree construction;'
 
-                    if level is not None:
-                        parent_node = stack[level]
-                        parent_node.append(node)
-
-                        stack = stack[:level+1]
-                        stack.append(node)
-
-                    else:
-                        parsing_type_list = [item.attrib['parsing_type'] for item in stack]
-                        if parsing_type in parsing_type_list:
-                            idx = parsing_type_list.index(parsing_type)
-                            stack[idx].append(node)
-                            stack = stack[:idx+1]
-                            stack.append(node)
+                        text = ''
+                        title = clean_title(get_all_text(elem))
+                        if parsing_type in [key for key in levels_dict.keys()]:
+                            level = levels_dict[parsing_type]
+                            node_tag = parsing_type.replace(';', '')
                         else:
-                            stack[-1].append(node)
+                            level = None
+                            node_tag = 'company_designated_header'
+                        stack.append(node)
+                        continue
+                    else:
+                        text += get_text(elem)
+                else:
+
+                    if parsing_type == 'remove;':
+                        remove_elem = elem
+                        continue
+                    elif parsing_type == 'skip;':
+                        text += get_text(elem)
+                    elif parsing_type == '':
+                        text += get_text(elem)
+                    else:
+                        node = etree.Element(node_tag, title = title)
+                        node.text = text
+                        node.attrib['parsing_type'] = parsing_type
+
+                        text = ''
+                        title = clean_title(get_all_text(elem))
+                        # handle where to append to
+
+                        if level is not None:
+                            parent_node = stack[level]
+                            parent_node.append(node)
+
+                            stack = stack[:level+1]
                             stack.append(node)
 
-                    # reset level
-                    if parsing_type in [key for key in levels_dict.keys()]:
-                        level = levels_dict[parsing_type]
-                    else:
-                        level = None
+                        else:
+                            parsing_type_list = [item.attrib['parsing_type'] for item in stack]
+                            if parsing_type in parsing_type_list:
+                                idx = parsing_type_list.index(parsing_type)
+                                stack[idx].append(node)
+                                stack = stack[:idx+1]
+                                stack.append(node)
+                            else:
+                                stack[-1].append(node)
+                                stack.append(node)
+
+                        # reset level
+                        if parsing_type in [key for key in levels_dict.keys()]:
+                            level = levels_dict[parsing_type]
+                            node_tag = parsing_type.replace(';', '')
+                        else:
+                            level = None
+                            node_tag = 'company_designated_header'
+            else:
+                if elem == remove_elem:
+                    remove_elem = None
+                    continue
 
 
         return root

@@ -18,7 +18,7 @@ for file in file_list:
 
 total_time = 0
 start_dex = 0
-files = os.listdir(dir_10k)[0:]
+files = os.listdir(dir_10k)[0:1]
 errors = []
 for count,file in enumerate(files):
         try:
@@ -28,6 +28,7 @@ for count,file in enumerate(files):
                 
             filing = Filing(html)
             filing.parse()
+            #filing.visualize()
 
             total_time += time()-s
             print(f'File {count+start_dex} took {time()-s} seconds')
@@ -35,6 +36,7 @@ for count,file in enumerate(files):
             print(f'Average parsing time: {total_time/(count+1)} seconds')
             print(f"total time: {total_time}")
             #filing.save_xml(dir_10k_parsed + file[:-5] + '.xml')
+            filing.save_xml('test.xml')
         except Exception as e:
             errors.append((file,e))
             print(f'Error in {file}: num_errors = {len(errors)}')
