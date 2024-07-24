@@ -29,15 +29,15 @@ for count,file in enumerate(files):
             filing = Filing(html)
             filing.parse()
             #filing.visualize()
-            #print(filing.get_title_tree())
+            print(filing.get_title_tree())
 
             total_time += time()-s
             print(f'File {count+start_dex} took {time()-s} seconds')
 
             print(f'Average parsing time: {total_time/(count+1)} seconds')
             print(f"total time: {total_time}")
-            filing.save_xml(dir_10k_parsed + file[:-5] + '.xml')
-            filing.save_xml('test.xml',encoding='ascii')
+            # filing.save_xml(dir_10k_parsed + file[:-5] + '.xml')
+            # filing.save_xml('testa.xml')
         except Exception as e:
             errors.append((file,e))
             print(f'Error in {file}: num_errors = {len(errors)}')

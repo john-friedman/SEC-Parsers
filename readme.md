@@ -7,7 +7,8 @@ Parses non-standardized SEC filings into structured xml. Use cases include LLMs,
 
 Supported filing types are 10-K, 10-Q, 8-K, S-1, 20-F. More will be added soon.
 
-Note: find_nodes, get_nodes, etc renamed for better UI. Sorry for the trouble.
+Note: syntax change for find_nodes_by_title, to find_all_sections_by_title and associated functions.
+<em>URGENT</em>: Advice on how to name functions used by users is urgently needed. SEC Parsers has started to get a lot of users, and I don't want to deprecate function names in the future. [Link](contributors.md)
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualizationv3.png">

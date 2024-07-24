@@ -210,10 +210,13 @@ class HTMLParser:
 
         flag = True
         remove_elem = None
+        title_elem = None
 
         for event, elem in etree.iterwalk(html, events=('start', 'end')): # change to iterwalk to skip certain elements
             if event == 'start':
                 if remove_elem is not None:
+                    continue
+                if title_elem is not None:
                     continue
 
                 parsing_type = elem.attrib.get('parsing_type', '')
@@ -224,13 +227,14 @@ class HTMLParser:
                     elif parsing_type in base_headers:
                         flag = False
 
-                        node = etree.Element('Introduction', title=title)
+                        node = etree.Element('introduction', title=title)
                         document_node.append(node)
                         node.text = text
                         node.attrib['parsing_type'] = 'added in tree construction;'
 
                         text = ''
                         title = clean_title(get_all_text(elem))
+                        title_elem = elem
                         if parsing_type in [key for key in levels_dict.keys()]:
                             level = levels_dict[parsing_type]
                             node_tag = parsing_type.replace(';', '')
@@ -257,6 +261,7 @@ class HTMLParser:
 
                         text = ''
                         title = clean_title(get_all_text(elem))
+                        title_elem = elem
                         # handle where to append to
 
                         if level is not None:
@@ -287,6 +292,10 @@ class HTMLParser:
             else:
                 if elem == remove_elem:
                     remove_elem = None
+                    continue
+
+                if elem == title_elem:
+                    title_elem = None
                     continue
 
 

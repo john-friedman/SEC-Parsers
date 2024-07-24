@@ -73,7 +73,7 @@ class Filing:
     # functions to interact with xml
 
     # Find #
-    def find_section_by_title(self,title):
+    def find_all_sections_by_title(self,title):
         title = title.strip().lower()
         if self.xml is None:
             self.to_xml()
@@ -84,13 +84,21 @@ class Filing:
         nodes = [node for node in titles if title in node.attrib['title'].lower()]
 
         return nodes
+    
+    def find_section_by_title(self,title):
+        sections = self.find_all_sections_by_title(title)
+        return sections if sections else None
 
-    def find_section_by_text(self, text):
+    def find_all_sections_by_text(self, text):
         """Find a node by text."""
         if self.xml is None:
             self.to_xml()
 
         return self.xml.xpath(f"//*[contains(text(), '{text}')]")
+    
+    def find_section_by_text(self, text):
+        sections = self.find_all_sections_by_text(text)
+        return sections if sections else None
     
     # Interact with Node #
     def get_subsections_from_section(self, node):
