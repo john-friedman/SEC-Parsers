@@ -5,7 +5,7 @@
 
 Parses non-standardized SEC filings into structured xml. Use cases include LLMs, NLP, and textual analysis. Package is a WIP.
 
-Supported filing types are 10-K, 10-Q, 8-K, S-1. More will be added soon.
+Supported filing types are 10-K, 10-Q, 8-K, S-1, 20-F. More will be added soon.
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualizationv3.png">
@@ -38,7 +38,7 @@ filing.save_csv(file_name)
 ### Additional Resources:
 * [quickstart](Examples/quickstart.ipynb)
 * \[In Progress\] Article explaining how to write custom filing parsers.
-* [Archive of Parsed XMLs / CSVs](https://www.dropbox.com/scl/fo/np1lpow7r3bissz80ze3o/AKGM8skBrUfEGlSweofAUDU?rlkey=cz1r78jofntjeq4ax2vb2yd0u&e=1&st=mdcwgfcm&dl=0) - Last updated 7/10/24.
+* [Archive of Parsed XMLs / CSVs](https://www.dropbox.com/scl/fo/np1lpow7r3bissz80ze3o/AKGM8skBrUfEGlSweofAUDU?rlkey=cz1r78jofntjeq4ax2vb2yd0u&e=1&st=mdcwgfcm&dl=0) - Last updated 7/24/24.
 * [example parsed filing](Examples/tesla_10k.xml)
 * [example parsed filing exported to csv](Examples/tesla_10k.csv).
 
@@ -78,7 +78,6 @@ Other
 * Parsing non-html filings
 
 ### Current Priority list:
-* add 20-F,
 * consider adding table of contents, forward looking information, etc
 * fix layering issue
 * make trees nicer

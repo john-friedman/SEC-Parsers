@@ -13,11 +13,12 @@ for file in file_list:
     file_path = os.path.join(dir_10k_parsed, file)
     if os.path.isfile(file_path):
         os.remove(file_path)
+print(os.listdir(dir_10k_parsed))
 
 
 total_time = 0
 start_dex = 0
-files = os.listdir(dir_10k)[6:9]
+files = os.listdir(dir_10k)
 errors = []
 for count,file in enumerate(files):
         try:
@@ -27,7 +28,7 @@ for count,file in enumerate(files):
                 
             filing = Filing(html)
             filing.parse()
-            filing.visualize()
+            #filing.visualize()
             #print(filing.get_title_tree())
 
             total_time += time()-s

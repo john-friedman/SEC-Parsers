@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: sec-parsers
-Version: 0.535
+Version: 0.536
 Summary: A package to parse SEC filings
 Author: John Friedman
 Description-Content-Type: text/markdown
@@ -12,7 +12,7 @@ Description-Content-Type: text/markdown
 
 Parses non-standardized SEC filings into structured xml. Use cases include LLMs, NLP, and textual analysis. Package is a WIP.
 
-Supported filing types are 10-K, 10-Q, 8-K, S-1. More will be added soon.
+Supported filing types are 10-K, 10-Q, 8-K, S-1, 20-F. More will be added soon.
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualizationv3.png">
@@ -45,7 +45,7 @@ filing.save_csv(file_name)
 ### Additional Resources:
 * [quickstart](Examples/quickstart.ipynb)
 * \[In Progress\] Article explaining how to write custom filing parsers.
-* [Archive of Parsed XMLs / CSVs](https://www.dropbox.com/scl/fo/np1lpow7r3bissz80ze3o/AKGM8skBrUfEGlSweofAUDU?rlkey=cz1r78jofntjeq4ax2vb2yd0u&e=1&st=mdcwgfcm&dl=0) - Last updated 7/10/24.
+* [Archive of Parsed XMLs / CSVs](https://www.dropbox.com/scl/fo/np1lpow7r3bissz80ze3o/AKGM8skBrUfEGlSweofAUDU?rlkey=cz1r78jofntjeq4ax2vb2yd0u&e=1&st=mdcwgfcm&dl=0) - Last updated 7/24/24.
 * [example parsed filing](Examples/tesla_10k.xml)
 * [example parsed filing exported to csv](Examples/tesla_10k.csv).
 
@@ -56,6 +56,7 @@ To request features or suggest a way to improve the package please use the form 
 * Extract subsections from section (sharif)
 * Export to dta (Denis)
 * option to remove special chars from document in export (bill)
+* DEF 14A, DEFM14A
 
 ### Statistics
 * Speed: On average, 10-K filings parse in 0.25 seconds. There were 7,118 10-K annual reports filed in 2023, so to parse all 10-Ks from 2023 should take about half an hour.
@@ -84,7 +85,10 @@ Other
 * Parsing non-html filings
 
 ### Current Priority list:
+* consider adding table of contents, forward looking information, etc
 * fix layering issue
+* make trees nicer
+* add more filing types
 * fix all caps and emphasis issue
 * clean text
 * Better historical conversion: handle if PART I appears multiple times as header, e.g. logic here item 1 continued.
