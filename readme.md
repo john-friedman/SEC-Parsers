@@ -1,13 +1,11 @@
 ## SEC Parsers
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/sec-parsers)
-![GitHub](https://img.shields.io/github/stars/john-friedman/sec-parsers)
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fhttps%2F%2Fgithub.com%2Fjohn-friedman%2FSEC-Parsers&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+![GitHub](https://img.shields.io/github/stars/john-friedman/sec-parsers)
 
 Parses non-standardized SEC filings into structured xml. Use cases include LLMs, NLP, and textual analysis. Package is a WIP.
 
 Supported filing types are 10-K, 10-Q, 8-K. More will be added soon.
-
-
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualizationv3.png">
@@ -43,61 +41,43 @@ Additional Resources:
 * [example parsed filing](Examples/tesla_10k.xml)
 * [example parsed filing exported to csv](Examples/tesla_10k.csv).
 
-Links
-* [GitHub](https://github.com/john-friedman/SEC-Parsers/)
-
-Statistics
-* Speed: On average, 10-K filings parse in 0.25 seconds. There were 7,118 10-K annual reports filed in 2023, so to parse all 10-Ks from 2023 should take about half an hour.
-
-
-### Updates
-Patch notes:
-* added warnings for set headers, and for automatic filing type detection
-* Parse speed increased more than 10X
-
-Shortterm TODO:
-* Add S-1 filings, and others
-* fix all caps emphasis issue
-
-Midterm TODO:
-* More detailed XML tree
-* Faster XML conversion
-* Better historical conversion: handle if PART I appears multiple times as header, e.g. logic here item 1 continued.
-
-Future performance:
-* switching from memory to streaming / common sense fixes. don't need now as its fast enough
-
-#### Roadmap:
-v1 - parses most/all sec text filings well into detailed xml trees.
-
-Future updates:  
-* Better filing element handling: e.g. table handling, OCR on images stored on static site
-* Analysis: sections clustering (e.g. Seasonality, Seasonal Variance)
-* Better metadata: I'm considering running a small LLM to tag section titles, and sections text. e.g. Section title 'Marketing and Sales' might often contain supply chain details. Or for example, specific section in Tesla 10k is 2000chars that say text found elsewhere.
-* Backwards compatability for non-html files.
-
-Some of these updates require significant compute resources / file hosting, which I currently lack.
-
-Feature Request:
+Feature Requests:
 To request features or suggest a way to improve the package please use the form below.
 [Google Form](https://forms.gle/cCh7VT93v4tV4ekp8)
 * Extract title of section along with its text (sharif)
 * Extract subsections from section (sharif)
 * Export to dta (Denis)
-* option to remove special chars from document in export (bill mcdonald)
+* option to remove special chars from document in export (bill)
 
+Statistics
+* Speed: On average, 10-K filings parse in 0.25 seconds. There were 7,118 10-K annual reports filed in 2023, so to parse all 10-Ks from 2023 should take about half an hour.
 
-## Problem
-SEC filings are complex and mostly non-standardized...
+### Updates
+Towards Version 1:
+* Most/All SEC text filings supported
+* Few errrors
+* xml 
 
-## How SEC Parsers works
+Might be done along the way:
+* Faster parsing, probably using streaming approach, and combining modules together.
+* Introduction section parsing
+* Signatures section parsing
 
-## Alternatives fill out
-* Bill mcdonald 10k regex
-* sec-api regex
-* unstructured.io - I don't know how this works yet
-* noteblocks (or is it textblocks)
-* cybersyn
+Beyond Version 1:
+To improve the package beyond V1 it looks like I need compute and storage. Not sure how to get that. Working on it.
 
+Metadata
+* Clustering similar section titles using ML (e.g. seasonality headers)
+* Adding tags to individual sections using small LLMs (e.g. tag for mentions supply chains, energy, etc)
+
+Other
+* Table parsing
+* Image OCR
+* Parsing non-html filings
+
+### Current Prioritylist:
+* Add S-1 filing
+* fix all caps emphasis issue
+* Better historical conversion: handle if PART I appears multiple times as header, e.g. logic here item 1 continued.
 
 
