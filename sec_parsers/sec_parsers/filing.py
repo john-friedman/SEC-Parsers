@@ -2,6 +2,8 @@ from lxml import etree
 from sec_parsers.parsers_helper import parse_metadata, detect_filing_type, setup_html
 from sec_parsers.parsers import SEC_10K_Parser, SEC_10Q_Parser, SEC_8K_Parser, SEC_S1_Parser, SEC_20F_Parser
 import csv
+import unicodedata
+
 
 class Filing:
     def __init__(self, html):
@@ -140,12 +142,18 @@ class Filing:
         return tree_atrib
     
     # Save to file #
-    def save_xml(self, filename):
+    def save_xml(self, filename, encoding='utf-8'):
+        if encoding not in ['utf-8','ascii']:
+            raise ValueError('Encoding must be either utf-8 or ascii')
+        
         if self.xml is None:
             self.to_xml()
 
+        if encoding == 'ascii':
+            self.convert_element_to_ascii(self.xml)
+
         with open(filename, 'wb') as f:
-            f.write(etree.tostring(self.xml))
+                f.write(etree.tostring(self.xml,encoding=encoding,xml_declaration=True))
 
             
     def save_csv(self, filename):
@@ -177,5 +185,24 @@ class Filing:
     # TODO: implement
     def save_dta(self, filename):
         pass
+
+    # encoding
+    # Function to convert text to ASCII
+    def string_to_ascii(self, string):
+        # Normalize to closest ASCII equivalent
+        normalized = unicodedata.normalize('NFKD', string)
+        # Remove non-ASCII characters
+        ascii_string = normalized.encode('ascii', 'ignore').decode('ascii')
+        return ascii_string
+
+    # Recursively process all elements and their text
+    def convert_element_to_ascii(self,element):
+        if element.text:
+            element.text = self.string_to_ascii(element.text)
+        for child in element:
+            self.convert_element_to_ascii(child)
+        if element.tail:
+            element.tail = self.string_to_ascii(element.tail)
+    
 
         
