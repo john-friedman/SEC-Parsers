@@ -34,14 +34,14 @@ filing.get_title_tree() # returns xml tree using titles instead of tags. More de
 filing.save_xml(file_name)
 filing.save_csv(file_name)
 ```
-Additional Resources:
+### Additional Resources:
 * [quickstart](Examples/quickstart.ipynb)
 * medium article to define custom parsers
 * [Archive of Parsed XMLs / CSVs](https://www.dropbox.com/scl/fo/np1lpow7r3bissz80ze3o/AKGM8skBrUfEGlSweofAUDU?rlkey=cz1r78jofntjeq4ax2vb2yd0u&e=1&st=mdcwgfcm&dl=0) - Last updated 7/10/24.
 * [example parsed filing](Examples/tesla_10k.xml)
 * [example parsed filing exported to csv](Examples/tesla_10k.csv).
 
-Feature Requests:
+### Feature Requests:
 To request features or suggest a way to improve the package please use the form below.
 [Google Form](https://forms.gle/cCh7VT93v4tV4ekp8)
 * Extract title of section along with its text (sharif)
@@ -53,7 +53,7 @@ Statistics
 * Speed: On average, 10-K filings parse in 0.25 seconds. There were 7,118 10-K annual reports filed in 2023, so to parse all 10-Ks from 2023 should take about half an hour.
 
 ### Updates
-Towards Version 1:
+#### Towards Version 1:
 * Most/All SEC text filings supported
 * Few errrors
 * xml 
@@ -63,7 +63,7 @@ Might be done along the way:
 * Introduction section parsing
 * Signatures section parsing
 
-Beyond Version 1:
+#### Beyond Version 1:
 To improve the package beyond V1 it looks like I need compute and storage. Not sure how to get that. Working on it.
 
 Metadata
