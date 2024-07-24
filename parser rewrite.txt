@@ -1,3 +1,0 @@
-Rewriting again.
-
-Should be able to get parser down to about <1s for all documents. Just use .iter() and be smart

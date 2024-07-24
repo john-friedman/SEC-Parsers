@@ -7,6 +7,8 @@ Parses non-standardized SEC filings into structured xml. Use cases include LLMs,
 
 Supported filing types are 10-K, 10-Q, 8-K, S-1, 20-F. More will be added soon.
 
+Note: find_nodes, get_nodes, etc renamed for better UI. Sorry for the trouble.
+
 <div align="center">
   <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualizationv3.png">
 </div>
@@ -42,14 +44,17 @@ filing.save_csv(file_name)
 * [example parsed filing](Examples/tesla_10k.xml)
 * [example parsed filing exported to csv](Examples/tesla_10k.csv).
 
+### Features:
+* lots of filing types
+* export to xml, csv, with option to convert to ASCII
+* visualization
+
 ### Feature Requests:
-To request features or suggest a way to improve the package please use the form below.
-[Google Form](https://forms.gle/cCh7VT93v4tV4ekp8)
+[Request a Feature](contributors.md)
 * Extract title of section along with its text (sharif)
 * Extract subsections from section (sharif)
 * Export to dta (Denis)
-* option to remove special chars from document in export (bill)
-* DEF 14A, DEFM14A
+* DEF 14A, DEFM14A (Denis)
 
 ### Statistics
 * Speed: On average, 10-K filings parse in 0.25 seconds. There were 7,118 10-K annual reports filed in 2023, so to parse all 10-Ks from 2023 should take about half an hour.
@@ -64,6 +69,7 @@ Might be done along the way:
 * Faster parsing, probably using streaming approach, and combining modules together.
 * Introduction section parsing
 * Signatures section parsing
+* Better visualization interface (e.g. like pdfviewer for sections)
 
 #### Beyond Version 1:
 To improve the package beyond V1 it looks like I need compute and storage. Not sure how to get that. Working on it.
@@ -78,6 +84,7 @@ Other
 * Parsing non-html filings
 
 ### Current Priority list:
+* better function names - need to decide terminology soon.
 * consider adding table of contents, forward looking information, etc
 * fix layering issue
 * make trees nicer

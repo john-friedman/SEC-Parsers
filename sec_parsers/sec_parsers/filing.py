@@ -73,7 +73,7 @@ class Filing:
     # functions to interact with xml
 
     # Find #
-    def find_nodes_by_title(self,title):
+    def find_section_by_title(self,title):
         title = title.strip().lower()
         if self.xml is None:
             self.to_xml()
@@ -85,21 +85,20 @@ class Filing:
 
         return nodes
 
-    def find_nodes_by_text(self, text):
+    def find_section_by_text(self, text):
         """Find a node by text."""
-
         if self.xml is None:
             self.to_xml()
 
         return self.xml.xpath(f"//*[contains(text(), '{text}')]")
     
-    def fuzzy_find_nodes_by_title(self,title):
-        # TODO: implement
-        pass
     # Interact with Node #
+    def get_subsections_from_section(self, node):
+        """Get all children of a node."""
+        return node.getchildren()
 
     # Note, needs refactor, also needs better spacing fix with text.
-    def get_node_text(self, node, is_parent=True):
+    def get_text_from_section(self, node, is_parent=True):
         """Gets all text from a node, including title string for child nodes."""
         text = ''
 
