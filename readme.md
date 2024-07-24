@@ -1,15 +1,21 @@
 # SEC Parsers
-Parses non-standardized SEC 10-K filings into well structured detailed xml. Use cases include LLMs, NLP, and textual analysis. 
+Parses non-standardized SEC filings into structured xml. Use cases include LLMs, NLP, and textual analysis. Package is a WIP.
+
+Supported filing types are 10-K, 10-Q, 8-K. More will be added soon.
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualizationv3.png">
+</div>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_tree_v3.png" width="500">
+</div>
+
+### Statistics
+* Speed: On average, 10-K filings parse in 0.25 seconds. There were 7,118 10-K annual reports filed in 2023, so to parse all 10-Ks from 2023 should take about half an hour.
 
 # Patch notes:
 * added warnings for set headers, and for automatic filing type detection
-* Parse speed increased. e.g. 183 page filing that took 7s to parse now takes .26s.
-
-## Statistics
-* How long it takes to parse x file, 
-* What percentage of 10ks parse
-
-## Updated Visuals
+* Parse speed increased more than 10X
 
 ## Resources
 quickstart link
@@ -22,11 +28,15 @@ medium article for defining custom parsers
 
 ## Shortterm TODO:
 * Add S-1 filings, and others
+* fix all caps emphasis issue
 
 ## Midterm TODO:
 * More detailed XML tree
 * Faster XML conversion
 * Better historical conversion: handle if PART I appears multiple times as header, e.g. logic here item 1 continued.
+
+## Future speed:
+* switching from memory to streaming / common sense fixes. don't need now as its fast enough
 
 ## Roadmap:
 v1 - parses most/all sec text filings well into detailed xml trees.

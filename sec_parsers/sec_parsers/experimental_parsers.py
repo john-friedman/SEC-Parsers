@@ -167,7 +167,7 @@ class HTMLParser:
             parsing_list = parsing_string.split(';') 
             parsing_list = [parsing for parsing in parsing_list if parsing != '']
             parsing_list = [parsing +';' for parsing in parsing_list]
-            
+
             # check if ignore
             if any([parsing in remove_strings for parsing in parsing_list]):
                 parsed_element.attrib['parsing_type'] = 'remove;'
@@ -206,53 +206,85 @@ class HTMLParser:
 
         open_tree(html)
 
-    # WIP todo find empty parsing types, and add parsing logs
+    # rewrite using iter or iterwalk # broke lol
     def construct_xml_tree(self, html):
         root = etree.Element('root')
         document_node = etree.Element('document', title='Document')
+        document_node.attrib['parsing_type'] = 'added in tree construction;'
         root.append(document_node)
 
-        parsed_elements = html.xpath('//*[@parsing_type]')
-        parsed_elements = [element for element in parsed_elements if element.attrib['parsing_type'] != 'skip;']
-        parsed_elements = [element for element in parsed_elements if element.attrib['parsing_type'] != 'remove;']
-
-
-        # construct levels_dict
         levels_dict = {item.style: item.level for item in self.all_detectors if item.level != -1}
-        # Handle introduction (elements before first 0 level header)
-        base_headers = [key for key in levels_dict.keys()]
-        first_header = [item for item in parsed_elements if item.attrib['parsing_type'] in base_headers][0]
+        base_headers = [key for key in levels_dict.keys() if levels_dict[key] == 0]
 
-        first_index = parsed_elements.index(first_header)
-        introduction_node = etree.Element('introduction', title='Introduction')
-        introduction_node.text = get_text_between_elements(html,start_element=None, end_element=parsed_elements[first_index])
-        document_node.append(introduction_node)
+        text = ''
+        title = 'Introduction'
+        stack = [document_node]
+        level = None
 
-        # subset by first_index
-        parsed_elements = parsed_elements[first_index:]
-        parsed_types = [element.attrib['parsing_type'] for element in parsed_elements]
+        flag = True
 
-        levels = assign_header_levels(parsed_types,hierarchy_dict=levels_dict)
+        for elem in html.iter():
+            parsing_type = elem.attrib.get('parsing_type', '')
+            if flag: # handle introduction
+                if parsing_type in base_headers:
+                    flag = False
 
-        # Parse hierarchical structure
-        stack = [(- 1, document_node)]  # (level, node) pairs
+                    node = etree.Element('Introduction', title=title)
+                    document_node.append(node)
+                    node.text = text
+                    node.attrib['parsing_type'] = 'added in tree construction;'
 
-        for i, (level, parsed_element) in enumerate(zip(levels, parsed_elements), start=0):
-            node = etree.Element('header', title=clean_title(get_all_text(parsed_element)))
+                    text = ''
+                    title = clean_title(get_all_text(elem))
+                    if parsing_type in [key for key in levels_dict.keys()]:
+                        level = levels_dict[parsing_type]
+                    else:
+                        level = None
+                    stack.append(node)
+                    continue
+                else:
+                    text += get_text(elem)
+            else:
 
-            # Get the next element (if any)
-            next_element = parsed_elements[i + 1] if i + 1 < len(parsed_elements) else None
+                if parsing_type == 'remove;':
+                    continue
+                elif parsing_type == 'skip;':
+                    text += get_text(elem)
+                elif parsing_type == '':
+                    text += get_text(elem)
+                else:
+                    node = etree.Element('company_designated_header', title = title)
+                    node.text = text
+                    node.attrib['parsing_type'] = parsing_type
 
-            # Extract text between current element and next element
-            node.text = get_text_between_elements(html,start_element=parsed_element, end_element=next_element)
+                    text = ''
+                    title = clean_title(get_all_text(elem))
+                    # handle where to append to
 
-            # Find the appropriate parent node
-            while stack and level <= stack[-1][0]: # WIP
-                stack.pop()
+                    if level is not None:
+                        parent_node = stack[level]
+                        parent_node.append(node)
 
-            # Append to the appropriate parent
-            stack[-1][1].append(node)
-            stack.append((level, node))
+                        stack = stack[:level+1]
+                        stack.append(node)
+
+                    else:
+                        parsing_type_list = [item.attrib['parsing_type'] for item in stack]
+                        if parsing_type in parsing_type_list:
+                            idx = parsing_type_list.index(parsing_type)
+                            stack[idx].append(node)
+                            stack = stack[:idx+1]
+                            stack.append(node)
+                        else:
+                            stack[-1].append(node)
+                            stack.append(node)
+
+                    # reset level
+                    if parsing_type in [key for key in levels_dict.keys()]:
+                        level = levels_dict[parsing_type]
+                    else:
+                        level = None
+
 
         return root
 
