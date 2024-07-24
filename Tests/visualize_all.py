@@ -28,7 +28,7 @@ for count,file in enumerate(files):
                 
             filing = Filing(html)
             filing.parse()
-            #filing.visualize()
+            filing.visualize()
             print(filing.get_title_tree())
 
             total_time += time()-s

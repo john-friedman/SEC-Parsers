@@ -5,9 +5,10 @@
 
 Parses non-standardized SEC filings into structured xml. Use cases include LLMs, NLP, and textual analysis. Package is a WIP.
 
-Supported filing types are 10-K, 10-Q, 8-K, S-1, 20-F. More will be added soon.
+Supported filing types are 10-K, 10-Q, 8-K, S-1, 20-F. More will be added soon, or you can write your own! [How to write a Custom Parser in 5 minutes](https://medium.com/@jgfriedman99/how-to-write-a-custom-sec-parser-in-5-minutes-5c7a8d5d81b0)
 
 Note: syntax change for find_nodes_by_title, to find_all_sections_by_title and associated functions.
+
 <em>URGENT</em>: Advice on how to name functions used by users is urgently needed. SEC Parsers has started to get a lot of users, and I don't want to deprecate function names in the future. [Link](contributors.md)
 
 <div align="center">
@@ -86,6 +87,7 @@ Other
 * Parsing non-html filings
 
 ### Current Priority list:
+* fix items being on same level as company designated headers
 * better function names - need to decide terminology soon.
 * consider adding table of contents, forward looking information, etc
 * fix layering issue
