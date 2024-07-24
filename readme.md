@@ -57,7 +57,7 @@ To request features or suggest a way to improve the package please use the form 
 ### Updates
 #### Towards Version 1:
 * Most/All SEC text filings supported
-* Few errrors
+* Few errors
 * xml 
 
 Might be done along the way:
