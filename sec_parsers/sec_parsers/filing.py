@@ -73,7 +73,7 @@ class Filing:
     # functions to interact with xml
 
     # Find #
-    def find_all_sections_by_title(self,title):
+    def find_all_sections_from_title(self,title):
         title = title.strip().lower()
         if self.xml is None:
             self.to_xml()
@@ -85,20 +85,20 @@ class Filing:
 
         return nodes
     
-    def find_section_by_title(self,title):
-        sections = self.find_all_sections_by_title(title)
-        return sections if sections else None
+    def find_section_from_title(self,title):
+        sections = self.find_all_sections_from_title(title)
+        return sections[0] if sections else None
 
-    def find_all_sections_by_text(self, text):
+    def find_all_sections_from_text(self, text):
         """Find a node by text."""
         if self.xml is None:
             self.to_xml()
 
         return self.xml.xpath(f"//*[contains(text(), '{text}')]")
     
-    def find_section_by_text(self, text):
-        sections = self.find_all_sections_by_text(text)
-        return sections if sections else None
+    def find_section_from_text(self, text):
+        sections = self.find_all_sections_from_text(text)
+        return sections[0] if sections else None
     
     # Interact with Node #
     def get_subsections_from_section(self, node):
@@ -106,12 +106,12 @@ class Filing:
         return node.getchildren()
 
     # Note, needs refactor, also needs better spacing fix with text.
-    def get_text_from_section(self, node, is_parent=True):
+    def get_text_from_section(self, node, include_title=False):
         """Gets all text from a node, including title string for child nodes."""
         text = ''
 
         # Add title for child nodes only
-        if not is_parent:
+        if include_title:
             text += node.attrib.get('title', '') + '\n'
 
         node_text = node.text
@@ -120,7 +120,7 @@ class Filing:
         
         for child in node:
             # Pass False to indicate this is a child node
-            text += self.get_node_text(child, is_parent=False)
+            text += self.get_text_from_section(child, include_title=True)
         
         return text
     
@@ -163,7 +163,13 @@ class Filing:
                 f.write(etree.tostring(self.xml,encoding=encoding,xml_declaration=True))
 
             
-    def save_csv(self, filename):
+    def save_csv(self, filename, encoding='utf-8'):
+        if encoding not in ['utf-8','ascii']:
+            raise ValueError('Encoding must be either utf-8 or ascii')
+        
+        if encoding == 'ascii':
+            self.convert_element_to_ascii(self.xml)
+        
         def get_rows(node,path):
             path = path + "/" + node.attrib.get('title')
 
@@ -171,7 +177,7 @@ class Filing:
 
             row = {}
             row['path'] = path
-            row['text'] = self.get_node_text(node)
+            row['text'] = self.get_text_from_section(node)
             row_list.append(row)
             for child in node:
                 row_list.extend(get_rows(child,path))
