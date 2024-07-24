@@ -30,13 +30,13 @@ html = download_sec_filing('https://www.sec.gov/Archives/edgar/data/1318605/0001
 filing = Filing(html)
 filing.parse() # parses filing
 filing.visualize() # opens filing in webbrowser with highlighted section headers
-filing.find_nodes_by_title(title) # finds node by title, e.g. 'item 1a'
-filing.find_nodes_by_text(text) # finds nodes which contains your text
+filing.find_sections_from_title(title) # finds section by title, e.g. 'item 1a'
+filing.find_sections_from_text(text) # finds sections which contains your text
 filing.get_tree(node) # if no argument specified returns xml tree, if node specified, returns that nodes tree
 filing.get_title_tree() # returns xml tree using titles instead of tags. More descriptive than get_tree.
 filing.set_filing_type(type) # e.g. 'S-1'. Use when automatic detection fails
-filing.save_xml(file_name)
-filing.save_csv(file_name)
+filing.save_xml(file_name,encoding='utf-8')
+filing.save_csv(file_name,encoding='ascii')
 ```
 ### Additional Resources:
 * [quickstart](Examples/quickstart.ipynb)
