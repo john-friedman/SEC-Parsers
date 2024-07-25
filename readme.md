@@ -35,6 +35,8 @@ filing.find_sections_from_title(title) # finds section by title, e.g. 'item 1a'
 filing.find_sections_from_text(text) # finds sections which contains your text
 filing.get_tree(node) # if no argument specified returns xml tree, if node specified, returns that nodes tree
 filing.get_title_tree() # returns xml tree using titles instead of tags. More descriptive than get_tree.
+filing.get_subsections_from_section() # get children of a section
+filing.get_nested_subsections_from_section() # get descendants of a section
 filing.set_filing_type(type) # e.g. 'S-1'. Use when automatic detection fails
 filing.save_xml(file_name,encoding='utf-8')
 filing.save_csv(file_name,encoding='ascii')
@@ -56,7 +58,7 @@ filing.save_csv(file_name,encoding='ascii')
 * Export to dta (Denis)
 * DEF 14A, DEFM14A (Denis)
 * Export to markdown (Astarag)
-* Better parsing_string handling. E.g. Emphasis capitalization needs to be more dynamic for one word section titles.e.g. Governance sometimes needs to be considered same string as Risk Management and Strategy as well as Risk management and strategy
+* Better parsing_string handling. Opened an issue. (sharif)
 
 ### Statistics
 * Speed: On average, 10-K filings parse in 0.25 seconds. There were 7,118 10-K annual reports filed in 2023, so to parse all 10-Ks from 2023 should take about half an hour.
