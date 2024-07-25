@@ -104,6 +104,10 @@ class Filing:
     def get_subsections_from_section(self, node):
         """Get all children of a node."""
         return node.getchildren()
+    
+    def get_nested_sections_from_section(self, node):
+        """Get all children of a node, including nested children."""
+        return node.iterdescendants()
 
     # Note, needs refactor, also needs better spacing fix with text.
     def get_text_from_section(self, node, include_title=False):

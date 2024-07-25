@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: sec-parsers
-Version: 0.537
+Version: 0.540
 Summary: A package to parse SEC filings
 Author: John Friedman
 Description-Content-Type: text/markdown
@@ -12,9 +12,10 @@ Description-Content-Type: text/markdown
 
 Parses non-standardized SEC filings into structured xml. Use cases include LLMs, NLP, and textual analysis. Package is a WIP.
 
-Supported filing types are 10-K, 10-Q, 8-K, S-1, 20-F. More will be added soon.
+Supported filing types are 10-K, 10-Q, 8-K, S-1, 20-F. More will be added soon, or you can write your own! [How to write a Custom Parser in 5 minutes](https://medium.com/@jgfriedman99/how-to-write-a-custom-sec-parser-in-5-minutes-5c7a8d5d81b0)
 
 Note: syntax change for find_nodes_by_title, to find_all_sections_by_title and associated functions.
+
 <em>URGENT</em>: Advice on how to name functions used by users is urgently needed. SEC Parsers has started to get a lot of users, and I don't want to deprecate function names in the future. [Link](contributors.md)
 
 <div align="center">
@@ -63,6 +64,7 @@ filing.save_csv(file_name,encoding='ascii')
 * Extract subsections from section (sharif)
 * Export to dta (Denis)
 * DEF 14A, DEFM14A (Denis)
+* Export to markdown (Astarag)
 
 ### Statistics
 * Speed: On average, 10-K filings parse in 0.25 seconds. There were 7,118 10-K annual reports filed in 2023, so to parse all 10-Ks from 2023 should take about half an hour.
@@ -70,7 +72,7 @@ filing.save_csv(file_name,encoding='ascii')
 ### Updates
 #### Towards Version 1:
 * Most/All SEC text filings supported
-* Few errrors
+* Few errors
 * xml 
 
 Might be done along the way:
@@ -92,9 +94,16 @@ Other
 * Parsing non-html filings
 
 ### Current Priority list:
+* Fix xml tree issue with parsing type
+
+* look at code duplication w.r.t to style detectors, e.g. all caps and emphasis. may want to combine into one detector
+- yep this is a priority. have to handle e.g. Introduction and Segment Overview as same rule. Bit difficult. Will think over.
+
+* fix items being on same level as company designated headers
 * better function names - need to decide terminology soon.
 * consider adding table of contents, forward looking information, etc
-* fix layering issue
+- forward looking information, DOCUMENTS INCORPORATED BY REFERENCE, TABLE OF CONTENTS - go with a bunch, 
+* fix layering issue - e.g. top div hides sections
 * make trees nicer
 * add more filing types
 * fix all caps and emphasis issue

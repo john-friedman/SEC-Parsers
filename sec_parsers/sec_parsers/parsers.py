@@ -189,8 +189,7 @@ class HTMLParser:
 
         open_tree(html)
 
-    # Need variable renaming
-    # parsin type fix
+    # should be fixed
     def construct_xml_tree(self, html):
         root = etree.Element('root')
         document_node = etree.Element('document', title='Document')
@@ -200,102 +199,127 @@ class HTMLParser:
         levels_dict = {item.style: item.level for item in self.all_detectors if item.level != -1}
         base_headers = [key for key in levels_dict.keys() if levels_dict[key] == 0]
 
-        text = ''
-        title = 'introduction'
-        stack = [document_node]
+
+        # ELEMS TO REMEMBER UNTIL NEXT HEADER
+        last_section_text = ''
+        last_section_title = ''
+        last_section_elem = None
+        last_section_parsing_type = ''
+        last_section_tag = 'introduction'
+
+        # Defining for introduction special case
+        last_section_text = ''
+        last_section_title = 'introduction'
+        last_section_parsing_type = 'introduction;'
+        last_section_tag = 'introduction'
+       
+
+
+
+        stack = [document_node]  # added to until header, then modified
         level = None
-        node_tag = None
 
         flag = True
         remove_elem = None
-        title_elem = None
-        for event, elem in etree.iterwalk(html, events=('start', 'end')): # change to iterwalk to skip certain elements
-            if event == 'start':
+        for current_event, current_elem in etree.iterwalk(html, events=('start', 'end')): # change to iterwalk to skip certain elements
+            if current_event == 'start':
+
                 if remove_elem is not None:
                     continue
-                if title_elem is not None:
+
+                if last_section_elem is not None:
                     continue
 
-                parsing_type = elem.attrib.get('parsing_type', '')
+                current_parsing_type = current_elem.attrib.get('parsing_type', '')
+
+                if current_parsing_type == 'remove;': # WIP
+                    remove_elem = current_elem
+                    continue
+
                 if flag: # handle introduction
-                    if parsing_type == 'remove;': # WIP
-                        remove_elem = elem
-                        continue
-                    elif parsing_type in base_headers:
+                    if current_parsing_type in base_headers:
                         flag = False
 
-                        node = etree.Element('introduction', title=title)
-                        document_node.append(node)
-                        node.text = text
-                        node.attrib['parsing_type'] = 'added in tree construction;'
+                        # initialize node using last_section
+                        node = etree.Element(last_section_tag, title=last_section_title)
+                        node.text = last_section_text
+                        node.attrib['parsing_type'] = last_section_parsing_type
 
-                        text = ''
-                        title = clean_title(get_all_text(elem))
-                        title_elem = elem
-                        if parsing_type in [key for key in levels_dict.keys()]:
-                            level = levels_dict[parsing_type]
-                            node_tag = parsing_type.replace(';', '')
+                        # handle where to append to
+                        # append node to document
+                        document_node.append(node)
+                        # append node to stack
+                        stack.append(node)
+
+                        # reset last_section
+                        last_section_text = ''
+                        last_section_title = clean_title(get_all_text(current_elem))
+                        last_section_elem = current_elem
+                        last_section_parsing_type = current_parsing_type
+
+                        if current_parsing_type in [key for key in levels_dict.keys()]:
+                            level = levels_dict[current_parsing_type]
+                            last_section_tag = last_section_parsing_type.replace(';', '')
                         else:
                             level = None
-                            node_tag = 'company_designated_header'
-                        stack.append(node)
-                        continue
+                            last_section_tag = 'company_designated_header'
                     else:
-                        text += get_text(elem)
+                        last_section_text += get_text(current_elem)
                 else:
-
-                    if parsing_type == 'remove;':
-                        remove_elem = elem
-                        continue
-                    elif parsing_type == 'skip;':
-                        text += get_text(elem)
-                    elif parsing_type == '':
-                        text += get_text(elem)
+                    if current_parsing_type == 'skip;':
+                        last_section_text += get_text(current_elem)
+                    elif current_parsing_type == '':
+                        last_section_text += get_text(current_elem)
                     else:
+                        # initialize node using last_section
+                        node = etree.Element(last_section_tag, title=last_section_title)
+                        node.text = last_section_text
+                        node.attrib['parsing_type'] = last_section_parsing_type
 
-                        node = etree.Element(node_tag, title = title)
-                        node.text = text
-                        node.attrib['parsing_type'] = parsing_type
-
-                        text = ''
-                        title = clean_title(get_all_text(elem))
-                        title_elem = elem
                         # handle where to append to
-
-                        if level is not None:
+                        if level is not None: # WIP
                             parent_node = stack[level]
-                            parent_node.append(node)
-
                             stack = stack[:level+1]
+
+                            parent_node.append(node)
                             stack.append(node)
 
                         else:
                             parsing_type_list = [item.attrib['parsing_type'] for item in stack]
-                            if parsing_type in parsing_type_list:
-                                idx = parsing_type_list.index(parsing_type)
-
-                                stack = stack[:idx+1]
-
-                                stack[idx].append(node)
-                                stack.append(node)
+                            if last_section_parsing_type in parsing_type_list:
+                                idx = parsing_type_list.index(last_section_parsing_type)
+                                
+                                if idx == len(stack) - 1:  # If it's the last element
+                                    stack[idx-1].append(node)
+                                    stack = stack[:idx]  # Remove the last element
+                                    stack.append(node)  # Replace with the new node
+                                else:
+                                    stack = stack[:idx+1]
+                                    stack[idx].append(node)
+                                    stack.append(node)
                             else:
                                 stack[-1].append(node)
                                 stack.append(node)
 
-                        # reset level
-                        if parsing_type in [key for key in levels_dict.keys()]:
-                            level = levels_dict[parsing_type]
-                            node_tag = parsing_type.replace(';', '')
+                        # reset last_section
+                        last_section_text = ''
+                        last_section_title = clean_title(get_all_text(current_elem))
+                        last_section_elem = current_elem
+                        last_section_parsing_type = current_parsing_type
+
+                        if current_parsing_type in [key for key in levels_dict.keys()]:
+                            level = levels_dict[current_parsing_type]
+                            last_section_tag = last_section_parsing_type.replace(';', '')
                         else:
                             level = None
-                            node_tag = 'company_designated_header'
+                            last_section_tag = 'company_designated_header'
             else:
-                if elem == remove_elem:
+                if current_elem == remove_elem:
                     remove_elem = None
                     continue
 
-                if elem == title_elem:
-                    title_elem = None
+                if current_elem == last_section_elem:
+                    last_section_elem = None
                     continue
 
 
