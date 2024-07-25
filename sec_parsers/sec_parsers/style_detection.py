@@ -41,6 +41,14 @@ def detect_emphasis_capitalization(string): # WIP
     if string.lower() in [item.lower() for item in ['None','None.','Omitted.', 'Not Applicable.']]:
         return False
     
+    # if one word return false
+    if len(string.split()) == 1:
+        return False
+    
+    # if all caps
+    if string.isupper():
+        return False
+    
     # Check if string is all digits
     if string.isdigit():
         return False

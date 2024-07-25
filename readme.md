@@ -87,10 +87,16 @@ Other
 * Parsing non-html filings
 
 ### Current Priority list:
+* Fix xml tree issue with parsing type
+
+* look at code duplication w.r.t to style detectors, e.g. all caps and emphasis. may want to combine into one detector
+- yep this is a priority. have to handle e.g. Introduction and Segment Overview as same rule. Bit difficult. Will think over.
+
 * fix items being on same level as company designated headers
 * better function names - need to decide terminology soon.
 * consider adding table of contents, forward looking information, etc
-* fix layering issue
+- forward looking information, DOCUMENTS INCORPORATED BY REFERENCE, TABLE OF CONTENTS - go with a bunch, 
+* fix layering issue - e.g. top div hides sections
 * make trees nicer
 * add more filing types
 * fix all caps and emphasis issue

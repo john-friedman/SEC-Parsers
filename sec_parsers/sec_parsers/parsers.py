@@ -189,10 +189,8 @@ class HTMLParser:
 
         open_tree(html)
 
-    # rewrite using iterwalk to remove things properly
-    # check output is correct
-    # might make sense to make tests now, maybe a website?
-    # better text handling
+    # Need variable renaming
+    # parsin type fix
     def construct_xml_tree(self, html):
         root = etree.Element('root')
         document_node = etree.Element('document', title='Document')
@@ -211,7 +209,6 @@ class HTMLParser:
         flag = True
         remove_elem = None
         title_elem = None
-
         for event, elem in etree.iterwalk(html, events=('start', 'end')): # change to iterwalk to skip certain elements
             if event == 'start':
                 if remove_elem is not None:
@@ -255,6 +252,7 @@ class HTMLParser:
                     elif parsing_type == '':
                         text += get_text(elem)
                     else:
+
                         node = etree.Element(node_tag, title = title)
                         node.text = text
                         node.attrib['parsing_type'] = parsing_type
@@ -275,8 +273,10 @@ class HTMLParser:
                             parsing_type_list = [item.attrib['parsing_type'] for item in stack]
                             if parsing_type in parsing_type_list:
                                 idx = parsing_type_list.index(parsing_type)
-                                stack[idx].append(node)
+
                                 stack = stack[:idx+1]
+
+                                stack[idx].append(node)
                                 stack.append(node)
                             else:
                                 stack[-1].append(node)

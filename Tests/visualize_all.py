@@ -18,7 +18,7 @@ print(os.listdir(dir_10k_parsed))
 
 total_time = 0
 start_dex = 0
-files = os.listdir(dir_10k)[0:1]
+files = os.listdir(dir_10k)[0:5]
 errors = []
 for count,file in enumerate(files):
         try:
