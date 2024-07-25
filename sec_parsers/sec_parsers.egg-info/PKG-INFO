@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: sec-parsers
-Version: 0.540
+Version: 0.542
 Summary: A package to parse SEC filings
 Author: John Friedman
 Description-Content-Type: text/markdown
@@ -60,11 +60,10 @@ filing.save_csv(file_name,encoding='ascii')
 
 ### Feature Requests:
 [Request a Feature](contributors.md)
-* Extract title of section along with its text (sharif)
-* Extract subsections from section (sharif)
 * Export to dta (Denis)
 * DEF 14A, DEFM14A (Denis)
 * Export to markdown (Astarag)
+* Better parsing_string handling. E.g. Emphasis capitalization needs to be more dynamic for one word section titles.e.g. Governance sometimes needs to be considered same string as Risk Management and Strategy as well as Risk management and strategy
 
 ### Statistics
 * Speed: On average, 10-K filings parse in 0.25 seconds. There were 7,118 10-K annual reports filed in 2023, so to parse all 10-Ks from 2023 should take about half an hour.
@@ -95,11 +94,8 @@ Other
 
 ### Current Priority list:
 * Fix xml tree issue with parsing type
-
 * look at code duplication w.r.t to style detectors, e.g. all caps and emphasis. may want to combine into one detector
 - yep this is a priority. have to handle e.g. Introduction and Segment Overview as same rule. Bit difficult. Will think over.
-
-* fix items being on same level as company designated headers
 * better function names - need to decide terminology soon.
 * consider adding table of contents, forward looking information, etc
 - forward looking information, DOCUMENTS INCORPORATED BY REFERENCE, TABLE OF CONTENTS - go with a bunch, 
