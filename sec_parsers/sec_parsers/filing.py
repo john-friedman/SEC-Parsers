@@ -32,7 +32,7 @@ class Filing:
         self.filing_type = filing_type
 
     def _update_parser(self):
-        if self.parser is None:
+        if self.filing_type is None:
             self._detect_filing_type()
         filing_type = self.filing_type
 
@@ -46,7 +46,6 @@ class Filing:
             self.parser = SEC_S1_Parser()
         elif filing_type == '20-F':
             self.parser = SEC_20F_Parser()
-
 
 
     # keep

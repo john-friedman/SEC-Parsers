@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: sec-parsers
-Version: 0.542
+Version: 0.543
 Summary: A package to parse SEC filings
 Author: John Friedman
 Description-Content-Type: text/markdown
@@ -10,19 +10,19 @@ Description-Content-Type: text/markdown
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fhttps%2F%2Fgithub.com%2Fjohn-friedman%2FSEC-Parsers&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 ![GitHub](https://img.shields.io/github/stars/john-friedman/sec-parsers)
 
-Parses non-standardized SEC filings into structured xml. Use cases include LLMs, NLP, and textual analysis. Package is a WIP.
+Parses non-standardized SEC filings into structured xml. Use cases include LLMs, NLP, and textual analysis. Average parse-time for a 100 page document is 0.4 seconds. Package is a WIP.
 
 Supported filing types are 10-K, 10-Q, 8-K, S-1, 20-F. More will be added soon, or you can write your own! [How to write a Custom Parser in 5 minutes](https://medium.com/@jgfriedman99/how-to-write-a-custom-sec-parser-in-5-minutes-5c7a8d5d81b0)
 
 Note: syntax change for find_nodes_by_title, to find_all_sections_by_title and associated functions.
 
-<em>URGENT</em>: Advice on how to name functions used by users is urgently needed. SEC Parsers has started to get a lot of users, and I don't want to deprecate function names in the future. [Link](contributors.md)
+<em>URGENT</em>: Advice on how to name functions used by users is urgently needed. SEC Parsers has started to get users, and I don't want to deprecate function names in the future. [Link](contributors.md)
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualizationv3.png">
 </div>
 <div align="center">
-  <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_tree_v3.png" width="500">
+  <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_tree_v4.png" width="500">
 </div>
 
 Installation
@@ -42,13 +42,15 @@ filing.find_sections_from_title(title) # finds section by title, e.g. 'item 1a'
 filing.find_sections_from_text(text) # finds sections which contains your text
 filing.get_tree(node) # if no argument specified returns xml tree, if node specified, returns that nodes tree
 filing.get_title_tree() # returns xml tree using titles instead of tags. More descriptive than get_tree.
+filing.get_subsections_from_section() # get children of a section
+filing.get_nested_subsections_from_section() # get descendants of a section
 filing.set_filing_type(type) # e.g. 'S-1'. Use when automatic detection fails
 filing.save_xml(file_name,encoding='utf-8')
 filing.save_csv(file_name,encoding='ascii')
 ```
 ### Additional Resources:
 * [quickstart](Examples/quickstart.ipynb)
-* \[In Progress\] Article explaining how to write custom filing parsers.
+* [How to write a Custom Parser in 5 minutes](https://medium.com/@jgfriedman99/how-to-write-a-custom-sec-parser-in-5-minutes-5c7a8d5d81b0)
 * [Archive of Parsed XMLs / CSVs](https://www.dropbox.com/scl/fo/np1lpow7r3bissz80ze3o/AKGM8skBrUfEGlSweofAUDU?rlkey=cz1r78jofntjeq4ax2vb2yd0u&e=1&st=mdcwgfcm&dl=0) - Last updated 7/24/24.
 * [example parsed filing](Examples/tesla_10k.xml)
 * [example parsed filing exported to csv](Examples/tesla_10k.csv).
@@ -63,7 +65,7 @@ filing.save_csv(file_name,encoding='ascii')
 * Export to dta (Denis)
 * DEF 14A, DEFM14A (Denis)
 * Export to markdown (Astarag)
-* Better parsing_string handling. E.g. Emphasis capitalization needs to be more dynamic for one word section titles.e.g. Governance sometimes needs to be considered same string as Risk Management and Strategy as well as Risk management and strategy
+* Better parsing_string handling. Opened an issue. (sharif)
 
 ### Statistics
 * Speed: On average, 10-K filings parse in 0.25 seconds. There were 7,118 10-K annual reports filed in 2023, so to parse all 10-Ks from 2023 should take about half an hour.

@@ -32,7 +32,7 @@ class Filing:
         self.filing_type = filing_type
 
     def _update_parser(self):
-        if self.parser is None:
+        if self.filing_type is None:
             self._detect_filing_type()
         filing_type = self.filing_type
 
@@ -48,26 +48,25 @@ class Filing:
             self.parser = SEC_20F_Parser()
 
 
-
     # keep
     def set_filing_type(self, filing_type):
         self.filing_type = filing_type
         self._update_parser()
 
-    def parse(self):
+    def parse(self,add_parsing_id=False):
         if self.filing_type is None:
             self._detect_filing_type()
 
-        self.parser.iterative_parse(self.html)
+        self.parser.iterative_parse(self.html,add_parsing_id)
         self.parser.clean_parse(self.html)
         # convert to xml
-        self._to_xml()
+        self._to_xml(add_parsing_id)
 
     def visualize(self):
         self.parser.visualize(self.html)
 
-    def _to_xml(self):
-        self.xml = self.parser.construct_xml_tree(self.html)
+    def _to_xml(self,add_parsing_id=False):
+        self.xml = self.parser.construct_xml_tree(self.html,add_parsing_id)
 
 
     # functions to interact with xml
