@@ -73,7 +73,9 @@ class HTMLParser:
         return (result,'continue')
     
     # possible performance increases - move which detector triggers first
-    def iterative_parse(self,html):
+    def iterative_parse(self,html,add_parsing_id=False):
+        count = 0
+
         flag = True
         orig_elem = None
         element_style = ''
@@ -82,6 +84,10 @@ class HTMLParser:
         # add xml construction later?
         for event, elem in etree.iterwalk(html, events=('start', 'end')): # fast, .7s
             if event == 'start':
+                if add_parsing_id:
+                    elem.attrib['parsing_id'] = str(count)
+                    count += 1  
+                    
                 if flag:
                     # refactor to seperate function
                     result, parsing_rule = parser.detect_style_from_element(elem)
@@ -190,7 +196,7 @@ class HTMLParser:
         open_tree(html)
 
     # should be fixed
-    def construct_xml_tree(self, html):
+    def construct_xml_tree(self, html, add_parsing_id=False):
         root = etree.Element('root')
         document_node = etree.Element('document', title='Document')
         document_node.attrib['parsing_type'] = 'added in tree construction;'
@@ -212,9 +218,6 @@ class HTMLParser:
         last_section_title = 'introduction'
         last_section_parsing_type = 'introduction;'
         last_section_tag = 'introduction'
-       
-
-
 
         stack = [document_node]  # added to until header, then modified
         level = None
@@ -228,6 +231,8 @@ class HTMLParser:
                     continue
 
                 if last_section_elem is not None:
+                    if add_parsing_id:
+                        node.attrib['parsing_id'] = last_section_elem.attrib['parsing_id']
                     continue
 
                 current_parsing_type = current_elem.attrib.get('parsing_type', '')
@@ -244,6 +249,7 @@ class HTMLParser:
                         node = etree.Element(last_section_tag, title=last_section_title)
                         node.text = last_section_text
                         node.attrib['parsing_type'] = last_section_parsing_type
+  
 
                         # handle where to append to
                         # append node to document
