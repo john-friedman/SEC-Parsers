@@ -15,7 +15,7 @@ Note: syntax change for find_nodes_by_title, to find_all_sections_by_title and a
   <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualizationv3.png">
 </div>
 <div align="center">
-  <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_tree_v3.png" width="500">
+  <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_tree_v4.png" width="500">
 </div>
 
 Installation

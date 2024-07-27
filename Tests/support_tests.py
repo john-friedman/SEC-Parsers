@@ -8,7 +8,7 @@ s1_urls = ['https://www.sec.gov/Archives/edgar/data/1713445/000162828024006294/r
 urls_10k = ['https://www.sec.gov/Archives/edgar/data/1318605/000095017022000796/tsla-20211231.htm']
 urls_8k =['https://www.sec.gov/Archives/edgar/data/1318605/000095017023038779/tsla-20230804.htm']
 urls_20f = ['https://www.sec.gov/Archives/edgar/data/1543415/000119312512420180/d421925d20f.htm']
-html = download_sec_filing(s1_urls[1])
+html = download_sec_filing(urls_10k[0])
 
 filing = Filing(html)
 filing.set_filing_type('10-K')
