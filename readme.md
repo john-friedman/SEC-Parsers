@@ -11,6 +11,8 @@ If you used the package, we'd love to hear from you! [Feedback](https://forms.gl
 
 <em>URGENT</em>: Advice on how to name functions used by users is urgently needed. SEC Parsers has started to get users, and I don't want to deprecate function names in the future. [Link](contributors.md)
 
+<em> Notice </em> `download_sec_filing` is being deprecated.
+
 <div align="center">
   <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualizationv3.png">
 </div>
@@ -20,15 +22,35 @@ If you used the package, we'd love to hear from you! [Feedback](https://forms.gl
 
 Installation
 ```
-pip install sec-parsers
+pip install sec-parsers # base package
+pip install sec-parsers['downloaders'] # installs downloaders extras
 ```
 
-Quickstart
+### Quickstart
+Load package
 ```
-from sec_parsers import Filing, download_sec_filing
+from sec_parsers import Filing
+```
 
+Downloading html file (new)
+```
+from sec_downloaders import SEC_Downloader
+
+downloader = SEC_Downloader()
+downloader.set_headers("John Doe", "johndoe@example.com")
+download = downloader.download(url)
+filing = Filing(download)
+```
+
+Downloading html file (old)
+```
+from sec_parsers download_sec_filing
 html = download_sec_filing('https://www.sec.gov/Archives/edgar/data/1318605/000162828024002390/tsla-20231231.htm')
 filing = Filing(html)
+```
+
+Parsing
+```
 filing.parse() # parses filing
 filing.visualize() # opens filing in webbrowser with highlighted section headers
 filing.find_sections_from_title(title) # finds section by title, e.g. 'item 1a'

@@ -24,6 +24,7 @@ def detect_filing_type(metadata):
         return '10-K'
 
 def setup_html(html):
+
         # Find the start of the HTML content. This is necessary because the HTML content is not always at the beginning of the file.
         body_start = html.find('<BODY')
         if body_start == -1:

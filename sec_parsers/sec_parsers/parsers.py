@@ -215,7 +215,7 @@ class HTMLParser:
 
         # Defining for introduction special case
         last_section_text = ''
-        last_section_title = 'introduction'
+        last_section_title = 'Introduction'
         last_section_parsing_type = 'introduction;'
         last_section_tag = 'introduction'
 

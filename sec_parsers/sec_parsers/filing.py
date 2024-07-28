@@ -144,6 +144,9 @@ class Filing:
     def get_title_tree(self,node=None,level=0,attribute='title'):
         if node is None:
             node = self.xml
+        elif node.tag == 'metadata':
+            return   "Metadata"
+
             
         tree_atrib = node.attrib.get(attribute,'')
         if 'signatures' in tree_atrib.lower(): #workaround for adding signatures section but not signature parsing

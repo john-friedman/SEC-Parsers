@@ -1,2 +1,5 @@
 lxml
 requests
+
+[downloaders]
+sec_downloaders
