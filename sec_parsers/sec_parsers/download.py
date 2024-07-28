@@ -1,6 +1,23 @@
 import requests
 import random as rd
 import warnings
+import re
+
+# WARNING: This code will eventually be removed from SEC Parsers when SEC Downloaders is implemented.
+
+def extract_cik_and_accession(url):
+    # Regular expression pattern to match CIK and accession number
+    pattern = r"/data/(\d+)/(\d+)/"
+    
+    # Search for the pattern in the URL
+    match = re.search(pattern, url)
+    
+    if match:
+        cik = match.group(1)
+        accession_number = match.group(2)
+        return cik, accession_number
+    else:
+        return None, None
 
 
 # Module to download the SEC filings
@@ -34,6 +51,5 @@ def download_sec_filing(url):
         return None
     
     # important to encode the text as utf-8 as the lxml parser expects it
-    html = sec_response.text.encode("utf-8")
-    return html.decode("utf-8")
-
+    html = sec_response.text.encode("utf-8").decode("utf-8")
+    return html

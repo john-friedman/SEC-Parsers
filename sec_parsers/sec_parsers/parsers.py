@@ -196,7 +196,7 @@ class HTMLParser:
         open_tree(html)
 
     # should be fixed
-    def construct_xml_tree(self, html, add_parsing_id=False):
+    def construct_xml_tree(self, html, metadata, add_parsing_id=False):
         root = etree.Element('root')
         document_node = etree.Element('document', title='Document')
         document_node.attrib['parsing_type'] = 'added in tree construction;'
@@ -327,6 +327,15 @@ class HTMLParser:
                 if current_elem == last_section_elem:
                     last_section_elem = None
                     continue
+
+        # add metadata
+        metadata_node = etree.Element('metadata')
+        for key in metadata.keys():
+            node = etree.Element(key) 
+            node.text = str(metadata[key])
+            metadata_node.append(node)
+        # insert metadata at beginning
+        root.insert(0,metadata_node)
 
 
         return root

@@ -7,6 +7,7 @@ import unicodedata
 
 class Filing:
     def __init__(self, html):
+        self.metadata = {}
         self._setup_html(html)
         self._parse_metadata()
         self.hierarchy = None # need to implement
@@ -19,12 +20,14 @@ class Filing:
 
     # keep
     def _setup_html(self,html):
-        # Find the start of the HTML content. This is necessary because the HTML content is not always at the beginning of the file.
+        if type(html).__name__ == 'SEC_Download': # incorporate download metadata
+            self.metadata = html.metadata
         self.html = setup_html(html)
 
     # keep
     def _parse_metadata(self):
-        self.metadata = parse_metadata(self.html)
+        metadata_from_xbrl = parse_metadata(self.html)
+        self.metadata.update(metadata_from_xbrl)
 
     # keep
     def _detect_filing_type(self):
@@ -66,7 +69,7 @@ class Filing:
         self.parser.visualize(self.html)
 
     def _to_xml(self,add_parsing_id=False):
-        self.xml = self.parser.construct_xml_tree(self.html,add_parsing_id)
+        self.xml = self.parser.construct_xml_tree(html=self.html,metadata=self.metadata,add_parsing_id=add_parsing_id)
 
 
     # functions to interact with xml

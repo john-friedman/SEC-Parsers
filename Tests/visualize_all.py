@@ -13,12 +13,11 @@ for file in file_list:
     file_path = os.path.join(dir_10k_parsed, file)
     if os.path.isfile(file_path):
         os.remove(file_path)
-print(os.listdir(dir_10k_parsed))
 
 
 total_time = 0
 start_dex = 0
-files = os.listdir(dir_10k)[5:10]
+files = os.listdir(dir_10k)
 errors = []
 for count,file in enumerate(files):
         try:
@@ -29,14 +28,14 @@ for count,file in enumerate(files):
             filing = Filing(html)
             filing.parse()
             #filing.visualize()
-            print(filing.get_title_tree())
+            #print(filing.get_title_tree())
 
             total_time += time()-s
             print(f'File {count+start_dex} took {time()-s} seconds')
 
             print(f'Average parsing time: {total_time/(count+1)} seconds')
             print(f"total time: {total_time}")
-            # filing.save_xml(dir_10k_parsed + file[:-5] + '.xml')
+            filing.save_xml(dir_10k_parsed + file[:-5] + '.xml')
             # filing.save_xml('testa.xml')
         except Exception as e:
             errors.append((file,e))
