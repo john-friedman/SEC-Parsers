@@ -1,5 +1,12 @@
 lxml
 requests
 
+[all]
+sec_downloaders
+sec_visualizers
+
 [downloaders]
 sec_downloaders
+
+[visualizers]
+sec_visualizers

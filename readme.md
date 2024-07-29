@@ -23,7 +23,9 @@ Supported filing types are 10-K, 10-Q, 8-K, S-1, 20-F. More will be added soon, 
 Installation
 ```
 pip install sec-parsers # base package
+pip install sec-parsers['all'] # installs all extras
 pip install sec-parsers['downloaders'] # installs downloaders extras
+pip install sec-parsers['visualizers'] # installs visualizers extras
 ```
 
 ### Quickstart

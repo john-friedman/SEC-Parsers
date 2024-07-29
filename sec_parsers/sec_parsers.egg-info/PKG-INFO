@@ -1,11 +1,13 @@
 Metadata-Version: 2.1
 Name: sec-parsers
-Version: 0.547
+Version: 0.549
 Summary: A package to parse SEC filings
 Home-page: https://github.com/john-friedman/SEC-Parsers
 Author: John Friedman
 Description-Content-Type: text/markdown
 Provides-Extra: downloaders
+Provides-Extra: visualizers
+Provides-Extra: all
 
 ## SEC Parsers
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/sec-parsers)
@@ -32,7 +34,9 @@ Supported filing types are 10-K, 10-Q, 8-K, S-1, 20-F. More will be added soon, 
 Installation
 ```
 pip install sec-parsers # base package
+pip install sec-parsers['all'] # installs all extras
 pip install sec-parsers['downloaders'] # installs downloaders extras
+pip install sec-parsers['visualizers'] # installs visualizers extras
 ```
 
 ### Quickstart
