@@ -7,11 +7,11 @@ Parses non-standardized SEC filings into structured xml. Use cases include LLMs,
 
 Supported filing types are 10-K, 10-Q, 8-K, S-1, 20-F. More will be added soon, or you can write your own! [How to write a Custom Parser in 5 minutes](https://medium.com/@jgfriedman99/how-to-write-a-custom-sec-parser-in-5-minutes-5c7a8d5d81b0)
 
-If you used the package, we'd love to hear from you! [Feedback](https://forms.gle/hZRgDoDGmsHs3wiF6)
+`sec-parsers` is maintained by John Friedman, and is under the MIT License. If you use `sec-parsers` for a project, please let me know! [Feedback](https://forms.gle/hZRgDoDGmsHs3wiF6)
 
-<em>URGENT</em>: Advice on how to name functions used by users is urgently needed. SEC Parsers has started to get users, and I don't want to deprecate function names in the future. [Link](contributors.md)
+<em>URGENT</em>: Advice on how to name functions used by users is needed. I don't want to deprecate function names in the future. [Link](contributors.md)
 
-<em> Notice </em> `download_sec_filing` is being deprecated.
+<em>Notice</em> `download_sec_filing` is being deprecated.
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualizationv3.png">
@@ -123,8 +123,6 @@ Other
 * Parsing non-html filings
 
 ### Current Priority list:
-* metadata from downloads
-* add mit license
 * look at code duplication w.r.t to style detectors, e.g. all caps and emphasis. may want to combine into one detector
 - yep this is a priority. have to handle e.g. Introduction and Segment Overview as same rule. Bit difficult. Will think over.
 * better function names - need to decide terminology soon.
