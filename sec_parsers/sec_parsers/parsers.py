@@ -195,8 +195,8 @@ class HTMLParser:
 
         open_tree(html)
 
-    # should be fixed
-    def construct_xml_tree(self, html, metadata, add_parsing_id=False):
+    #  code cleanup needed
+    def construct_xml_tree(self, html, metadata,add_parsing_id=False):
         root = etree.Element('root')
         document_node = etree.Element('document', title='Document')
         document_node.attrib['parsing_type'] = 'added in tree construction;'
@@ -211,13 +211,17 @@ class HTMLParser:
         last_section_title = ''
         last_section_elem = None
         last_section_parsing_type = ''
-        last_section_tag = 'introduction'
+        last_section_tag = ''
+        last_section_parsing_id = None
+
 
         # Defining for introduction special case
         last_section_text = ''
         last_section_title = 'Introduction'
         last_section_parsing_type = 'introduction;'
         last_section_tag = 'introduction'
+        last_section_parsing_id = '0'
+
 
         stack = [document_node]  # added to until header, then modified
         level = None
@@ -228,11 +232,6 @@ class HTMLParser:
             if current_event == 'start':
 
                 if remove_elem is not None:
-                    continue
-
-                if last_section_elem is not None:
-                    if add_parsing_id:
-                        node.attrib['parsing_id'] = last_section_elem.attrib['parsing_id']
                     continue
 
                 current_parsing_type = current_elem.attrib.get('parsing_type', '')
@@ -249,7 +248,9 @@ class HTMLParser:
                         node = etree.Element(last_section_tag, title=last_section_title)
                         node.text = last_section_text
                         node.attrib['parsing_type'] = last_section_parsing_type
-  
+                        if add_parsing_id:
+                            node.attrib['parsing_id'] = last_section_parsing_id
+
 
                         # handle where to append to
                         # append node to document
@@ -262,6 +263,7 @@ class HTMLParser:
                         last_section_title = clean_title(get_all_text(current_elem))
                         last_section_elem = current_elem
                         last_section_parsing_type = current_parsing_type
+                        last_section_parsing_id = str(current_elem.attrib.get('parsing_id'))
 
                         if current_parsing_type in [key for key in levels_dict.keys()]:
                             level = levels_dict[current_parsing_type]
@@ -281,6 +283,8 @@ class HTMLParser:
                         node = etree.Element(last_section_tag, title=last_section_title)
                         node.text = last_section_text
                         node.attrib['parsing_type'] = last_section_parsing_type
+                        if add_parsing_id:
+                            node.attrib['parsing_id'] = last_section_parsing_id
 
                         # handle where to append to
                         if level is not None: # WIP
@@ -312,6 +316,7 @@ class HTMLParser:
                         last_section_title = clean_title(get_all_text(current_elem))
                         last_section_elem = current_elem
                         last_section_parsing_type = current_parsing_type
+                        last_section_parsing_id = str(current_elem.attrib.get('parsing_id'))
 
                         if current_parsing_type in [key for key in levels_dict.keys()]:
                             level = levels_dict[current_parsing_type]

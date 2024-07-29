@@ -15,4 +15,3 @@ filing.set_filing_type('10-K')
 
 filing.parse()
 print(filing.get_title_tree())
-filing.visualize()
