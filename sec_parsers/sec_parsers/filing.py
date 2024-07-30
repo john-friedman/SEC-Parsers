@@ -203,6 +203,14 @@ class Filing:
             dict_writer = csv.DictWriter(output_file, keys)
             dict_writer.writeheader()
             dict_writer.writerows(row_list)
+            
+    def save_html(self, filename):
+        # Assuming you have an lxml object called 'tree'
+        html_string = etree.tostring(self.html, pretty_print=True, method="html")
+
+        # Save the HTML to a file
+        with open(filename, "wb") as file:
+            file.write(html_string)
 
     # TODO: implement
     def save_dta(self, filename):

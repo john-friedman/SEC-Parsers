@@ -31,13 +31,14 @@ Supported filing types are 10-K, 10-Q, 8-K, S-1, 20-F. More will be added soon, 
   <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_tree_v4.png" width="500">
 </div>
 
-Installation
+### Installation
 ```
 pip install sec-parsers # base package
 pip install sec-parsers['all'] # installs all extras
 pip install sec-parsers['downloaders'] # installs downloaders extras
 pip install sec-parsers['visualizers'] # installs visualizers extras
 ```
+Links: [SEC Downloaders](https://github.com/john-friedman/SEC-Downloaders), [SEC Visualizers](https://github.com/john-friedman/SEC-Visualizers)
 
 ### Quickstart
 Load package
@@ -113,9 +114,12 @@ Not released yet, different repo.
 
 ### Updates
 #### Towards Version 1:
-* Most/All SEC text filings supported
-* Few errors
-* xml 
+Note: next major update will happen in august. It will improve quality of parsing, and dramatically increase speed.
+Changes: streaming, combined detectors (e.g. all caps / emphasis cap with handling for unique cases), one use detectors, adding parse_id, merging clean parse,
+xml tree construct into one function.
+
+* Most/All SEC textual filings supported
+
 
 Might be done along the way:
 * Faster parsing, probably using streaming approach, and combining modules together.

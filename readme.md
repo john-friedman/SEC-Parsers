@@ -7,9 +7,9 @@ Parses non-standardized SEC filings into structured xml. Use cases include LLMs,
 
 Supported filing types are 10-K, 10-Q, 8-K, S-1, 20-F. More will be added soon, or you can write your own! [How to write a Custom Parser in 5 minutes](https://medium.com/@jgfriedman99/how-to-write-a-custom-sec-parser-in-5-minutes-5c7a8d5d81b0)
 
-`sec-parsers` is maintained by John Friedman, and is under the MIT License. If you use `sec-parsers` for a project, please let me know! [Feedback](https://forms.gle/hZRgDoDGmsHs3wiF6)
+`sec-parsers` is maintained by [Mule](https://jgfriedman99.pythonanywhere.com/), and is under the MIT License. If you use `sec-parsers` for a project, please let us know! [Feedback](https://forms.gle/hZRgDoDGmsHs3wiF6)
 
-<em>URGENT</em>: Advice on how to name functions used by users is needed. I don't want to deprecate function names in the future. [Link](contributors.md)
+<em>URGENT</em>: Advice on how to name functions used by users is needed. [Link](contributors.md)
 
 <em>Notice</em> `download_sec_filing` is being deprecated.
 
@@ -87,16 +87,6 @@ filing.save_csv(file_name,encoding='ascii')
 * Export to markdown (Astarag)
 * Better parsing_string handling. Opened an issue. (sharif)
 
-#### SEC Downloader
-Not released yet, different repo.
-* Download by company name, ticker, etc
-* Download all 10-Ks, etc
-* Rate limit handling
-* asynchronous downloads
-
-### Statistics
-* Speed: On average, 10-K filings parse in 0.25 seconds. There were 7,118 10-K annual reports filed in 2023, so to parse all 10-Ks from 2023 should take about half an hour.
-* Improving speed is currently not a priority. If you need more speed, let me know. I think I can increase parsing speed to ~ .01 seconds per 10-K.
 
 ### Other packages useful for SEC filings
 * https://github.com/dgunning/edgartools
@@ -108,7 +98,6 @@ Changes: streaming, combined detectors (e.g. all caps / emphasis cap with handli
 xml tree construct into one function.
 
 * Most/All SEC textual filings supported
-
 
 Might be done along the way:
 * Faster parsing, probably using streaming approach, and combining modules together.
