@@ -7,9 +7,7 @@ Parses non-standardized SEC filings into structured xml. Use cases include LLMs,
 
 Supported filing types are 10-K, 10-Q, 8-K, S-1, 20-F. More will be added soon, or you can write your own! [How to write a Custom Parser in 5 minutes](https://medium.com/@jgfriedman99/how-to-write-a-custom-sec-parser-in-5-minutes-5c7a8d5d81b0)
 
-<em>Update:</em> I figured out how to parse almost all SEC filing types at a speed of about 40,000 pages per second on a standard laptop. I am not releasing this parser, because I am currently using it as collateral to raise funding for compute and data hosting as I've reached the end of what I can do with one laptop. The website for the startup is [here](https://jgfriedman99.pythonanywhere.com/) if you want to check it out. Ignore most of the text, that's placeholders for VC. 
-
-TLDR: Package still being supported, but I'll be updating it less and focusing on UI. There will also be a website with a database that is more accessible to non-programmers soon, with a nice free tier.
+<em>Update:</em> Bulk-downloading parsed SEC 10-K XMLs will soon be available [here](https://datamule.xyz/samples).
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualizationv3.png">
