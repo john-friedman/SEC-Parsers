@@ -7,7 +7,9 @@ Parses non-standardized SEC filings into structured xml. Use cases include LLMs,
 
 Supported filing types are 10-K, 10-Q, 8-K, S-1, 20-F. More will be added soon, or you can write your own! [How to write a Custom Parser in 5 minutes](https://medium.com/@jgfriedman99/how-to-write-a-custom-sec-parser-in-5-minutes-5c7a8d5d81b0)
 
-<em>Update:</em> Bulk-downloading parsed SEC 10-K XMLs will soon be available [here](https://datamule.xyz/samples).
+<em>Update</em>: This package is no longer maintained. Parsed SEC bulk data will soon be available for free on <a href='https://datamule.xyz/products'>datamule</a>, including a dataset of every 10-K from the past four years and an MD&A subset. For additional data, contact me through that website or LinkedIn.
+
+If you're looking to browse SEC filings and extract data like tables, check out the tool I'm developing <a href='https://datamule.xyz/filings_viewer'>SEC Filings Viewer</a>.
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualizationv3.png">
