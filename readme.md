@@ -11,6 +11,8 @@ Supported filing types are 10-K, 10-Q, 8-K, S-1, 20-F. More will be added soon, 
 
 If you're looking to browse SEC filings and extract data like tables, check out the tool I'm developing <a href='https://datamule.xyz/filings_viewer'>SEC Filings Viewer</a>.
 
+If you need to bulk download SEC data, check out [Downloading SEC Filings](https://medium.com/@jgfriedman99/downloading-sec-filings-591ca0cfd98d).
+
 <div align="center">
   <img src="https://raw.githubusercontent.com/john-friedman/SEC-Parsers/main/Assets/tesla_visualizationv3.png">
 </div>
